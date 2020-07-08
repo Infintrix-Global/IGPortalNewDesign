@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IG Portal", "IG Portal\IG Portal.csproj", "{1AAE0AF7-11D0-4C2A-B1E6-0E430BB1069A}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IGPortal.Data", "IGPortal.Data\IGPortal.Data.sqlproj", "{6B8826F7-3B37-4167-9ACA-20D00ED87F18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AAE0AF7-11D0-4C2A-B1E6-0E430BB1069A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAE0AF7-11D0-4C2A-B1E6-0E430BB1069A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAE0AF7-11D0-4C2A-B1E6-0E430BB1069A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAE0AF7-11D0-4C2A-B1E6-0E430BB1069A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B8826F7-3B37-4167-9ACA-20D00ED87F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B8826F7-3B37-4167-9ACA-20D00ED87F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B8826F7-3B37-4167-9ACA-20D00ED87F18}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6B8826F7-3B37-4167-9ACA-20D00ED87F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B8826F7-3B37-4167-9ACA-20D00ED87F18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B8826F7-3B37-4167-9ACA-20D00ED87F18}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26B9F4E9-56EA-4632-86B1-C8242CA1872A}
+	EndGlobalSection
+EndGlobal

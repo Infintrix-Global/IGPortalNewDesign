@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/ConsultantDashBoard.aspx" title="Home"  description="">
+		<siteMapNode url="~/AddTimeSheet.aspx" title="Add Task"  description="" />
+		
+		<siteMapNode url="~/ViewTask.aspx" title="View TimeSheet"  description="" />
+		<siteMapNode url="~/EmployeeProfile.aspx" title="View Profile"  description="" >
+			<siteMapNode url="~/EditProfile.aspx" title="Edit Profile"  description="">
+			</siteMapNode>
+		</siteMapNode>
+		
+		<siteMapNode url="~/ChangePassword.aspx" title="Change Password"  description="" />
+	</siteMapNode>
+</siteMap>

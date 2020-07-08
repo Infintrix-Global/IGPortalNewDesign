@@ -1,0 +1,43 @@
+.title {
+    font-size: medium;
+    color: black;
+}
+
+    .title label {
+        font-size: medium;
+        color: black;
+    }
+
+.required {
+    color: red;
+    font-size: medium;
+}
+
+.page-bar{
+    background-color:lightgray;
+}
+
+.paging {
+    display: inline-block;
+}
+
+    .paging a {
+        color: black;
+        
+        
+        float: left;
+        padding: 2px 2px;
+        text-decoration: none;
+    }
+        .paging  span {
+            color: black;
+            font-weight: bold;
+            float: left;
+            padding: 2px 2px;
+            text-decoration: none;
+            border-bottom:solid;
+        }
+
+    .font-timesheet{
+        font-size:12px;
+    }

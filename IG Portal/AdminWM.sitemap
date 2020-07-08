@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/AdminDashBoardWM.aspx" title="Home" description="">
+		<siteMapNode url="~/Notifications.aspx" title="Notifications"  description="" />
+		<siteMapNode url="~/AssignProject.aspx" title="Assign Project"  description="" />
+		  <siteMapNode url="~/AddProject.aspx" title="Add Project"   description="" />
+	  <siteMapNode url="~/AddPage.aspx" title="Add Page"  description="" />
+	  <siteMapNode url="~/AddTaskMaster.aspx" title="Add Task"  description="" />
+	  <siteMapNode url="~/AddTimeSheet.aspx" title="Add Task"  description="" />
+	  <siteMapNode url="~/AddEmployee.aspx" title="Add Employee"  description="" />
+		<siteMapNode url="~/EmployeeProfile.aspx" title="View Profile"  description="" >
+			<siteMapNode url="~/EditProfile.aspx" title="Edit Profile"  description=""/>
+		</siteMapNode>
+	
+	  <siteMapNode url="~/ViewTask.aspx" title="View TimeSheet"  description="" />
+	  <siteMapNode url="~/LeaveApplication.aspx" title="Apply For Leave"  description="" />
+	  <siteMapNode url="~/ChangePassword.aspx" title="Change Password"  description="" />
+	  <siteMapNode url="~/LeaveApproval.aspx" title="Leave Approval Applications"  description="" />
+	
+	  <siteMapNode url="~/EmployeeWiseReport.aspx" title="Employee Report"  description="" />
+	  <siteMapNode url="~/ProjectWiseReport.aspx" title="Project Report"  description="" />
+	  <siteMapNode url="~/MonthlyHoursByEmployeeReport.aspx" title="Hours Spent By Employee"  description="" />
+	  <siteMapNode url="~/MonthlyProjectHoursByEmployeeReport.aspx" title="Hours Spent By Employee/Project"  description="" />
+	  <siteMapNode url="~/MonthlyProjectTaskHoursEmployeeReport.aspx" title="Hours Spent By Project/Task"  description="" />
+	  <siteMapNode url="~/SLAReport.aspx" title="Hours Spent By Employee/Total Working Hours"  description="" />
+	  <siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
+	  <siteMapNode url="~/AddBug.aspx" title="Add Bug"  description="" />
+	  <siteMapNode url="~/ViewBug.aspx" title="View Bug"  description="" />
+	</siteMapNode>
+</siteMap>

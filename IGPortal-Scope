@@ -1,0 +1,41 @@
+Logins
+Admin
+Employee (with news)
+
+
+Admin Login
+- Project Master
+- Employee Master
+- Task Type Master
+- News Master
+- View Timesheet with export
+
+Search
+Employee / Project / Task Type / Start Date / End Date 
+
+
+Employee  Login
+- Add Tasks
+Employeeid
+project name
+task type
+task title
+task details
+Date (Validation - only current + last 2 days allowed) 
+Start time and end time
+
+View Tasks
+
+Search
+Employee / Project / Task Type / Start Date / End Date 
+
+
+Let me know if you have any questions. 
+
+
+Database-credentials
+UserName
+IGPortal
+Password
+admin@@123
+
