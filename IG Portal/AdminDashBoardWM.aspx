@@ -135,7 +135,11 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                 
+                                                  <asp:TemplateField HeaderText="Count" HeaderStyle-CssClass="autostyle2" >
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("OpenBug")  %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
 
                                             </Columns>
 
