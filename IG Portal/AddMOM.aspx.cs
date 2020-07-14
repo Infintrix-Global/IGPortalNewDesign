@@ -188,6 +188,7 @@ namespace IG_Portal
                     btnAddNew.Visible = true;
                     addMOM.Visible = false;
                     viewMOM.Visible = true;
+                    
                     BindMOM();
                     btclear_Click(sender, e);
                 }
@@ -213,6 +214,7 @@ namespace IG_Portal
             txtAgenda.Text = "";
             txtMeetingPlace.Text = "";
             ddlMeetingInitiator.SelectedValue = "0";
+            ddlMeetingType.SelectedIndex = 0;
             dtMeetingPoint.Clear();
         }
 

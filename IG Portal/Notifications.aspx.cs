@@ -557,7 +557,7 @@ namespace IG_Portal
                
             }
 
-          
+            BindNotificationMOM();
         }
 
         protected void btnReject_Click(object sender, EventArgs e)
@@ -579,12 +579,13 @@ namespace IG_Portal
 
                         lblmsg1.Text = "Rejected";
                         lblmsg1.ForeColor = System.Drawing.Color.Green;
-                        BindNotificationMOM();
+                       
                     }
 
 
                 }
             }
+            BindNotificationMOM();
         }
 
         protected void btnAssign_Click(object sender, EventArgs e)
@@ -617,13 +618,15 @@ namespace IG_Portal
 
                                 lblmsg2.Text = "Bug Assigned";
                                 lblmsg2.ForeColor = System.Drawing.Color.Green;
-                                BindNotificationAssign();
+                               
                             }
                         }
                     }
                    
                 }
+                BindNotificationAssign();
             }
+
             catch (Exception ex)
             {
 
@@ -653,11 +656,12 @@ namespace IG_Portal
 
                             lblmsg4.Text = "Bug Closed";
                             lblmsg4.ForeColor = System.Drawing.Color.Green;
-                            BindNotificationSolvedBug();
+                            
                         }
                     }
 
                 }
+                BindNotificationSolvedBug();
             }
             catch (Exception ex)
             {

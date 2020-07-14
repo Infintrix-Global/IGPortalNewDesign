@@ -29,7 +29,7 @@ namespace IG_Portal
                    // pbAdmin.Visible = false;
                     
                 }
-                txtFromDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+                txtFromDate.Attributes["min"] = DateTime.Today.ToString("yyyy-MM-dd");
                 BindLeaveMaster();
                 BindGridLeave();
             }

@@ -911,7 +911,7 @@ namespace IG_Portal.BAL_Classes
             try
             {
                 General objGeneral = new General();
-                objGeneral.AddParameterWithValueToSQLCommand("@Date", DateTime.Now.ToString());
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", DateTime.Now);
                 objGeneral.AddParameterWithValueToSQLCommand("@Mode", 2);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetAdminDashBoardDetails");
             }
@@ -926,7 +926,7 @@ namespace IG_Portal.BAL_Classes
             try
             {
                 General objGeneral = new General();
-                objGeneral.AddParameterWithValueToSQLCommand("@Date", DateTime.Now.ToString());
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", DateTime.Now);
                 objGeneral.AddParameterWithValueToSQLCommand("@Mode", 3);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetAdminDashBoardDetails");
             }

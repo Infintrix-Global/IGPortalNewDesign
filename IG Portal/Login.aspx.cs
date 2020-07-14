@@ -45,7 +45,7 @@ namespace IG_Portal
                 string y = Session["CaptchaImageText"].ToString();
                 if (txtimgcode.Text == Session["CaptchaImageText"].ToString())
                 {
-                    lblmsg.Text = "Excellent.......";
+                    //lblmsg.Text = "Excellent.......";
                     if (CheckBoxRemember.Checked)
                     {
                         Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
@@ -73,6 +73,11 @@ namespace IG_Portal
                     if (_dtLogin.Rows[0]["Role"].ToString() == "4" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Response.Redirect("~/ManagerDashBoardWM.aspx");
+                    }
+
+                    if (_dtLogin.Rows[0]["Role"].ToString() == "7" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Response.Redirect("~/ConsultantDashBoardWM.aspx");
                     }
                     else if (_dtLogin.Rows[0]["Role"].ToString() == "1" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {

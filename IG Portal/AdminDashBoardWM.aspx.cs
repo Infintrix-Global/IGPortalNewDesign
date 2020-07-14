@@ -48,11 +48,18 @@ namespace IG_Portal
 
         public void BindGridOpenBugs()
         {
-            DataTable dtBug;
+            try
+            {
+                DataTable dtBug;
 
-            dtBug = objTask.GetAdminDashBoardProjectBug();
-            GridBug.DataSource = dtBug;
-            GridBug.DataBind();
+                dtBug = objTask.GetAdminDashBoardProjectBug();
+                GridBug.DataSource = dtBug;
+                GridBug.DataBind();
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
 
 

@@ -618,6 +618,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetProjectMasterByEmployee(int loginID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+            
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", loginID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetProjectMasterByEmployeeForTimeSheet");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetUnAssignedProjectByEmployee(int EmployeeID)
         {
             try

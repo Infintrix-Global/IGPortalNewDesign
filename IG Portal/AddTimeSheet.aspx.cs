@@ -27,17 +27,19 @@ namespace IG_Portal
                 BindTaskCategory();
                
               
-                txtDate.Attributes["min"] = DateTime.Today.AddDays(-3).ToString("yyyy-MM-dd");
+                txtDate.Attributes["min"] = DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd");
                 txtDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
                 timeSheetID = Session["TimeSheetID"] as string;
                 {
                     if (string.IsNullOrEmpty(timeSheetID))
                     {
+                        txtDate.Text = DateTime.Now.AddDays(5).ToString("yyyy-MM-dd");
+
                         Clear();
                     }
                     else
                     {
-                        txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                        txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                         AutoFillTimeSheet();
                     }
                 }
@@ -48,7 +50,7 @@ namespace IG_Portal
 
         public void BindProjectMaster()
         {
-            ddlProjectName.DataSource = objcommon.GetProjectMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlProjectName.DataSource = objcommon.GetProjectMasterByEmployee(Convert.ToInt32(Session["LoginID"].ToString()));
             ddlProjectName.DataTextField = "ProjectName";
             ddlProjectName.DataValueField = "ID";
 

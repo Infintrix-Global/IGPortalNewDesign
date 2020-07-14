@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class Notifications {
-        
+namespace IG_Portal
+{
+
+
+    public partial class Notifications
+    {
+
         /// <summary>
         /// SrciptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager SrciptManager1;
-        
+
         /// <summary>
         /// lbltitle control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbltitle;
-        
+
         /// <summary>
         /// tabcontainer1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabContainer tabcontainer1;
-        
+
         /// <summary>
         /// NotificationMOM control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel NotificationMOM;
-        
+
         /// <summary>
         /// upNotificationMOM control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upNotificationMOM;
-        
+
         /// <summary>
         /// lblmsg1 control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmsg1;
-        
+
         /// <summary>
         /// btnConfirm control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirm;
-        
+
         /// <summary>
         /// btnReject control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReject;
-        
+
         /// <summary>
         /// count1 control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label count1;
-        
+
         /// <summary>
         /// GridNotificationMOM control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridNotificationMOM;
-        
+
         /// <summary>
         /// NotificationAssign control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel NotificationAssign;
-        
+
         /// <summary>
         /// lblmsg2 control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmsg2;
-        
+
         /// <summary>
         /// btnAssign control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAssign;
-        
+
         /// <summary>
         /// ddlDeveloper control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDeveloper;
-        
+
         /// <summary>
         /// count2 control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label count2;
-        
+
         /// <summary>
         /// GirdNotificationAssign control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GirdNotificationAssign;
-        
+
         /// <summary>
         /// NotificationBug control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel NotificationBug;
-        
+
         /// <summary>
         /// lblmsg3 control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmsg3;
-        
+
         /// <summary>
         /// count3 control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label count3;
-        
+
         /// <summary>
         /// GirdNotificationBug control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GirdNotificationBug;
-        
+
         /// <summary>
         /// NotificationSolvedBug control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel NotificationSolvedBug;
-        
+
         /// <summary>
         /// lblmsg4 control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmsg4;
-        
+
         /// <summary>
         /// btnClose control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClose;
-        
+
         /// <summary>
         /// count4 control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label count4;
-        
+
         /// <summary>
         /// GridNotificationSolvedBug control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridNotificationSolvedBug;
-        
+
         /// <summary>
         /// btnShow control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnShow;
-        
+
         /// <summary>
         /// ModalPopupExtender1 control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender1;
-        
+
         /// <summary>
         /// pnlpp control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlpp;
-        
+
         /// <summary>
         /// Panel2 control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel2;
-        
+
         /// <summary>
         /// lblDetails control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDetails;
-        
+
         /// <summary>
         /// lbltxtDetails control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbltxtDetails;
-        
+
         /// <summary>
         /// Vpbtncancel control.
         /// </summary>

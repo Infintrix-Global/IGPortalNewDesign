@@ -405,7 +405,7 @@
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
                            
                         </ul>
-                        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
+                        <a href="#" data-activates="slide-out3" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
                     </div>
 
                 </aside>

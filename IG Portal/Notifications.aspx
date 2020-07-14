@@ -130,6 +130,14 @@
             }
     </style>
 
+
+    <style>
+        [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+            position: absolute;
+            left: 70px;
+            visibility: visible
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -170,9 +178,9 @@
                                                             <Columns>
                                                                 <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
                                                                     <ItemTemplate>
-                                                                         <input type="checkbox" id="chkSelect" runat="server"/>
-                                                                         <label for="chkSelect"></label>
-                                                                        <%--<asp:CheckBox runat="server" ID="chkSelect" ></asp:CheckBox>--%>
+                                                                    <%--    <input type="checkbox" id="chkSelect" runat="server" />
+                                                                        <label for="chkSelect"></label>--%>
+                                                                        <asp:CheckBox runat="server" ID="chkSelect" ></asp:CheckBox>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
@@ -261,9 +269,9 @@
 
                                                         <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                 <input type="checkbox" id="chkSelect" runat="server"/>
-                                                                         <label for="chkSelect"></label>
-                                                               <%-- <asp:CheckBox runat="server" ID="chkSelect"></asp:CheckBox>--%>
+                                                               <%-- <input type="checkbox" id="chkSelect" runat="server" />
+                                                                <label for="chkSelect"></label>--%>
+                                                                <asp:CheckBox runat="server" ID="chkSelect"></asp:CheckBox>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -356,7 +364,7 @@
                     <asp:TabPanel ID="NotificationBug" runat="server" HeaderText="New Bug Assigned" TabIndex="2">
 
                         <ContentTemplate>
-                           
+
                             <asp:Label ID="lblmsg3" runat="server"></asp:Label>
 
                             <div class="row">
@@ -425,71 +433,77 @@
                                 </div>
 
                             </div>
-                                  
+
 
                         </ContentTemplate>
-                   </asp:TabPanel>
+                    </asp:TabPanel>
 
 
                     <asp:TabPanel ID="NotificationSolvedBug" runat="server" HeaderText="Bug Solved" TabIndex="3">
 
                         <ContentTemplate>
-                          
-                                    <asp:Label ID="lblmsg4" runat="server"></asp:Label>
-                                    <div class="row">
-                                        <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Close" class="btn" />
 
-                                    </div>
-                                    <div class="row">
-                                        <div class=" col m12">
-                                            <div class="portlet light ">
-                                                <asp:Label runat="server" Text="" ID="count4"></asp:Label>
-                                                <div class="portlet-body">
-                                                    <div class="table-scrollable">
-                                                        <asp:GridView ID="GridNotificationSolvedBug" runat="server" AutoGenerateColumns="False"
-                                                            class="striped" OnPageIndexChanging="GridNotificationSolvedBug_PageIndexChanging"
-                                                            GridLines="None" AllowPaging="true" OnSorting="GridNotificationSolvedBug_Sorting"
-                                                            PageSize="10" OnRowCommand="GridNotificationSolvedBug_RowCommand"
-                                                            ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="ID">
-                                                            <Columns>
+                            <asp:Label ID="lblmsg4" runat="server"></asp:Label>
+                            <div class="row">
+                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Close" class="btn" />
 
-                                                                <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
-                                                                    <ItemTemplate>
-                                                                      <%--  <asp:CheckBox runat="server" ID="chkSelect" ></asp:CheckBox>--%>
-                                                                            <input type="checkbox" id="chkSelect" runat="server"/>
-                                                                         <label for="chkSelect"></label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                            </div>
+
+                            <div class="row">
+                                <div class=" col m12">
+                                    <div class="portlet light ">
+                                        <asp:Label runat="server" Text="" ID="count4"></asp:Label>
+                                        <div class="portlet-body">
+                                            <div class="table-scrollable">
+                                                <asp:GridView ID="GridNotificationSolvedBug" runat="server" AutoGenerateColumns="False"
+                                                    class="striped" OnPageIndexChanging="GridNotificationSolvedBug_PageIndexChanging"
+                                                    GridLines="None" AllowPaging="true" OnSorting="GridNotificationSolvedBug_Sorting"
+                                                    PageSize="10" OnRowCommand="GridNotificationSolvedBug_RowCommand"
+                                                    ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="ID">
+                                                    <Columns>
+
+                                                        <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                               <%-- <div>
+                                                                    <input type="checkbox" id="chk" class="filled-in">
+                                                                    <label for="chk" id="lblchk" runat="server">1</label>
+                                                                </div>--%>
+
+                                                                 <asp:CheckBox runat="server"  ID="chkSelect1" ></asp:CheckBox>
+                                                                <%--   <input type="checkbox" id="chkSelect" runat="server" />
+                                                                         <label for="chkSelect">1</label>--%>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
 
-                                                                <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label1" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
-                                                                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("Type")  %>' Visible="false"></asp:Label>
-                                                                         <asp:Label ID="lblBugID" runat="server" Text='<%# Eval("BugID")  %>' Visible="false"></asp:Label>
-                                                                        <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label1" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
+                                                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("Type")  %>' Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblBugID" runat="server" Text='<%# Eval("BugID")  %>' Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
-                                                                <asp:TemplateField HeaderText="DateTime" HeaderStyle-CssClass="autostyle2" SortExpression="NotificationDateTime">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("NotificationDateTime")  %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="DateTime" HeaderStyle-CssClass="autostyle2" SortExpression="NotificationDateTime">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("NotificationDateTime")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
-                                                                <asp:TemplateField HeaderText="Title" HeaderStyle-CssClass="autostyle2" SortExpression="Title">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Title")  %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="Title" HeaderStyle-CssClass="autostyle2" SortExpression="Title">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Title")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
-                                                                <asp:TemplateField HeaderText="Message" HeaderStyle-CssClass="autostyle2">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Messsage")  %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="Message" HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Messsage")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
-                                                               <%-- <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                        <%-- <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                                     <ItemTemplate>
                                                                         <asp:Button ID="btnConfirm" runat="server" Text="Confirm" Visible="false" OnClientClick="return GetApproveConfirmation();" CommandArgument='<%# Eval("ID") %>' CommandName="Confirm"></asp:Button>
                                                                     </ItemTemplate>
@@ -513,43 +527,43 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>--%>
 
-                                                                <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
-                                                                    <ItemTemplate>
-                                                                        <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details"></asp:LinkButton>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details"></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
-                                                              <%--  <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                        <%--  <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                                     <ItemTemplate>
                                                                         <asp:Button ID="btnClosed" runat="server" Text="Close"  OnClientClick="return GetApproveConfirmation();" CommandArgument='<%# Eval("ID") %>' CommandName="Close"></asp:Button>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>--%>
 
-                                                                  <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
-                                                                    <ItemTemplate>
-                                                                        <asp:Button ID="btnReopen" runat="server" Text="Reopen"   CommandArgument='<%# Eval("BugID") %>' CommandName="Reopen"></asp:Button>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("BugID") %>' CommandName="Reopen"></asp:Button>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
-                                                            </Columns>
+                                                    </Columns>
 
-                                                            <PagerStyle CssClass="paging" HorizontalAlign="Right" />
-                                                            <PagerSettings Mode="NumericFirstLast" />
-                                                            <EmptyDataTemplate>
-                                                                No Record Available
-                                                            </EmptyDataTemplate>
-                                                        </asp:GridView>
+                                                    <PagerStyle CssClass="paging" HorizontalAlign="Right" />
+                                                    <PagerSettings Mode="NumericFirstLast" />
+                                                    <EmptyDataTemplate>
+                                                        No Record Available
+                                                    </EmptyDataTemplate>
+                                                </asp:GridView>
 
-
-                                                    </div>
-                                                </div>
 
                                             </div>
                                         </div>
 
                                     </div>
+                                </div>
 
-                               
+                            </div>
+
+
 
                         </ContentTemplate>
                     </asp:TabPanel>
@@ -572,13 +586,13 @@
                             <td>
                                 <asp:Label ID="lblDetails" runat="server" Text="Details"></asp:Label>
                             </td>
-                          
-                                </tr>
+
+                        </tr>
                         <tr>
-                          
+
                             <td>
-                                <asp:Label ID="lbltxtDetails" runat="server" > </asp:Label>
-                               
+                                <asp:Label ID="lbltxtDetails" runat="server"> </asp:Label>
+
                             </td>
                         </tr>
 
