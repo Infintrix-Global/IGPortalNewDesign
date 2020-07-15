@@ -32,7 +32,7 @@ namespace IG_Portal
                 BindStatusMaster();
                 BindTaskMaster();
                 BindSuggestedByMaster();
-                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                txtDate.Text = Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd");
                 bugID = Session["BugID"] as string;
                 ReopenBugID = Session["BugIDReopen"] as string;
                 {
@@ -106,7 +106,9 @@ namespace IG_Portal
             ddlStatus.DataValueField = "ID";
 
             ddlStatus.DataBind();
+            
             ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            ddlStatus.SelectedValue = "1";
         }
 
         protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)

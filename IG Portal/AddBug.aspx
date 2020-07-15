@@ -143,9 +143,9 @@
                                                     </label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="6" ></asp:TextBox>
+                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"  TextMode="Date" TabIndex="6"  ></asp:TextBox>
                                                
-                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date "  ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
 

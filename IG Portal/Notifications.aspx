@@ -14,7 +14,25 @@
             }
         }
 
+        function GetCloseConfirmation() {
+            var reply = confirm("Are You Sure to Close the Bug ?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
+        function GetReopenConfirmation() {
+            var reply = confirm("Are You Sure to Reopen the Bug ?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     </script>
 
     <style type="text/css">
@@ -445,7 +463,7 @@
 
                             <asp:Label ID="lblmsg4" runat="server"></asp:Label>
                             <div class="row">
-                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Close" class="btn" />
+                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Close" class="btn" OnClientClick="return GetCloseConfirmation();" />
 
                             </div>
 
@@ -541,7 +559,7 @@
 
                                                         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("BugID") %>' CommandName="Reopen"></asp:Button>
+                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("BugID") %>' OnClientClick="return GetReopenConfirmation();" CommandName="Reopen"></asp:Button>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 

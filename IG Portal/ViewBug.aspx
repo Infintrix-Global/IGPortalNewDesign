@@ -233,7 +233,7 @@
                                             ShowHeaderWhenEmpty="True" Width="100%"  OnRowDataBound="GridBug_RowDataBound" OnRowCommand="GridBug_RowCommand" >
                                             <Columns>
 
-                                                <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="2%" HeaderStyle-CssClass="autostyle2">
+                                                <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="1%" HeaderStyle-CssClass="autostyle2">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkHistory" runat="server" Text="<%#Container.DataItemIndex + 1%>" CommandName="ViewHistory" CommandArgument='<%# Eval("ID")  %>' ForeColor="Blue" CssClass="font-timesheet" ToolTip="View History"></asp:LinkButton>
                                                         <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>

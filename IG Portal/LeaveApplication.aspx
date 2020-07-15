@@ -95,7 +95,7 @@
                                                     </label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="3" OnTextChanged="txtFromDate_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                                <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="3" OnTextChanged="txtFromDate_TextChanged" AutoPostBack="true" ></asp:TextBox>
 
                                                 <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtFromDate" ErrorMessage="Please Enter From Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
@@ -109,7 +109,7 @@
                                                     </label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="3"></asp:TextBox>
+                                                <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="4"></asp:TextBox>
 
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtToDate" ErrorMessage="Please Enter To Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
@@ -120,7 +120,7 @@
                                     </div>
 
                                     <div class="row" align="center">
-                                        <asp:Button ID="btnsubmit" runat="server" TabIndex="8" ClientIDMode="Static" Text="Submit" class="btn" CausesValidation="true" OnClick="btnsubmit_Click" ValidationGroup="at" UseSubmitBehavior="false" OnClientClick="this.disabled='true';"></asp:Button>
+                                        <asp:Button ID="btnsubmit" runat="server" TabIndex="5" ClientIDMode="Static" Text="Submit" class="btn" CausesValidation="true" OnClick="btnsubmit_Click" ValidationGroup="at" UseSubmitBehavior="false" OnClientClick="this.disabled='true';"></asp:Button>
                                     </div>
                                 </div>
                             </div>
