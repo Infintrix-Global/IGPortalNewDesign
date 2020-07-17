@@ -90,6 +90,7 @@
     <Content Include="BugHistory.aspx" />
     <Content Include="CImage.aspx" />
     <Content Include="ConsultantDashBoardWM.aspx" />
+    <Content Include="EmployeeDocuments.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
     <Content Include="js\BsMultiSelect.js" />
     <Content Include="ManagerDashBoardWM.aspx" />
@@ -691,6 +692,7 @@
     <Content Include="temp.aspx" />
     <Content Include="ViewBug.aspx" />
     <Content Include="ViewBugDetails.aspx" />
+    <Content Include="ViewEmployeeDocuments.aspx" />
     <Content Include="ViewTask.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -773,6 +775,13 @@
     </Compile>
     <Compile Include="ConsultantDashBoardWM.aspx.designer.cs">
       <DependentUpon>ConsultantDashBoardWM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeDocuments.aspx.cs">
+      <DependentUpon>EmployeeDocuments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeDocuments.aspx.designer.cs">
+      <DependentUpon>EmployeeDocuments.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmployeeWiseReport.aspx.cs">
       <DependentUpon>EmployeeWiseReport.aspx</DependentUpon>
@@ -946,6 +955,13 @@
     </Compile>
     <Compile Include="ViewBugDetails.aspx.designer.cs">
       <DependentUpon>ViewBugDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewEmployeeDocuments.aspx.cs">
+      <DependentUpon>ViewEmployeeDocuments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewEmployeeDocuments.aspx.designer.cs">
+      <DependentUpon>ViewEmployeeDocuments.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewTask.aspx.cs">
       <DependentUpon>ViewTask.aspx</DependentUpon>

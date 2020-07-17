@@ -952,5 +952,57 @@ namespace IG_Portal.BAL_Classes
             }
             return _isUpdated;
         }
+
+        public DataTable GetEmployeeDocumentStatus(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ComapnyID", companyID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeDocumentStatus");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+
+        public DataTable GetEmployeeDocuments(int employeeID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", employeeID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeDocuments");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public int AddEmployeeDocument(string EmpID, string DocID,string imgName)
+        {
+            int _isUpdated = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", EmpID);
+                objGeneral.AddParameterWithValueToSQLCommand("@DocumentID", DocID);
+                objGeneral.AddParameterWithValueToSQLCommand("@FileName", imgName);
+                _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddEmployeeDocument");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isUpdated;
+        }
+
     }
 }

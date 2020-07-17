@@ -255,6 +255,7 @@
                             <li class="bold"><a href="<%= ResolveUrl("~/AssignProject.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assign Project</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
                               <li class="bold"><a href="<%= ResolveUrl("~/Notifications.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Notifications</a> </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/EmployeeDocuments.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Employee Documents</a> </li>
                         </ul>
                         <a href="#" data-activates="slide-out1" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
                     </div>

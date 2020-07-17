@@ -463,7 +463,7 @@
 
                             <asp:Label ID="lblmsg4" runat="server"></asp:Label>
                             <div class="row">
-                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Close" class="btn" OnClientClick="return GetCloseConfirmation();" />
+                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Close" class="btn"  />
 
                             </div>
 
@@ -487,7 +487,7 @@
                                                                     <label for="chk" id="lblchk" runat="server">1</label>
                                                                 </div>--%>
 
-                                                                 <asp:CheckBox runat="server"  ID="chkSelect1" ></asp:CheckBox>
+                                                                 <asp:CheckBox runat="server"  ID="chkSelect" ></asp:CheckBox>
                                                                 <%--   <input type="checkbox" id="chkSelect" runat="server" />
                                                                          <label for="chkSelect">1</label>--%>
                                                             </ItemTemplate>
