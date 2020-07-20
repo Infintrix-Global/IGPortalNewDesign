@@ -88,7 +88,7 @@ namespace IG_Portal
 
         public void BindProjectMaster()
         {
-            ddlProjectName.DataSource = objcommon.GetProjectMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlProjectName.DataSource = objcommon.GetProjectMasterByEmployee(Convert.ToInt32(ddlEmployeeName.SelectedValue));
             ddlProjectName.DataTextField = "ProjectName";
             ddlProjectName.DataValueField = "ID";
 
@@ -226,7 +226,7 @@ namespace IG_Portal
 
         public void BindTaskTitleMasterBug(string projectID)
         {
-            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForBug(projectID);
+            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForBug(projectID,ddlEmployeeName.SelectedValue,2);
             ddlTaskTitle.DataTextField = "BugDetails";
             ddlTaskTitle.DataValueField = "ID";
 
@@ -250,6 +250,7 @@ namespace IG_Portal
         {
             try
             {
+                
                 string strQuery = "";
                 string strQuery1 = "";
                 string strqtime = "";

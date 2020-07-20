@@ -21,7 +21,7 @@
                             <div class="portlet-body">
                                 <div class="table-scrollable">
                                     <asp:GridView ID="GridDocument" runat="server"  AutoGenerateColumns="False"
-                                        class="striped"  DataKeyNames="DocumentID"
+                                        class="striped"  DataKeyNames="DocumentID,DocumentName"
                                         GridLines="None"  OnRowDataBound="GridDocument_RowDataBound"
                                         ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridDocument_RowCommand">
                                         <Columns>

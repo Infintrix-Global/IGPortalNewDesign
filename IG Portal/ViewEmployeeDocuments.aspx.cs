@@ -41,7 +41,7 @@ namespace IG_Portal
 
                 // ID of the Current Row
                 String DocID = GridDocument.DataKeys[rowIndex].Values["DocumentID"].ToString().Trim();
-
+                String DocName = GridDocument.DataKeys[rowIndex].Values["DocumentName"].ToString().Trim();
                 //File Upload Instance of the Current Row
                 FileUpload fileUpload = (FileUpload)GridDocument.Rows[rowIndex].FindControl("FileupDocs");
                 string[] validFileTypes = { "jpeg", "png", "jpg", "pdf"};
@@ -79,7 +79,7 @@ namespace IG_Portal
                         {
                             try
                             {
-                                string Imgname = Session["EmployeeID"].ToString() + "_DocID" + ext;
+                                string Imgname = Session["EmployeeID"].ToString() + "_" + DocName + "." + ext;
 
                                 string path = Server.MapPath(@"~\EmployeeDocuments\");
                                 System.IO.Directory.CreateDirectory(path);
@@ -114,6 +114,7 @@ namespace IG_Portal
                 {
                     this.Page.ClientScript.RegisterStartupScript(GetType(), "ShowAlert", "alert('Please select valid file.');", true);
                 }
+                BindEmployeeDocuments();
 
             }
 

@@ -463,7 +463,7 @@
 
                             <asp:Label ID="lblmsg4" runat="server"></asp:Label>
                             <div class="row">
-                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Close" class="btn"  />
+                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" OnClientClick="return GetCloseConfirmation();" Text="Close" class="btn"  />
 
                             </div>
 

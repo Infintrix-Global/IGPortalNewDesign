@@ -37,5 +37,11 @@ namespace IG_Portal
             Session["EmployeeID"] = id;
             Response.Redirect("ViewEmployeeDocuments.aspx");
         }
+
+        protected void GridDocumentStatus_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridDocumentStatus.PageIndex = e.NewPageIndex;
+            BindEmployeeDocs();
+        }
     }
 }

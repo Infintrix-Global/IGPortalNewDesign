@@ -38,10 +38,12 @@ namespace IG_Portal
                 {
                     if ((string.IsNullOrEmpty(bugID)) && (string.IsNullOrEmpty(ReopenBugID)))
                     {
+                        BindInitialStatusMaster();
                         Clear();
                     }
                     else
                     {
+                        BindStatusMaster();
                         txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                         AutoFillBug();
                     }
@@ -53,7 +55,7 @@ namespace IG_Portal
 
         public void BindProjectMaster()
         {
-            ddlProjectName.DataSource = objcommon.GetProjectMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlProjectName.DataSource = objcommon.GetProjectMasterByEmployee(Convert.ToInt32(Session["LoginID"].ToString()));
             ddlProjectName.DataTextField = "ProjectName";
             ddlProjectName.DataValueField = "ID";
             ddlProjectName.DataBind();
@@ -108,7 +110,20 @@ namespace IG_Portal
             ddlStatus.DataBind();
             
             ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
-            ddlStatus.SelectedValue = "1";
+           
+        }
+
+
+        public void BindInitialStatusMaster()
+        {
+            ddlStatus.DataSource = objcommon.GetInitialBugStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlStatus.DataTextField = "StatusName";
+            ddlStatus.DataValueField = "ID";
+
+            ddlStatus.DataBind();
+
+            ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+           
         }
 
         protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)

@@ -957,6 +957,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetInitialBugStatusMaster(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 16);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetYearFromTimeSheet(int companyID)
         {
             try
@@ -1038,14 +1054,15 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
-        public DataTable GetTaskTitleMasterForBug(string projectID)
+        public DataTable GetTaskTitleMasterForBug(string projectID,string LoginID,int mode)
         {
             try
             {
 
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
-
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", mode);
                 ds = objGeneral.GetDatasetByCommand_SP("GET_TaskTitleByProjectForBug");
             }
             catch (Exception ex)

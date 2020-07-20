@@ -90,7 +90,7 @@ namespace IG_Portal
 
         public void BindTaskTitleMasterBug(string projectID)
         {
-            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForBug(projectID);
+            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForBug(projectID,Session["LoginID"].ToString(),1);
             ddlTaskTitle.DataTextField = "BugDetails";
             ddlTaskTitle.DataValueField = "ID";
 
@@ -152,6 +152,7 @@ namespace IG_Portal
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
             int _isInserted = -1;
+            
             timeSheetID = Session["TimeSheetID"] as string;
             try
             {
@@ -175,6 +176,7 @@ namespace IG_Portal
                 }
                 else
                 {
+                    requiredtxttitle.Enabled = false;
                     objTimeSheetDetails.TaskTitle = ddlTaskTitle.SelectedValue;
                     objTimeSheetDetails.Mode = 1;
                 }
@@ -239,6 +241,7 @@ namespace IG_Portal
             ddlTaskTitle.SelectedIndex = 0;
             txtComment.Text = "";
             ddlTaskCategory.SelectedIndex = 0;
+            requiredtxttitle.Enabled = true;
             //Calendar1.SelectedDates.Clear();
         }
 

@@ -23,7 +23,7 @@
                             <div class="portlet-body">
                                 <div class="table-scrollable">
                                     <asp:GridView ID="GridDocumentStatus" runat="server"  AutoGenerateColumns="False"
-                                        class="striped" 
+                                        class="striped"  OnPageIndexChanging="GridDocumentStatus_PageIndexChanging"
                                         GridLines="None" AllowPaging="true"
                                         ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridDocumentStatus_RowCommand">
                                         <Columns>

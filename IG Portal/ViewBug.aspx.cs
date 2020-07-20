@@ -28,7 +28,7 @@ namespace IG_Portal
 
         public void BindProjectMaster()
         {
-            ddlProjectName.DataSource = objCommon.GetProjectMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlProjectName.DataSource = objCommon.GetProjectMasterByEmployee(Convert.ToInt32(Session["LoginID"].ToString()));
             ddlProjectName.DataTextField = "ProjectName";
             ddlProjectName.DataValueField = "ID";
             ddlProjectName.DataBind();
