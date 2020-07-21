@@ -15,7 +15,7 @@
         }
 
         function GetCloseConfirmation() {
-            var reply = confirm("Are You Sure to Close the Bug ?");
+            var reply = confirm("Do you really want to CLOSE this bug ?");
             if (reply) {
                 return true;
             }
@@ -25,7 +25,7 @@
         }
 
         function GetReopenConfirmation() {
-            var reply = confirm("Are You Sure to Reopen the Bug ?");
+            var reply = confirm("Do you really want to REOPEN this bug?");
             if (reply) {
                 return true;
             }

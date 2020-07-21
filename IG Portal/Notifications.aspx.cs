@@ -282,6 +282,7 @@ namespace IG_Portal
 
         protected void GridNotificationMOM_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            Clear();
             GridNotificationMOM.PageIndex = e.NewPageIndex;
             BindNotificationMOM();
         }
@@ -308,6 +309,7 @@ namespace IG_Portal
 
         protected void GridNotificationMOM_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Clear();
             //try
             //{
             //    if (e.CommandName == "Confirm")
@@ -356,6 +358,7 @@ namespace IG_Portal
 
         protected void GirdNotificationAssign_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            Clear();
             GirdNotificationAssign.PageIndex = e.NewPageIndex;
             BindNotificationAssign();
         }
@@ -383,59 +386,60 @@ namespace IG_Portal
 
         protected void GirdNotificationAssign_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Clear();
+            //  try
+            // {
+            //if (e.CommandName == "Assign")
+            //{
+            //    int _IsConfirm = -1;
 
-          //  try
-           // {
-                //if (e.CommandName == "Assign")
-                //{
-                //    int _IsConfirm = -1;
+            //    int rowIndex = Convert.ToInt32(e.CommandArgument);
+            //    GridViewRow row = GirdNotificationAssign.Rows[rowIndex];
+            //    string developerID = (row.FindControl("ddlDeveloper") as DropDownList).SelectedValue;
+            //    string id = (row.FindControl("lblID") as Label).Text;
+            //    string bugid = (row.FindControl("lblBugID") as Label).Text;
+            //    if (developerID == "0")
+            //    {
+            //        lblmsg2.Text = "Failed-Please Select Developer ";
+            //        lblmsg2.ForeColor = System.Drawing.Color.Red;
+            //    }
+            //    else
+            //    {
+            //        _IsConfirm = objTask.AssignBug(Convert.ToInt32(id), developerID);
+            //        if (_IsConfirm == -1)
+            //        {
+            //            lblmsg2.Text = "Failed To Assign";
+            //            lblmsg2.ForeColor = System.Drawing.Color.Red;
+            //        }
+            //        else
+            //        {
 
-                //    int rowIndex = Convert.ToInt32(e.CommandArgument);
-                //    GridViewRow row = GirdNotificationAssign.Rows[rowIndex];
-                //    string developerID = (row.FindControl("ddlDeveloper") as DropDownList).SelectedValue;
-                //    string id = (row.FindControl("lblID") as Label).Text;
-                //    string bugid = (row.FindControl("lblBugID") as Label).Text;
-                //    if (developerID == "0")
-                //    {
-                //        lblmsg2.Text = "Failed-Please Select Developer ";
-                //        lblmsg2.ForeColor = System.Drawing.Color.Red;
-                //    }
-                //    else
-                //    {
-                //        _IsConfirm = objTask.AssignBug(Convert.ToInt32(id), developerID);
-                //        if (_IsConfirm == -1)
-                //        {
-                //            lblmsg2.Text = "Failed To Assign";
-                //            lblmsg2.ForeColor = System.Drawing.Color.Red;
-                //        }
-                //        else
-                //        {
-
-                //            lblmsg2.Text = "Bug Assigned";
-                //            lblmsg2.ForeColor = System.Drawing.Color.Green;
-                //            objCommon.SendMailAssignBug(bugid);
-                //            BindNotificationAssign();
-                //        }
-                //    }
-              //  }
+            //            lblmsg2.Text = "Bug Assigned";
+            //            lblmsg2.ForeColor = System.Drawing.Color.Green;
+            //            objCommon.SendMailAssignBug(bugid);
+            //            BindNotificationAssign();
+            //        }
+            //    }
+            //  }
 
 
-                //if (e.CommandName == "Details")
-                //{
-                //    int id = Convert.ToInt32(e.CommandArgument);
-                //    Session["BugID"] = id.ToString();
-                //    Response.Redirect("ViewBugDetails.aspx");
-                //}
-           // }
-           // catch (Exception ex)
-           // {
+            //if (e.CommandName == "Details")
+            //{
+            //    int id = Convert.ToInt32(e.CommandArgument);
+            //    Session["BugID"] = id.ToString();
+            //    Response.Redirect("ViewBugDetails.aspx");
+            //}
+            // }
+            // catch (Exception ex)
+            // {
 
-           // }
+            // }
         }
 
 
         protected void GirdNotificationBug_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            Clear();
             GirdNotificationBug.PageIndex = e.NewPageIndex;
             BindNotificationBug();
         }
@@ -462,6 +466,7 @@ namespace IG_Portal
 
         protected void GridNotificationSolvedBug_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            Clear();
             GridNotificationSolvedBug.PageIndex = e.NewPageIndex;
             BindNotificationSolvedBug();
         }
@@ -488,6 +493,7 @@ namespace IG_Portal
 
         protected void GridNotificationSolvedBug_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Clear();
             //try
             //{
             //    if (e.CommandName == "Close")
@@ -639,6 +645,7 @@ namespace IG_Portal
             {
 
                 int _IsClosed = -1;
+              
                 foreach (GridViewRow row in GridNotificationSolvedBug.Rows)
                 {
                     if ((row.FindControl("chkSelect") as CheckBox).Checked)
@@ -714,6 +721,15 @@ namespace IG_Portal
             {
                
             }
+        }
+
+        public void Clear()
+        {
+            lblmsg1.Text = "";
+            lblmsg2.Text = "";
+            lblmsg4.Text = "";
+            lblmsg3.Text = "";
+
         }
     }
 }
