@@ -93,10 +93,20 @@
       {
          return false;
       }
-  }
+         }
+
+         function GetAddTSConfirmation() {
+             var reply = confirm("Are You Sure you want to add this bug in TimeSheet?");
+             if (reply) {
+                 return true;
+             }
+             else {
+                 return false;
+             }
+         }
 
          
-</script>
+     </script>
    
      
 </asp:Content>
@@ -233,11 +243,13 @@
                                             ShowHeaderWhenEmpty="True" Width="100%"  OnRowDataBound="GridBug_RowDataBound" OnRowCommand="GridBug_RowCommand" >
                                             <Columns>
 
-                                                <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="0.5%" HeaderStyle-CssClass="autostyle2">
+                                                <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="5px" HeaderStyle-CssClass="autostyle2">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkHistory" runat="server" Text="<%#Container.DataItemIndex + 1%>" CommandName="ViewHistory" CommandArgument='<%# Eval("ID")  %>' ForeColor="Blue" CssClass="font-timesheet" ToolTip="View History"></asp:LinkButton>
                                                         <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
                                                           <asp:Label ID="lblCrossCheckedBy" runat="server" Text='<%# Eval("CrossCheckedBy")  %>' Visible="false"></asp:Label>
+                                                         <asp:Label ID="lblDeveloperID" runat="server" Text='<%# Eval("Developer")  %>' Visible="false"></asp:Label>
+                                                         <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status")  %>' Visible="false"></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
@@ -351,6 +363,12 @@
                                                             <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
                                                                     <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Remove" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return GetApproveConfirmation();" ></asp:ImageButton>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
+                                                                <ItemTemplate>
+                                                                    <asp:LinkButton ID="lnkAddTS" runat="server" CommandArgument='<%# Eval("ID")  %>' Text="Add TS" CommandName="AddTS"  Visible="false" OnClientClick="return GetAddTSConfirmation();" ></asp:LinkButton>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 

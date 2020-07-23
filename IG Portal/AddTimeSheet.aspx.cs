@@ -13,40 +13,54 @@ namespace IG_Portal
     {
         clsCommonMasters objcommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
-        string timeSheetID;
+        static string timeSheetID;
+        static string AddTSBugID;
+        protected void Page_UnLoad(object sender, EventArgs e)
+        {
+
+            Session["TimeSheetID"] = null;
+            Session["AddTSBugID"] = null;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             rgvStartDate.MinimumValue = DateTime.Today.AddDays(-3).ToString("yyyy-MM-dd");
             rgvStartDate.MaximumValue = DateTime.Now.ToString("yyyy-MM-dd");
             if (!IsPostBack)
             {
-              
+
                 BindProjectMaster();
                 BindTaskMaster();
                 BindTaskCategory();
-               
-              
+
+
                 txtDate.Attributes["min"] = DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd");
                 txtDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
                 timeSheetID = Session["TimeSheetID"] as string;
+                AddTSBugID = Session["AddTSBugID"] as string;
                 {
-                    if (string.IsNullOrEmpty(timeSheetID))
+
+                    if (string.IsNullOrEmpty(timeSheetID) && string.IsNullOrEmpty(AddTSBugID))
                     {
                         txtDate.Text = DateTime.Now.AddDays(5).ToString("yyyy-MM-dd");
 
                         Clear();
                     }
-                    else
+                    else if (string.IsNullOrEmpty(AddTSBugID))
                     {
                         txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                         AutoFillTimeSheet();
+                    }
+                    else if (string.IsNullOrEmpty(timeSheetID))
+                    {
+                        txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                        AutoFillTimeSheetForBug();
                     }
                 }
             }
         }
 
-        
+
 
         public void BindProjectMaster()
         {
@@ -90,7 +104,7 @@ namespace IG_Portal
 
         public void BindTaskTitleMasterBug(string projectID)
         {
-            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForBug(projectID,Session["LoginID"].ToString(),1);
+            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForBug(projectID, Session["LoginID"].ToString(), 1);
             ddlTaskTitle.DataTextField = "BugDetails";
             ddlTaskTitle.DataValueField = "ID";
 
@@ -152,19 +166,19 @@ namespace IG_Portal
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
             int _isInserted = -1;
-            
-            timeSheetID = Session["TimeSheetID"] as string;
+
+            //timeSheetID = Session["TimeSheetID"] as string;
             try
             {
                 TimeSheetDetails objTimeSheetDetails = new TimeSheetDetails()
                 {
                     LoginID = Convert.ToInt32(Session["LoginID"].ToString()),
                     ProjectName = ddlProjectName.SelectedValue,
-                    TaskCategory=ddlTaskCategory.SelectedValue,
+                    TaskCategory = ddlTaskCategory.SelectedValue,
                     TaskName = ddlTaskType.SelectedValue,
-                    Comment=txtComment.Text,
+                    Comment = txtComment.Text,
                     TaskDetails = txtTaskDescription.Text,
-                    Status=ddlStatus.SelectedValue,
+                    Status = ddlStatus.SelectedValue,
                     WorkDate = (Convert.ToDateTime(txtDate.Text)).ToString("dd MMMM yyyy"),
                     StartTime = (Convert.ToDateTime(txtStartTime.Text)).ToString("hh:mm tt"),
                     EndTime = (Convert.ToDateTime(txtEndTime.Text)).ToString("hh:mm tt"),
@@ -195,14 +209,14 @@ namespace IG_Portal
                         lblMessage.Text = "TimeSheet Added";
                         lblMessage.ForeColor = System.Drawing.Color.Green;
                         Clear();
-                       
+
 
                     }
                 }
                 else
                 {
                     objTimeSheetDetails.TimeSheetID = Convert.ToInt32(timeSheetID);
-                     _isInserted = objTask.UpdateTimeSheet(objTimeSheetDetails);
+                    _isInserted = objTask.UpdateTimeSheet(objTimeSheetDetails);
                     if (_isInserted == -1)
                     {
                         lblMessage.Text = "Failed to Update TimeSheet";
@@ -218,7 +232,7 @@ namespace IG_Portal
 
                     }
                 }
-                }
+            }
 
             catch (Exception ex)
             {
@@ -247,7 +261,7 @@ namespace IG_Portal
 
         protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlTaskCategory.SelectedIndex !=0)
+            if (ddlTaskCategory.SelectedIndex != 0)
             {
                 if (ddlTaskCategory.SelectedValue == "1")
                 {
@@ -281,7 +295,7 @@ namespace IG_Portal
             DataTable dtTimeSheet = new DataTable();
             dtTimeSheet = objTask.AutoFillTimeSheet(Convert.ToInt32(timeSheetID.Trim()));
             ddlProjectName.SelectedValue = dtTimeSheet.Rows[0]["ProjectName"].ToString();
-            ddlTaskCategory.SelectedValue= dtTimeSheet.Rows[0]["TaskCategory"].ToString();
+            ddlTaskCategory.SelectedValue = dtTimeSheet.Rows[0]["TaskCategory"].ToString();
             if (ddlTaskCategory.SelectedValue == "1")
             {
                 BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
@@ -294,13 +308,40 @@ namespace IG_Portal
             }
             ddlTaskType.SelectedValue = dtTimeSheet.Rows[0]["TaskType"].ToString();
             ddlTaskTitle.SelectedValue = dtTimeSheet.Rows[0]["TaskTitle"].ToString();
-            
+
             txtTaskDescription.Text = dtTimeSheet.Rows[0]["TaskDetails"].ToString();
             txtDate.Text = Convert.ToDateTime(dtTimeSheet.Rows[0]["WorkDate"].ToString()).ToString("yyyy-MM-dd");
             txtStartTime.Text = dtTimeSheet.Rows[0]["StartTime"].ToString();
             ddlStatus.SelectedValue = dtTimeSheet.Rows[0]["Status"].ToString();
             txtEndTime.Text = dtTimeSheet.Rows[0]["EndTime"].ToString();
             txtComment.Text = dtTimeSheet.Rows[0]["Comment"].ToString();
+        }
+
+        public void AutoFillTimeSheetForBug()
+        {
+            DataTable dtTimeSheet = new DataTable();
+            dtTimeSheet = objTask.AutoFillTimeSheetForBug(Convert.ToInt32(AddTSBugID.Trim()));
+            ddlProjectName.SelectedValue = dtTimeSheet.Rows[0]["ProjectID"].ToString();
+            ddlTaskCategory.SelectedValue = "2";
+            if (ddlTaskCategory.SelectedValue == "1")
+            {
+                BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
+                BindStatusMaster();
+            }
+            if (ddlTaskCategory.SelectedValue == "2")
+            {
+                BindTaskTitleMasterBug(ddlProjectName.SelectedValue);
+                BindBugStatusMaster();
+            }
+            //ddlTaskType.SelectedValue = dtTimeSheet.Rows[0]["TaskType"].ToString();
+            ddlTaskTitle.SelectedValue = AddTSBugID.ToString();
+
+            //txtTaskDescription.Text = dtTimeSheet.Rows[0]["TaskDetails"].ToString();
+           // txtDate.Text = Convert.ToDateTime(dtTimeSheet.Rows[0]["WorkDate"].ToString()).ToString("yyyy-MM-dd");
+           // txtStartTime.Text = dtTimeSheet.Rows[0]["StartTime"].ToString();
+           // ddlStatus.SelectedValue = dtTimeSheet.Rows[0]["Status"].ToString();
+           // txtEndTime.Text = dtTimeSheet.Rows[0]["EndTime"].ToString();
+           // txtComment.Text = dtTimeSheet.Rows[0]["Comment"].ToString();
         }
 
         protected void ddlTaskCategory_SelectedIndexChanged(object sender, EventArgs e)

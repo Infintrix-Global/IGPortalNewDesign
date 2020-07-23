@@ -283,6 +283,22 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataTable AutoFillTimeSheetForBug(int bid)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@BugID", bid);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetBugByID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public int Add_Leave(Leave objLeaveApplication)
         {
             int _isInserted = -1;
@@ -480,6 +496,23 @@ namespace IG_Portal.BAL_Classes
 
 
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetBug");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds;
+
+        }
+
+        public DataSet GetBugForEmployee(string devID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", devID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetBugForEmployee");
             }
             catch (Exception ex)
             {

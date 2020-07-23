@@ -18,11 +18,90 @@ namespace IG_Portal
         {
             if(!IsPostBack)
             {
-                BindBugs();
+                //BindBugs();
                 BindProjectMaster();
                 BindTaskMaster();
                 BindBugStatusMaster();
-                BindDeveloperMaster();
+                CheckRole();
+                //BindDeveloperMaster();
+            }
+        }
+
+        public void CheckRole()
+        {
+            //DataTable AllData = objTask.GetEmployeeByID(Convert.ToInt32(Session["LoginID"].ToString()));
+            if (Session["Role"] is null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 6);
+                if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
+                {
+                    if (Session["Role"].ToString() == "2")
+                    {
+                        BindDeveloperMaster();
+                        //ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                        ddlDeveloper.Enabled = true;
+                        BindBugs();
+                        // BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    }
+                    else if (Session["Role"].ToString() == "4")
+                    {
+                        BindDeveloperMaster();
+                        //ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                        ddlDeveloper.Enabled = true;
+                        BindBugs();
+                        //  BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    }
+                }
+                else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
+                {
+                    BindDeveloperMaster();
+                    ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    ddlDeveloper.Enabled = false;
+                    BindBugsForEmployee(ddlDeveloper.SelectedValue);
+                }
+
+            }
+        }
+
+        public void CheckRoleProjectWise()
+        {
+            //DataTable AllData = objTask.GetEmployeeByID(Convert.ToInt32(Session["LoginID"].ToString()));
+            if (Session["Role"] is null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 6);
+                if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
+                {
+                    if (Session["Role"].ToString() == "2")
+                    {
+                        BindDeveoperMasterByProject(ddlProjectName.SelectedValue);
+                       // ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                        ddlDeveloper.Enabled = true;
+                        // BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    }
+                    else if (Session["Role"].ToString() == "4")
+                    {
+                        BindDeveoperMasterByProject(ddlProjectName.SelectedValue);
+                       // ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                        ddlDeveloper.Enabled = true;
+                        //  BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    }
+                }
+                else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
+                {
+                    BindDeveloperMaster();
+                    ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    ddlDeveloper.Enabled = false;
+
+                }
+
             }
         }
 
@@ -86,6 +165,18 @@ namespace IG_Portal
             DataSet dtBug;
 
             dtBug = objTask.GetBug();
+            GridBug.DataSource = dtBug.Tables[0];
+            GridBug.DataBind();
+            count.Text = "Number of Bugs =" + dtBug.Tables[0].Rows.Count;
+            ViewState["dirState"] = dtBug;
+            ViewState["sortdr"] = "Asc";
+        }
+
+        public void BindBugsForEmployee(string devID)
+        {
+            DataSet dtBug;
+
+            dtBug = objTask.GetBugForEmployee(devID);
             GridBug.DataSource = dtBug.Tables[0];
             GridBug.DataBind();
             count.Text = "Number of Bugs =" + dtBug.Tables[0].Rows.Count;
@@ -245,6 +336,24 @@ namespace IG_Portal
                     ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = false;
                 }
 
+                if( (((Label)e.Row.FindControl("lblDeveloperID")).Text == Session["LoginID"].ToString())  )
+                {
+                    if ((((Label)e.Row.FindControl("lblStatus")).Text == "3") || (((Label)e.Row.FindControl("lblStatus")).Text == "6"))
+                    {
+                        ((LinkButton)e.Row.FindControl("lnkAddTS")).Visible = false;
+                    }
+                    else
+                    {
+                        ((LinkButton)e.Row.FindControl("lnkAddTS")).Visible =true ;
+
+                    }
+                }
+                else
+                {
+                    ((LinkButton)e.Row.FindControl("lnkAddTS")).Visible = false;
+                    
+                }
+
             }
         }
 
@@ -295,6 +404,13 @@ namespace IG_Portal
                     Session["BugHistoryID"] = bid.ToString();
                     Response.Redirect("~/BugHistory.aspx");
                 }
+
+            if (e.CommandName == "AddTS")
+            {
+                int bid = Convert.ToInt32(e.CommandArgument);
+                Session["AddTSBugID"] = bid.ToString();
+                Response.Redirect("~/AddTimeSheet.aspx");
+            }
             //}
             //catch(Exception ex)
             //{
@@ -306,7 +422,7 @@ namespace IG_Portal
         {
             if (ddlProjectName.SelectedIndex != 0)
             {
-                BindDeveoperMasterByProject(ddlProjectName.SelectedValue);
+                CheckRoleProjectWise();
             }
         }
 

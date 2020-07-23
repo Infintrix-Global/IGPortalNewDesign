@@ -14,6 +14,26 @@
             }
         }
 
+        function GetConfirmation() {
+            var reply = confirm("Do you really want to Confirm this MOM ?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function GetRejectConfirmation() {
+            var reply = confirm("Do you really want to Reject this MOM ?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
         function GetCloseConfirmation() {
             var reply = confirm("Do you really want to CLOSE this bug ?");
             if (reply) {
@@ -179,8 +199,8 @@
                                 <ContentTemplate>
                                     <asp:Label ID="lblmsg1" runat="server"></asp:Label>
                                     <div class="row">
-                                        <asp:Button ID="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Confirm" class="btn" />
-                                        <asp:Button ID="btnReject" runat="server" OnClick="btnReject_Click" Text="Reject" class="btn" />
+                                        <asp:Button ID="btnConfirm" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnConfirm_Click" Text="Confirm" class="btn" />
+                                        <asp:Button ID="btnReject" runat="server" OnClientClick="return GetRejectConfirmation();"  OnClick="btnReject_Click" Text="Reject" class="btn" />
                                     </div>
                                     <div class="row">
                                         <div class=" col m12">
