@@ -230,6 +230,7 @@ namespace IG_Portal
                 }
                 else
                 {
+                    requiredtxttitle.Enabled = false;
                     objBugDetails.TaskTitle = ddlTaskTitle.SelectedValue;
                     objBugDetails.Mode = 1;
                 }
@@ -323,6 +324,7 @@ namespace IG_Portal
             
             ddlStatus.SelectedIndex = 0;
             txtBugDescription.Text = "";
+            requiredtxttitle.Enabled = true;
             ddlTaskTitle.SelectedIndex = 0;
             txtComment.Text = "";
             //Calendar1.SelectedDates.Clear();
