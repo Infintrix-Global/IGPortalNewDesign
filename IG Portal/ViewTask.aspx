@@ -169,7 +169,7 @@
                                                         ShowHeaderWhenEmpty="True" Width="100%" OnPageIndexChanging="GridTask_PageIndexChanging" PageSize="10">
                                                         <Columns>
                                                            
-                                                            <asp:TemplateField HeaderText="Sr. No."  HeaderStyle-CssClass="autostyle2" ItemStyle-Width="0.01%">
+                                                            <asp:TemplateField HeaderText="Sr. No."  HeaderStyle-CssClass="autostyle2" ItemStyle-Width="5px">
                                                                 <ItemTemplate>
                                                                     <asp:Label ID="Label4" runat="server" Text="<%#Container.DataItemIndex + 1%>" CssClass="font-timesheet"></asp:Label>
                                                                     <asp:Label ID="lblLoginID" runat="server" Text='<%# Eval("LoginID")  %>' Visible="false"></asp:Label>

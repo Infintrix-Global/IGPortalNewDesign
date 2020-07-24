@@ -155,6 +155,49 @@
                                 </li>
                             </ul>
                         </div>
+
+                            <div class="col s12 m12 l6">
+                            <ul id="ul2" class="collection">
+                                <li class="collection-item avatar indigo" style="color: white; font-weight: bold"><span class="collection-header">Project with Completed Bugs</span>
+
+                                </li>
+                                <li class="collection-item">
+                                    <asp:GridView ID="GridCompletedBug" runat="server" AutoGenerateColumns="False"
+                                        class="striped" AllowSorting="true"
+                                        GridLines="None"
+                                        ShowHeaderWhenEmpty="True" Width="100%">
+                                        <Columns>
+
+                                            <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label4" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
+
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Project Name" HeaderStyle-CssClass="autostyle2">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("ProjectName")  %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Completed Bugs" HeaderStyle-CssClass="autostyle2">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("CompletedBug")  %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                        </Columns>
+
+                                        <PagerStyle CssClass="paging" HorizontalAlign="Right" />
+                                        <PagerSettings Mode="NumericFirstLast" />
+                                        <EmptyDataTemplate>
+                                            No Record Available
+                                        </EmptyDataTemplate>
+                                    </asp:GridView>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

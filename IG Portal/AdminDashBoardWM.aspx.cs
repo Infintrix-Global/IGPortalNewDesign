@@ -19,6 +19,7 @@ namespace IG_Portal
                 PopulateChart();
                 BindGridMOM();
                 BindGridOpenBugs();
+                BindGridCompletedBugs();
             }
         }
 
@@ -62,6 +63,21 @@ namespace IG_Portal
             }
         }
 
+        public void BindGridCompletedBugs()
+        {
+            try
+            {
+                DataTable dtBug;
+
+                dtBug = objTask.GetAdminDashBoardProjectCompletedBug();
+                GridCompletedBug.DataSource = dtBug;
+                GridCompletedBug.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
         protected void txtDate_TextChanged(object sender, EventArgs e)
         {

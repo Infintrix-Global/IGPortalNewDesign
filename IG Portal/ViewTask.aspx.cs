@@ -379,7 +379,10 @@ namespace IG_Portal
                             strqtime += " and TS.Status ='" + ddlStatus.SelectedValue + "'";
                         }
 
+                        //strQuery += " and TS.WorkDate between Convert(nvarchar(max),'" + txtFromDate.Text + "'  ,102) and Convert(nvarchar(max),  '" + txtToDate.Text + "' ,102)";
+                        //strQuery1 += " and TS.WorkDate between Convert(nvarchar(max),'" + txtFromDate.Text + "'  ,102) and Convert(nvarchar(max),  '" + txtToDate.Text + "' ,102)";
                         strQuery += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
+                        strQuery1 += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                         strqtime += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
 
                         strQuery += ") union  ";

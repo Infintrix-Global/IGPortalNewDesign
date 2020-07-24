@@ -954,6 +954,20 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataTable GetAdminDashBoardProjectCompletedBug()
+        {
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", DateTime.Now);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", 4);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAdminDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
         public DataTable GetAdminDashBoardMOM()
         {
             try

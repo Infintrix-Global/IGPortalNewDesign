@@ -24,7 +24,9 @@ namespace IG_Portal
                 BindBugStatusMaster();
                 CheckRole();
                 //BindDeveloperMaster();
+                
             }
+            lblMessage.Text = "";
         }
 
         public void CheckRole()

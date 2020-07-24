@@ -350,6 +350,14 @@ namespace IG_Portal
             txtBugDescription.Text = dtBug.Rows[0]["BugDetails"].ToString();
             txtDate.Text = Convert.ToDateTime(dtBug.Rows[0]["WorkDate"].ToString()).ToString("yyyy-MM-dd");
             radPriority.Text = dtBug.Rows[0]["Priority"].ToString();
+            if (string.IsNullOrEmpty(ReopenBugID))
+            {
+                ddlStatus.SelectedValue = dtBug.Rows[0]["Status"].ToString();
+            }
+            if (string.IsNullOrEmpty(bugID))
+            {
+                ddlStatus.SelectedValue = "7";
+            }
             ddlStatus.SelectedValue = dtBug.Rows[0]["Status"].ToString();
             ddlSuggetedBy.SelectedValue = dtBug.Rows[0]["SuggestedBy"].ToString();
             txtComment.Text = dtBug.Rows[0]["Comment"].ToString();
