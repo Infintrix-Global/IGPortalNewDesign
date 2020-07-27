@@ -220,6 +220,20 @@
                                 </ul>
                             </li>
 
+                             <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                              <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Task </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="<%= ResolveUrl("~/AssignTask.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/PendingAssignTask.aspx") %>">Pending</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li class="no-padding">
                                 <ul class="collapsible collapsible-accordion">
                                     <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>HR </a>
@@ -309,6 +323,8 @@
                                 </ul>
                             </li>
 
+
+
                             <li class="no-padding">
                                 <ul class="collapsible collapsible-accordion">
                                     <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Bugs </a>
@@ -316,6 +332,20 @@
                                             <ul>
                                                 <li><a href="<%= ResolveUrl("~/AddBug.aspx") %>">Add</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ViewBug.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                              <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                              <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Task </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="<%= ResolveUrl("~/AssignTask.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/PendingAssignTask.aspx") %>">Pending</a> </li>
 
                                             </ul>
                                         </div>

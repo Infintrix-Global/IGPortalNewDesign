@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using IG_Portal.BAL_Classes;
@@ -68,6 +69,29 @@ namespace IG_Portal
         protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindProjectMaster();
+            BindGridProject();
+        }
+
+        public void BindGridProject()
+        {
+            if(ddlEmployee.SelectedIndex!=0)
+            {
+                DataTable dtTaskDetails;
+                dtTaskDetails = objCommon.GetAssignedProjectByEmployee(Convert.ToInt32(ddlEmployee.SelectedValue));
+                GridProject.DataSource = dtTaskDetails;
+                GridProject.DataBind();
+            }
+        }
+
+        protected void GridProject_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int pmid = Convert.ToInt32(e.CommandArgument);
+                objTask.UnAssignProject(pmid);
+                BindGridProject();
+
+            }
         }
     }
 }

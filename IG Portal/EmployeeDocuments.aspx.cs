@@ -32,10 +32,13 @@ namespace IG_Portal
 
         protected void GridDocumentStatus_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int id = Convert.ToInt32(e.CommandArgument);
-            
-            Session["EmployeeID"] = id;
-            Response.Redirect("ViewEmployeeDocuments.aspx");
+            if (e.CommandName == "ViewDocs")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+
+                Session["EmployeeID"] = id;
+                Response.Redirect("ViewEmployeeDocuments.aspx");
+            }
         }
 
         protected void GridDocumentStatus_PageIndexChanging(object sender, GridViewPageEventArgs e)

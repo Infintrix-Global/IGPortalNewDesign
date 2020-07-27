@@ -87,6 +87,7 @@
     <Content Include="AddTaskMaster.aspx" />
     <Content Include="AddTimeSheet.aspx" />
     <Content Include="AssignProject.aspx" />
+    <Content Include="AssignTask.aspx" />
     <Content Include="BugHistory.aspx" />
     <Content Include="CImage.aspx" />
     <Content Include="ConsultantDashBoardWM.aspx" />
@@ -133,6 +134,7 @@
     <Content Include="MonthlyProjectHoursByEmployeeReport.aspx" />
     <Content Include="MonthlyProjectTaskHoursEmployeeReport.aspx" />
     <Content Include="Notifications.aspx" />
+    <Content Include="PendingAssignTask.aspx" />
     <Content Include="ProjectWiseReport.aspx" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -756,6 +758,13 @@
     <Compile Include="AssignProject.aspx.designer.cs">
       <DependentUpon>AssignProject.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AssignTask.aspx.cs">
+      <DependentUpon>AssignTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AssignTask.aspx.designer.cs">
+      <DependentUpon>AssignTask.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BAL_Classes\MenuMasterBAL.cs" />
     <Compile Include="BAL_Classes\RandomImage.cs" />
     <Compile Include="BugHistory.aspx.cs">
@@ -898,6 +907,13 @@
     </Compile>
     <Compile Include="Notifications.aspx.designer.cs">
       <DependentUpon>Notifications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PendingAssignTask.aspx.cs">
+      <DependentUpon>PendingAssignTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PendingAssignTask.aspx.designer.cs">
+      <DependentUpon>PendingAssignTask.aspx</DependentUpon>
     </Compile>
     <Compile Include="PortalMaster.Master.cs">
       <DependentUpon>PortalMaster.Master</DependentUpon>

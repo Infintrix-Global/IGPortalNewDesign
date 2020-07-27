@@ -26,6 +26,8 @@
 	  <siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
 	  <siteMapNode url="~/AddBug.aspx" title="Add Bug"  description="" />
 	  <siteMapNode url="~/ViewBug.aspx" title="View Bug"  description="" />
+ <siteMapNode url="~/AssignTask.aspx" title="Add Task"  description="" />
+ <siteMapNode url="~/PendingAssignTask.aspx" title="Pending Task"  description="" />
 	
   </siteMapNode>
 </siteMap>

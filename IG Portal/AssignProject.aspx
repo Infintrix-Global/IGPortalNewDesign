@@ -81,6 +81,55 @@
 
                         </div>
 
+                           <div class="row">
+                    <div class=" col m12">
+                        <div class="portlet light ">
+                            <asp:Label runat="server" Text="" ID="count"></asp:Label>
+                            <div class="portlet-body">
+                                <div class="table-scrollable table-scrollable-borderless">
+                                    <asp:GridView ID="GridProject" runat="server"  AutoGenerateColumns="False"
+                                        class="striped" 
+                                        GridLines="None" OnRowCommand="GridProject_RowCommand"
+                                        ShowHeaderWhenEmpty="True" Width="100%">
+                                        <Columns>
+
+                                            <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label4" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
+
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Project Name" HeaderStyle-CssClass="autostyle2">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("ProjectName")  %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                             <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
+                                                                <ItemTemplate>
+                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Delete" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to remove this from assigned project?');"></asp:ImageButton>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                        </Columns>
+
+                                        <PagerStyle CssClass="paging" HorizontalAlign="Right" />
+                                        <PagerSettings Mode="NumericFirstLast" />
+                                        <EmptyDataTemplate>
+                                            No Record Available
+                                        </EmptyDataTemplate>
+                                    </asp:GridView>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
                         <div class="clearfix"></div>
                         </ContentTemplate>
                     </asp:UpdatePanel>

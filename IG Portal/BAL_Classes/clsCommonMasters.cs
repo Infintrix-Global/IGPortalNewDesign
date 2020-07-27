@@ -650,6 +650,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetAssignedProjectByEmployee(int EmployeeID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", EmployeeID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAssignedProjectByEmployee");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetTaskCategory(int companyID)
         {
             try
@@ -1355,6 +1371,27 @@ public class TimeSheetDetails
     public string Comment { get; set; }
     public int Mode { get; set; }
 }
+
+
+public class TaskAssignDetails
+{
+   
+    public int LoginID { get; set; }
+    public string ProjectName { get; set; }
+   
+    public string TaskName { get; set; }
+    public string TaskTitle { get; set; }
+    public string TaskDetails { get; set; }
+    public string EstimatedWorkDate { get; set; }
+    public string EstimatedWorkTime { get; set; }
+   
+    public string Priority { get; set; }
+    public string AssignTo { get; set; }
+    public string Comment { get; set; }
+    public int Mode { get; set; }
+
+}
+
 
 public class Employee
 {
