@@ -17,19 +17,10 @@ namespace IG_Portal
         {
             if (!IsPostBack)
             {
-                if (Session["Role"].ToString() == "2")
-                {
-                    //pbAdmin.Visible = true;
-                   // pbEmployee.Visible = false;
-                    
-                }
-                else if (Session["Role"].ToString() == "1")
-                {
-                    //pbEmployee.Visible = true;
-                   // pbAdmin.Visible = false;
-                    
-                }
-                txtFromDate.Attributes["min"] = DateTime.Today.ToString("yyyy-MM-dd");
+              
+               // rgvStartDate.ValueToCompare = DateTime.Today.ToString("yyyy-MM-dd");
+               // rgvEndDate.ValueToCompare = DateTime.Today.ToString("yyyy-MM-dd");
+                txtFromDate.Attributes["min"] =  Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");// DateTime.Today.ToString("yyyy-MM-dd");
                 BindLeaveMaster();
                 BindGridLeave();
             }
@@ -48,8 +39,10 @@ namespace IG_Portal
         {
             if(txtFromDate.Text!="")
             {
-                txtToDate.Attributes["min"] = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
+              // rgvEndDate.ValueToCompare = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
+               txtToDate.Attributes["min"] = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
                 txtToDate.Text = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
+           
             }
             else
             {

@@ -32,7 +32,8 @@ namespace IG_Portal
                 BindStatusMaster();
                 BindTaskMaster();
                 BindSuggestedByMaster();
-                txtDate.Text = Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd");
+                
+                txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
                 bugID = Session["BugID"] as string;
                 ReopenBugID = Session["BugIDReopen"] as string;
                 {
@@ -317,7 +318,7 @@ namespace IG_Portal
             ddlProjectName.SelectedIndex = 0;
             ddlPageTitle.SelectedIndex = 0;
             ddlTaskType.SelectedIndex = 0;
-            txtDate.Text = "";
+            //txtDate.Text = "";
             txtTaskTitle.Text = "";
             txtTaskTitle.Visible = false;
             ddlSuggetedBy.SelectedIndex = 0;
@@ -358,7 +359,7 @@ namespace IG_Portal
             {
                 ddlStatus.SelectedValue = "7";
             }
-            ddlStatus.SelectedValue = dtBug.Rows[0]["Status"].ToString();
+           
             ddlSuggetedBy.SelectedValue = dtBug.Rows[0]["SuggestedBy"].ToString();
             txtComment.Text = dtBug.Rows[0]["Comment"].ToString();
         }

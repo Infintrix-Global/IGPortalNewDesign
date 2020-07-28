@@ -44,8 +44,8 @@
                 </div>
                 <br />
 
-                <asp:UpdatePanel ID="upEmployee" runat="server">
-                    <ContentTemplate>
+              <%--  <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>--%>
 
                         <div class="row">
                             <div class=" col m12">
@@ -95,9 +95,10 @@
                                                     </label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="3" OnTextChanged="txtFromDate_TextChanged" AutoPostBack="true" ></asp:TextBox>
-
-                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtFromDate" ErrorMessage="Please Enter From Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+                                                <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="3"  OnTextChanged="txtFromDate_TextChanged"  AutoPostBack="true"   ></asp:TextBox>
+                                               <%-- <asp:CompareValidator ID="rgvStartDate" runat="server" ErrorMessage="Only Previous 3 days are allowed" Operator="GreaterThanEqual"
+                 ValidationGroup="at" ControlToValidate="txtFromDate"  ForeColor="Red" SetFocusOnError="true" Type="Date"></asp:CompareValidator>--%>
+                                                <asp:RequiredFieldValidator ID="requiredSDate" runat="server" ControlToValidate="txtFromDate" ErrorMessage="Please Enter From Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
 
@@ -110,8 +111,9 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="4"></asp:TextBox>
-
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtToDate" ErrorMessage="Please Enter To Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+                                              <%--  <asp:CompareValidator ID="rgvEndDate" runat="server" ErrorMessage="End Date should be after Start Date" Operator="GreaterThanEqual"
+                 ValidationGroup="at" ControlToValidate="txtToDate" ForeColor="Red" SetFocusOnError="true" Type="Date"></asp:CompareValidator>--%>
+                                                <asp:RequiredFieldValidator ID="requiredEDate" runat="server" ControlToValidate="txtToDate" ErrorMessage="Please Enter To Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
 
@@ -245,8 +247,8 @@
 
                         </div>
 
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                  <%--  </ContentTemplate>
+                </asp:UpdatePanel>--%>
             </div>
 
         </div>

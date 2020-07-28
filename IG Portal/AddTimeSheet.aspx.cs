@@ -42,8 +42,7 @@ namespace IG_Portal
 
                     if (string.IsNullOrEmpty(timeSheetID) && string.IsNullOrEmpty(AddTSBugID))
                     {
-                        txtDate.Text = DateTime.Now.AddDays(5).ToString("yyyy-MM-dd");
-
+                        txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
                         Clear();
                     }
                     else if (string.IsNullOrEmpty(AddTSBugID))
@@ -53,7 +52,7 @@ namespace IG_Portal
                     }
                     else if (string.IsNullOrEmpty(timeSheetID))
                     {
-                        txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                        //txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                         AutoFillTimeSheetForBug();
                     }
                 }
@@ -245,7 +244,7 @@ namespace IG_Portal
         {
             ddlProjectName.SelectedIndex = 0;
             ddlTaskType.SelectedIndex = 0;
-            txtDate.Text = "";
+            //txtDate.Text = "";
             txtTaskTitle.Text = "";
             txtTaskTitle.Visible = false;
             txtStartTime.Text = "";
