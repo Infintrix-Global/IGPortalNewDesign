@@ -16,8 +16,8 @@
                 </div>
                 <br />
 
-                <asp:UpdatePanel ID="upEmployee" runat="server">
-                    <ContentTemplate>
+               <%-- <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>--%>
 
                         <div class="row">
                             <div class=" col m12">
@@ -236,8 +236,8 @@
 
                         </div>
 
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                  <%--  </ContentTemplate>
+                </asp:UpdatePanel>--%>
             </div>
 
         </div>

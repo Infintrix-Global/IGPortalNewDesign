@@ -29,7 +29,7 @@ namespace IG_Portal
                     // pbAdmin.Visible = false;
 
                 }
-                
+                txtFromDate.Attributes["min"] = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
                 BindLeaveMaster();
                 BindEmployeeMaster();
                

@@ -318,7 +318,7 @@ namespace IG_Portal
             ddlProjectName.SelectedIndex = 0;
             ddlPageTitle.SelectedIndex = 0;
             ddlTaskType.SelectedIndex = 0;
-            //txtDate.Text = "";
+            txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");;
             txtTaskTitle.Text = "";
             txtTaskTitle.Visible = false;
             ddlSuggetedBy.SelectedIndex = 0;
