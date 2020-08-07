@@ -15,11 +15,13 @@ namespace IG_Portal
         BAL_Task objTask = new BAL_Task();
         static string timeSheetID;
         static string AddTSBugID;
+        static string AddTSTaskID;
         protected void Page_UnLoad(object sender, EventArgs e)
         {
 
             Session["TimeSheetID"] = null;
             Session["AddTSBugID"] = null;
+            Session["AddTSTaskID"] = null;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,28 +40,57 @@ namespace IG_Portal
                 txtDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
                 timeSheetID = Session["TimeSheetID"] as string;
                 AddTSBugID = Session["AddTSBugID"] as string;
+                AddTSTaskID = Session["AddTSTaskID"] as string;
                 {
 
-                    if (string.IsNullOrEmpty(timeSheetID) && string.IsNullOrEmpty(AddTSBugID))
+                    if (string.IsNullOrEmpty(timeSheetID) && string.IsNullOrEmpty(AddTSBugID) && string.IsNullOrEmpty(AddTSTaskID))
                     {
                         txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
                         Clear();
                     }
-                    else if (string.IsNullOrEmpty(AddTSBugID))
+                    else if (string.IsNullOrEmpty(AddTSBugID) && string.IsNullOrEmpty(AddTSTaskID))
                     {
                         txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                         AutoFillTimeSheet();
                     }
-                    else if (string.IsNullOrEmpty(timeSheetID))
+                    else if (string.IsNullOrEmpty(timeSheetID) && string.IsNullOrEmpty(AddTSTaskID))
                     {
                         //txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                         AutoFillTimeSheetForBug();
+                    }
+
+                    else if (string.IsNullOrEmpty(timeSheetID) && string.IsNullOrEmpty(AddTSBugID))
+                    {
+                        //txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                        AutoFillTimeSheetForTask();
                     }
                 }
             }
         }
 
+        public void CheckRole()
+        {
+            //DataTable AllData = objTask.GetEmployeeByID(Convert.ToInt32(Session["LoginID"].ToString()));
+            if (Session["Role"] is null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                DataTable dtCheckRights = objcommon.GetRoleRights(Session["Role"].ToString(), 5);
+                if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
+                {
+                    
+                        BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
+                        
+                }
+                else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
+                {
+                    BindTaskTitleMasterAssignedTask(ddlProjectName.SelectedValue);
+                }
 
+            }
+        }
 
         public void BindProjectMaster()
         {
@@ -101,12 +132,26 @@ namespace IG_Portal
             ddlTaskTitle.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
+        public void BindTaskTitleMasterAssignedTask(string projectID)
+        {
+            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForAssignedTask(projectID, Session["LoginID"].ToString());
+            ddlTaskTitle.DataTextField = "TaskTitle";
+            ddlTaskTitle.DataValueField = "ID";
+            ddlTaskTitle.DataBind();
+            ddlTaskTitle.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
+            ddlAssignTask.DataSource = objcommon.GetTaskTitleMasterForAssignedTask(projectID, Session["LoginID"].ToString());
+            ddlAssignTask.DataTextField = "AssignedTaskID";
+            ddlAssignTask.DataValueField = "ID";
+            ddlAssignTask.DataBind();
+            ddlAssignTask.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+
         public void BindTaskTitleMasterBug(string projectID)
         {
             ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForBug(projectID, Session["LoginID"].ToString(), 1);
             ddlTaskTitle.DataTextField = "BugDetails";
             ddlTaskTitle.DataValueField = "ID";
-
             ddlTaskTitle.DataBind();
             ddlTaskTitle.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
@@ -193,6 +238,16 @@ namespace IG_Portal
                     objTimeSheetDetails.TaskTitle = ddlTaskTitle.SelectedValue;
                     objTimeSheetDetails.Mode = 1;
                 }
+                DataTable dtCheckRights = objcommon.GetRoleRights(Session["Role"].ToString(), 5);
+                if (ddlTaskCategory.SelectedValue=="1" && dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
+                {
+                    objTimeSheetDetails.AssignedTaskID = ddlAssignTask.SelectedItem.Text;
+                }
+                else
+                {
+                    objTimeSheetDetails.AssignedTaskID = "0";
+                }
+
                 if (string.IsNullOrEmpty(timeSheetID))
                 {
                     _isInserted = objTask.Add_TimeSheet(objTimeSheetDetails);
@@ -277,15 +332,24 @@ namespace IG_Portal
 
         protected void ddlTaskTitle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlTaskTitle.SelectedItem.Text == "Other")
+            DataTable dtCheckRights = objcommon.GetRoleRights(Session["Role"].ToString(), 5);
+            if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
             {
-                txtTaskTitle.Visible = true;
-
+                ddlAssignTask.SelectedValue = ddlTaskTitle.SelectedValue;
             }
-
-            else
+            else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
             {
-                txtTaskTitle.Visible = false;
+
+                if (ddlTaskTitle.SelectedItem.Text == "Other")
+                {
+                    txtTaskTitle.Visible = true;
+
+                }
+
+                else
+                {
+                    txtTaskTitle.Visible = false;
+                }
             }
         }
 
@@ -343,13 +407,42 @@ namespace IG_Portal
            // txtComment.Text = dtTimeSheet.Rows[0]["Comment"].ToString();
         }
 
+        public void AutoFillTimeSheetForTask()
+        {
+            DataTable dtTimeSheet = new DataTable();
+            dtTimeSheet = objTask.AutoFillTimeSheetForTask(Convert.ToInt32(AddTSTaskID.Trim()));
+            ddlProjectName.SelectedValue = dtTimeSheet.Rows[0]["ProjectName"].ToString();
+            ddlTaskCategory.SelectedValue = "1";
+            if (ddlTaskCategory.SelectedValue == "1")
+            {
+                CheckRole();
+                //BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
+                BindStatusMaster();
+            }
+            if (ddlTaskCategory.SelectedValue == "2")
+            {
+                BindTaskTitleMasterBug(ddlProjectName.SelectedValue);
+                BindBugStatusMaster();
+            }
+            ddlTaskType.SelectedValue = dtTimeSheet.Rows[0]["TaskType"].ToString();
+            ddlTaskTitle.SelectedValue = dtTimeSheet.Rows[0]["TaskTitle"].ToString();
+            ddlAssignTask.SelectedValue = dtTimeSheet.Rows[0]["TaskTitle"].ToString();
+            //txtTaskDescription.Text = dtTimeSheet.Rows[0]["TaskDetails"].ToString();
+            // txtDate.Text = Convert.ToDateTime(dtTimeSheet.Rows[0]["WorkDate"].ToString()).ToString("yyyy-MM-dd");
+            // txtStartTime.Text = dtTimeSheet.Rows[0]["StartTime"].ToString();
+            // ddlStatus.SelectedValue = dtTimeSheet.Rows[0]["Status"].ToString();
+            // txtEndTime.Text = dtTimeSheet.Rows[0]["EndTime"].ToString();
+            // txtComment.Text = dtTimeSheet.Rows[0]["Comment"].ToString();
+        }
+
         protected void ddlTaskCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlProjectName.SelectedIndex != 0)
             {
                 if (ddlTaskCategory.SelectedValue == "1")
                 {
-                    BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
+                    CheckRole();
+                   // BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
                     BindStatusMaster();
                 }
                 if (ddlTaskCategory.SelectedValue == "2")

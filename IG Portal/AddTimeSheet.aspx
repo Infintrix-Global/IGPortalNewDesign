@@ -128,6 +128,9 @@
                                                 <asp:DropDownList ID="ddlTaskTitle" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="4" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
+                                                <asp:DropDownList ID="ddlAssignTask" runat="server" placeholder="" Visible="false"
+                                                    ClientIDMode="Static" >
+                                                </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredTaskTitle" runat="server" ControlToValidate="ddlTaskTitle" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Task Title" ForeColor="Red"></asp:RequiredFieldValidator>

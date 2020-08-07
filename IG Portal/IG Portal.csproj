@@ -135,6 +135,7 @@
     <Content Include="MonthlyProjectTaskHoursEmployeeReport.aspx" />
     <Content Include="Notifications.aspx" />
     <Content Include="PendingAssignTask.aspx" />
+    <Content Include="PrioritizeTask.aspx" />
     <Content Include="ProjectWiseReport.aspx" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -692,9 +693,11 @@
     <Content Include="Scripts\ckeditor\vendor\promise.js" />
     <Content Include="SLAReport.aspx" />
     <Content Include="temp.aspx" />
+    <Content Include="ViewAssignedTaskEmployee.aspx" />
     <Content Include="ViewBug.aspx" />
     <Content Include="ViewBugDetails.aspx" />
     <Content Include="ViewEmployeeDocuments.aspx" />
+    <Content Include="ViewMOMDetails.aspx" />
     <Content Include="ViewTask.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -929,6 +932,13 @@
     <Compile Include="AddProject.aspx.designer.cs">
       <DependentUpon>AddProject.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PrioritizeTask.aspx.cs">
+      <DependentUpon>PrioritizeTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrioritizeTask.aspx.designer.cs">
+      <DependentUpon>PrioritizeTask.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProjectWiseReport.aspx.cs">
       <DependentUpon>ProjectWiseReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -958,6 +968,13 @@
     <Compile Include="temp.aspx.designer.cs">
       <DependentUpon>temp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewAssignedTaskEmployee.aspx.cs">
+      <DependentUpon>ViewAssignedTaskEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewAssignedTaskEmployee.aspx.designer.cs">
+      <DependentUpon>ViewAssignedTaskEmployee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewBug.aspx.cs">
       <DependentUpon>ViewBug.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -978,6 +995,13 @@
     </Compile>
     <Compile Include="ViewEmployeeDocuments.aspx.designer.cs">
       <DependentUpon>ViewEmployeeDocuments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMOMDetails.aspx.cs">
+      <DependentUpon>ViewMOMDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMOMDetails.aspx.designer.cs">
+      <DependentUpon>ViewMOMDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewTask.aspx.cs">
       <DependentUpon>ViewTask.aspx</DependentUpon>

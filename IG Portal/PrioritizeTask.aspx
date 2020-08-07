@@ -1,15 +1,27 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="PendingAssignTask.aspx.cs" Inherits="IG_Portal.PendingAssignTask" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="PrioritizeTask.aspx.cs" Inherits="IG_Portal.PrioritizeTask" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script type="text/javascript">
+        function GetApproveConfirmation() {
+            var reply = confirm("Are You Sure ?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+         }
+         </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
      <div class="card-body">
         <div class="portlet-body">
 
             <!-- BEGIN FORM-->
             <div class="form-body">
-                <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Pending Task" Font-Bold="true" Font-Size="Large"></asp:Label>
+
+                 <div class="row" align="center">
+                    <asp:Label ID="lbltitle" runat="server" Text="Prioritize Task" Font-Bold="true" Font-Size="Large"></asp:Label>
                 </div>
                 <br />
 
@@ -20,70 +32,35 @@
                     <div class=" col m3">
                         <div class="form-group">
                             <label>Employee Name</label>
-                            <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static"></asp:DropdownList>
+                            <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
+                                ClientIDMode="Static" OnSelectedIndexChanged="ddlempName_SelectedIndexChanged"></asp:DropdownList>
 
 
                         </div>
                     </div>
 
-                    <div class=" col m3">
-                        <div class="form-group">
-                            <label>Project</label>
-                            <asp:DropdownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static"></asp:DropdownList>
-
-
-                        </div>
-                    </div>
-
-                      <div class=" col m2">
-                        <div class="form-group">
-                            <label> Status</label>
-                            <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static">
-                                <asp:ListItem Text="Not Assigned" Value="1"></asp:ListItem>
-                                 <asp:ListItem Text="Assigned" Value="2"></asp:ListItem>
-                                 <asp:ListItem Text="Both" Value="3"></asp:ListItem>
-                            </asp:DropDownList>
-
-
-                        </div>
-                    </div>
-
-                    <div class="col m2">
-                        <div class="form-group form-md-line-input ">
-
-                          
-
-                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn blue" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
-
-
-                        </div>
-                    </div>
-                    <div class="col m2">
-                        <div class="form-group form-md-line-input ">
-
-                           
-                                <asp:Button ID="btclear" runat="server" Text="Clear"  class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
-
-
-                        </div>
-                    </div>
+               
 
                 </div>
 
-                  <div class="row">
+                <br />
+
+                 <div class="row">
+                                        <asp:Button ID="btnUpdate" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnUpdate_Click" Text="Update" class="btn" />
+                                   
+                                    </div>
+
+      <div class="row">
                                 <div class=" col m12">
                                     <div class="portlet light ">
                                         <asp:Label runat="server" Text="" ID="count"></asp:Label>
                                         <div class="portlet-body">
                                             <div class="table-scrollable">
                                                 <asp:GridView ID="GridAssignTask" runat="server" AutoGenerateColumns="False"
-                                                    class="striped" OnPageIndexChanging="GridAssignTask_PageIndexChanging"
-                                                    GridLines="None" AllowPaging="true" OnSorting="GridAssignTask_Sorting"
-                                                    PageSize="10"  OnRowDataBound="GridAssignTask_RowDataBound"
-                                                    ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridAssignTask_RowCommand" DataKeyNames="ID">
+                                                    class="striped"
+                                                    GridLines="None"  OnSorting="GridAssignTask_Sorting"
+                                                    
+                                                    ShowHeaderWhenEmpty="True" Width="100%"  DataKeyNames="ID">
                                                     <Columns>
 
                                                       <%--  <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
@@ -135,18 +112,18 @@
 
                                                          <asp:TemplateField HeaderText="Priority" HeaderStyle-CssClass="autostyle2" SortExpression="Priority">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("Priority")  %>'></asp:Label>
+                                                                <asp:Textbox ID="txtPriority" runat="server" Text='<%# Eval("Priority")  %>' TextMode="Number"></asp:Textbox>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
-                                                        <asp:TemplateField HeaderText="Developer" HeaderStyle-CssClass="autostyle2" SortExpression="EmployeeName">
+                                                       <%-- <asp:TemplateField HeaderText="Developer" HeaderStyle-CssClass="autostyle2" SortExpression="Priority">
                                                             <ItemTemplate>
                                                                 <asp:Label ID="lblDeveloper" runat="server" Text='<%# Eval("AssignTo")  %>' Visible="false"></asp:Label>
                                                                 <asp:Label ID="Label7" runat="server" Text='<%# Eval("EmployeeName")  %>'></asp:Label>
                                                             </ItemTemplate>
-                                                        </asp:TemplateField>
+                                                        </asp:TemplateField>--%>
 
-                                               <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2" Visible="false" >
+                                              <%-- <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2" Visible="false" >
                                                         <ItemTemplate>
                                                             <asp:DropdownList ID="ddlDeveloper" runat="server"      ></asp:DropdownList>
                                                         </ItemTemplate>
@@ -156,7 +133,7 @@
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnAssign" runat="server"  Text="Assign"  OnClientClick="return GetApproveConfirmation();"  CommandArgument='<%# Container.DataItemIndex  %>' CommandName="Assign"></asp:Button>
                                                         </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                    </asp:TemplateField>--%>
 
                                                         
                                                     </Columns>

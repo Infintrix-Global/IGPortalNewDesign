@@ -405,7 +405,7 @@ namespace IG_Portal
                 string body = "Dear ";
                 body += empName + "," + "\n\n";
                 body +="Details of bug:-" + "\n\n";
-                body += dtBugDetails.Rows[0]["BugDetailsDetails"].ToString() + "\n\n";
+                body += dtBugDetails.Rows[0]["BugDetails"].ToString() + "\n\n";
 
 
                 body += "Thank you" + "\n";
@@ -1087,6 +1087,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetTaskTitleMasterForAssignedTask(string projectID, string LoginID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_TaskTitleByProjectForAssignedTask");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetPageTitleMaster(string projectID)
         {
             try
@@ -1370,6 +1386,9 @@ public class TimeSheetDetails
     public string Status { get; set; }
     public string Comment { get; set; }
     public int Mode { get; set; }
+
+    public string AssignedTaskID { get; set; }
+
 }
 
 

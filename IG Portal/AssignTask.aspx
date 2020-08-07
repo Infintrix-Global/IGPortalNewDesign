@@ -129,7 +129,7 @@
                                                     </label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"  TabIndex="5"   ></asp:TextBox>
+                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"  TabIndex="5" TextMode="Date"   ></asp:TextBox>
                                                
                                                 <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
 
@@ -166,7 +166,7 @@
                                             </div>
                                         </div>
 
-                                          <div class="col m4">
+                                        <%--  <div class="col m4">
                                             <div class="form-group">
                                                 <span class="title">
                                                     <label>
@@ -182,7 +182,7 @@
                                                 </asp:RadioButtonList>
                                                
                                             </div>
-                                        </div>
+                                        </div>--%>
 
                                         <div class="col m4">
                                             <div class="form-group">

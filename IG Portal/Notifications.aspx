@@ -44,6 +44,16 @@
             }
         }
 
+        function GetCloseTaskConfirmation() {
+            var reply = confirm("Do you really want to CLOSE this task ?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
         function GetReopenConfirmation() {
             var reply = confirm("Do you really want to REOPEN this bug?");
             if (reply) {
@@ -172,7 +182,7 @@
     <style>
         [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
             position: absolute;
-            left: 70px;
+            left: 50px;
             visibility: visible
         }
     </style>
@@ -199,7 +209,7 @@
                                 <ContentTemplate>
                                     <asp:Label ID="lblmsg1" runat="server"></asp:Label>
                                     <div class="row">
-                                        <asp:Button ID="btnConfirm" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnConfirm_Click" Text="Confirm" class="btn" />
+                                        <asp:Button ID="btnConfirm" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnConfirm_Click" Text="Confirm" class="btn"  />
                                         <asp:Button ID="btnReject" runat="server" OnClientClick="return GetRejectConfirmation();"  OnClick="btnReject_Click" Text="Reject" class="btn" />
                                     </div>
                                     <div class="row">
@@ -214,7 +224,7 @@
                                                             PageSize="10"
                                                             ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridNotificationMOM_RowCommand" DataKeyNames="ID">
                                                             <Columns>
-                                                                <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
+                                                                <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2" ItemStyle-Width="5%">
                                                                     <ItemTemplate>
                                                                     <%--    <input type="checkbox" id="chkSelect" runat="server" />
                                                                         <label for="chkSelect"></label>--%>
@@ -248,7 +258,11 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
-
+                                                                   <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="btnDetails_Command" CommandArgument='<%# Eval("MOMID")  %>' CommandName="Details"></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
 
                                                             </Columns>
@@ -305,7 +319,9 @@
                                                     ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GirdNotificationAssign_RowCommand" DataKeyNames="ID">
                                                     <Columns>
 
-                                                        <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
+                                                        <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2" ItemStyle-Width="5%">
+                                                            <HeaderTemplate>  
+                                                    <asp:CheckBox ID="CheckBoxall" AutoPostBack="true" onCheckedChanged="chckchanged" runat="server" /> </HeaderTemplate>  
                                                             <ItemTemplate>
                                                                <%-- <input type="checkbox" id="chkSelect" runat="server" />
                                                                 <label for="chkSelect"></label>--%>
@@ -500,7 +516,9 @@
                                                     ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="ID">
                                                     <Columns>
 
-                                                        <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
+                                                        <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2" ItemStyle-Width="5%">
+                                                             <HeaderTemplate>  
+                                                    <asp:CheckBox ID="CheckBoxall" AutoPostBack="true" onCheckedChanged="chckchangedClose" runat="server" /> </HeaderTemplate>  
                                                             <ItemTemplate>
                                                                <%-- <div>
                                                                     <input type="checkbox" id="chk" class="filled-in">
@@ -514,7 +532,7 @@
                                                         </asp:TemplateField>
 
 
-                                                        <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
+                                                        <asp:TemplateField HeaderText="Sr. No."  HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
                                                                 <asp:Label ID="Label1" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
                                                                 <asp:Label ID="Label5" runat="server" Text='<%# Eval("Type")  %>' Visible="false"></asp:Label>
@@ -582,6 +600,111 @@
                                                                 <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("BugID") %>' OnClientClick="return GetReopenConfirmation();" CommandName="Reopen"></asp:Button>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
+
+                                                    </Columns>
+
+                                                    <PagerStyle CssClass="paging" HorizontalAlign="Right" />
+                                                    <PagerSettings Mode="NumericFirstLast" />
+                                                    <EmptyDataTemplate>
+                                                        No Record Available
+                                                    </EmptyDataTemplate>
+                                                </asp:GridView>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </ContentTemplate>
+                    </asp:TabPanel>
+
+
+               
+
+
+                  <asp:TabPanel ID="NotificationSolvedTask" runat="server" HeaderText="Task Solved" TabIndex="4">
+
+                        <ContentTemplate>
+
+                            <asp:Label ID="lblmsg5" runat="server"></asp:Label>
+                            <div class="row">
+                                <asp:Button ID="btnCloseTask" runat="server" OnClick="btnCloseTask_Click" OnClientClick="return GetCloseTaskConfirmation();" Text="Close" class="btn"  />
+
+                            </div>
+
+                            <div class="row">
+                                <div class=" col m12">
+                                    <div class="portlet light ">
+                                        <asp:Label runat="server" Text="" ID="Label7"></asp:Label>
+                                        <div class="portlet-body">
+                                            <div class="table-scrollable">
+                                                <asp:GridView ID="GridNotificationSolvedTask" runat="server" AutoGenerateColumns="False"
+                                                    class="striped" OnPageIndexChanging="GridNotificationSolvedTask_PageIndexChanging"
+                                                    GridLines="None" AllowPaging="true" OnSorting="GridNotificationSolvedTask_Sorting"
+                                                    PageSize="10" OnRowCommand="GridNotificationSolvedTask_RowCommand"
+                                                    ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="ID">
+                                                    <Columns>
+
+                                                        <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2" ItemStyle-Width="5%">
+                                                             <HeaderTemplate>  
+                                                    <asp:CheckBox ID="CheckBoxall" AutoPostBack="true" onCheckedChanged="chckchangedCloseTask" runat="server" /> </HeaderTemplate>  
+                                                            <ItemTemplate>
+                                                               <%-- <div>
+                                                                    <input type="checkbox" id="chk" class="filled-in">
+                                                                    <label for="chk" id="lblchk" runat="server">1</label>
+                                                                </div>--%>
+
+                                                                 <asp:CheckBox runat="server"  ID="chkSelect" ></asp:CheckBox>
+                                                                <%--   <input type="checkbox" id="chkSelect" runat="server" />
+                                                                         <label for="chkSelect">1</label>--%>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+
+                                                        <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label1" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
+                                                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("Type")  %>' Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblBugID" runat="server" Text='<%# Eval("AssignedTaskID")  %>' Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                        <asp:TemplateField HeaderText="DateTime" HeaderStyle-CssClass="autostyle2" SortExpression="NotificationDateTime">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("NotificationDateTime")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                        <asp:TemplateField HeaderText="Title" HeaderStyle-CssClass="autostyle2" SortExpression="Title">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Title")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                        <asp:TemplateField HeaderText="Message" HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Messsage")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                       
+
+                                                        <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="btnDetailsTask" runat="server" Text="Details" OnCommand="btnDetailsTask_Command" CommandArgument='<%# Eval("AssignedTaskID")  %>' CommandName="Details"></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                       
+
+                                                       
 
                                                     </Columns>
 

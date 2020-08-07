@@ -17,18 +17,40 @@ namespace IG_Portal
         {
             if (!IsPostBack)
             {
-
+                BindProjectMaster();
+                BindEmployeeMaster();
                 BindGridAssignTask();
 
             }
             lblmsg.Text = "";
         }
 
+
+        public void BindProjectMaster()
+        {
+            ddlProjectName.DataSource = objcommon.GetProjectMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlProjectName.DataTextField = "ProjectName";
+            ddlProjectName.DataValueField = "ID";
+
+            ddlProjectName.DataBind();
+            ddlProjectName.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+
+        public void BindEmployeeMaster()
+        {
+            ddlempName.DataSource = objcommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlempName.DataTextField = "EmployeeName";
+            ddlempName.DataValueField = "ID";
+
+            ddlempName.DataBind();
+            ddlempName.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+
         public void BindGridAssignTask()
         {
             DataTable dtTaskDetails;
            
-            dtTaskDetails = objTask.GetPendingTask(Convert.ToInt32(Session["LoginID"].ToString()));
+            dtTaskDetails = objTask.GetAllTask();
             GridAssignTask.DataSource = dtTaskDetails;
             GridAssignTask.DataBind();
             count.Text = "Number of Tasks= " + dtTaskDetails.Rows.Count;
@@ -111,13 +133,112 @@ namespace IG_Portal
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataSource = objcommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
-                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataTextField = "EmployeeName";
-                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataValueField = "ID";
-                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataBind();
+                if ((Label)e.Row.FindControl("lblDeveloper") is null)
+                {
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = false;
+                    ((Button)e.Row.FindControl("btnAssign")).Visible = false;
+                }
+                else
+                {
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataSource = objcommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataTextField = "EmployeeName";
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataValueField = "ID";
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataBind();
 
-                ((DropDownList)e.Row.FindControl("ddlDeveloper")).Items.Insert(0, new ListItem("--- Select Developer ---", "0"));
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).Items.Insert(0, new ListItem("--- Select Developer ---", "0"));
+                }
             }
+        }
+
+        protected void btSearch_Click(object sender, EventArgs e)
+        {
+            DataTable dtSearch1;
+            string strqueryfinal = "";
+            string strQuery = "";
+            string strQuery1 = "";
+            strQuery = "(Select TS.ID,TS.CreatedBy,TS.ID , TS.Comment,TS.Priority,TS.TaskAddedDateTime,'' as EmployeeName,TM.TaskName,PM.ProjectName" +
+                ",TS.TaskDetails,TTM.TaskTitle,TS.AssignTo from AssignedTask TS inner join TaskMaster TM on TS.TaskType = TM.ID inner join " +
+                "ProjectMaster PM on PM.ID = TS.ProjectName inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID " +
+                " where TS.IsActive = 1 and IsDeleted=0  and TS.AssignTo is null";
+
+            strQuery1 = " (Select TS.ID,TS.CreatedBy,TS.ID , " +
+                "TS.Comment,TS.Priority,TS.TaskAddedDateTime,L.EmployeeName,TM.TaskName,PM.ProjectName,TS.TaskDetails,TTM.TaskTitle,TS.AssignTo " +
+                "from AssignedTask TS inner join TaskMaster TM on TS.TaskType = TM.ID inner join ProjectMaster PM on PM.ID = TS.ProjectName " +
+                "inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID inner join Login L on L.ID = TS.AssignTo   where TS.IsActive = 1 " +
+                " and IsDeleted=0 and TS.AssignTo is not null";
+
+            if (ddlempName.SelectedIndex > 0)
+            {
+                strQuery += " and TTS.AssignTo ='" + ddlempName.SelectedValue + "'";
+                strQuery1 += " and TS.AssignTo ='" + ddlempName.SelectedValue + "'";
+               
+            }
+            if (ddlProjectName.SelectedIndex > 0)
+            {
+                strQuery += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";
+                strQuery1 += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";
+               
+            }
+            if (ddlStatus.SelectedValue == "1")
+            {
+               
+                strQuery += ")  order by TS.[TaskAddedDateTime] desc";
+                strqueryfinal = strQuery ;
+                dtSearch1 = objTask.SearchTask(strqueryfinal);
+                GridFillSearch();
+
+            }
+            if (ddlStatus.SelectedValue == "2")
+            {
+                
+                strQuery1 += ")  order by TS.[TaskAddedDateTime] desc";
+                strqueryfinal = strQuery1;
+                dtSearch1 = objTask.SearchTask(strqueryfinal);
+                GridFillSearch();
+
+            }
+            if (ddlStatus.SelectedValue == "3")
+            {
+                strQuery += ") union  ";
+                strQuery1 += ")  order by TS.[TaskAddedDateTime] desc";
+                strqueryfinal = strQuery + strQuery1;
+                dtSearch1 = objTask.SearchTask(strqueryfinal);
+                GridFillSearch();
+
+            }
+            
+
+            void GridFillSearch()
+            {
+                if (dtSearch1 != null)
+                {
+                    //DataTable dtSearch = dtSearch1.CopyToDataTable();
+                    GridAssignTask.DataSource = dtSearch1;
+                    GridAssignTask.DataBind();
+                    
+                    count.Text = "Number of Tasks= " + (dtSearch1.Rows.Count).ToString();
+                }
+                else
+                {
+                    DataTable dt = new DataTable();
+                    GridAssignTask.DataSource = dt;
+                    GridAssignTask.DataBind();
+                    
+                    count.Text = "Number of Tasks= 0";
+                }
+                ViewState["dirState"] = dtSearch1;
+                ViewState["sortdr"] = "Asc";
+
+
+            }
+        }
+
+        protected void btclear_Click(object sender, EventArgs e)
+        {
+            ddlempName.SelectedIndex = 0;
+            ddlProjectName.SelectedIndex = 0;
+            ddlStatus.SelectedIndex = 0;
+            BindGridAssignTask();
         }
     }
 }

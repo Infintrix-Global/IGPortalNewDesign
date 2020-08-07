@@ -150,6 +150,7 @@
                                     </li>
                                 </ul>
                             </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/ViewAssignedTaskEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Task</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/ViewBug.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>View Bug</a> </li>
                             <li class="bold"><a href="<%= ResolveUrl("~/LeaveApplication.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Apply for Leave</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
@@ -226,8 +227,8 @@
                                         <div class="collapsible-body">
                                             <ul>
                                                 <li><a href="<%= ResolveUrl("~/AssignTask.aspx") %>">Add</a> </li>
-                                                <li><a href="<%= ResolveUrl("~/PendingAssignTask.aspx") %>">Pending</a> </li>
-
+                                                <li><a href="<%= ResolveUrl("~/PendingAssignTask.aspx") %>">View</a> </li>
+                                                 <li><a href="<%= ResolveUrl("~/PrioritizeTask.aspx") %>">Prioritize</a> </li>
                                             </ul>
                                         </div>
                                     </li>
@@ -345,8 +346,8 @@
                                         <div class="collapsible-body">
                                             <ul>
                                                 <li><a href="<%= ResolveUrl("~/AssignTask.aspx") %>">Add</a> </li>
-                                                <li><a href="<%= ResolveUrl("~/PendingAssignTask.aspx") %>">Pending</a> </li>
-
+                                                <li><a href="<%= ResolveUrl("~/PendingAssignTask.aspx") %>">View</a> </li>
+                                                  <li><a href="<%= ResolveUrl("~/PrioritizeTask.aspx") %>">Prioritize</a> </li>
                                             </ul>
                                         </div>
                                     </li>

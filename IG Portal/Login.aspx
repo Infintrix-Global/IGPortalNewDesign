@@ -97,7 +97,7 @@
           <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>
-           <asp:TextBox ID="txtimgcode" runat="server"></asp:TextBox>
+           <asp:TextBox ID="txtimgcode" runat="server" autocomplete="off"></asp:TextBox>
     <br />
     <asp:Image ID="Image1" runat="server" ImageUrl="~/CImage.aspx"/>
    

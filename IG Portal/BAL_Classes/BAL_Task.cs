@@ -120,7 +120,7 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@EndTime", objTimeSheetDetails.EndTime);
                 objGeneral.AddParameterWithValueToSQLCommand("@Comment", objTimeSheetDetails.Comment);
                 objGeneral.AddParameterWithValueToSQLCommand("@Mode", objTimeSheetDetails.Mode);
-
+                objGeneral.AddParameterWithValueToSQLCommand("@AssignedTask", objTimeSheetDetails.AssignedTaskID);
                 _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddTimesheet");
 
             }
@@ -139,7 +139,7 @@ namespace IG_Portal.BAL_Classes
             {
                 objGeneral.AddParameterWithValueToSQLCommand("@LoginID", objTaskAssignDetails.LoginID);
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", objTaskAssignDetails.ProjectName);
-                objGeneral.AddParameterWithValueToSQLCommand("@Priority", objTaskAssignDetails.Priority);
+               // objGeneral.AddParameterWithValueToSQLCommand("@Priority", objTaskAssignDetails.Priority);
                 objGeneral.AddParameterWithValueToSQLCommand("@TaskName", objTaskAssignDetails.TaskName);
                 objGeneral.AddParameterWithValueToSQLCommand("@TaskTitle", objTaskAssignDetails.TaskTitle);
                 objGeneral.AddParameterWithValueToSQLCommand("@TaskDetails", objTaskAssignDetails.TaskDetails);
@@ -168,7 +168,7 @@ namespace IG_Portal.BAL_Classes
             {
                 objGeneral.AddParameterWithValueToSQLCommand("@LoginID", objTaskAssignDetails.LoginID);
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", objTaskAssignDetails.ProjectName);
-                objGeneral.AddParameterWithValueToSQLCommand("@Priority", objTaskAssignDetails.Priority);
+              //  objGeneral.AddParameterWithValueToSQLCommand("@Priority", objTaskAssignDetails.Priority);
                 objGeneral.AddParameterWithValueToSQLCommand("@TaskName", objTaskAssignDetails.TaskName);
                 objGeneral.AddParameterWithValueToSQLCommand("@TaskTitle", objTaskAssignDetails.TaskTitle);
                 objGeneral.AddParameterWithValueToSQLCommand("@TaskDetails", objTaskAssignDetails.TaskDetails);
@@ -190,15 +190,47 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
-        public DataTable GetPendingTask(int lid)
+        public DataTable GetAllTask()
         {
             try
             {
 
                 General objGeneral = new General();
-                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", lid);
+                
 
-                ds = objGeneral.GetDatasetByCommand_SP("SP_GetPendingTaskByCreaterID");
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAllTask");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetAllTaskByEmployee(string empID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                
+                objGeneral.AddParameterWithValueToSQLCommand("EmployeeID", empID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAllTaskByEmployee");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetTaskToPrioritize(string EmpID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("EmployeeID", EmpID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetTaskToPrioritize");
             }
             catch (Exception ex)
             {
@@ -383,6 +415,22 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@BugID", bid);
 
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetBugByID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable AutoFillTimeSheetForTask(int tid)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskAssignID", tid);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAssignedtaskByID");
             }
             catch (Exception ex)
             {
@@ -662,7 +710,7 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
-        public DataTable GetMOMDetailsByID(int id)
+        public DataSet GetMOMDetailsByID(int id)
         {
             try
             {
@@ -674,7 +722,7 @@ namespace IG_Portal.BAL_Classes
             catch (Exception ex)
             {
             }
-            return ds.Tables[0];
+            return ds;
         }
 
         public DataTable SearchTask(string query)
@@ -956,6 +1004,57 @@ namespace IG_Portal.BAL_Classes
             {
             }
             return ds;
+        }
+
+        public DataTable GetAssignedTaskDetailsByID(int assignedTaskID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskAssignID", assignedTaskID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAssignedtaskByID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public int CloseTask(int NotificationID)
+        {
+            int _isDeleted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@NotificationID", NotificationID);
+                _isDeleted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_CloseTask");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isDeleted;
+        }
+
+
+
+        public int UpdatePriorityTask(int TaskAssignID,string Priority)
+        {
+            int _isDeleted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskAssignID", TaskAssignID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Priority", Priority);
+                _isDeleted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_UpdatePriorityTask");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isDeleted;
         }
 
         public DataSet GetNotifications(string empid)

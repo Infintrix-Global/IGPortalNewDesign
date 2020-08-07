@@ -7,20 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class PendingAssignTask {
-        
-        /// <summary>
-        /// SrciptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager SrciptManager1;
-        
+namespace IG_Portal
+{
+
+
+    public partial class ViewMOMDetails
+    {
+
         /// <summary>
         /// lbltitle control.
         /// </summary>
@@ -29,77 +22,95 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbltitle;
-        
+
         /// <summary>
-        /// lblmsg control.
+        /// lblProjectName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsg;
-        
+        protected global::System.Web.UI.WebControls.Label lblProjectName;
+
         /// <summary>
-        /// ddlempName control.
+        /// lblInitiator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlempName;
-        
+        protected global::System.Web.UI.WebControls.Label lblInitiator;
+
         /// <summary>
-        /// ddlProjectName control.
+        /// lblMeetingPlace control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProjectName;
-        
+        protected global::System.Web.UI.WebControls.Label lblMeetingPlace;
+
         /// <summary>
-        /// ddlStatus control.
+        /// lblMeetingDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
-        
+        protected global::System.Web.UI.WebControls.Label lblMeetingDate;
+
         /// <summary>
-        /// btSearch control.
+        /// lblFromTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSearch;
-        
+        protected global::System.Web.UI.WebControls.Label lblFromTime;
+
         /// <summary>
-        /// btclear control.
+        /// lblToTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btclear;
-        
+        protected global::System.Web.UI.WebControls.Label lblToTime;
+
         /// <summary>
-        /// count control.
+        /// lblAgenda control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label count;
-        
+        protected global::System.Web.UI.WebControls.Label lblAgenda;
+
         /// <summary>
-        /// GridAssignTask control.
+        /// lblAttendee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridAssignTask;
+        protected global::System.Web.UI.WebControls.Label lblAttendee;
+
+        /// <summary>
+        /// divScreenshot control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divScreenshot;
+
+        /// <summary>
+        /// GridMOMPoints control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridMOMPoints;
     }
 }

@@ -24,6 +24,7 @@ namespace IG_Portal
                BindNotificationAssign();
                BindNotificationBug();
                BindNotificationSolvedBug();
+                BindNotificationSolvedTask();
             }
         }
 
@@ -82,6 +83,16 @@ namespace IG_Portal
             count4.Text = "Number of Notifications =" + dtNotifications.Tables[3].Rows.Count;
             ViewState["dirState4"] = dtNotifications.Tables[3];
             ViewState["sortdr4"] = "Asc";
+        }
+
+        public void BindNotificationSolvedTask()
+        {
+            dtNotifications = objTask.GetNotifications(Session["LoginID"].ToString());
+            GridNotificationSolvedTask.DataSource = dtNotifications.Tables[4];
+            GridNotificationSolvedTask.DataBind();
+            count4.Text = "Number of Notifications =" + dtNotifications.Tables[4].Rows.Count;
+            ViewState["dirState5"] = dtNotifications.Tables[4];
+            ViewState["sortdr5"] = "Asc";
         }
 
         //protected void GridNotification_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -729,7 +740,204 @@ namespace IG_Portal
             lblmsg2.Text = "";
             lblmsg4.Text = "";
             lblmsg3.Text = "";
+            lblmsg5.Text = "";
+        }
 
+        protected void chckchanged(object sender, EventArgs e)
+
+        {
+
+            CheckBox chckheader = (CheckBox)GirdNotificationAssign.HeaderRow.FindControl("CheckBoxall");
+
+            foreach (GridViewRow row in GirdNotificationAssign.Rows)
+
+            {
+
+                CheckBox chckrw = (CheckBox)row.FindControl("chkSelect");
+
+                if (chckheader.Checked == true)
+
+                {
+                    chckrw.Checked = true;
+                }
+                else
+
+                {
+                    chckrw.Checked = false;
+                }
+
+            }
+
+        }
+
+        protected void chckchangedClose(object sender, EventArgs e)
+
+        {
+
+            CheckBox chckheader = (CheckBox)GridNotificationSolvedBug.HeaderRow.FindControl("CheckBoxall");
+
+            foreach (GridViewRow row in GridNotificationSolvedBug.Rows)
+
+            {
+
+                CheckBox chckrw = (CheckBox)row.FindControl("chkSelect");
+
+                if (chckheader.Checked == true)
+
+                {
+                    chckrw.Checked = true;
+                }
+                else
+
+                {
+                    chckrw.Checked = false;
+                }
+
+            }
+
+        }
+
+        protected void btnDetails_Command(object sender, CommandEventArgs e)
+        {
+            try
+            {
+
+
+                if (e.CommandName == "Details")
+                {
+                    int id = Convert.ToInt32(e.CommandArgument);
+                    Session["MOMID"] = id.ToString();
+                    Response.Redirect("ViewMOMDetails.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void btnCloseTask_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int _IsClosed = -1;
+
+                foreach (GridViewRow row in GridNotificationSolvedTask.Rows)
+                {
+                    if ((row.FindControl("chkSelect") as CheckBox).Checked)
+                    {
+
+                        int cid = Convert.ToInt32(GridNotificationSolvedTask.DataKeys[row.RowIndex].Values[0].ToString());
+                        _IsClosed = objTask.CloseTask(Convert.ToInt32(cid));
+                        if (_IsClosed == -1)
+                        {
+                            lblmsg5.Text = "Failed To Close";
+                            lblmsg5.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                            lblmsg5.Text = "Task Closed";
+                            lblmsg5.ForeColor = System.Drawing.Color.Green;
+
+                        }
+                    }
+
+                }
+                BindNotificationSolvedTask();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void chckchangedCloseTask(object sender, EventArgs e)
+
+        {
+
+            CheckBox chckheader = (CheckBox)GridNotificationSolvedTask.HeaderRow.FindControl("CheckBoxall");
+
+            foreach (GridViewRow row in GridNotificationSolvedTask.Rows)
+
+            {
+
+                CheckBox chckrw = (CheckBox)row.FindControl("chkSelect");
+
+                if (chckheader.Checked == true)
+
+                {
+                    chckrw.Checked = true;
+                }
+                else
+
+                {
+                    chckrw.Checked = false;
+                }
+
+            }
+
+        }
+
+        protected void GridNotificationSolvedTask_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            Clear();
+            GridNotificationSolvedTask.PageIndex = e.NewPageIndex;
+            BindNotificationSolvedTask();
+        }
+
+        protected void GridNotificationSolvedTask_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            DataTable dtrslt = (DataTable)ViewState["dirState5"];
+            if (dtrslt.Rows.Count > 0)
+            {
+                if (Convert.ToString(ViewState["sortdr5"]) == "Asc")
+                {
+                    dtrslt.DefaultView.Sort = e.SortExpression + " Desc";
+                    ViewState["sortdr5"] = "Desc";
+                }
+                else
+                {
+                    dtrslt.DefaultView.Sort = e.SortExpression + " Asc";
+                    ViewState["sortdr5"] = "Asc";
+                }
+                GridNotificationSolvedTask.DataSource = dtrslt;
+                GridNotificationSolvedTask.DataBind();
+            }
+        }
+
+        protected void GridNotificationSolvedTask_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void btnDetailsTask_Command(object sender, CommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Details")
+                {
+                    int assignedtaskID = Convert.ToInt32(e.CommandArgument);
+                    DataTable dtTask = new DataTable();
+
+                    dtTask = objTask.GetAssignedTaskDetailsByID(Convert.ToInt32(assignedtaskID));
+                    if (dtTask != null)
+                    {
+                        lbltxtDetails.Text = dtTask.Rows[0]["TaskDetails"].ToString();
+
+
+                        //int id = Convert.ToInt32(e.CommandArgument);
+                        //lblPmeLoanID.Text = id.ToString();
+
+                        ModalPopupExtender1.Show();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }
