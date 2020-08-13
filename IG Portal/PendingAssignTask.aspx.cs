@@ -118,6 +118,7 @@ namespace IG_Portal
 
                             lblmsg.Text = "Task Assigned";
                             lblmsg.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailAssignTask(id);
                             BindGridAssignTask();
                         }
                     }
@@ -133,19 +134,23 @@ namespace IG_Portal
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                if ((Label)e.Row.FindControl("lblDeveloper") is null)
+
+                if (((Label)e.Row.FindControl("Label7")).Text =="" ) 
                 {
-                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = false;
-                    ((Button)e.Row.FindControl("btnAssign")).Visible = false;
-                }
-                else
-                {
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = true;
+                    ((Button)e.Row.FindControl("btnAssign")).Visible = true;
                     ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataSource = objcommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
                     ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataTextField = "EmployeeName";
                     ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataValueField = "ID";
                     ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataBind();
 
                     ((DropDownList)e.Row.FindControl("ddlDeveloper")).Items.Insert(0, new ListItem("--- Select Developer ---", "0"));
+                }
+                else
+                {
+                    ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = false;
+                    ((Button)e.Row.FindControl("btnAssign")).Visible = false;
+                    
                 }
             }
         }
@@ -157,12 +162,13 @@ namespace IG_Portal
             string strQuery = "";
             string strQuery1 = "";
             strQuery = "(Select TS.ID,TS.CreatedBy,TS.ID , TS.Comment,TS.Priority,TS.TaskAddedDateTime,'' as EmployeeName,TM.TaskName,PM.ProjectName" +
-                ",TS.TaskDetails,TTM.TaskTitle,TS.AssignTo from AssignedTask TS inner join TaskMaster TM on TS.TaskType = TM.ID inner join " +
+                ",TS.TaskDetails,TTM.TaskTitle,TS.AssignTo,TS.EstiamtedWorkTime,Convert(nvarchar(max),TS.EstimatedWorkDate,103) as EstimatedWorkDate from AssignedTask TS inner join TaskMaster TM on TS.TaskType = TM.ID inner join " +
                 "ProjectMaster PM on PM.ID = TS.ProjectName inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID " +
                 " where TS.IsActive = 1 and IsDeleted=0  and TS.AssignTo is null";
 
             strQuery1 = " (Select TS.ID,TS.CreatedBy,TS.ID , " +
-                "TS.Comment,TS.Priority,TS.TaskAddedDateTime,L.EmployeeName,TM.TaskName,PM.ProjectName,TS.TaskDetails,TTM.TaskTitle,TS.AssignTo " +
+                "TS.Comment,TS.Priority,TS.TaskAddedDateTime,L.EmployeeName,TM.TaskName,PM.ProjectName,TS.TaskDetails,TTM.TaskTitle,TS.AssignTo" +
+                ",TS.EstiamtedWorkTime,Convert(nvarchar(max),TS.EstimatedWorkDate,103) as EstimatedWorkDate " +
                 "from AssignedTask TS inner join TaskMaster TM on TS.TaskType = TM.ID inner join ProjectMaster PM on PM.ID = TS.ProjectName " +
                 "inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID inner join Login L on L.ID = TS.AssignTo   where TS.IsActive = 1 " +
                 " and IsDeleted=0 and TS.AssignTo is not null";

@@ -262,7 +262,15 @@ namespace IG_Portal
 
                         lblMessage.Text = "TimeSheet Added";
                         lblMessage.ForeColor = System.Drawing.Color.Green;
-                        Clear();
+                        if((objTimeSheetDetails.AssignedTaskID!="0") && (ddlStatus.SelectedValue=="3" ) && (ddlTaskCategory.SelectedValue=="1"))
+                        {
+                            objcommon.SendMailTaskCompleted(objTimeSheetDetails.AssignedTaskID);
+                        }
+                        if((ddlStatus.SelectedValue == "3") && (ddlTaskCategory.SelectedValue == "2"))
+                        {
+                            objcommon.SendMailBugSolved(Convert.ToInt32(objTimeSheetDetails.TaskTitle));
+                        }
+                            Clear();
 
 
                     }
@@ -319,7 +327,7 @@ namespace IG_Portal
             {
                 if (ddlTaskCategory.SelectedValue == "1")
                 {
-                    BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
+                    CheckRole();
                     BindStatusMaster();
                 }
                 if (ddlTaskCategory.SelectedValue == "2")
@@ -361,7 +369,8 @@ namespace IG_Portal
             ddlTaskCategory.SelectedValue = dtTimeSheet.Rows[0]["TaskCategory"].ToString();
             if (ddlTaskCategory.SelectedValue == "1")
             {
-                BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
+                CheckRole();
+                //BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
                 BindStatusMaster();
             }
             if (ddlTaskCategory.SelectedValue == "2")
@@ -426,7 +435,7 @@ namespace IG_Portal
             }
             ddlTaskType.SelectedValue = dtTimeSheet.Rows[0]["TaskType"].ToString();
             ddlTaskTitle.SelectedValue = dtTimeSheet.Rows[0]["TaskTitle"].ToString();
-            ddlAssignTask.SelectedValue = dtTimeSheet.Rows[0]["TaskTitle"].ToString();
+            ddlAssignTask.SelectedItem.Text = dtTimeSheet.Rows[0]["ID"].ToString();
             //txtTaskDescription.Text = dtTimeSheet.Rows[0]["TaskDetails"].ToString();
             // txtDate.Text = Convert.ToDateTime(dtTimeSheet.Rows[0]["WorkDate"].ToString()).ToString("yyyy-MM-dd");
             // txtStartTime.Text = dtTimeSheet.Rows[0]["StartTime"].ToString();

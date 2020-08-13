@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using IG_Portal.BAL_Classes;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace IG_Portal
 {
@@ -12,6 +13,14 @@ namespace IG_Portal
     {
         clsCommonMasters objcommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
+        static string ReopenTaskID;
+        protected void Page_UnLoad(object sender, EventArgs e)
+        {
+
+           
+            Session["TaskIDReopen"] = null;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -19,6 +28,19 @@ namespace IG_Portal
                 BindProjectMaster();
                 BindTaskMaster();
                 BindAssignToMaster();
+                ReopenTaskID = Session["TaskIDReopen"] as string;
+                if ((string.IsNullOrEmpty(ReopenTaskID)))
+                {
+                   
+                    Clear();
+                }
+
+                else
+                {
+                   
+                    AutoFillTask();
+                }
+
             }
         }
 
@@ -114,46 +136,77 @@ namespace IG_Portal
                     objTaskAssignDetails.TaskTitle = ddlTaskTitle.SelectedValue;
                     objTaskAssignDetails.Mode = 1;
                 }
-                if (ddlAssignTo.SelectedIndex == 0)
-                {
-                    _isInserted = objTask.Add_AssignTask(objTaskAssignDetails);
 
-                    if (_isInserted == -1)
+                if (string.IsNullOrEmpty(ReopenTaskID) )
+                {
+                    if (ddlAssignTo.SelectedIndex == 0)
                     {
-                        lblMessage.Text = "Failed to Add Task ";
-                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        _isInserted = objTask.Add_AssignTask(objTaskAssignDetails);
+
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Add Task ";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                            lblMessage.Text = "Task Added";
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            Clear();
+
+
+                        }
                     }
                     else
                     {
+                        objTaskAssignDetails.AssignTo = ddlAssignTo.SelectedValue;
+                        _isInserted = objTask.AssignTask(objTaskAssignDetails);
 
-                        lblMessage.Text = "Task Added";
-                        lblMessage.ForeColor = System.Drawing.Color.Green;
-                        Clear();
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Assign Task ";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
 
+                            lblMessage.Text = "Task Assigned";
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailAssignTask(_isInserted.ToString());
+                            Clear();
+
+
+                        }
 
                     }
                 }
+
                 else
                 {
+                    objTaskAssignDetails.AssignTaskID = Convert.ToInt32(ReopenTaskID);
                     objTaskAssignDetails.AssignTo = ddlAssignTo.SelectedValue;
-                    _isInserted = objTask.AssignTask(objTaskAssignDetails);
-
+                    _isInserted = objTask.ReopenTask(objTaskAssignDetails);
                     if (_isInserted == -1)
                     {
-                        lblMessage.Text = "Failed to Assign Task ";
+                        lblMessage.Text = "Failed to Reopen Task";
                         lblMessage.ForeColor = System.Drawing.Color.Red;
                     }
                     else
                     {
 
-                        lblMessage.Text = "Task Assigned";
+                        lblMessage.Text = "Task Reopened";
+                        
+                        Session["TaskIDReopen"] = null;
                         lblMessage.ForeColor = System.Drawing.Color.Green;
+                      
                         Clear();
-
+                        Response.Redirect("~/Notifications.aspx");
 
                     }
-
+                   
                 }
+               
             }
 
             catch (Exception ex)
@@ -179,6 +232,25 @@ namespace IG_Portal
            
             requiredtxttitle.Enabled = true;
             //Calendar1.SelectedDates.Clear();
+        }
+
+        public void AutoFillTask()
+        {
+            DataTable dtTask = new DataTable();
+            if (!string.IsNullOrEmpty(ReopenTaskID))
+            {
+                dtTask = objTask.GetAssignedTaskDetailsByID(Convert.ToInt32(ReopenTaskID.Trim()));
+            }
+           
+            ddlProjectName.SelectedValue = dtTask.Rows[0]["ProjectName"].ToString();
+            BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
+            ddlTaskType.SelectedValue = dtTask.Rows[0]["TaskType"].ToString();
+            ddlTaskTitle.SelectedValue = dtTask.Rows[0]["TaskTitle"].ToString();
+            ddlAssignTo.SelectedValue= dtTask.Rows[0]["AssignTo"].ToString();
+            txtTaskDescription.Text = dtTask.Rows[0]["TaskDetails"].ToString();
+            txtDate.Text = Convert.ToDateTime(dtTask.Rows[0]["EstimatedWorkDate"].ToString()).ToString("yyyy-MM-dd");
+            txtTime.Text= dtTask.Rows[0]["EstiamtedWorkTime"].ToString();
+            txtComment.Text = dtTask.Rows[0]["Comment"].ToString();
         }
     }
 }

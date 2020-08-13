@@ -68,16 +68,19 @@ namespace IG_Portal
 /*admin */
                     if (_dtLogin.Rows[0]["Role"].ToString() == "2" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/Notifications.aspx");
                     }
                     /*manager */
                     if (_dtLogin.Rows[0]["Role"].ToString() == "4" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/Notifications.aspx");
                     }
                     /*consultant */
                     if (_dtLogin.Rows[0]["Role"].ToString() == "7" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/Notifications.aspx");
                     }
                     /*employee */

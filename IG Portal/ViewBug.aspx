@@ -218,7 +218,9 @@
          
                 
                 <div class="clearfix"></div>
-
+                 <div class="row" align="rignt">
+                 <asp:Label runat="server" Text="Click on Sr.No. to view history" Font-Size="Small" ID="lblHistory"></asp:Label>
+                     </div>
                   
                     <div class="row">
                         <div class=" col m12">

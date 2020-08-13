@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class ViewBug {
-        
+namespace IG_Portal
+{
+
+
+    public partial class ViewBug
+    {
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// lbltitle control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbltitle;
-        
+
         /// <summary>
         /// lblMessage control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
-        
+
         /// <summary>
         /// ddlProjectName control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProjectName;
-        
+
         /// <summary>
         /// ddlDeveloper control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDeveloper;
-        
+
         /// <summary>
         /// ddlTaskType control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTaskType;
-        
+
         /// <summary>
         /// ddlStatus control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
-        
+
         /// <summary>
         /// ddlPriority control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
-        
+
         /// <summary>
         /// txtWorkDate control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWorkDate;
-        
+
         /// <summary>
         /// btclear control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btclear;
-        
+
         /// <summary>
         /// btSearch control.
         /// </summary>
@@ -110,7 +112,16 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSearch;
-        
+
+        /// <summary>
+        /// lblHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHistory;
+
         /// <summary>
         /// count control.
         /// </summary>
@@ -119,7 +130,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label count;
-        
+
         /// <summary>
         /// btExport control.
         /// </summary>
@@ -128,7 +139,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btExport;
-        
+
         /// <summary>
         /// panel1 control.
         /// </summary>
@@ -137,7 +148,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panel1;
-        
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -146,7 +157,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// GridBug control.
         /// </summary>

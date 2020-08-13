@@ -66,7 +66,7 @@
 
                                                 <asp:TemplateField HeaderText="DateTime" HeaderStyle-CssClass="autostyle2" SortExpression="WorkDate">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label9" runat="server" Text='<%# Eval("DateTime","{0:dd/MMM/yy}")  %>'></asp:Label>
+                                                        <asp:Label ID="Label9" runat="server" Text='<%# Eval("DateTime")  %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 

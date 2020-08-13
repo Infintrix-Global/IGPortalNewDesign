@@ -90,7 +90,7 @@ namespace IG_Portal
             dtNotifications = objTask.GetNotifications(Session["LoginID"].ToString());
             GridNotificationSolvedTask.DataSource = dtNotifications.Tables[4];
             GridNotificationSolvedTask.DataBind();
-            count4.Text = "Number of Notifications =" + dtNotifications.Tables[4].Rows.Count;
+            count5.Text = "Number of Notifications =" + dtNotifications.Tables[4].Rows.Count;
             ViewState["dirState5"] = dtNotifications.Tables[4];
             ViewState["sortdr5"] = "Asc";
         }
@@ -616,6 +616,7 @@ namespace IG_Portal
                     {
 
                         int cid = Convert.ToInt32(GirdNotificationAssign.DataKeys[row.RowIndex].Values[0].ToString());
+                        string bugid = (row.FindControl("lblBugID") as Label).Text;
                         string developerID = ddlDeveloper.SelectedValue;
                         if (developerID == "0")
                         {
@@ -635,7 +636,8 @@ namespace IG_Portal
 
                                 lblmsg2.Text = "Bug Assigned";
                                 lblmsg2.ForeColor = System.Drawing.Color.Green;
-                               
+                                objCommon.SendMailAssignBug(bugid);
+                                  
                             }
                         }
                     }
@@ -909,7 +911,12 @@ namespace IG_Portal
 
         protected void GridNotificationSolvedTask_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            if (e.CommandName == "Reopen")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                Session["TaskIDReopen"] = id.ToString();
+                Response.Redirect("AssignTask.aspx");
+            }
         }
 
         protected void btnDetailsTask_Command(object sender, CommandEventArgs e)

@@ -7,6 +7,11 @@
         <div class="portlet-body">
          <!-- BEGIN FORM-->
             <div class="form-body">
+                  <div class="row" >
+                    <asp:Button ID="btnBack" runat="server" Text="Back"  OnClick="btnBack_Click"></asp:Button>
+                </div>
+
+                <br />
                 <div class="row" align="center">
                     <asp:Label ID="lbltitle" runat="server" Text="MOM Details " Font-Bold="true" Font-Size="Large"></asp:Label>
                 </div>

@@ -63,6 +63,16 @@
                 return false;
             }
         }
+
+        function GetReopenConfirmation() {
+            var reply = confirm("Do you really want to REOPEN this task?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     </script>
 
     <style type="text/css">
@@ -292,7 +302,7 @@
 
 
 
-                    <asp:TabPanel ID="NotificationAssign" runat="server" HeaderText="Assign Bug" TabIndex="1">
+                    <asp:TabPanel ID="NotificationAssign" runat="server" HeaderText="Bug Assignment" TabIndex="1">
 
                         <ContentTemplate>
 
@@ -334,6 +344,7 @@
                                                                 <asp:Label ID="Label1" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
                                                                 <asp:Label ID="Label5" runat="server" Text='<%# Eval("Type")  %>' Visible="false"></asp:Label>
                                                                 <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
+                                                                 <asp:Label ID="lblBugID" runat="server" Text='<%# Eval("BugID")  %>' Visible="false"></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -415,7 +426,7 @@
                     </asp:TabPanel>
 
 
-                    <asp:TabPanel ID="NotificationBug" runat="server" HeaderText="New Bug Assigned" TabIndex="2">
+                    <asp:TabPanel ID="NotificationBug" runat="server" HeaderText="Assigned Bug List" TabIndex="2">
 
                         <ContentTemplate>
 
@@ -493,7 +504,7 @@
                     </asp:TabPanel>
 
 
-                    <asp:TabPanel ID="NotificationSolvedBug" runat="server" HeaderText="Bug Solved" TabIndex="3">
+                    <asp:TabPanel ID="NotificationSolvedBug" runat="server" HeaderText="Bug(Close/Reopen)" TabIndex="3">
 
                         <ContentTemplate>
 
@@ -628,7 +639,7 @@
                
 
 
-                  <asp:TabPanel ID="NotificationSolvedTask" runat="server" HeaderText="Task Solved" TabIndex="4">
+                  <asp:TabPanel ID="NotificationSolvedTask" runat="server" HeaderText="Task(Close/Reopen)" TabIndex="4">
 
                         <ContentTemplate>
 
@@ -641,7 +652,7 @@
                             <div class="row">
                                 <div class=" col m12">
                                     <div class="portlet light ">
-                                        <asp:Label runat="server" Text="" ID="Label7"></asp:Label>
+                                        <asp:Label runat="server" Text="" ID="count5"></asp:Label>
                                         <div class="portlet-body">
                                             <div class="table-scrollable">
                                                 <asp:GridView ID="GridNotificationSolvedTask" runat="server" AutoGenerateColumns="False"
@@ -702,7 +713,11 @@
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
-                                                       
+                                                       <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("AssignedTaskID") %>' OnClientClick="return GetReopenTaskConfirmation();" CommandName="Reopen"></asp:Button>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
                                                        
 

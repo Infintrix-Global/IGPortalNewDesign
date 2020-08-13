@@ -271,7 +271,7 @@ namespace IG_Portal
                     strQuery1 += " and B.WorkDate = '" + txtWorkDate.Text + "'";
                 }
                 strQuery += ") union ";
-                strQuery1 += ") ";
+                strQuery1 += ") order by B.WorkDate desc";
                 strQueryfinal = strQuery + strQuery1;
                 dtSearch1 = objTask.SearchBug(strQueryfinal);
                 GridFillSearch();

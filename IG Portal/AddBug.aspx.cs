@@ -32,7 +32,7 @@ namespace IG_Portal
                 BindStatusMaster();
                 BindTaskMaster();
                 BindSuggestedByMaster();
-                
+                BindAssignToMaster();
                 txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
                 bugID = Session["BugID"] as string;
                 ReopenBugID = Session["BugIDReopen"] as string;
@@ -52,6 +52,16 @@ namespace IG_Portal
                 }
 
             }
+        }
+
+        public void BindAssignToMaster()
+        {
+            ddlAssignTo.DataSource = objcommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlAssignTo.DataTextField = "EmployeeName";
+            ddlAssignTo.DataValueField = "ID";
+
+            ddlAssignTo.DataBind();
+            ddlAssignTo.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         public void BindProjectMaster()
@@ -235,71 +245,149 @@ namespace IG_Portal
                     objBugDetails.TaskTitle = ddlTaskTitle.SelectedValue;
                     objBugDetails.Mode = 1;
                 }
-                if (string.IsNullOrEmpty(bugID)&& string.IsNullOrEmpty(ReopenBugID))
+                if (string.IsNullOrEmpty(bugID) && string.IsNullOrEmpty(ReopenBugID))
                 {
-                    _isInserted = objTask.Add_Bugs(objBugDetails);
-
-                    if (_isInserted == -1)
+                    if (ddlAssignTo.SelectedIndex == 0)
                     {
-                        lblMessage.Text = "Failed to Add Bugs";
-                        lblMessage.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else 
-                    {
+                        _isInserted = objTask.Add_Bugs(objBugDetails);
 
-                        lblMessage.Text = "Bugs Added ";
-                        Upload(_isInserted);
-                        lblMessage.ForeColor = System.Drawing.Color.Green;
-                        objcommon.SendMailBug("New Bug Added", _isInserted);
-                        Clear();
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Add Bugs";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
 
-                    }
-                }
+                            lblMessage.Text = "Bugs Added ";
+                            Upload(_isInserted);
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailBug("New Bug Added", _isInserted);
+                            Clear();
 
-                else if(string.IsNullOrEmpty(ReopenBugID))
-                {
-                    objBugDetails.BugID = Convert.ToInt32(bugID);
-                    _isInserted = objTask.UpdateBug(objBugDetails);
-                    if (_isInserted == -1)
-                    {
-                        lblMessage.Text = "Failed to Update Bug";
-                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
                     }
                     else
                     {
+                        objBugDetails.AssignTo = ddlAssignTo.SelectedValue;
+                        _isInserted = objTask.AssignBug(objBugDetails);
 
-                        lblMessage.Text = "Bug Updated";
-                        Upload(_isInserted);
-                        Session["BugID"] = null;
-                        lblMessage.ForeColor = System.Drawing.Color.Green;
-                        objcommon.SendMailBug("Bug Updated", _isInserted);
-                        Clear();
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Assign Bug ";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
 
-                        Response.Redirect("~/ViewBug.aspx");
+                            lblMessage.Text = "Bug Assigned";
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailAssignBug(_isInserted.ToString());
+                            Clear();
 
+                        }
+                    }
+                }
+
+                else if (string.IsNullOrEmpty(ReopenBugID))
+                {
+                    
+                        objBugDetails.BugID = Convert.ToInt32(bugID);
+                    if (ddlAssignTo.SelectedIndex == 0)
+                    {
+                        _isInserted = objTask.UpdateBug(objBugDetails);
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Update Bug";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                            lblMessage.Text = "Bug Updated";
+                            Upload(_isInserted);
+                            Session["BugID"] = null;
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailBug("Bug Updated", _isInserted);
+                            Clear();
+
+                            Response.Redirect("~/ViewBug.aspx");
+
+                        }
+                    }
+                    else
+                    {
+                        objBugDetails.AssignTo = ddlAssignTo.SelectedValue;
+                        _isInserted = objTask.UpdateAssignBug(objBugDetails);
+
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Assign Bug ";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                            lblMessage.Text = "Bug Assigned";
+                            Upload(_isInserted);
+                            Session["BugID"] = null;
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailAssignBug(_isInserted.ToString());
+                            Clear();
+                            Response.Redirect("~/ViewBug.aspx");
+                           
+
+                        }
                     }
                 }
 
                 else if (string.IsNullOrEmpty(bugID))
                 {
                     objBugDetails.BugID = Convert.ToInt32(ReopenBugID);
-                    _isInserted = objTask.ReopenBug(objBugDetails);
-                    if (_isInserted == -1)
+                    if (ddlAssignTo.SelectedIndex == 0)
                     {
-                        lblMessage.Text = "Failed to Reopen Bug";
-                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        _isInserted = objTask.ReopenBug(objBugDetails);
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Reopen Bug";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                            lblMessage.Text = "Bug Reopened";
+                            Upload(_isInserted);
+                            Session["BugIDReopen"] = null;
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailBug("Bug Reopened", _isInserted);
+                            Clear();
+                            Response.Redirect("~/Notifications.aspx");
+
+                        }
                     }
                     else
                     {
+                        objBugDetails.AssignTo = ddlAssignTo.SelectedValue;
+                        _isInserted = objTask.ReopenAssignBug(objBugDetails);
 
-                        lblMessage.Text = "Bug Reopened";
-                        Upload(_isInserted);
-                        Session["BugIDReopen"] = null;
-                        lblMessage.ForeColor = System.Drawing.Color.Green;
-                        objcommon.SendMailBug("Bug Reopened", _isInserted);
-                        Clear();
-                        Response.Redirect("~/Notifications.aspx");
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Reopen Bug ";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
 
+                            lblMessage.Text = "Bug Reopened";
+                            Upload(_isInserted);
+                            Session["BugIDReopen"] = null;
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            objcommon.SendMailAssignBug(_isInserted.ToString());
+                            Clear();
+                            Response.Redirect("~/Notifications.aspx");
+                          
+
+                        }
                     }
                 }
 
@@ -359,7 +447,10 @@ namespace IG_Portal
             {
                 ddlStatus.SelectedValue = "7";
             }
-           
+           if(dtBug.Rows[0]["Developer"].ToString() !="")
+            {
+                ddlAssignTo.SelectedValue = dtBug.Rows[0]["Developer"].ToString();
+            }
             ddlSuggetedBy.SelectedValue = dtBug.Rows[0]["SuggestedBy"].ToString();
             txtComment.Text = dtBug.Rows[0]["Comment"].ToString();
         }

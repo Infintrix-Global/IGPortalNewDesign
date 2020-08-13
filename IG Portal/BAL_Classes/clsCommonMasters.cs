@@ -476,6 +476,161 @@ namespace IG_Portal
             }
         }
 
+        public void SendMailAssignTask(string taskID)
+        {
+            DataTable dtTaskDetails;
+            try
+            {
+                // Gmail Address from where you send the mail
+                var fromAddress = "igportalmail@gmail.com";//"infintrix.world@gmail.com";
+                                                           // any address where the email will be sending
+                                                           // var toAddress = "mehulrana1901@gmail.com,urvi.gandhi@infintrixglobal.com,nidhi.mehta@infintrixglobal.com,bhavin.gandhi@infintrixglobal.com,mehul.rana@infintrixglobal.com,naimisha.rohit@infintrixglobal.com";
+                dtTaskDetails = objTask.GetTaskDetailsAssignTaskMail(taskID);
+
+                var toAddress = dtTaskDetails.Rows[0]["Email"].ToString().Trim();
+                var empName = dtTaskDetails.Rows[0]["EmployeeName"].ToString();
+
+                //Password of your gmail address
+                const string fromPassword = "admin@1234";
+                // Passing the values and make a email formate to display
+                string subject = "Task Assigned in " + dtTaskDetails.Rows[0]["Pname"].ToString(); ;
+                string body = "Dear ";
+                body += empName + "," + "\n\n";
+                body += "Details of Task:-" + "\n\n";
+                body += dtTaskDetails.Rows[0]["TaskDetails"].ToString() + "\n\n";
+
+
+                body += "Thank you" + "\n";
+                body += "Warm Regards" + "\n";
+                // smtp settings
+                var smtp = new System.Net.Mail.SmtpClient();
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                    smtp.Timeout = 50000;
+                }
+                // Passing values to smtp object
+                smtp.Send(fromAddress, toAddress, subject, body);
+            }
+            catch (Exception ex)
+            {
+                General.ErrorMessage(ex.Message + ex.StackTrace);
+            }
+        }
+
+        public void SendMailTaskCompleted(string taskID)
+        {
+            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
+            DataTable dtTaskDetails;
+            try
+            {
+                // Gmail Address from where you send the mail
+                var fromAddress = "igportalmail@gmail.com";//"infintrix.world@gmail.com";
+                                                           // any address where the email will be sending
+                                                           // var toAddress = "mehulrana1901@gmail.com,urvi.gandhi@infintrixglobal.com,nidhi.mehta@infintrixglobal.com,bhavin.gandhi@infintrixglobal.com,mehul.rana@infintrixglobal.com,naimisha.rohit@infintrixglobal.com";
+                dtTaskDetails = objTask.GetTaskDetailsCompletedTaskMail(taskID);
+
+                var toAddress = dtTaskDetails.Rows[0]["Email"].ToString().Trim();
+                var empName = dtTaskDetails.Rows[0]["EmployeeName"].ToString();
+
+                //Password of your gmail address
+                const string fromPassword = "admin@1234";
+                // Passing the values and make a email formate to display
+                string subject = "Task Completed in " + dtTaskDetails.Rows[0]["Pname"].ToString(); ;
+                string body = "Dear ";
+                body += empName + "," + "\n\n";
+                body += "Details of Task:-" + "\n\n";
+                body += dtTaskDetails.Rows[0]["TaskDetails"].ToString() + "\n\n";
+
+
+                body += "Thank you" + "\n";
+                body += "Warm Regards" + "\n";
+                // smtp settings
+                var smtp = new System.Net.Mail.SmtpClient();
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                    smtp.Timeout = 50000;
+                }
+                mailMessage.From = new MailAddress(fromAddress);
+                mailMessage.To.Add(new MailAddress(toAddress));
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                mailMessage.CC.Add(new MailAddress("urvi.gandhi@infintrixglobal.com"));
+                mailMessage.CC.Add(new MailAddress("ankit.shah@infintrixglobal.com"));
+                // Passing values to smtp object
+
+                // Passing values to smtp object
+                smtp.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                General.ErrorMessage(ex.Message + ex.StackTrace);
+            }
+        }
+
+        public void SendMailBugSolved(int bugID)
+        {
+            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
+            DataTable dtBugDetails;
+            try
+            {
+                // Gmail Address from where you send the mail
+                var fromAddress = "igportalmail@gmail.com";//"infintrix.world@gmail.com";
+                                                           // any address where the email will be sending
+                                                           // var toAddress = "mehulrana1901@gmail.com,urvi.gandhi@infintrixglobal.com,nidhi.mehta@infintrixglobal.com,bhavin.gandhi@infintrixglobal.com,mehul.rana@infintrixglobal.com,naimisha.rohit@infintrixglobal.com";
+                dtBugDetails = objTask.GetBugDetailsAddBugMail(bugID);
+
+                var toAddress = dtBugDetails.Rows[0]["Email"].ToString().Trim();
+                var empName = dtBugDetails.Rows[0]["EmployeeName"].ToString();
+                
+                //Password of your gmail address
+                const string fromPassword = "admin@1234";
+                // Passing the values and make a email formate to display
+                string subject = "Bug Solved in " + dtBugDetails.Rows[0]["ProjectName"].ToString(); ;
+                string body = "Dear ";
+                body += empName + "," + "\n\n";
+                body += "Details of bug:-" + "\n\n";
+                body += dtBugDetails.Rows[0]["BugDetails"].ToString() + "\n\n";
+
+
+                body += "Thank you" + "\n";
+                body += "Warm Regards" + "\n";
+                // smtp settings
+                var smtp = new System.Net.Mail.SmtpClient();
+                {
+                    
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                    smtp.Timeout = 50000;
+                }
+                mailMessage.From = new MailAddress(fromAddress);
+                mailMessage.To.Add(new MailAddress(toAddress));
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                mailMessage.CC.Add(new MailAddress("urvi.gandhi@infintrixglobal.com"));
+                mailMessage.CC.Add(new MailAddress("ankit.shah@infintrixglobal.com"));
+                // Passing values to smtp object
+                smtp.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                General.ErrorMessage(ex.Message + ex.StackTrace);
+            }
+        }
+
         private string GenerateRandomOTP(int iOTPLength, string[] saAllowedCharacters)
 
         {
@@ -1394,7 +1549,7 @@ public class TimeSheetDetails
 
 public class TaskAssignDetails
 {
-   
+   public int AssignTaskID { get; set; }
     public int LoginID { get; set; }
     public string ProjectName { get; set; }
    
@@ -1481,6 +1636,8 @@ public class BugDetails
     public string Comment { get; set; }
     public string PageName { get; set; }
     public string TaskType { get; set; }
+
+    public string AssignTo { get; set; }
     public int Mode { get; set; }
 }
     

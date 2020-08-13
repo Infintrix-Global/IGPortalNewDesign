@@ -216,6 +216,7 @@ namespace IG_Portal
             ddlMeetingInitiator.SelectedValue = "0";
             ddlMeetingType.SelectedIndex = 0;
             dtMeetingPoint.Clear();
+            dtAttendee.Rows.Clear();
         }
 
         protected void btnReciept_Click(object sender, EventArgs e)
@@ -325,7 +326,7 @@ namespace IG_Portal
         {
             DataSet dtMOM;
 
-            dtMOM = objTask.GetMOM();
+            dtMOM = objTask.GetMOM(Session["LoginID"].ToString());
             GridMOM.DataSource = dtMOM.Tables[0];
             GridMOM.DataBind();
             count.Text = "Number of MOM =" + dtMOM.Tables[0].Rows.Count;

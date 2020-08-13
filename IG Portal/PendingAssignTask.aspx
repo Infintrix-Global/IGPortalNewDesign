@@ -77,8 +77,9 @@
                                 <div class=" col m12">
                                     <div class="portlet light ">
                                         <asp:Label runat="server" Text="" ID="count"></asp:Label>
+                                         <asp:Panel ID="panel1" runat="server" Height="100%" Width="100%" ScrollBars="Both">
                                         <div class="portlet-body">
-                                            <div class="table-scrollable">
+                                                <div class="table-scrollable table-scrollable-borderless">
                                                 <asp:GridView ID="GridAssignTask" runat="server" AutoGenerateColumns="False"
                                                     class="striped" OnPageIndexChanging="GridAssignTask_PageIndexChanging"
                                                     GridLines="None" AllowPaging="true" OnSorting="GridAssignTask_Sorting"
@@ -133,6 +134,18 @@
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
+                                                          <asp:TemplateField HeaderText="Estimated Start Date" HeaderStyle-CssClass="autostyle2" SortExpression="EstimatedWorkDate">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label12" runat="server" Text='<%# Eval("EstimatedWorkDate")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                          <asp:TemplateField HeaderText="Estimated Time" HeaderStyle-CssClass="autostyle2">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="Label13" runat="server" Text='<%# Eval("EstiamtedWorkTime")  %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
                                                          <asp:TemplateField HeaderText="Priority" HeaderStyle-CssClass="autostyle2" SortExpression="Priority">
                                                             <ItemTemplate>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("Priority")  %>'></asp:Label>
@@ -141,20 +154,20 @@
 
                                                         <asp:TemplateField HeaderText="Developer" HeaderStyle-CssClass="autostyle2" SortExpression="EmployeeName">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="lblDeveloper" runat="server" Text='<%# Eval("AssignTo")  %>' Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblDeveloper" runat="server" Text='<%# Eval("AssignTo")  %>'  Visible="false"></asp:Label>
                                                                 <asp:Label ID="Label7" runat="server" Text='<%# Eval("EmployeeName")  %>'></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
-                                               <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2" Visible="false" >
+                                               <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2"  >
                                                         <ItemTemplate>
-                                                            <asp:DropdownList ID="ddlDeveloper" runat="server"      ></asp:DropdownList>
+                                                            <asp:DropdownList ID="ddlDeveloper" runat="server"     ></asp:DropdownList>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
 
-                                              <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2" Visible="false">
+                                              <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2" >
                                                         <ItemTemplate>
-                                                            <asp:Button ID="btnAssign" runat="server"  Text="Assign"  OnClientClick="return GetApproveConfirmation();"  CommandArgument='<%# Container.DataItemIndex  %>' CommandName="Assign"></asp:Button>
+                                                            <asp:Button ID="btnAssign" runat="server"  Text="Assign"  OnClientClick="return GetApproveConfirmation();"  CommandArgument='<%# Container.DataItemIndex  %>' CommandName="Assign" ></asp:Button>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
 
@@ -172,7 +185,7 @@
 
                                             </div>
                                         </div>
-
+</asp:Panel>
                                     </div>
                                 </div>
 

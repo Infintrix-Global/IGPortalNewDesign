@@ -141,7 +141,7 @@
                                             <div class="form-group">
                                                 <span class="title">
                                                     <label>
-                                                        Estimated Work Time</label>
+                                                        Estimated Work Time(In hours)</label>
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:TextBox ID="txtTime" runat="server" class="form-control" TabIndex="6"  ></asp:TextBox>
@@ -157,7 +157,7 @@
                                             <div class="form-group">
                                                 <span class="title">
                                                     <label>Assign To </label>
-                                                    <span class="required">*</span>
+                                                    <span class="required"></span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlAssignTo" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="7" >

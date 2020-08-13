@@ -187,7 +187,7 @@
                                             <ul>
                                                 <li><a href="<%= ResolveUrl("~/AddProject.aspx") %>">Project</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddEmployee.aspx") %>">Employee</a> </li>
-                                                <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task Type</a> </li>
                                             </ul>
                                         </div>
                                     </li>
@@ -303,7 +303,7 @@
                                             <ul>
                                                 <li><a href="<%= ResolveUrl("~/AddProject.aspx") %>">Project</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddEmployee.aspx") %>">Employee</a> </li>
-                                                <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task Type</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddPage.aspx") %>">Page</a> </li>
                                             </ul>
                                         </div>

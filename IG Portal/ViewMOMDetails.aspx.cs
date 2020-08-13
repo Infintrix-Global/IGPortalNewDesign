@@ -55,6 +55,14 @@ namespace IG_Portal
 
             }
         }
+
+        
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Notifications.aspx");
+
+        }
     }
 
 }

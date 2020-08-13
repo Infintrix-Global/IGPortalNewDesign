@@ -262,7 +262,7 @@
                                                             </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
-                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Delete" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to remove this timesheet entry?');"></asp:ImageButton>
+                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Delete" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to remove this timesheet entry?');" AutoPostback="true"></asp:ImageButton>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 

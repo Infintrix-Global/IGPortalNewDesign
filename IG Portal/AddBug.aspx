@@ -181,7 +181,18 @@
 
                                         <div class="clearfix"></div>
 
-                                        
+                                          <div class="col m4">
+                                            <div class="form-group">
+                                                <span class="title">
+                                                    <label>Assign To </label>
+                                                    <span class="required"></span>
+                                                </span>
+                                                <asp:DropDownList ID="ddlAssignTo" runat="server" placeholder=""
+                                                    ClientIDMode="Static" TabIndex="9" >
+                                                </asp:DropDownList>
+                                               
+                                            </div>
+                                        </div>
 
                                         <div class="col m4">
                                             <div class="form-group">
@@ -190,7 +201,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="9" >
+                                                    ClientIDMode="Static" TabIndex="10" >
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredStatus" runat="server" ControlToValidate="ddlStatus" ValidationGroup="at" InitialValue="0"
@@ -206,7 +217,7 @@
 
                                                 </span>
                                                 <asp:TextBox ID="txtComment" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TextMode="MultiLine" TabIndex="10">
+                                                    ClientIDMode="Static" TextMode="MultiLine" TabIndex="11">
                                                 </asp:TextBox>
 
 
@@ -230,7 +241,7 @@
                                     </div>
 
                                     <div class="row" align="center">
-                                        <asp:Button ID="btnsubmit" runat="server" TabIndex="10" ClientIDMode="Static" Text="Submit" class="btn" CausesValidation="true" OnClick="btnsubmit_Click" ValidationGroup="at" UseSubmitBehavior="false"   ></asp:Button>
+                                        <asp:Button ID="btnsubmit" runat="server" TabIndex="12" ClientIDMode="Static" Text="Submit" class="btn" CausesValidation="true" OnClick="btnsubmit_Click" ValidationGroup="at" UseSubmitBehavior="false"   ></asp:Button>
                                     </div>
                                 </div>
                             </div>

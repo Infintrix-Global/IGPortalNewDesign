@@ -73,7 +73,7 @@
                                                 <asp:GridView ID="GridAssignTask" runat="server" AutoGenerateColumns="False"
                                                     class="striped" OnPageIndexChanging="GridAssignTask_PageIndexChanging"
                                                     GridLines="None" AllowPaging="true" OnSorting="GridAssignTask_Sorting"
-                                                    PageSize="10"   OnRowDataBound="GridAssignTask_RowDataBound"
+                                                    PageSize="10"   OnRowDataBound="GridAssignTask_RowDataBound" 
                                                     ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridAssignTask_RowCommand" DataKeyNames="ID">
                                                     <Columns>
 
@@ -101,38 +101,38 @@
 
                                                           <asp:TemplateField HeaderText="Project Name" HeaderStyle-CssClass="autostyle2" SortExpression="ProjectName">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("ProjectName")  %>'></asp:Label>
+                                                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("ProjectName")  %>' CssClass="font-timesheet"></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
 
                                                         <asp:TemplateField HeaderText="Task Name" HeaderStyle-CssClass="autostyle2" SortExpression="TaskName">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("TaskName")  %>'></asp:Label>
+                                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("TaskName")  %>' CssClass="font-timesheet"></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
                                                            <asp:TemplateField HeaderText="Task Title" HeaderStyle-CssClass="autostyle2" SortExpression="TaskTitle">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("TaskTitle")  %>'></asp:Label>
+                                                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("TaskTitle")  %>' CssClass="font-timesheet"></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
                                                         <asp:TemplateField HeaderText="Task Details" HeaderStyle-CssClass="autostyle2" SortExpression="TaskDetails">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("TaskDetails")  %>'></asp:Label>
+                                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("TaskDetails")  %>' CssClass="font-timesheet"></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
                                                          <asp:TemplateField HeaderText="Priority" HeaderStyle-CssClass="autostyle2" SortExpression="Priority">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("Priority")  %>'></asp:Label>
+                                                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("Priority")  %>' CssClass="font-timesheet"></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
                                                           <asp:TemplateField HeaderText="Status" HeaderStyle-CssClass="autostyle2" SortExpression="Priority">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="Label8" runat="server" Text='<%# Eval("StatusName")  %>'></asp:Label>
+                                                                <asp:Label ID="Label8" runat="server" Text='<%# Eval("StatusName")  %>' CssClass="font-timesheet"></asp:Label>
                                                                  <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status")  %>' Visible="false"></asp:Label>
                                                                  <asp:Label ID="lblAssignTo" runat="server" Text='<%# Eval("AssignTo")  %>' Visible="false"></asp:Label>
                                                             </ItemTemplate>
@@ -140,7 +140,7 @@
 
                                                           <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
-                                                                    <asp:LinkButton ID="lnkAddTS" runat="server" CommandArgument='<%# Eval("ID")  %>' Text="Add TS" CommandName="AddTS" ForeColor="LightBlue"   OnClientClick="return GetAddTSConfirmation();" ></asp:LinkButton>
+                                                                    <asp:LinkButton ID="lnkAddTS" runat="server" CommandArgument='<%# Eval("ID")  %>' Text="Add TS" CommandName="AddTS" ForeColor="LightBlue"   OnClientClick="return GetAddTSConfirmation();" CssClass="font-timesheet"></asp:LinkButton>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                                         

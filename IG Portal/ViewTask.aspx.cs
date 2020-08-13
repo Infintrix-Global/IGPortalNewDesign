@@ -599,8 +599,8 @@ namespace IG_Portal
                         ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = true;
                     }
                     else
-                    {
-                        ((ImageButton)e.Row.FindControl("imgDelete")).Visible = false;
+                    {   
+                        ((ImageButton)e.Row.FindControl("imgDelete")).Visible = false;  /* false */
                         ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = false;
                     }
                 }
