@@ -40,7 +40,7 @@
                                 </asp:RegularExpressionValidator>
                             </div>
 
-                            <div class="col m4">
+                            <div class="col m3">
 
                                 <label><span class="auto-style1">Email</span><span class="required">*</span> </label>
 
@@ -53,6 +53,15 @@
                                 </asp:RegularExpressionValidator>
                             </div>
 
+                                <div class="col m3">
+
+                                <label><span class="auto-style1">Location</span><span class="required">*</span> </label>
+
+                                <asp:TextBox ID="txtLocation" class="form-control" placeholder="Location" TabIndex="4" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLocation" ValidationGroup="e"
+                                    SetFocusOnError="true" ErrorMessage="Please Enter Location" ForeColor="Red"></asp:RequiredFieldValidator>
+                              
+                            </div>
                            
                         </div>
 
@@ -115,7 +124,11 @@
                                                             <asp:Label ID="Label9" runat="server" Text='<%# Eval("Email")  %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-
+                                                     <asp:TemplateField HeaderText="Location" HeaderStyle-CssClass="autostyle2">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="Label10" runat="server" Text='<%# Eval("Location")  %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                  
 
 

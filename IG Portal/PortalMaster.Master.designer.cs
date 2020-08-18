@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class PortalMaster {
-        
+namespace IG_Portal
+{
+
+
+    public partial class PortalMaster
+    {
+
         /// <summary>
         /// head control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
+
         /// <summary>
         /// Form1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
-        
+
         /// <summary>
         /// lnkchangepassword control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkchangepassword;
-        
+
         /// <summary>
         /// lnkLogout control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkLogout;
-        
+
         /// <summary>
         /// empName control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label empName;
-        
+
         /// <summary>
         /// emp control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl emp;
-        
+
         /// <summary>
         /// lblEmpName control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmpName;
-        
+
         /// <summary>
         /// admin control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl admin;
-        
+
         /// <summary>
         /// lblAdminName control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAdminName;
-        
+
         /// <summary>
         /// manager control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl manager;
-        
+
         /// <summary>
         /// lblManagerName control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblManagerName;
-        
+
         /// <summary>
         /// consultant control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl consultant;
-        
+
         /// <summary>
         /// lblConsultant control.
         /// </summary>
@@ -128,7 +130,25 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblConsultant;
-        
+
+        /// <summary>
+        /// Client control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Client;
+
+        /// <summary>
+        /// lblClient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblClient;
+
         /// <summary>
         /// SiteMapDataSource1 control.
         /// </summary>
@@ -137,7 +157,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource1;
-        
+
         /// <summary>
         /// SiteMapPath1 control.
         /// </summary>
@@ -146,7 +166,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SiteMapPath SiteMapPath1;
-        
+
         /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>

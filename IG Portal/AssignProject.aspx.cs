@@ -25,7 +25,7 @@ namespace IG_Portal
 
         public void BindEmployeeMaster()
         {
-            ddlEmployee.DataSource = objCommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlEmployee.DataSource = objCommon.GetLoginMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
             ddlEmployee.DataTextField = "EmployeeName";
             ddlEmployee.DataValueField = "ID";
             ddlEmployee.DataBind();

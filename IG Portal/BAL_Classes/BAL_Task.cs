@@ -562,6 +562,29 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public int AddSupport(SupportDetails objSupport)
+            {
+            int _isInserted = -1;
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", objSupport.LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Details", objSupport.Details);
+                objGeneral.AddParameterWithValueToSQLCommand("@FileName", objSupport.FileName);
+                objGeneral.AddParameterWithValueToSQLCommand("@IssueIn", objSupport.IssueIn);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", objSupport.ProjectName);
+                objGeneral.AddParameterWithValueToSQLCommand("@IssueType", objSupport.IssueType);
+
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddSupport");
+
+            }
+
+            catch (Exception ex)
+            {
+                //General.ErrorMessage(ex.StackTrace + ex.Message);
+            }
+            return _isInserted;
+        }
+
         public int Add_Leave(Leave objLeaveApplication)
         {
             int _isInserted = -1;
@@ -582,7 +605,7 @@ namespace IG_Portal.BAL_Classes
 
             catch (Exception ex)
             {
-                General.ErrorMessage(ex.StackTrace + ex.Message);
+               // General.ErrorMessage(ex.StackTrace + ex.Message);
             }
             return _isInserted;
         }
@@ -765,6 +788,44 @@ namespace IG_Portal.BAL_Classes
             }
             return ds;
 
+        }
+
+        public DataTable GetSupportTickets()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetSupportTickets");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
+        public int AddSupportComment(string comment, string status, string supportid,string LoginID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                
+                    objGeneral.ClearParameters();
+                    objGeneral.AddParameterWithValueToSQLCommand("@Comment", comment);
+                    objGeneral.AddParameterWithValueToSQLCommand("@Status", status);
+                    objGeneral.AddParameterWithValueToSQLCommand("@SupportID", supportid);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddSupportComment");
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
         }
 
         public DataSet GetBugForEmployee(string devID)
@@ -1080,6 +1141,22 @@ namespace IG_Portal.BAL_Classes
 
             }
             return _isDeleted;
+        }
+
+        public DataTable GetSupportHistroy(string supportID)
+        {
+
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@SupportID", supportID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetSupportHistory");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return ds.Tables[0];
         }
 
         public DataTable GetBugHistroy(string bugID)

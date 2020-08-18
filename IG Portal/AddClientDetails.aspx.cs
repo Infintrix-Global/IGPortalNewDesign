@@ -31,7 +31,8 @@ namespace IG_Portal
                     Name = txtName.Text,
                     Mobile = txtMobile.Text,
                     Email = txtEmail.Text,
-                   
+                    Password = objCommon.Encrypt("12345"),
+                    Location = txtLocation.Text,
                 };
 
                 _isInserted = objCommon.AddClientDetails(objClient);
@@ -54,8 +55,9 @@ namespace IG_Portal
 
                     lblmsg.Text = "Client Added ";
                     lblmsg.ForeColor = System.Drawing.Color.Green;
-                    GetClientList();
+                    objCommon.SendMail(txtEmail.Text.Trim(), txtMobile.Text.Trim(), "12345");
                     btclear_Click(sender, e);
+                    GetClientList();
                 }
             }
             catch (Exception ex)

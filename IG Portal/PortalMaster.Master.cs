@@ -72,6 +72,14 @@ namespace IG_Portal
                         SiteMapPath1.SiteMapProvider = "SiteMapConsultantWM";
                         SiteMapPath1.DataBind();
                     }
+
+                    else if (Session["Role"].ToString() == "8" && Session["CompanyID"].ToString() == "2")
+                    {
+                        Client.Visible = true;
+                        lblClient.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                       // SiteMapPath1.SiteMapProvider = "SiteMapConsultantWM";
+                       // SiteMapPath1.DataBind();
+                    }
                 }
 
             }

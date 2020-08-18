@@ -130,11 +130,9 @@ namespace IG_Portal
             ddlStatus.DataSource = objcommon.GetInitialBugStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
             ddlStatus.DataTextField = "StatusName";
             ddlStatus.DataValueField = "ID";
-
             ddlStatus.DataBind();
-
             ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
-           
+            ddlStatus.SelectedValue = "1";
         }
 
         protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)

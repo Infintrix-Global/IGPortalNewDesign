@@ -656,14 +656,14 @@ namespace IG_Portal
         {
             try
             {
-
+                int count = 0;
                 int _IsClosed = -1;
               
                 foreach (GridViewRow row in GridNotificationSolvedBug.Rows)
                 {
                     if ((row.FindControl("chkSelect") as CheckBox).Checked)
                     {
-
+                        count = 1;
                         int cid = Convert.ToInt32(GridNotificationSolvedBug.DataKeys[row.RowIndex].Values[0].ToString());
                         _IsClosed = objTask.CloseBug(Convert.ToInt32(cid));
                         if (_IsClosed == -1)
@@ -680,6 +680,10 @@ namespace IG_Portal
                         }
                     }
 
+                }
+                if(count==0)
+                {
+                    lblmsg4.Text = "Please Select a Bug to Close";
                 }
                 BindNotificationSolvedBug();
             }

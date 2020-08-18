@@ -87,7 +87,14 @@ namespace IG_Portal
                     else if (_dtLogin.Rows[0]["Role"].ToString() == "1" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
-                        Response.Redirect("~/Notifications.aspx");
+                        Response.Redirect("~/EmployeeDashBoardWM.aspx");
+
+                    }
+                    /*client */
+                    else if (_dtLogin.Rows[0]["Role"].ToString() == "8" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/ClientDashBoard.aspx");
 
                     }
                 }

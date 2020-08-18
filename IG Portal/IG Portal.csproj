@@ -90,6 +90,8 @@
     <Content Include="AssignTask.aspx" />
     <Content Include="BugHistory.aspx" />
     <Content Include="CImage.aspx" />
+    <Content Include="ClientDashBoard.aspx" />
+    <Content Include="ClientSupport.aspx" />
     <Content Include="ConsultantDashBoardWM.aspx" />
     <Content Include="EmployeeDocuments.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
@@ -698,6 +700,8 @@
     <Content Include="ViewBugDetails.aspx" />
     <Content Include="ViewEmployeeDocuments.aspx" />
     <Content Include="ViewMOMDetails.aspx" />
+    <Content Include="ViewSupportHistory.aspx" />
+    <Content Include="ViewSupportTicket.aspx" />
     <Content Include="ViewTask.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -780,6 +784,20 @@
     <Compile Include="CImage.aspx.cs">
       <DependentUpon>CImage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClientDashBoard.aspx.cs">
+      <DependentUpon>ClientDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClientDashBoard.aspx.designer.cs">
+      <DependentUpon>ClientDashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientSupport.aspx.cs">
+      <DependentUpon>ClientSupport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClientSupport.aspx.designer.cs">
+      <DependentUpon>ClientSupport.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultantDashBoardWM.aspx.cs">
       <DependentUpon>ConsultantDashBoardWM.aspx</DependentUpon>
@@ -1002,6 +1020,20 @@
     </Compile>
     <Compile Include="ViewMOMDetails.aspx.designer.cs">
       <DependentUpon>ViewMOMDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSupportHistory.aspx.cs">
+      <DependentUpon>ViewSupportHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSupportHistory.aspx.designer.cs">
+      <DependentUpon>ViewSupportHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSupportTicket.aspx.cs">
+      <DependentUpon>ViewSupportTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSupportTicket.aspx.designer.cs">
+      <DependentUpon>ViewSupportTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewTask.aspx.cs">
       <DependentUpon>ViewTask.aspx</DependentUpon>

@@ -982,6 +982,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetLoginMaster(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 17);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetEmployeeMasterByProjectForBug(int projectID)
         {
             try
@@ -1119,6 +1135,22 @@ namespace IG_Portal
 
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@mode", 15);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetSupportStatusMaster(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 18);
                 objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
                 ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
             }
@@ -1385,7 +1417,8 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@Mobile", objClient.Mobile);
                 objGeneral.AddParameterWithValueToSQLCommand("@Name", objClient.Name);
                 objGeneral.AddParameterWithValueToSQLCommand("@Email", objClient.Email);
-               
+                objGeneral.AddParameterWithValueToSQLCommand("@Location", objClient.Location);
+                objGeneral.AddParameterWithValueToSQLCommand("@Password", objClient.Password);
                 _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddClientDetails");
             }
             catch (Exception ex)
@@ -1473,6 +1506,43 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@MeetingType", objMOM.MeetingType);
                 objGeneral.AddParameterWithValueToSQLCommand("@Mode", objMOM.Mode);
                 _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddMOM");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return _isInserted;
+        }
+
+        public int GetPendingBugCount(string LoginID, string mode)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+              
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+               
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_GetEmployeeDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return _isInserted;
+        }
+        public int GetPendingTaskCount(string LoginID, string mode)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_GetEmployeeDashBoardDetails");
             }
             catch (Exception ex)
             {
@@ -1590,7 +1660,9 @@ public class ClientDetails
     public string Mobile { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }
-    
+    public string Location { get; set; }
+
+    public string Password { get; set; }
 }
 
 
@@ -1640,5 +1712,21 @@ public class BugDetails
     public string AssignTo { get; set; }
     public int Mode { get; set; }
 }
-    
+
+public class SupportDetails
+{
+   
+    public string ProjectName { get; set; }
+    public string IssueType { get; set; }
+    public string Details { get; set; }
+    public string IssueIn { get; set; }
+    public string LoginID { get; set; }
+    public string FileName { get; set; }
+   
+    public string Status { get; set; }
+    public string Comment { get; set; }
+   
+   
+}
+
 

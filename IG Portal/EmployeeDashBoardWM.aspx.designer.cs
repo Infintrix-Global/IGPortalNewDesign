@@ -7,9 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class Employee_DashBoard {
+namespace IG_Portal
+{
+
+
+    public partial class Employee_DashBoard
+    {
+
+        /// <summary>
+        /// lnkBug control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBug;
+
+        /// <summary>
+        /// lnkTask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkTask;
     }
 }
