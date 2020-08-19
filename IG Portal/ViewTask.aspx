@@ -158,8 +158,8 @@
                                     <br />
                                     <div class="clearfix"></div>
                                    <asp:Panel ID="panel1" runat="server" Height="100%" Width="100%" ScrollBars="Both">
-                                   <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                        <ContentTemplate>
+                                   <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>--%>
                                             <div class="portlet-body">
                                                 
                                                 <div class="table-scrollable table-scrollable-borderless">
@@ -262,7 +262,7 @@
                                                             </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
-                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Delete" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to remove this timesheet entry?');" AutoPostback="true"></asp:ImageButton>
+                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Remove" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to remove this timesheet entry?');" ></asp:ImageButton>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
@@ -280,8 +280,8 @@
                                                 </div>
                                                    
                                             </div>
-                                            </ContentTemplate>
-                                       </asp:UpdatePanel>
+                                           <%-- </ContentTemplate>
+                                       </asp:UpdatePanel>--%>
                                         </asp:Panel>
                                             </div>
                                       

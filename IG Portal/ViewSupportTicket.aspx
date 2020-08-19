@@ -42,35 +42,13 @@
   <asp:Label ID="lblMessage" runat="server"></asp:Label>
                 <br />
 
-               <%-- <div class="row">
+                <div class="row">
 
                   
-                    <div class=" col m2 ">
+                    <div class=" col m3">
                                 <div class="form-group">
                                     <label>Project Name </label>
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" 
-                                        ClientIDMode="Static" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
-                                    </asp:DropDownList>
-
-
-                                </div>
-                            </div>
-
-                    <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Developer Name </label>
-                                    <asp:DropDownList ID="ddlDeveloper" runat="server" class="form-control" placeholder="" 
-                                        ClientIDMode="Static"  >
-                                    </asp:DropDownList>
-
-
-                                </div>
-                            </div>
-
-                    <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Task Type </label>
-                                    <asp:DropDownList ID="ddlTaskType" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" >
                                     </asp:DropDownList>
 
@@ -78,7 +56,20 @@
                                 </div>
                             </div>
 
-                         <div class="col m2">
+                    <div class=" col m3">
+                                <div class="form-group">
+                                    <label>Client Name </label>
+                                    <asp:DropDownList ID="ddlClient" runat="server" class="form-control" placeholder="" 
+                                        ClientIDMode="Static"  >
+                                    </asp:DropDownList>
+
+
+                                </div>
+                            </div>
+
+                   
+
+                         <div class="col m3">
                                             <div class="form-group">
                                                     <label>Status </label>
                                                 <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
@@ -88,29 +79,7 @@
                                             </div>
                                         </div>
 
-                       <div class="col m2">
-                                            <div class="form-group">
-                                                    <label>Priority </label>
-                                                <asp:DropDownList ID="ddlPriority" runat="server" placeholder=""
-                                                    ClientIDMode="Static" >
-                                                     <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
-                                                    <asp:ListItem Text="High Priority" Value="High Priority" ></asp:ListItem>
-                                                    <asp:ListItem Text="Medium Priority" Value="Medium Priority"></asp:ListItem>
-                                                    <asp:ListItem Text="Low Priority" Value="Low Priority"></asp:ListItem>
-                                                </asp:DropDownList>
-                                                
-                                            </div>
-                                        </div>
-
-                    <div class=" col m2">
-                                <div class="form-group">
-                                    <label>Work Date</label>
-                                    <asp:TextBox ID="txtWorkDate" runat="server" class="form-control" placeholder=""
-                                        ClientIDMode="Static" TextMode="Date" ></asp:TextBox>
-                                 
-
-                                </div>
-                            </div>
+                     
                     
                     </div>            
                 <br />
@@ -129,7 +98,7 @@
                             <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  CausesValidation="true" />
                         </div>
                     </div>
-                </div>--%>
+                </div>
 
                 <div class="clearfix"></div>
          
@@ -216,7 +185,7 @@
 
                                                 <asp:TemplateField HeaderText="File " HeaderStyle-CssClass="autostyle2" SortExpression="EmployeeName">
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="lnkFile" runat="server" Text='<%# Eval("FileUrl")  %>' CommandArgument='<%# Eval("FileUrl")  %>' CommandName="Download" CssClass="font-timesheet"></asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkFile" runat="server" Text='<%# Eval("FileUrl")  %>' CommandArgument='<%# Eval("FileUrl")  %>' ForeColor="LightBlue" CommandName="Download" CssClass="font-timesheet"></asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
@@ -324,6 +293,7 @@
             </asp:Panel>
             </div>
             </div>
+         </div>
         
     
 </asp:Content>

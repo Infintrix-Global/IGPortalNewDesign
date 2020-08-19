@@ -572,7 +572,7 @@ namespace IG_Portal
         protected void GridTask_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            if (e.CommandName == "Delete")
+            if (e.CommandName == "Remove")
             {
                 int tid = Convert.ToInt32(e.CommandArgument);
                 objTask.RemoveTimeSheet(tid);

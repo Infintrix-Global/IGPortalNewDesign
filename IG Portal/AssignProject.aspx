@@ -25,8 +25,8 @@
                 </div>
                 <br />
 
-                <asp:UpdatePanel ID="upEmployee" runat="server">
-                    <ContentTemplate>
+              <%--  <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>--%>
 
                         <div class="row">
                             <div class=" col m12">
@@ -108,7 +108,7 @@
 
                                              <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
-                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Delete" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete"  OnClientClick="return confirm('Are you sure you want to remove this from assigned project?');"></asp:ImageButton>
+                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Remove" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete"  OnClientClick="return confirm('Are you sure you want to remove this from assigned project?');"></asp:ImageButton>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                         </Columns>
@@ -131,8 +131,8 @@
                 </div>
 
                         <div class="clearfix"></div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                       <%-- </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                 </div>
             </div>
          </div>

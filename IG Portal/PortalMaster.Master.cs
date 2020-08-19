@@ -77,8 +77,16 @@ namespace IG_Portal
                     {
                         Client.Visible = true;
                         lblClient.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                       // SiteMapPath1.SiteMapProvider = "SiteMapConsultantWM";
-                       // SiteMapPath1.DataBind();
+                        SiteMapPath1.SiteMapProvider = "SiteMapClientWM";
+                        SiteMapPath1.DataBind();
+                    }
+
+                    else if (Session["Role"].ToString() == "9" && Session["CompanyID"].ToString() == "2")
+                    {
+                        Support.Visible = true;
+                        lblSupport.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                         SiteMapPath1.SiteMapProvider = "SiteMapSupport";
+                         SiteMapPath1.DataBind();
                     }
                 }
 

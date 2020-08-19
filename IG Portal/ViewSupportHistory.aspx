@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ViewSupportHistory.aspx.cs" Inherits="IG_Portal.ViewSupportHistory" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ViewSupportHistory.aspx.cs" Inherits="IG_Portal.ViewSupportHistory" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -9,7 +9,7 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Bug History" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <asp:Label ID="lbltitle" runat="server" Text="Support History" Font-Bold="true" Font-Size="Large"></asp:Label>
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->
@@ -54,7 +54,7 @@
 
                                                  <asp:TemplateField HeaderText="Title" HeaderStyle-CssClass="autostyle2" SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label13" runat="server" Text='<%# Eval("TaskTitle")  %>'></asp:Label>
+                                                        <asp:Label ID="Label13" runat="server" Text='<%# Eval("Title")  %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 

@@ -85,7 +85,7 @@ namespace IG_Portal
 
         protected void GridProject_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Delete")
+            if (e.CommandName == "Remove")
             {
                 int pmid = Convert.ToInt32(e.CommandArgument);
                 objTask.UnAssignProject(pmid);

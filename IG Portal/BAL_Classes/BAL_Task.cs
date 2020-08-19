@@ -1404,6 +1404,36 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataTable GetAdminDashBoardEmployeeBug()
+        {
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", DateTime.Now);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", 6);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAdminDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetAdminDashBoardEmployeeCompletedBug()
+        {
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", DateTime.Now);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", 5);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAdminDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public int AssignProject(int EmpID, string ProjectID)
         {
             int _isUpdated = -1;

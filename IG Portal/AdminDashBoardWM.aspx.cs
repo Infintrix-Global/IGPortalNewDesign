@@ -20,6 +20,8 @@ namespace IG_Portal
                 BindGridMOM();
                 BindGridOpenBugs();
                 BindGridCompletedBugs();
+                BindGridEmployeeOpenBugs();
+                BindGridEmployeeCompletedBugs();
             }
         }
 
@@ -63,6 +65,22 @@ namespace IG_Portal
             }
         }
 
+        public void BindGridEmployeeOpenBugs()
+        {
+            try
+            {
+                DataTable dtBug;
+
+                dtBug = objTask.GetAdminDashBoardEmployeeBug();
+                GridBug.DataSource = dtBug;
+                GridBug.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public void BindGridCompletedBugs()
         {
             try
@@ -70,6 +88,22 @@ namespace IG_Portal
                 DataTable dtBug;
 
                 dtBug = objTask.GetAdminDashBoardProjectCompletedBug();
+                GridCompletedBug.DataSource = dtBug;
+                GridCompletedBug.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void BindGridEmployeeCompletedBugs()
+        {
+            try
+            {
+                DataTable dtBug;
+
+                dtBug = objTask.GetAdminDashBoardEmployeeCompletedBug();
                 GridCompletedBug.DataSource = dtBug;
                 GridCompletedBug.DataBind();
             }

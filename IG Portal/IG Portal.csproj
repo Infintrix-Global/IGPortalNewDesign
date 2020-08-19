@@ -694,6 +694,7 @@
     <Content Include="Scripts\ckeditor\themes\default\theme.js" />
     <Content Include="Scripts\ckeditor\vendor\promise.js" />
     <Content Include="SLAReport.aspx" />
+    <Content Include="SupportDashBoard.aspx" />
     <Content Include="temp.aspx" />
     <Content Include="ViewAssignedTaskEmployee.aspx" />
     <Content Include="ViewBug.aspx" />
@@ -979,6 +980,13 @@
     <Compile Include="SLAReport.aspx.designer.cs">
       <DependentUpon>SLAReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SupportDashBoard.aspx.cs">
+      <DependentUpon>SupportDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupportDashBoard.aspx.designer.cs">
+      <DependentUpon>SupportDashBoard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="temp.aspx.cs">
       <DependentUpon>temp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1071,6 +1079,7 @@
     <Content Include="font\roboto\Roboto-Thin.woff" />
     <Content Include="font\roboto\Roboto-Thin.woff2" />
     <Content Include="ConsultantWM.sitemap" />
+    <Content Include="ClientWM.sitemap" />
     <None Include="packages.config" />
     <Content Include="PortalMaster.Master" />
     <Content Include="ManagerWM.sitemap">
@@ -1090,6 +1099,7 @@
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
+    <Content Include="Support.sitemap" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

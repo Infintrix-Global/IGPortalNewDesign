@@ -20,8 +20,30 @@ namespace IG_Portal
             {
                 BindSupport();
                 BindStatusMaster();
+                BindProjectMaster();
+                BindClientMaster();
             }
         }
+
+        public void BindProjectMaster()
+        {
+            ddlProjectName.DataSource = objCommon.GetProjectMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlProjectName.DataTextField = "ProjectName";
+            ddlProjectName.DataValueField = "ID";
+            ddlProjectName.DataBind();
+            ddlProjectName.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+            public void BindClientMaster()
+            {
+
+
+            ddlClient.DataSource = objCommon.GetClientMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlClient.DataTextField = "EmployeeName";
+            ddlClient.DataValueField = "ID";
+            ddlClient.DataBind();
+            ddlClient.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+        
 
         protected void GridSupport_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -36,7 +58,7 @@ namespace IG_Portal
             dtSupport = objTask.GetSupportTickets();
             GridSupport.DataSource = dtSupport;
             GridSupport.DataBind();
-            count.Text = "Number of Bugs =" + dtSupport.Rows.Count;
+            count.Text = "Number of Tickets =" + dtSupport.Rows.Count;
             ViewState["dirState"] = dtSupport;
             ViewState["sortdr"] = "Asc";
         }
@@ -48,6 +70,13 @@ namespace IG_Portal
 
             ddlppStatus.DataBind();
             ddlppStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
+            ddlStatus.DataSource = objCommon.GetSupportStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlStatus.DataTextField = "StatusName";
+            ddlStatus.DataValueField = "ID";
+
+            ddlStatus.DataBind();
+            ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         protected void GridSupport_Sorting(object sender, GridViewSortEventArgs e)
@@ -138,6 +167,65 @@ namespace IG_Portal
 
             }
             
+        }
+
+        protected void btclear_Click(object sender, EventArgs e)
+        {
+            ddlProjectName.SelectedIndex = 0;
+            ddlStatus.SelectedIndex = 0;
+            ddlClient.SelectedIndex = 0;
+        }
+
+        protected void btSearch_Click(object sender, EventArgs e)
+        {
+            DataTable dtSearch1 = new DataTable();
+            try
+            {
+                string query = "Select S.*,PM.ProjectName,L.EmployeeName as ClientName,SSM.StatusName from Support S inner join ProjectMaster PM on PM.ID=S.ProjectID inner join " +
+                    "Login L on L.ID = S.ClientID inner join SupportStatusMAster SSM on SSM.ID = S.Status" +
+                    "     where S.IsActive = 1";
+                if (ddlProjectName.SelectedIndex > 0)
+                {
+                    query += " and S.ProjectID ='" + ddlProjectName.SelectedValue + "'";
+                }
+                if (ddlClient.SelectedIndex > 0)
+                {
+                    query += " and S.ClientID ='" + ddlClient.SelectedValue + "'";
+                }
+                if (ddlStatus.SelectedIndex > 0)
+                {
+                    query += " and S.Status ='" + ddlStatus.SelectedValue + "'";
+                }
+                dtSearch1 = objTask.SearchTask(query);
+                GridFillSearch();
+
+
+                void GridFillSearch()
+                {
+                    if (dtSearch1 != null)
+                    {
+                        //DataTable dtSearch = dtSearch1.CopyToDataTable();
+                        GridSupport.DataSource = dtSearch1;
+                        GridSupport.DataBind();
+                        count.Text = "Number of Tickets= " + (dtSearch1.Rows.Count).ToString();
+                    }
+                    else
+                    {
+                        DataTable dt = new DataTable();
+                        GridSupport.DataSource = dt;
+                        GridSupport.DataBind();
+                        count.Text = "Number of Tickets= 0";
+                    }
+                    ViewState["dirState"] = dtSearch1;
+                    ViewState["sortdr"] = "Asc";
+
+
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

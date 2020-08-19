@@ -97,6 +97,13 @@ namespace IG_Portal
                         Response.Redirect("~/ClientDashBoard.aspx");
 
                     }
+                    /*support */
+                    else if (_dtLogin.Rows[0]["Role"].ToString() == "9" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/SupportDashBoard.aspx");
+
+                    }
                 }
                 else
                 {

@@ -982,6 +982,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetClientMaster(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 19);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetLoginMaster(int companyID)
         {
             try

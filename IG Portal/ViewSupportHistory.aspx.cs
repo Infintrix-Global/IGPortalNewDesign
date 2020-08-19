@@ -29,7 +29,7 @@ namespace IG_Portal
         {
             DataTable dtSupportHistory;
 
-            dtSupportHistory = objTask.GetBugHistroy(supportID);
+            dtSupportHistory = objTask.GetSupportHistroy(supportID);
             GridSupport.DataSource = dtSupportHistory;
             GridSupport.DataBind();
             count.Text = "Number of Records =" + dtSupportHistory.Rows.Count;
@@ -55,7 +55,7 @@ namespace IG_Portal
                 Response.ClearHeaders();
                 Response.Charset = "";
 
-                FileName = "BugHistory-" + DateTime.Now + ".xls";
+                FileName = "SupportHistory-" + DateTime.Now + ".xls";
 
                 using (StringWriter sw = new StringWriter())
                 {
