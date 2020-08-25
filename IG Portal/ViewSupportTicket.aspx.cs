@@ -18,10 +18,11 @@ namespace IG_Portal
 
             if(!IsPostBack)
             {
-                BindSupport();
+              
                 BindStatusMaster();
                 BindProjectMaster();
                 BindClientMaster();
+                CheckRole();
             }
         }
 
@@ -33,7 +34,7 @@ namespace IG_Portal
             ddlProjectName.DataBind();
             ddlProjectName.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
-            public void BindClientMaster()
+        public void BindClientMaster()
             {
 
 
@@ -43,12 +44,36 @@ namespace IG_Portal
             ddlClient.DataBind();
             ddlClient.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
-        
 
+        public void CheckRole()
+        {
+            //DataTable AllData = objTask.GetEmployeeByID(Convert.ToInt32(Session["LoginID"].ToString()));
+            if (Session["Role"] is null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 16);
+                if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
+                {
+                      ddlClient.Enabled = true;
+                    BindSupport();
+                    
+                }
+                else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
+                {
+                    ddlClient.SelectedValue = Session["LoginID"].ToString();
+                    ddlClient.Enabled = false;
+                    BindSupportClient();
+                }
+
+            }
+        }
         protected void GridSupport_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridSupport.PageIndex = e.NewPageIndex;
-            BindSupport();
+            btSearch_Click(sender, e);
         }
 
         public void BindSupport()
@@ -62,6 +87,19 @@ namespace IG_Portal
             ViewState["dirState"] = dtSupport;
             ViewState["sortdr"] = "Asc";
         }
+
+        public void BindSupportClient()
+        {
+            DataTable dtSupport;
+
+            dtSupport = objTask.GetSupportTicketsByClient(ddlClient.SelectedValue);
+            GridSupport.DataSource = dtSupport;
+            GridSupport.DataBind();
+            count.Text = "Number of Tickets =" + dtSupport.Rows.Count;
+            ViewState["dirState"] = dtSupport;
+            ViewState["sortdr"] = "Asc";
+        }
+
         public void BindStatusMaster()
         {
             ddlppStatus.DataSource = objCommon.GetSupportStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
@@ -114,7 +152,7 @@ namespace IG_Portal
                 lblMessage.Text = "Support Comment Added ";
 
                 lblMessage.ForeColor = System.Drawing.Color.Green;
-
+                BindSupport();
                 Clear();
 
             }
@@ -174,6 +212,7 @@ namespace IG_Portal
             ddlProjectName.SelectedIndex = 0;
             ddlStatus.SelectedIndex = 0;
             ddlClient.SelectedIndex = 0;
+            CheckRole();
         }
 
         protected void btSearch_Click(object sender, EventArgs e)

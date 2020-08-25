@@ -807,6 +807,23 @@ namespace IG_Portal.BAL_Classes
 
         }
 
+        public DataTable GetSupportTicketsByClient(string ClientID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@ClientID", ClientID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetSupportTicketsByClients");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
         public int AddSupportComment(string comment, string status, string supportid,string LoginID)
         {
             int _isInserted = -1;

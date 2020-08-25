@@ -583,7 +583,8 @@ namespace IG_Portal
             {
                 int tid = Convert.ToInt32(e.CommandArgument);
                 Session["TimeSheetID"] = tid.ToString();// Convert.ToInt32(((Label)row.FindControl("lblTID")).Text);
-                Response.Redirect("~/AddTimeSheet.aspx");
+                Response.Redirect("~/AddTimeSheet.aspx?TimeSheetID=" + objcommon.Encrypt(Session["TimeSheetID"].ToString()));
+                //Response.Redirect("~/AddTimeSheet.aspx");
             }
         }
 

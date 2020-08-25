@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -24,9 +25,35 @@ namespace IG_Portal
                 BindBugStatusMaster();
                 CheckRole();
                 //BindDeveloperMaster();
-                
+                BindSearch();
+                btSearch_Click(sender, e);
             }
             lblMessage.Text = "";
+        }
+
+        public void BindSearch()
+        {
+
+            string pid = Session["TSBProjectID"] as String;
+            string sid = Session["TSBStatusID"] as String;
+            string prid = Session["TSBPriorityID"] as String;
+            string tid = Session["TSBTaskID"] as String;
+            if (!string.IsNullOrEmpty(pid))
+            {
+                ddlProjectName.SelectedValue = Session["TSBProjectID"].ToString();
+            }
+            if (!string.IsNullOrEmpty(sid))
+            {
+                ddlStatus.SelectedValue = Session["TSBStatusID"].ToString();
+            }
+            if (!string.IsNullOrEmpty(prid))
+            {
+                ddlPriority.SelectedValue = Session["TSBPriorityID"].ToString();
+            }
+            if (!string.IsNullOrEmpty(tid))
+            {
+                ddlTaskType.SelectedValue = Session["TSBTaskID"].ToString();
+            }
         }
 
         public void CheckRole()
@@ -411,7 +438,20 @@ namespace IG_Portal
             {
                 int bid = Convert.ToInt32(e.CommandArgument);
                 Session["AddTSBugID"] = bid.ToString();
-                Response.Redirect("~/AddTimeSheet.aspx");
+                Session["TSBProjectID"] = ddlProjectName.SelectedValue;
+                Session["TSBStatusID"] = ddlStatus.SelectedValue;
+                Session["TSBPriorityID"] = ddlPriority.SelectedValue;
+                Session["TSBTaskID"] = ddlTaskType.SelectedValue;
+                //string url = "~/AddTimeSheet.aspx?AddTSBugID=" + objCommon.Encrypt(Session["AddTSBugID"].ToString());
+                //StringBuilder sb = new StringBuilder();
+                //sb.Append("<script type = 'text/javascript'>");
+                //sb.Append("window.open('");
+                //sb.Append(url);
+                //sb.Append("');");
+                //sb.Append("</script>");
+                //ClientScript.RegisterStartupScript(this.GetType(),
+                //        "script", sb.ToString());
+               Response.Redirect("~/AddTimeSheet.aspx?AddTSBugID=" + objCommon.Encrypt(Session["AddTSBugID"].ToString()));
             }
             //}
             //catch(Exception ex)

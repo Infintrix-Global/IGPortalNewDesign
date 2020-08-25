@@ -20,9 +20,29 @@ namespace IG_Portal
                 BindProjectMaster();
                
                 BindGridAssignTask();
+                BindSearch();
+                btSearch_Click(sender, e);
+
 
             }
             lblmsg.Text = "";
+        }
+
+        public void BindSearch()
+        {
+
+            string pid = Session["TSTProjectID"] as String;
+            string sid = Session["TSTStatusID"] as String;
+          
+            if (!string.IsNullOrEmpty(pid))
+            {
+                ddlProjectName.SelectedValue = Session["TSTProjectID"].ToString();
+            }
+            if (!string.IsNullOrEmpty(sid))
+            {
+                ddlStatus.SelectedValue = Session["TSTStatusID"].ToString();
+            }
+          
         }
 
         public void BindProjectMaster()
@@ -86,8 +106,11 @@ namespace IG_Portal
             if (e.CommandName == "AddTS")
             {
                 int bid = Convert.ToInt32(e.CommandArgument);
+                Session["TSTProjectID"] = ddlProjectName.SelectedValue;
+                Session["TSTStatusID"] = ddlStatus.SelectedValue;
                 Session["AddTSTaskID"] = bid.ToString();
-                Response.Redirect("~/AddTimeSheet.aspx");
+                Response.Redirect("~/AddTimeSheet.aspx?AddTSTaskID=" + objcommon.Encrypt(Session["AddTSTaskID"].ToString()));
+                //Response.Redirect("~/AddTimeSheet.aspx");
             }
         }
 
@@ -149,7 +172,7 @@ namespace IG_Portal
                     strQuery += " and TS.Status  in (3,6) ";
                 }
 
-                strQuery1 = " order by[Priority] asc";
+                strQuery1 = " order by [Priority] asc";
 
                  strQueryfinal = strQuery + strQuery1;
                 dtSearch1 = objTask.SearchBug(strQueryfinal);

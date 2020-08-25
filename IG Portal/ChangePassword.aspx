@@ -95,7 +95,7 @@
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtConfirmpass" ValidationGroup="p"
                                 SetFocusOnError="true" ErrorMessage="Please ReEnter Password" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="txtConfirmpass" ControlToCompare="txtPassword" ValidationGroup="p" SetFocusOnError="true" ErrorMessage="Enter Same Passsword" ForeColor="Red"></asp:CompareValidator>
+                            <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="txtConfirmpass" ControlToCompare="txtPassword" ValidationGroup="p" SetFocusOnError="true" ErrorMessage="Please Enter the same Password" ForeColor="Red"></asp:CompareValidator>
                         </div>
 
                     </div>

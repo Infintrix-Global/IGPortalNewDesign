@@ -122,8 +122,8 @@
                                     <br />
                                 <div class="portlet-body">
                                      <asp:Panel ID="panel1" runat="server" Height="100%" Width="100%" ScrollBars="Both">
-                                          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                        <ContentTemplate>
+                                         <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>--%>
                                     <div class="table-scrollable">
                                         <asp:GridView ID="GridSupport" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                                             class="striped" AllowSorting="true" OnPageIndexChanging="GridSupport_PageIndexChanging"
@@ -202,7 +202,7 @@
 
                                                 <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                         <ItemTemplate>
-                                                            <asp:Button ID="btnComment" runat="server" class="btn blue" Text="Comment" OnClientClick="return GetCommentConfirmation();"   CommandArgument='<%#Container.DataItemIndex %>' CommandName="Comment"></asp:Button>
+                                                            <asp:Button ID="btnComment" runat="server" class="btn blue" Text="Comment"    CommandArgument='<%#Container.DataItemIndex %>' CommandName="Comment"></asp:Button>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                             
@@ -222,8 +222,8 @@
 
 
                                     </div>
-                                            </ContentTemplate>
-                                              </asp:UpdatePanel>
+                                         <%--   </ContentTemplate>
+                                              </asp:UpdatePanel>--%>
                                          </asp:Panel>
                                 </div>
 

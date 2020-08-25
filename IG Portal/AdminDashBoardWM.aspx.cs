@@ -72,8 +72,8 @@ namespace IG_Portal
                 DataTable dtBug;
 
                 dtBug = objTask.GetAdminDashBoardEmployeeBug();
-                GridBug.DataSource = dtBug;
-                GridBug.DataBind();
+                GridEmployeeBugs.DataSource = dtBug;
+                GridEmployeeBugs.DataBind();
             }
             catch (Exception ex)
             {
@@ -104,8 +104,8 @@ namespace IG_Portal
                 DataTable dtBug;
 
                 dtBug = objTask.GetAdminDashBoardEmployeeCompletedBug();
-                GridCompletedBug.DataSource = dtBug;
-                GridCompletedBug.DataBind();
+                GridEmployeeCompletedBugs.DataSource = dtBug;
+                GridEmployeeCompletedBugs.DataBind();
             }
             catch (Exception ex)
             {

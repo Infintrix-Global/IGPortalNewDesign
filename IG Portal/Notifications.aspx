@@ -64,7 +64,7 @@
             }
         }
 
-        function GetReopenConfirmation() {
+        function GetReopenTaskConfirmation() {
             var reply = confirm("Do you really want to REOPEN this task?");
             if (reply) {
                 return true;

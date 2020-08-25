@@ -30,7 +30,18 @@ namespace IG_Portal
             rgvStartDate.MaximumValue = DateTime.Now.ToString("yyyy-MM-dd");
             if (!IsPostBack)
             {
-
+                if (Request.QueryString["AddTSBugID"] != null)
+                { 
+                    Session["AddTSBugID"] = objcommon.Decrypt(Request.QueryString["AddTSBugID"]);
+            }
+                if (Request.QueryString["AddTSTaskID"] != null)
+                {
+                    Session["AddTSTaskID"] = objcommon.Decrypt(Request.QueryString["AddTSTaskID"]);
+                }
+                if (Request.QueryString["TimeSheetID"] != null)
+                {
+                    Session["TimeSheetID"] = objcommon.Decrypt(Request.QueryString["TimeSheetID"]);
+                }
                 BindProjectMaster();
                 BindTaskMaster();
                 BindTaskCategory();
@@ -265,13 +276,29 @@ namespace IG_Portal
                         if((objTimeSheetDetails.AssignedTaskID!="0") && (ddlStatus.SelectedValue=="3" ) && (ddlTaskCategory.SelectedValue=="1"))
                         {
                             objcommon.SendMailTaskCompleted(objTimeSheetDetails.AssignedTaskID);
+                            
                         }
                         if((ddlStatus.SelectedValue == "3") && (ddlTaskCategory.SelectedValue == "2"))
                         {
                             objcommon.SendMailBugSolved(Convert.ToInt32(objTimeSheetDetails.TaskTitle));
+                            
                         }
-                            Clear();
-
+                        Clear();
+                        if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
+                        {
+                            if (Request.QueryString["AddTSBugID"] != null)
+                            {
+                                Response.Redirect("~/ViewBug.aspx");
+                            }
+                            if (Request.QueryString["AddTSTaskID"] != null)
+                            {
+                                Response.Redirect("~/ViewAssignedTaskEmployee.aspx");
+                            }
+                          
+                        }
+                        Response.Redirect("~/AddTimeSheet.aspx");
+                        
+                       
 
                     }
                 }
@@ -294,6 +321,8 @@ namespace IG_Portal
 
                     }
                 }
+
+               
             }
 
             catch (Exception ex)
@@ -318,6 +347,7 @@ namespace IG_Portal
             txtComment.Text = "";
             ddlTaskCategory.SelectedIndex = 0;
             requiredtxttitle.Enabled = true;
+            
             //Calendar1.SelectedDates.Clear();
         }
 

@@ -98,7 +98,9 @@
          function GetAddTSConfirmation() {
              var reply = confirm("Are You Sure you want to add this bug in TimeSheet?");
              if (reply) {
+                 target = '_blank';
                  return true;
+
              }
              else {
                  return false;
@@ -370,10 +372,10 @@
 
                                                 <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
-                                                                    <asp:LinkButton ID="lnkAddTS" runat="server" CommandArgument='<%# Eval("ID")  %>' Text="Add TS" CommandName="AddTS"  Visible="false" OnClientClick="return GetAddTSConfirmation();" ></asp:LinkButton>
+                                                                    <asp:LinkButton ID="lnkAddTS" runat="server" CommandArgument='<%# Eval("ID")  %>' Text="Add TS" CommandName="AddTS"  Visible="false" OnClientClick="return GetAddTSConfirmation();"  ></asp:LinkButton>
                                                                 </ItemTemplate>
-                                                            </asp:TemplateField>
-
+                                                            </asp:TemplateField> 
+                                              
                                             </Columns>
 
                                             <PagerStyle CssClass="paging" HorizontalAlign="Right" />
