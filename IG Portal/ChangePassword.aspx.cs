@@ -63,11 +63,11 @@ namespace IG_Portal
             {
                 dPassword.Visible = true;
                 dOldPass.Visible = false;
-                lblOldPass.Text = "";
+                lblVPass.Text = "";
             }
             else
             {
-                lblOldPass.Text = "Wrong Password";
+                lblVPass.Text = "Wrong Password";
             }
         }
     }

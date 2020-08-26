@@ -413,6 +413,7 @@ namespace IG_Portal
             if (ddlMeetingType.SelectedValue != "0")
             {
                 addMOM.Visible = true;
+                lblMtype.Text = ddlMeetingType.SelectedItem.Text;
                 meetingType.Visible = false;
                 if (ddlMeetingType.SelectedValue == "1")
                 {

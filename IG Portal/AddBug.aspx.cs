@@ -41,6 +41,7 @@ namespace IG_Portal
                     {
                         BindInitialStatusMaster();
                         Clear();
+                        ddlStatus.SelectedValue = "1";
                     }
                     else
                     {
@@ -132,7 +133,7 @@ namespace IG_Portal
             ddlStatus.DataValueField = "ID";
             ddlStatus.DataBind();
             ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
-            ddlStatus.SelectedValue = "1";
+          
         }
 
         protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)

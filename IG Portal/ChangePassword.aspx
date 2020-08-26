@@ -92,10 +92,10 @@
                         </div>
                         <div class="col m4">
                             <asp:TextBox ID="txtConfirmpass" TextMode="Password" placeholder="" runat="server" TabIndex="2"></asp:TextBox>
-
+                               <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="txtConfirmpass" ControlToCompare="txtPassword" ValidationGroup="p" SetFocusOnError="true" ErrorMessage="Please Enter the same Password" ForeColor="Red"></asp:CompareValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtConfirmpass" ValidationGroup="p"
                                 SetFocusOnError="true" ErrorMessage="Please ReEnter Password" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="txtConfirmpass" ControlToCompare="txtPassword" ValidationGroup="p" SetFocusOnError="true" ErrorMessage="Please Enter the same Password" ForeColor="Red"></asp:CompareValidator>
+                         
                         </div>
 
                     </div>

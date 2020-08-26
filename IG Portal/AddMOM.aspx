@@ -156,6 +156,7 @@
                 </div>
 
                 <div id="addMOM" runat="server" visible="false">
+                    <asp:Label ID="lblMtype" runat="server" Font-Bold="true" Font-Size="Large" ></asp:Label>
                     <asp:Label ID="lblmsg" runat="server"></asp:Label>
                     <div class="row">
                         <div class="col m3">
