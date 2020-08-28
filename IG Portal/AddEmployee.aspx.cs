@@ -45,45 +45,53 @@ namespace IG_Portal
         {
             try
             {
-                int _isInserted = -1;
-                Employee objEmployee = new Employee()
+                DataTable dtCheckEmail = new DataTable();
+                if ((dtCheckEmail = objCommon.CheckEmailExists(txtEmail.Text.Trim())).Rows.Count == 0)
                 {
-                    CompanyID = Convert.ToInt32(Session["CompanyID"].ToString()),
-                    Name = txtName.Text,
-                    EmployeeCode = txtEmpCode.Text,
-                    Mobile = txtMobile.Text,
-                    Password = objCommon.Encrypt("12345"),
-                    Email = txtEmail.Text,
-                    Role = ddlRole.SelectedValue,
-                    DOB = txtDOB.Text,
-                    JoinDate = txtJoinDate.Text,
-                    Address = txtAddress.Text,
-                    Manager = ddlManager.SelectedValue
-                };
+                    int _isInserted = -1;
+                    Employee objEmployee = new Employee()
+                    {
+                        CompanyID = Convert.ToInt32(Session["CompanyID"].ToString()),
+                        Name = txtName.Text,
+                        EmployeeCode = txtEmpCode.Text,
+                        Mobile = txtMobile.Text,
+                        Password = objCommon.Encrypt("12345"),
+                        Email = txtEmail.Text,
+                        Role = ddlRole.SelectedValue,
+                        DOB = txtDOB.Text,
+                        JoinDate = txtJoinDate.Text,
+                        Address = txtAddress.Text,
+                        Manager = ddlManager.SelectedValue
+                    };
 
-                _isInserted = objCommon.AddEmployee(objEmployee);
+                    _isInserted = objCommon.AddEmployee(objEmployee);
 
-                if (_isInserted == -1)
-                {
+                    if (_isInserted == -1)
+                    {
 
-                    lblmsg.Text = "Failed to Add Employee";
-                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                        lblmsg.Text = "Failed to Add Employee";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
 
-                }
-                else if (_isInserted == 0)
-                {
+                    }
+                    else if (_isInserted == 0)
+                    {
 
-                    lblmsg.Text = "Employee Exists";
-                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                        lblmsg.Text = "Employee Exists";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+
+                        lblmsg.Text = "Employee Added ";
+                        lblmsg.ForeColor = System.Drawing.Color.Green;
+                        objCommon.SendMail(txtEmail.Text.Trim(), txtMobile.Text.Trim(), "12345");
+                        GetEmployeeList();
+                        btclear_Click(sender, e);
+                    }
                 }
                 else
                 {
-
-                    lblmsg.Text = "Employee Added ";
-                    lblmsg.ForeColor = System.Drawing.Color.Green;
-                    objCommon.SendMail(txtEmail.Text.Trim(), txtMobile.Text.Trim(), "12345");
-                    GetEmployeeList();
-                    btclear_Click(sender, e);
+                    lblStatus.Text = "Email already exists.Use Another Email ID";
                 }
             }
             catch (Exception ex)
@@ -103,6 +111,7 @@ namespace IG_Portal
             txtJoinDate.Text = "";
             txtEmpCode.Text = "";
             txtEmail.Text = "";
+            lblStatus.Text = "";
         }
 
         public void GetEmployeeList()

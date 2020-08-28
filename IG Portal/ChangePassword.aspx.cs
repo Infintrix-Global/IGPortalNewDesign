@@ -67,7 +67,7 @@ namespace IG_Portal
             }
             else
             {
-                lblVPass.Text = "Wrong Password";
+                lblVPass.Text = "Your Old Password is not correct.Please enter coreect password";
             }
         }
     }

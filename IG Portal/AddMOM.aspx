@@ -24,6 +24,10 @@
         
 
      <style type="text/css">
+         .pnlpoint{
+             margin:10px;
+
+         }
         .modalBackground {
             background-color: Black;
             filter: alpha(opacity=40);
@@ -297,7 +301,7 @@
                         </div>
                          </div>
                     <br />
-                 <asp:Panel ID="PanelPoints"  runat="server" BorderStyle="Solid" BorderColor="Black">
+                 <asp:Panel ID="PanelPoints"  runat="server" BorderStyle="Solid" BorderColor="Black"  CssClass="pnlpoint">
                      <br />
                     <div class="row">
 
@@ -340,6 +344,7 @@
                                             <div class="clearfix"></div>
 
                                             <div class="clearfix"></div>
+                        <asp:Panel ID="pnlPoints" runat="server" CssClass="pnlpoint">
                                             <asp:GridView runat="server" ID="GridMeetingPoint" AutoGenerateColumns="false" class="Grid1" AllowPaging="true" 
                                                 GridLines="None" CaptionAlign="NotSet" Width="801px" ForeColor="Black"
                                                 OnRowDeleting="GridMeetingPoint_RowDeleting" OnRowDataBound="GridMeetingPoint_RowDataBound">
@@ -370,6 +375,7 @@
 
                                                 </Columns>
                                             </asp:GridView>
+                            </asp:Panel>
                     </div>
                     </asp:Panel>
                     <br />
