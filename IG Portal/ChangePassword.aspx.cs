@@ -46,6 +46,7 @@ namespace IG_Portal
                 lblCPass.Text = "Password Successfully Changed";
                 txtPassword.Text = "";
                 txtConfirmpass.Text = "";
+                
             }
             else
             {
@@ -70,5 +71,7 @@ namespace IG_Portal
                 lblVPass.Text = "Your Old Password is not correct.Please enter coreect password";
             }
         }
+
+       
     }
 }

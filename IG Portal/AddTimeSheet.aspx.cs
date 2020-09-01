@@ -22,6 +22,7 @@ namespace IG_Portal
             Session["TimeSheetID"] = null;
             Session["AddTSBugID"] = null;
             Session["AddTSTaskID"] = null;
+           
         }
         protected void Page_Load(object sender, EventArgs e)
         {

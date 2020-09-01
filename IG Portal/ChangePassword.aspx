@@ -68,9 +68,9 @@
 
                 </div>
 
-
+               
                 <div id="dPassword" runat="server" visible="false">
-                    <asp:Label ID="lblCPass" runat="server" ></asp:Label>
+                   <asp:Label ID="lblCPass" runat="server" ></asp:Label>
                     <div class="row">
                         <div class="col m5" align="right">
                             <asp:Label ID="lblNewPass" runat="server" Text="New Password "></asp:Label>
@@ -113,6 +113,8 @@
                     </div>
 
                 </div>
+
+               
 
             </div>
         </div>

@@ -38,6 +38,7 @@ namespace IG_Portal
             string sid = Session["TSBStatusID"] as String;
             string prid = Session["TSBPriorityID"] as String;
             string tid = Session["TSBTaskID"] as String;
+            string pageid = Session["TSBPageNumber"] as String;
             if (!string.IsNullOrEmpty(pid))
             {
                 ddlProjectName.SelectedValue = Session["TSBProjectID"].ToString();
@@ -53,6 +54,10 @@ namespace IG_Portal
             if (!string.IsNullOrEmpty(tid))
             {
                 ddlTaskType.SelectedValue = Session["TSBTaskID"].ToString();
+            }
+            if(!string.IsNullOrEmpty(pageid))
+            {
+                GridBug.PageIndex= Convert.ToInt32(Session["TSBPageNumber"]);
             }
         }
 
@@ -186,6 +191,7 @@ namespace IG_Portal
         protected void GridBug_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridBug.PageIndex = e.NewPageIndex;
+            Session["TSBPageNumber"] = e.NewPageIndex;
             btSearch_Click(sender, e);
         }
 
@@ -442,6 +448,7 @@ namespace IG_Portal
                 Session["TSBStatusID"] = ddlStatus.SelectedValue;
                 Session["TSBPriorityID"] = ddlPriority.SelectedValue;
                 Session["TSBTaskID"] = ddlTaskType.SelectedValue;
+               
                 //string url = "~/AddTimeSheet.aspx?AddTSBugID=" + objCommon.Encrypt(Session["AddTSBugID"].ToString());
                 //StringBuilder sb = new StringBuilder();
                 //sb.Append("<script type = 'text/javascript'>");

@@ -25,6 +25,8 @@ namespace IG_Portal
                 lblCPass.Text = "Password Successfully Changed";
                 txtPassword.Text = "";
                 txtConfirmpass.Text = "";
+                dPassword.Visible = false;
+                LPage.Visible = true;
             }
             else
             {

@@ -216,7 +216,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:TextBox ID="txtEndTime" runat="server" class="form-control" TabIndex="8" TextMode="Time" Format="hh:mm tt" ></asp:TextBox>
-                                                <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please enter end time after the start time"
+                                                <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="End Time should be greater than Start Time"
                                                     ForeColor="Red" ControlToValidate="txtEndTime" Display="Dynamic" ClientValidationFunction="DateTimeValidation" ValidationGroup="at"></asp:CustomValidator>
                                                 <asp:RequiredFieldValidator ID="requiredEndTime" runat="server" ControlToValidate="txtEndTime" ErrorMessage="Please Enter End Time " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>

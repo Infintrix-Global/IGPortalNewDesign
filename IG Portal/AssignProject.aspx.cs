@@ -64,6 +64,7 @@ namespace IG_Portal
                    
                 }
             }
+            BindGridProject();
         }
 
         protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)

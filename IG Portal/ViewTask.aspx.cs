@@ -594,7 +594,7 @@ namespace IG_Portal
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    if (((Label)e.Row.FindControl("lblLoginID")).Text == Session["LoginID"].ToString() && ((Convert.ToDateTime(((Label)e.Row.FindControl("lblWorkDate")).Text) <= DateTime.Now) && (Convert.ToDateTime(((Label)e.Row.FindControl("lblWorkDate")).Text) >= DateTime.Now.AddDays(-3))))
+                    if (((Label)e.Row.FindControl("lblLoginID")).Text == Session["LoginID"].ToString() && ((Convert.ToDateTime(((Label)e.Row.FindControl("lblWorkDate")).Text) <= DateTime.Now) && (Convert.ToDateTime(((Label)e.Row.FindControl("lblWorkDate")).Text) >= DateTime.Now.AddDays(-4))))
                     {
                         ((ImageButton)e.Row.FindControl("imgDelete")).Visible = true;
                         ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = true;

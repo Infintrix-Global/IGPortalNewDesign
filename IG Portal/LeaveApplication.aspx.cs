@@ -13,6 +13,9 @@ namespace IG_Portal
     {
         clsCommonMasters objCommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
+
+        public static DataTable dtDate = new DataTable()
+        { Columns = { "Date" } };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -66,7 +69,7 @@ namespace IG_Portal
                     Reason = txtReason.Text,
                     Status = "1",
                     LeaveType = ddlLeaveType.SelectedValue,
-                    Days = (Convert.ToInt32(ts.Days)).ToString()
+                    Days = GridLeaveDay.Rows.Count.ToString()
 
                 };
 
@@ -79,11 +82,18 @@ namespace IG_Portal
                 }
                 else
                 {
-
+                    for (int i = 0; i < GridLeaveDay.Rows.Count; i++)
+                    {
+                        string x=((RadioButtonList)GridLeaveDay.Rows[0].FindControl("radLeave")).SelectedValue;
+                    }
+                    objTask.AddLeaveDetails(GridLeaveDay,_isInserted);
                     lblMessage.Text = "Leave Added";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
                  //   objCommon.SendMailLeaveApplication( objLeaveApplication);
                     BindGridLeave();
+                    AddNew.Visible = true;
+                    LeaveNumbers.Visible = true;
+                    newLeave.Visible = false;
                 }
 
             }
@@ -147,6 +157,83 @@ namespace IG_Portal
                 }
                 GridLeave.DataSource = dtrslt;
                 GridLeave.DataBind();
+            }
+        }
+
+        protected void btnDetails_Click(object sender, EventArgs e)
+        {
+            dtDate.Clear();
+            for (DateTime date = Convert.ToDateTime(txtFromDate.Text); date <= Convert.ToDateTime(txtToDate.Text); date = date.AddDays(1))
+            {
+                if ((date.DayOfWeek != DayOfWeek.Saturday) && (date.DayOfWeek != DayOfWeek.Sunday))
+                {
+                    dtDate.Rows.Add(date.ToShortDateString());
+                }
+            }
+
+
+            GridLeaveDay.DataSource = dtDate;
+            GridLeaveDay.DataBind();
+            divDetails.Visible = true;
+            
+        }
+
+      
+        protected void btnAddNew_Click(object sender, EventArgs e)
+        {
+            AddNew.Visible = false;
+            LeaveNumbers.Visible = false;
+            newLeave.Visible = true;
+        }
+
+        protected void radLeave_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridLeave_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                int vid = Convert.ToInt32(GridLeave.DataKeys[e.Row.RowIndex].Value.ToString());
+                GridView gvDetails = e.Row.FindControl("gvmp") as GridView;
+                gvDetails.DataSource = objTask.GetLeaveDateDetailsByLeaveID(vid);
+                gvDetails.DataBind();
+
+
+            }
+        }
+
+        protected void gvmp_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string vid = (e.Row.FindControl("lblApproved") as Label).Text;
+                string uid = (e.Row.FindControl("lblApplied") as Label).Text;
+                if(uid =="1.00")
+                {
+                    (e.Row.FindControl("lblAppliedLeave") as Label).Text= "Full Day";
+                }
+                else if(uid =="0.50")
+                {
+                    (e.Row.FindControl("lblAppliedLeave") as Label).Text = "Half Day";
+                }
+
+
+                if (vid == "1.00")
+                {
+                    (e.Row.FindControl("lblApprovedLeave") as Label).Text = "Full Day";
+                }
+                else if (vid == "0.50")
+                {
+                    (e.Row.FindControl("lblApprovedLeave") as Label).Text = "Half Day";
+                }
+                else if (vid == "")
+                {
+                    (e.Row.FindControl("lblApprovedLeave") as Label).Text = "Pending Approval";
+                }
+
             }
         }
     }

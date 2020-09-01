@@ -110,9 +110,9 @@
                     </div>
 
                 </div>
-
+                 <asp:Label ID="lblCPass" runat="server"></asp:Label>
                 <div id="dPassword" runat="server" visible="false">
-                    <asp:Label ID="lblCPass" runat="server"></asp:Label>
+                   
                     <div class="row margin">
                         <div class="input-field col s12">
                             <asp:TextBox ID="txtPassword" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
@@ -139,15 +139,19 @@
 
                             <asp:Button ID="btnchanngepass" OnClick="btnchanngepass_Click" class="btn" runat="server" Text="Change Password" ForeColor="White" />
                         </div>
-                        <div class="input-field col s12 m12 l12">
+                       
+
+
+                    </div>
+
+                </div>
+
+                <div id="LPage" runat="server" visible="false">
+                     <div class="input-field col s12 m12 l12">
                             <p class="margin medium-small">
                                 <asp:HyperLink runat="server" ID="HyperLink2" NavigateUrl="~/Login.aspx" Text="Go To Login Page" ForeColor="#e79497" Font-Bold="true"></asp:HyperLink>
                             </p>
                         </div>
-
-
-
-                    </div>
 
                 </div>
             </form>

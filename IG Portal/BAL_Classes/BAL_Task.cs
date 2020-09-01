@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace IG_Portal.BAL_Classes
 {
@@ -599,7 +600,7 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@ApplicationDate", Convert.ToDateTime(objLeaveApplication.ApplicationDate));
                 objGeneral.AddParameterWithValueToSQLCommand("@Days", objLeaveApplication.Days);
 
-                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddLeave");
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddLeave");
 
             }
 
@@ -608,6 +609,51 @@ namespace IG_Portal.BAL_Classes
                // General.ErrorMessage(ex.StackTrace + ex.Message);
             }
             return _isInserted;
+        }
+
+        public int AddLeaveDetails(GridView dt, int LeaveID)
+
+        {
+            int _isInserted = -1;
+            try
+            {
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    // SqlCommand com = new SqlCommand("INSERT INTO Material(Visitorid,MaterialType,MaterialNo,VisitingCategory) VALUES(@vid,@mtype,@mno,@vcid));
+                    objGeneral.ClearParameters();
+                    objGeneral.AddParameterWithValueToSQLCommand("@LeaveID", LeaveID);
+
+                    objGeneral.AddParameterWithValueToSQLCommand("@Date", ((Label)dt.Rows[i].FindControl("lblDate")).Text);
+                    objGeneral.AddParameterWithValueToSQLCommand("@AppliedLeave", ((RadioButtonList)dt.Rows[i].FindControl("radLeave")).SelectedValue);
+                    
+                    _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddLeaveDetails");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+
+
+        }
+
+        public DataTable GetLeaveDateDetailsByLeaveID(int lid)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LeaveID", lid);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetLeaveDateDetailsByLeaveID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
         }
 
         public DataTable GetEmployeeByID(int eid)
