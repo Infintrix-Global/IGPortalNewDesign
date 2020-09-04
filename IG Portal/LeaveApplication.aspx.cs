@@ -84,7 +84,7 @@ namespace IG_Portal
                 {
                     for (int i = 0; i < GridLeaveDay.Rows.Count; i++)
                     {
-                        string x=((RadioButtonList)GridLeaveDay.Rows[0].FindControl("radLeave")).SelectedValue;
+                        string x=((RadioButtonList)GridLeaveDay.Rows[i].FindControl("radLeave")).SelectedValue;
                     }
                     objTask.AddLeaveDetails(GridLeaveDay,_isInserted);
                     lblMessage.Text = "Leave Added";
@@ -228,6 +228,10 @@ namespace IG_Portal
                 else if (vid == "0.50")
                 {
                     (e.Row.FindControl("lblApprovedLeave") as Label).Text = "Half Day";
+                }
+                else if (vid == "0.00")
+                {
+                    (e.Row.FindControl("lblApprovedLeave") as Label).Text = "Rejected";
                 }
                 else if (vid == "")
                 {

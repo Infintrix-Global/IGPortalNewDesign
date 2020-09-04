@@ -96,6 +96,7 @@
     <Content Include="EmployeeDocuments.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
     <Content Include="js\BsMultiSelect.js" />
+    <Content Include="LeaveApprovalHR.aspx" />
     <Content Include="ManagerDashBoardWM.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="css\custom\custom.min.css" />
@@ -821,6 +822,13 @@
     <Compile Include="EmployeeWiseReport.aspx.designer.cs">
       <DependentUpon>EmployeeWiseReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LeaveApprovalHR.aspx.cs">
+      <DependentUpon>LeaveApprovalHR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LeaveApprovalHR.aspx.designer.cs">
+      <DependentUpon>LeaveApprovalHR.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerDashBoardWM.aspx.cs">
       <DependentUpon>ManagerDashBoardWM.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1080,6 +1088,7 @@
     <Content Include="font\roboto\Roboto-Thin.woff2" />
     <Content Include="ConsultantWM.sitemap" />
     <Content Include="ClientWM.sitemap" />
+    <Content Include="HR.sitemap" />
     <None Include="packages.config" />
     <Content Include="PortalMaster.Master" />
     <Content Include="ManagerWM.sitemap">

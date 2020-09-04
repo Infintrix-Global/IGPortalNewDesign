@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using IG_Portal.BAL_Classes;
+using System.Data;
 
 namespace IG_Portal
 {
-    public partial class LeaveApproval : System.Web.UI.Page
+    public partial class LeaveApprovalHR : System.Web.UI.Page
     {
         clsCommonMasters objCommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
@@ -17,7 +17,7 @@ namespace IG_Portal
         {
             if (!IsPostBack)
             {
-                
+
                 BindGridLeave();
                 lblmsg.Text = "";
             }
@@ -27,7 +27,7 @@ namespace IG_Portal
         {
             DataTable dtLeaveDetails;
 
-            dtLeaveDetails = objTask.GetPendingLeaveByManager(Session["LoginID"].ToString());
+            dtLeaveDetails = objTask.GetPendingLeaveByHR(Session["LoginID"].ToString());
             GridLeave.DataSource = dtLeaveDetails;
             GridLeave.DataBind();
             count.Text = "Number of Leave Applications =" + dtLeaveDetails.Rows.Count;
@@ -71,54 +71,8 @@ namespace IG_Portal
 
         protected void GridLeave_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           int _isUpdated = -1;
-            if (e.CommandName == "Approve")
-
-            {
-                int lid = Convert.ToInt32(e.CommandArgument);
-                _isUpdated = objTask.ApproveLeave(lid);
-                if (_isUpdated == -1)
-                {
-
-                    lblmsg.Text = "Failed to Approve Leave";
-                    lblmsg.ForeColor = System.Drawing.Color.Red;
-
-                }
-                
-                else
-                {
-
-                    lblmsg.Text = "Leave Approved";
-                    lblmsg.ForeColor = System.Drawing.Color.Green;
-                    BindGridLeave();
-                    //objCommon.SendMailLeaveApproval(lid,"2");
-                    
-                }
-            }
-
-            if (e.CommandName == "Reject")
-
-            {
-                int lid = Convert.ToInt32(e.CommandArgument);
-                _isUpdated = objTask.RejectLeave(lid);
-                if (_isUpdated == -1)
-                {
-
-                    lblmsg.Text = "Failed to Reject Leave";
-                    lblmsg.ForeColor = System.Drawing.Color.Red;
-
-                }
-
-                else
-                {
-
-                    lblmsg.Text = "Leave Rejected";
-                    lblmsg.ForeColor = System.Drawing.Color.Green;
-                    BindGridLeave();
-                 //   objCommon.SendMailLeaveApproval(lid, "3");
-                    
-                }
-            }
+            int _isUpdated = -1;
+           
 
             if (e.CommandName == "Submit")
 
@@ -127,14 +81,14 @@ namespace IG_Portal
                 GridViewRow row = GridLeave.Rows[rowIndex % 10];
                 string leaveID = (row.FindControl("lblID") as Label).Text;
                 GridView gldetails = (row.FindControl("gvmp") as GridView);
-               
-                for(int i=0; i<gldetails.Rows.Count;i++)
+
+                for (int i = 0; i < gldetails.Rows.Count; i++)
                 {
                     string ldid = ((Label)gldetails.Rows[i].FindControl("lblldid")).Text;
                     string x = ((RadioButtonList)gldetails.Rows[i].FindControl("radLeave")).SelectedValue;
-                    _isUpdated = objTask.ApproveLeaveDetailsManager(ldid,x);
+                    _isUpdated = objTask.ApproveLeaveDetailsHR(ldid, x);
                 }
-                _isUpdated = objTask.ApproveLeaveManager(leaveID);
+                _isUpdated = objTask.ApproveLeaveHR(leaveID);
                 if (_isUpdated == -1)
                 {
 
@@ -174,22 +128,39 @@ namespace IG_Portal
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-               // string vid = (e.Row.FindControl("lblApproved") as Label).Text;
+                 string vid = (e.Row.FindControl("lblMapproved") as Label).Text;
                 string uid = (e.Row.FindControl("lblApplied") as Label).Text;
                 if (uid == "1.00")
                 {
                     (e.Row.FindControl("lblAppliedLeave") as Label).Text = "Full Day";
-                    (e.Row.FindControl("radLeave") as RadioButtonList).SelectedValue = "1";
+                  
                 }
                 else if (uid == "0.50")
                 {
                     (e.Row.FindControl("lblAppliedLeave") as Label).Text = "Half Day";
+                   
+                }
+
+                if (vid == "1.00")
+                {
+                    (e.Row.FindControl("lblMApprovedLeave") as Label).Text = "Full Day";
+                    (e.Row.FindControl("radLeave") as RadioButtonList).SelectedValue = "1";
+                }
+                else if (vid == "0.50")
+                {
+                    (e.Row.FindControl("lblMApprovedLeave") as Label).Text = "Half Day";
                     (e.Row.FindControl("radLeave") as RadioButtonList).SelectedValue = "0.5";
                 }
-                
+                else if (vid == "0.00")
+                {
+                    (e.Row.FindControl("lblMApprovedLeave") as Label).Text = "Rejected";
+                    (e.Row.FindControl("radLeave") as RadioButtonList).SelectedValue = "0";
+                }
 
 
-                
+
+
+
 
             }
         }

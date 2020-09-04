@@ -1,16 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="LeaveApproval.aspx.cs" Inherits="IG_Portal.LeaveApproval" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="LeaveApprovalHR.aspx.cs" Inherits="IG_Portal.LeaveApprovalHR" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
        <script type="text/javascript">
-        $("[src*=plus]").live("click", function () {
-            $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
-            $(this).attr("src", "images/minus.png");
-        });
-        $("[src*=minus]").live("click", function () {
-            $(this).attr("src", "images/plus.png");
-            $(this).closest("tr").next().remove();
-        });
+           $("[src*=plus]").live("click", function () {
+               $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
+               $(this).attr("src", "images/minus.png");
+           });
+           $("[src*=minus]").live("click", function () {
+               $(this).attr("src", "images/plus.png");
+               $(this).closest("tr").next().remove();
+           });
        </script>
     <script type="text/javascript">
         function GetConfirmation() {
@@ -22,7 +21,7 @@
                 return false;
             }
         }
-        </script>
+    </script>
     <style>
         .myradio {
             position: absolute;
@@ -48,7 +47,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card-body">
         <div class="portlet-body">
 
@@ -171,6 +170,14 @@
                                                                                     <asp:Label ID="lblAppliedLeave" runat="server" ></asp:Label>
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateField>
+
+                                                                             <asp:TemplateField HeaderText="Manager Approved">
+                                                                                <ItemTemplate>
+                                                                                    <asp:Label ID="lblMapproved" runat="server" Text='<%#  Eval("ManagerApproved")  %>' Visible="false"></asp:Label>
+                                                                                    <asp:Label ID="lblMApprovedLeave" runat="server" ></asp:Label>
+                                                                                </ItemTemplate>
+                                                                            </asp:TemplateField>
+
                                                                              <asp:TemplateField HeaderText="Approved Leave ">
                                                                                 <ItemTemplate>
                                                                                     

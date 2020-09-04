@@ -104,6 +104,11 @@ namespace IG_Portal
                         Response.Redirect("~/SupportDashBoard.aspx");
 
                     }
+                    if (_dtLogin.Rows[0]["Role"].ToString() == "10" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/Notifications.aspx");
+                    }
                 }
                 else
                 {

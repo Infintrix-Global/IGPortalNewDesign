@@ -738,6 +738,75 @@ namespace IG_Portal.BAL_Classes
             return _isUpdated;
         }
 
+
+        public int ApproveLeaveManager(string leaveid)
+        {
+            int _isUpdated = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LeaveID", leaveid);
+
+                _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_ApproveLeaveManager");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isUpdated;
+        }
+
+        public int ApproveLeaveHR(string leaveid)
+        {
+            int _isUpdated = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LeaveID", leaveid);
+
+                _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_ApproveLeaveHR");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isUpdated;
+        }
+
+
+        public int ApproveLeaveDetailsManager(string ldid,string Approvedstatus)
+            {
+                int _isUpdated = -1;
+                try
+                {
+
+                    General objGeneral = new General();
+                    objGeneral.AddParameterWithValueToSQLCommand("@LeaveDetailsID", ldid);
+                    objGeneral.AddParameterWithValueToSQLCommand("@ApprovedLeave", Approvedstatus);
+                    _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_ApproveLeaveDetailsManager");
+                }
+                catch (Exception ex)
+                {
+                }
+                return _isUpdated;
+            }
+
+        public int ApproveLeaveDetailsHR(string ldid, string Approvedstatus)
+        {
+            int _isUpdated = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LeaveDetailsID", ldid);
+                objGeneral.AddParameterWithValueToSQLCommand("@ApprovedLeave", Approvedstatus);
+                _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_ApproveLeaveDetailsHR");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isUpdated;
+        }
         public DataTable GetPendingLeaveByManager(string mid)
         {
             try
@@ -747,6 +816,22 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@ManagerID", mid);
 
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetPendingLeaveByManager");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetPendingLeaveByHR(string hrid)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@HRID", hrid);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetPendingLeaveByHR");
             }
             catch (Exception ex)
             {

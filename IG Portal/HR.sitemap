@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/HRDashBoardWM.aspx" title="Home" description="">
+		<siteMapNode url="~/Notifications.aspx" title="Notifications"  description="" />
+	
+		<siteMapNode url="~/AddTimeSheet.aspx" title="Add Task"  description="" />
+		<siteMapNode url="~/AddEmployee.aspx" title="Add Employee"  description="" />
+		<siteMapNode url="~/EmployeeProfile.aspx" title="View Profile"  description="" >
+			<siteMapNode url="~/EditProfile.aspx" title="Edit Profile"  description=""/>
+		</siteMapNode>
+
+		<siteMapNode url="~/ViewTask.aspx" title="View TimeSheet"  description="" />
+		<siteMapNode url="~/LeaveApplication.aspx" title="Apply For Leave"  description="" />
+		<siteMapNode url="~/ChangePassword.aspx" title="Change Password"  description="" />
+		<siteMapNode url="~/LeaveApprovalHR.aspx" title="Leave Approval Applications"  description="" />
+
+		
+		<siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
+		>
+	</siteMapNode>
+</siteMap>

@@ -519,6 +519,67 @@
                         <a href="#" data-activates="slide-out5" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
                     </div>
 
+
+                      <div id="HR" runat="server" visible="false">
+                        <ul id="slide-out6" class="side-nav leftside-navigation">
+                            <li class="user-details cyan darken-2">
+                                <div class="row">
+                                    <div class="col col s4 m4 l4">
+                                        <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                                    </div>
+                                    <div class="col col s8 m8 l8">
+                                        <%--  <ul id="profile-dropdown" class="dropdown-content">
+                                        <li><a href="EmployeeProfile.aspx"><i class="mdi-action-face-unlock"></i>Profile</a> </li>
+                                        <li><a href=""><i class="mdi-action-settings"></i>Setting</a> </li>
+                                        <li class="divider"></li>
+                                        <li><a href="Login.aspx"><i class="mdi-hardware-keyboard-tab"></i>Logout</a> </li>
+                                    </ul>--%>
+                                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="" data-activates="profile-dropdown">
+                                            <asp:Label ID="lblHRName" runat="server"></asp:Label><i class="mdi-navigation-arrow-drop-down right"></i></a>
+                                        <p class="user-roal"></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="bold"><a href="<%= ResolveUrl("~/HRDashBoardWM.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>DashBoard</a> </li>
+                           
+                            <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>TimeSheet </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="<%= ResolveUrl("~/AddTimeSheet.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewTask.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>HR </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="<%= ResolveUrl("~/LeaveApplication.aspx") %>">Apply for Leave</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/LeaveApprovalHR.aspx") %>">Leave Applications</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/AddMOM.aspx") %>">Add MOM</a> </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                           <li class="bold"><a href="<%= ResolveUrl("~/AddEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Add Employee</a> </li>
+                            
+                             <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
+                            <li class="bold"><a href="<%= ResolveUrl("~/Notifications.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Notifications</a> </li>
+                        </ul>
+                        <a href="#" data-activates="slide-out6" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
+                    </div>
                 </aside>
 
 
