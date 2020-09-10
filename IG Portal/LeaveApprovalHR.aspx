@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="LeaveApprovalHR.aspx.cs" Inherits="IG_Portal.LeaveApprovalHR" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
        <script type="text/javascript">
@@ -13,7 +14,7 @@
        </script>
     <script type="text/javascript">
         function GetConfirmation() {
-            var reply = confirm("Please confirm the details before confirming?");
+            var reply = confirm("Are you sure you want to submit these details?");
             if (reply) {
                 return true;
             }
@@ -43,6 +44,21 @@
         }
         .inline-rb [type="radio"]:not(:checked) + label {
      position: initial;
+        }
+    </style>
+
+     <style type="text/css">
+        .modalBackground {
+            background-color: Black;
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+        }
+
+        .modalPopup {
+            background-color: #FFFFFF;
+            width: 400px;
+            height: 300px;
+            border: 3px solid #0DA9D0;
         }
     </style>
 </asp:Content>
@@ -140,9 +156,27 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
+                                                                 <asp:TemplateField HeaderText="Days" HeaderStyle-CssClass="autostyle2" SortExpression="ToDate">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label9" runat="server" Text='<%# Eval("Days")   %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
                                                                 <asp:TemplateField HeaderText="Reason" HeaderStyle-CssClass="autostyle2">
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="Label6" runat="server" Text='<%# Eval("Reason")  %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                                  <asp:TemplateField HeaderText="Manager" HeaderStyle-CssClass="autostyle2">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label8" runat="server" Text='<%# Eval("Manager")  %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                                    <asp:TemplateField HeaderText="ManagerComment" HeaderStyle-CssClass="autostyle2">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label10" runat="server" Text='<%# Eval("ManagerComment")  %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
@@ -248,6 +282,50 @@
                 </asp:UpdatePanel>
             </div>
 
+
+                 <asp:Button ID="btnShow" runat="server" Text="" Visible="true" Style="display: none" />
+            <!-- ModalPopupExtender -->
+            <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" PopupControlID="pnlpp" TargetControlID="btnShow"
+                CancelControlID="Vpbtncancel" BackgroundCssClass="modalBackground" />
+
+            <asp:Panel ID="pnlpp" runat="server" Style="display: none">
+
+                <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
+                    <table>
+                      
+                        <tr>
+                             <td>
+                                 <asp:Label ID="lblppLeaveID" runat="server" Visible="false"></asp:Label>
+                                <asp:Label ID="lblComment" runat="server" Text="Comment"></asp:Label>
+                            </td>
+                           
+
+                            <td>
+                                <asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                 <asp:RequiredFieldValidator runat="server"
+                                    ID="RequiredFieldValidator1"
+                                    ControlToValidate="txtComment" Text="Required"  ValidationGroup="v"
+                                    ErrorMessage="Enter an comment"></asp:RequiredFieldValidator>
+                            </td>
+                          
+
+                        </tr>
+
+                        <tr align="center">
+                            <td></td>
+                             <td>
+                                <asp:Button ID="btnsubmit" runat="server" Text="Submit" class="btn blue" OnClick="btnsubmit_Click" ValidationGroup="v" />
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                <div class="row" align="center">
+
+                    <asp:Button ID="Vpbtncancel" CausesValidation="false" runat="server" Text="Cancel " Visible="true" BackColor="#c5484d" ForeColor="white" Height="29px" />
+
+                </div>
+
+            </asp:Panel>
         </div>
 
     </div>

@@ -625,7 +625,7 @@ namespace IG_Portal.BAL_Classes
                     objGeneral.ClearParameters();
                     objGeneral.AddParameterWithValueToSQLCommand("@LeaveID", LeaveID);
 
-                    objGeneral.AddParameterWithValueToSQLCommand("@Date", ((Label)dt.Rows[i].FindControl("lblDate")).Text);
+                    objGeneral.AddParameterWithValueToSQLCommand("@Date", Convert.ToDateTime(((Label)dt.Rows[i].FindControl("lblDate")).Text).ToString("dd/MMM/yyyy"));
                     objGeneral.AddParameterWithValueToSQLCommand("@AppliedLeave", ((RadioButtonList)dt.Rows[i].FindControl("radLeave")).SelectedValue);
                     
                     _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddLeaveDetails");
@@ -672,14 +672,14 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
-        public DataSet GetLeaveDetailsByEmployee(string eid)
+        public DataSet GetLeaveDetailsByEmployee(string eid, string mode)
         {
             try
             {
 
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@ID", eid);
-
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetLeaveByEmployeeID");
             }
             catch (Exception ex)
@@ -739,7 +739,7 @@ namespace IG_Portal.BAL_Classes
         }
 
 
-        public int ApproveLeaveManager(string leaveid)
+        public int ApproveLeaveManager(string leaveid,string Comment)
         {
             int _isUpdated = -1;
             try
@@ -747,7 +747,7 @@ namespace IG_Portal.BAL_Classes
 
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@LeaveID", leaveid);
-
+                objGeneral.AddParameterWithValueToSQLCommand("@ManagerComment", Comment);
                 _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_ApproveLeaveManager");
             }
             catch (Exception ex)
@@ -756,7 +756,7 @@ namespace IG_Portal.BAL_Classes
             return _isUpdated;
         }
 
-        public int ApproveLeaveHR(string leaveid)
+        public int ApproveLeaveHR(string leaveid, string Comment)
         {
             int _isUpdated = -1;
             try
@@ -764,7 +764,7 @@ namespace IG_Portal.BAL_Classes
 
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@LeaveID", leaveid);
-
+                objGeneral.AddParameterWithValueToSQLCommand("@HRComment", Comment);
                 _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_ApproveLeaveHR");
             }
             catch (Exception ex)

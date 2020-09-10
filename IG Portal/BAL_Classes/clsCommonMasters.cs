@@ -110,7 +110,7 @@ namespace IG_Portal
             }
         }
 
-        public void SendMailLeaveApplication( Leave objLeaveApplication)
+        public void SendMailLeaveApplication( Leave objLeaveApplication, string leavetype)
         {
             DataTable dtEmpDetails;
             try
@@ -127,21 +127,23 @@ namespace IG_Portal
                 const string fromPassword = "admin@1234";
                 // Passing the values and make a email formate to display
                 string subject = "Leave Application";
-                string body = "Dear," + "\n";
+                string body = "Dear HR/Manager," + "\n";
+                body +=  "I have applied " + leavetype + ".";
+
                 if (objLeaveApplication.Days == "1")
                 {
-                    body += empName + " has requested for leave on " + Convert.ToDateTime(objLeaveApplication.FromDate).ToString("dd MMM yyyy") + "."+ "\n";
+                    body +=  "I request you to consider my leave application on " + Convert.ToDateTime(objLeaveApplication.FromDate).ToString("dd MMM yyyy") + "."+ "\n";
                     
                 }
                 else
                 {
-                    body += empName + " has requested for leave from " + Convert.ToDateTime(objLeaveApplication.FromDate).ToString("dd MMM yyyy") + " to" + Convert.ToDateTime(objLeaveApplication.ToDate).ToString("dd MMM yyyy") +"."+ "\n";
+                    body +=  "I request you to consider my leave application " + Convert.ToDateTime(objLeaveApplication.FromDate).ToString("dd MMM yyyy") + " to" + Convert.ToDateTime(objLeaveApplication.ToDate).ToString("dd MMM yyyy") +"."+ "\n";
                    
                 }
                 body += "Reason For Leave : " + objLeaveApplication.Reason + "." + "\n\n";
 
-                body += "Thank you" + "\n";
-                body += "Warm Regards" + "\n";
+                body += "Yours Sincerely," + "\n";
+                body += empName + "\n";
                 // smtp settings
                 var smtp = new System.Net.Mail.SmtpClient();
                 {
@@ -162,7 +164,7 @@ namespace IG_Portal
             }
         }
 
-        public void SendMailLeaveApproval(int lid,string status)
+        public void SendMailLeaveApproval(string lid,string comment)
         {
             DataTable dtLeaveDetails;
             try
@@ -180,37 +182,27 @@ namespace IG_Portal
                 const string fromPassword = "admin@1234";
                 // Passing the values and make a email formate to display
                 string subject = "Response to Leave Application";
-                string body = "Dear " ;
+                string body = "Dear "  ;
                 body += empName + "," + "\n\n";
-                if (status == "2")
-                {
+               
                     if (dtLeaveDetails.Rows[0]["NumberOFDays"].ToString() == "1")
                     {
-                        body += "Your Application for Leave on " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["FromDate"].ToString()).ToString("dd MMM yyyy") + " has been Approved." + "\n\n";
+                        body += "Your Application for Leave on " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["FromDate"].ToString()).ToString("dd MMM yyyy") + " has been processed. " + "\n\n";
+                    body += "HR Comments-" + comment+ "\n\n";
+                    body += " Please check your portal for complete details" + "\n\n";
 
                     }
                     else
                     {
-                        body += "Your Application for Leave from " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["FromDate"].ToString()).ToString("dd MMM yyyy") + " to " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["ToDate"].ToString()).ToString("dd MMM yyyy") + " has been Approved." + "\n\n";
-
-                    }
+                        body += "Your Application for Leave from " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["FromDate"].ToString()).ToString("dd MMM yyyy") + " to " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["ToDate"].ToString()).ToString("dd MMM yyyy") + " has been processed." + "\n\n";
+                    body += "HR Comments-" + comment + "\n\n";
+                    body += " Please check your portal for complete details" + "\n\n";
                 }
+              
 
-                if (status == "3")
-                {
-                    if (dtLeaveDetails.Rows[0]["NumberOFDays"].ToString() == "1")
-                    {
-                        body += "Your Application for Leave on " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["FromDate"].ToString()).ToString("dd MMM yyyy") + " has been Rejected." + "\n\n";
-                        
-                    }
-                    else
-                    {
-                        body += "Your Application for Leave from " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["FromDate"].ToString()).ToString("dd MMM yyyy") + " to " + Convert.ToDateTime(dtLeaveDetails.Rows[0]["ToDate"].ToString()).ToString("dd MMM yyyy") + " has been Rejected." + "\n\n";
-                        
-                    }
-                }
-                body += "Thank you" + "\n";
-                body += "Warm Regards" + "\n";
+              
+                body += "Thanks" + "\n";
+                body += "HR" + "\n";
                 // smtp settings
                 var smtp = new System.Net.Mail.SmtpClient();
                 {

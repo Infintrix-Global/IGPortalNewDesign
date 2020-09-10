@@ -20,12 +20,14 @@ namespace IG_Portal
         {
             if (!IsPostBack)
             {
-              
-               // rgvStartDate.ValueToCompare = DateTime.Today.ToString("yyyy-MM-dd");
-               // rgvEndDate.ValueToCompare = DateTime.Today.ToString("yyyy-MM-dd");
-                txtFromDate.Attributes["min"] =  Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");// DateTime.Today.ToString("yyyy-MM-dd");
+
+                // rgvStartDate.ValueToCompare = DateTime.Today.ToString("yyyy-MM-dd");
+                // rgvEndDate.ValueToCompare = DateTme.Today.ToString("yyyy-MM-dd");
+                int x = DateTime.Today.Day;
+                  
+                txtFromDate.Attributes["min"] =  Convert.ToDateTime(DateTime.Today.AddDays(-x+1)).ToString("yyyy-MM-dd");// DateTime.Today.ToString("yyyy-MM-dd");
                 BindLeaveMaster();
-                BindGridLeave();
+                BindGridLeave("1");
             }
         }
 
@@ -89,8 +91,8 @@ namespace IG_Portal
                     objTask.AddLeaveDetails(GridLeaveDay,_isInserted);
                     lblMessage.Text = "Leave Added";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
-                 //   objCommon.SendMailLeaveApplication( objLeaveApplication);
-                    BindGridLeave();
+                    objCommon.SendMailLeaveApplication( objLeaveApplication,ddlLeaveType.SelectedItem.Text);
+                    BindGridLeave("1");
                     AddNew.Visible = true;
                     LeaveNumbers.Visible = true;
                     newLeave.Visible = false;
@@ -104,11 +106,11 @@ namespace IG_Portal
             }
         }
 
-        public void BindGridLeave()
+        public void BindGridLeave(string mode)
         {
             DataSet dtLeaveDetails;
 
-            dtLeaveDetails = objTask.GetLeaveDetailsByEmployee(Session["LoginID"].ToString());
+            dtLeaveDetails = objTask.GetLeaveDetailsByEmployee(Session["LoginID"].ToString(),mode);
                 GridLeave.DataSource = dtLeaveDetails.Tables[0];
             GridLeave.DataBind();
             count.Text = "Number of Leave =" + dtLeaveDetails.Tables[0].Rows.Count;
@@ -137,7 +139,7 @@ namespace IG_Portal
         protected void GridLeave_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridLeave.PageIndex = e.NewPageIndex;
-            BindGridLeave();
+            BindGridLeave(ddlStatus.SelectedValue);
         }
 
         protected void GridLeave_Sorting(object sender, GridViewSortEventArgs e)
@@ -239,6 +241,16 @@ namespace IG_Portal
                 }
 
             }
+        }
+
+        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void btSearch_Click(object sender, EventArgs e)
+        {
+            BindGridLeave(ddlStatus.SelectedValue);
         }
     }
 }

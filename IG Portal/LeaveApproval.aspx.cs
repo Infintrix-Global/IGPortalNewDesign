@@ -127,31 +127,34 @@ namespace IG_Portal
                 GridViewRow row = GridLeave.Rows[rowIndex % 10];
                 string leaveID = (row.FindControl("lblID") as Label).Text;
                 GridView gldetails = (row.FindControl("gvmp") as GridView);
-               
-                for(int i=0; i<gldetails.Rows.Count;i++)
+                lblppLeaveID.Text = leaveID;
+
+                for (int i = 0; i < gldetails.Rows.Count; i++)
                 {
                     string ldid = ((Label)gldetails.Rows[i].FindControl("lblldid")).Text;
                     string x = ((RadioButtonList)gldetails.Rows[i].FindControl("radLeave")).SelectedValue;
-                    _isUpdated = objTask.ApproveLeaveDetailsManager(ldid,x);
-                }
-                _isUpdated = objTask.ApproveLeaveManager(leaveID);
-                if (_isUpdated == -1)
-                {
-
-                    lblmsg.Text = "Failed to Approve Leave";
-                    lblmsg.ForeColor = System.Drawing.Color.Red;
-
+                    _isUpdated = objTask.ApproveLeaveDetailsManager(ldid, x);
                 }
 
-                else
-                {
+                ModalPopupExtender1.Show();
+                //_isUpdated = objTask.ApproveLeaveManager(leaveID);
+                //if (_isUpdated == -1)
+                //{
 
-                    lblmsg.Text = "Leave Approved";
-                    lblmsg.ForeColor = System.Drawing.Color.Green;
-                    BindGridLeave();
-                    //objCommon.SendMailLeaveApproval(lid,"2");
+                //    lblmsg.Text = "Failed to Change Status ";
+                //    lblmsg.ForeColor = System.Drawing.Color.Red;
 
-                }
+                //}
+
+                //else
+                //{
+
+                //    lblmsg.Text = "Status Changed";
+                //    lblmsg.ForeColor = System.Drawing.Color.Green;
+                //    BindGridLeave();
+                //    //objCommon.SendMailLeaveApproval(lid,"2");
+
+                //}
             }
 
         }
@@ -185,6 +188,8 @@ namespace IG_Portal
                 {
                     (e.Row.FindControl("lblAppliedLeave") as Label).Text = "Half Day";
                     (e.Row.FindControl("radLeave") as RadioButtonList).SelectedValue = "0.5";
+                    (e.Row.FindControl("radLeave") as RadioButtonList).Items.RemoveAt(1);
+                    
                 }
                 
 
@@ -197,6 +202,29 @@ namespace IG_Portal
         protected void radLeave_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnsubmit_Click(object sender, EventArgs e)
+        {
+            int _isUpdated = -1;
+            _isUpdated = objTask.ApproveLeaveManager(lblppLeaveID.Text,txtComment.Text);
+            if (_isUpdated == -1)
+            {
+
+                lblmsg.Text = "Failed to Change Status ";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+
+            }
+
+            else
+            {
+
+                lblmsg.Text = "Status Changed";
+                lblmsg.ForeColor = System.Drawing.Color.Green;
+                BindGridLeave();
+                //objCommon.SendMailLeaveApproval(lid,"2");
+
+            }
         }
     }
 }

@@ -221,7 +221,29 @@
                                         </div>
                                             </div>
                                         
-                                       
+                                       <div class=" col m2">
+                        <div class="form-group">
+                            <label> Status</label>
+                            <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
+                                ClientIDMode="Static" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged"
+                                >
+                                <asp:ListItem Text="UnApproved" Value="1" Selected="True"></asp:ListItem>
+                                 <asp:ListItem Text="Approved" Value="2"></asp:ListItem>
+                                 <asp:ListItem Text="Both" Value="3"></asp:ListItem>
+                            </asp:DropDownList>
+
+
+                        </div>
+                    </div>
+
+                                          <div class="col m2">
+                        <div class="form-group ">
+
+                                <asp:Button ID="btSearch" runat="server" Text="Search" CssClass="btn"  ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
+
+
+                        </div>
+                                              </div>
 
                                         <br />
                                         <div class="clearfix"></div>
@@ -272,6 +294,18 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
+                                                                <asp:TemplateField HeaderText="Manager Comment" HeaderStyle-CssClass="autostyle2" SortExpression="LeaveStatus">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label9" runat="server" Text='<%# Eval("ManagerComment")  %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                                <asp:TemplateField HeaderText="HR Comment" HeaderStyle-CssClass="autostyle2" SortExpression="LeaveStatus">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label10" runat="server" Text='<%# Eval("HRComment")  %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
 
                                                                 <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
@@ -285,7 +319,7 @@
 
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
-                                                                            <asp:TemplateField HeaderText="Date">
+                                                                            <asp:TemplateField HeaderText="Application Date">
                                                                                 <ItemTemplate>
                                                                                     <asp:Label ID="Label18" runat="server" Text='<%#  Eval("LeaveApplicationDate","{0:dd/MMM/yy}")  %>'></asp:Label>
                                                                                 </ItemTemplate>
