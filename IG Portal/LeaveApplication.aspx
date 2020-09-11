@@ -288,6 +288,18 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
+                                                                 <asp:TemplateField HeaderText="Applied Days" HeaderStyle-CssClass="autostyle2">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label13" runat="server" Text='<%# Eval("AppliedDays")  %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                                    <asp:TemplateField HeaderText="Approved Days" HeaderStyle-CssClass="autostyle2">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label14" runat="server" Text='<%# Eval("ApprovedDays")  %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
                                                                 <asp:TemplateField HeaderText="Status" HeaderStyle-CssClass="autostyle2" SortExpression="LeaveStatus">
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="Label8" runat="server" Text='<%# Eval("LeaveStatus")  %>'></asp:Label>

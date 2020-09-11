@@ -218,9 +218,9 @@ namespace IG_Portal
 
         public void Clear()
         {
-            ddlProjectName.SelectedIndex = 0;
-            ddlTaskType.SelectedIndex = 0;
-            txtDate.Text = "";
+           // ddlProjectName.SelectedIndex = 0;
+           // ddlTaskType.SelectedIndex = 0;
+           // txtDate.Text = "";
             txtTaskTitle.Text = "";
             txtTaskTitle.Visible = false;
             txtTime.Text = "";

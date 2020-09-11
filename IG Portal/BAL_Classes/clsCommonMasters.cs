@@ -11,6 +11,7 @@ using System.Web;
 
 using System.Web.Mail;
 using IG_Portal.BAL_Classes;
+using MailMessage = System.Net.Mail.MailMessage;
 
 namespace IG_Portal
 {
@@ -122,6 +123,7 @@ namespace IG_Portal
                dtEmpDetails=  objTask.GetEmployeeByID(objLeaveApplication.LoginID);
 
                 var toAddress = dtEmpDetails.Rows[0]["ManagerEmail"].ToString().Trim();
+
                 var empName = dtEmpDetails.Rows[0]["EmployeeName"].ToString();
                 //Password of your gmail address
                 const string fromPassword = "admin@1234";
@@ -150,13 +152,23 @@ namespace IG_Portal
                     smtp.Host = "smtp.gmail.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
+                   
                     smtp.UseDefaultCredentials = true;
                     smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
                     smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
                     smtp.Timeout = 50000;
                 }
+
+                MailMessage mail = new MailMessage();
+                mail.To.Add(toAddress);
+                mail.To.Add("hr@infintrixglobal.com");
+                //mail.To.Add
+                mail.From = new MailAddress(fromAddress);
+                mail.Subject = subject;
+                mail.Body = body;
+               // mail.CC.Add("");
                 // Passing values to smtp object
-                smtp.Send(fromAddress, toAddress, subject, body);
+                smtp.Send(mail);
             }
             catch (Exception ex)
             {
@@ -173,7 +185,7 @@ namespace IG_Portal
                 var fromAddress = "igportalmail@gmail.com";//"infintrix.world@gmail.com";
                                                        // any address where the email will be sending
                                                        // var toAddress = "mehulrana1901@gmail.com,urvi.gandhi@infintrixglobal.com,nidhi.mehta@infintrixglobal.com,bhavin.gandhi@infintrixglobal.com,mehul.rana@infintrixglobal.com,naimisha.rohit@infintrixglobal.com";
-                dtLeaveDetails = objTask.GetLeaveDetailsByLeaveID(lid);
+                dtLeaveDetails = objTask.GetLeaveDetailsByLeaveID(Convert.ToInt32(lid));
 
                 var toAddress = dtLeaveDetails.Rows[0]["Email"].ToString().Trim();
                 var empName = dtLeaveDetails.Rows[0]["EmployeeName"].ToString();

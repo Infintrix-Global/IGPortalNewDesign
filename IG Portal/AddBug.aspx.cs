@@ -402,20 +402,20 @@ namespace IG_Portal
 
         public void Clear()
         {
-            ddlProjectName.SelectedIndex = 0;
-            ddlPageTitle.SelectedIndex = 0;
-            ddlTaskType.SelectedIndex = 0;
+          //  ddlProjectName.SelectedIndex = 0;
+          //  ddlPageTitle.SelectedIndex = 0;
+          //  ddlTaskType.SelectedIndex = 0;
             txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");;
             txtTaskTitle.Text = "";
             txtTaskTitle.Visible = false;
-            ddlSuggetedBy.SelectedIndex = 0;
+           // ddlSuggetedBy.SelectedIndex = 0;
             
             ddlStatus.SelectedIndex = 0;
             txtBugDescription.Text = "";
             requiredtxttitle.Enabled = true;
             ddlTaskTitle.SelectedIndex = 0;
             txtComment.Text = "";
-            //Calendar1.SelectedDates.Clear();
+           
         }
 
         public void AutoFillBug()
