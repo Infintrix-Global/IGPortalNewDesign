@@ -161,7 +161,7 @@ namespace IG_Portal
                 ddlTaskDetails.DataValueField = "ID";
 
                 ddlTaskDetails.DataBind();
-                ddlTaskDetails.Items.Insert(0, new ListItem("--- Select ---", "0"));
+                ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
                 txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             }
         }
