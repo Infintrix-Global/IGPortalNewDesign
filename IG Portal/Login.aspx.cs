@@ -109,6 +109,12 @@ namespace IG_Portal
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/Notifications.aspx");
                     }
+
+                    if (_dtLogin.Rows[0]["Role"].ToString() == "11" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/Notifications.aspx");
+                    }
                 }
                 else
                 {

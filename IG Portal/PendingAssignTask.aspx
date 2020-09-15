@@ -140,7 +140,7 @@
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
-                                                          <asp:TemplateField HeaderText="Estimated Time" HeaderStyle-CssClass="autostyle2">
+                                                          <asp:TemplateField HeaderText="Estimated Hours" HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
                                                                 <asp:Label ID="Label13" runat="server" Text='<%# Eval("EstiamtedWorkTime")  %>'></asp:Label>
                                                             </ItemTemplate>

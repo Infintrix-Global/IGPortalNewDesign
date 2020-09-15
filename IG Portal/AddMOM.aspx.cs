@@ -56,6 +56,17 @@ namespace IG_Portal
 
         }
 
+        public void BindEmployeeMasterByProject()
+        {
+
+
+            chkAttendees.DataSource = objCommon.GetEmployeeMasterByProject(ddlProjectName.SelectedValue);
+            chkAttendees.DataTextField = "EmployeeName";
+            chkAttendees.DataValueField = "ID";
+            chkAttendees.DataBind();
+
+        }
+
         public void BindMeetingInitiator()
         {
 
@@ -440,6 +451,13 @@ namespace IG_Portal
                     BindEmployeeMasterBoardMeeting();
                 }
 
+                if (ddlMeetingType.SelectedValue == "5")
+                {
+                    divProject.Visible = true;
+                    divClient.Visible = false;
+                   // BindEmployeeMasterBoardMeeting();
+                }
+
             }
         }
 
@@ -453,6 +471,14 @@ namespace IG_Portal
             else
             {
                 txtMeetingPlace.Visible = false;
+            }
+        }
+
+        protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlMeetingType.SelectedValue=="5")
+            {
+                BindEmployeeMasterByProject();
             }
         }
     }

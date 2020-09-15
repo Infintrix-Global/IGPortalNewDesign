@@ -96,6 +96,14 @@ namespace IG_Portal
                         SiteMapPath1.SiteMapProvider = "SiteMapHR";
                         SiteMapPath1.DataBind();
                     }
+
+                    else if (Session["Role"].ToString() == "11" && Session["CompanyID"].ToString() == "2")
+                    {
+                        Sales.Visible = true;
+                        lblSales.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        SiteMapPath1.SiteMapProvider = "SiteMapSales";
+                        SiteMapPath1.DataBind();
+                    }
                 }
 
             }

@@ -761,6 +761,118 @@ namespace IG_Portal
 
         }
 
+        public DataTable CityMaster(int StateId)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+               
+                objGeneral.AddParameterWithValueToSQLCommand("@stateID", StateId);
+                
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetCityMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
+        public DataTable CountryMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+               
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetCountryMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
+        public DataTable StateMaster(int Countryid)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                
+                objGeneral.AddParameterWithValueToSQLCommand("@Countryid", Countryid);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetStateMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
+        public DataTable GetEnquirySourceMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+               
+                ds = objGeneral.GetDatasetByCommand_SP("SP_EnquirySourceMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetTechnologyMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_TechnologyMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetEnquiryStatusMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_EnquiryStatusMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable ProjectTypeMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_ProjectTypeMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetProjectMaster(int companyID)
         {
             try
@@ -1034,6 +1146,23 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetEmployeeMasterByProject(string projectID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeMasterByProject");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+
         public DataTable GetEmployeeMasterManagement()
         {
             try
@@ -1270,6 +1399,22 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
 
                 ds = objGeneral.GetDatasetByCommand_SP("GET_TaskTitleByProject");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetTaskTitleMasterForAddBug(string projectID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("GET_TaskTitleByProjectForAddBug");
             }
             catch (Exception ex)
             {
@@ -1586,6 +1731,58 @@ namespace IG_Portal
             }
             return ds.Tables[0];
         }
+
+        public int AddLeadDetails(Lead_Details objLead)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                 objGeneral.AddParameterWithValueToSQLCommand("@FirstName", objLead.FirstName);
+                objGeneral.AddParameterWithValueToSQLCommand("@LastName", objLead.LastName);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mobile", objLead.Mobile);
+                objGeneral.AddParameterWithValueToSQLCommand("@Email", objLead.Email);
+                objGeneral.AddParameterWithValueToSQLCommand("@EnquiryDate", Convert.ToDateTime(objLead.EnquiryDate).ToString("dd/MMM/yyyy"));
+                objGeneral.AddParameterWithValueToSQLCommand("@CountryID", objLead.CountryID);
+                objGeneral.AddParameterWithValueToSQLCommand("@StateID", objLead.StateID);
+                objGeneral.AddParameterWithValueToSQLCommand("@CityID", objLead.CityID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Location", objLead.Location);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyName", objLead.CompanyName);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyType", objLead.CompanyType);
+                objGeneral.AddParameterWithValueToSQLCommand("@WebsiteURL", objLead.WebsiteURL);
+               
+                objGeneral.AddParameterWithValueToSQLCommand("@EnquirySource", objLead.EnquirySource);
+                objGeneral.AddParameterWithValueToSQLCommand("@Technology", objLead.Technology);
+                objGeneral.AddParameterWithValueToSQLCommand("@PrefferedTechnology", objLead.PrefferedTechnology);
+                objGeneral.AddParameterWithValueToSQLCommand("@Remarks", objLead.Remarks);
+                objGeneral.AddParameterWithValueToSQLCommand("@Interest", objLead.Interest);
+                objGeneral.AddParameterWithValueToSQLCommand("@Status", objLead.Status);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", objLead.Mode);
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddLeadDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return _isInserted;
+        }
+
+        public int AddLeadEnquiry(string enquiryFor, int LeadID)
+        {
+            int _isInserted = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EnquiryFor", enquiryFor);
+                objGeneral.AddParameterWithValueToSQLCommand("@LeadID", LeadID);
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddLeadEnquiry");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isInserted;
+        }
     }
 
 }
@@ -1747,6 +1944,36 @@ public class SupportDetails
     public string Comment { get; set; }
    
    
+}
+
+public class Lead_Details
+{
+    public DateTime EnquiryDate { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Mobile { get; set; }
+    public string Email { get; set; }
+    public string CompanyName { get; set; }
+    public string CompanyType { get; set; }
+    public string Gender { get; set; }
+    public long CountryID { get; set; }
+    public long StateID { get; set; }
+    public long CityID { get; set; }
+    public string EnquiryFor { get; set; }
+    public string EnquirySource { get; set; }
+    public string Location { get; set; }
+    public string WebsiteURL { get; set; }
+    public string Interest { get; set; }
+    public string Status { get; set; }
+
+    public string Technology { get; set; }
+
+    public string PrefferedTechnology{ get; set; }
+
+    public string Remarks { get; set; }
+
+    public int Mode { get; set; }
+
 }
 
 

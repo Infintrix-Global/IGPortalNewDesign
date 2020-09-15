@@ -34,7 +34,7 @@ namespace IG_Portal
                     Password = objCommon.Encrypt("12345"),
                     Location = txtLocation.Text,
                 };
-
+               
                 _isInserted = objCommon.AddClientDetails(objClient);
 
                 if (_isInserted == -1)

@@ -921,6 +921,23 @@ namespace IG_Portal.BAL_Classes
 
         }
 
+        public DataTable GetLead()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetLeads");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
         public DataTable GetSupportTickets()
         {
             try
@@ -1075,6 +1092,22 @@ namespace IG_Portal.BAL_Classes
         }
 
         public DataTable SearchBug(string query)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+
+                dt = objGeneral.GetDatasetByCommand(query);
+            }
+            catch (Exception ex)
+            {
+            }
+            return dt;
+        }
+
+        public DataTable SearchLead(string query)
         {
             try
             {

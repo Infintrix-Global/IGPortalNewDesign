@@ -95,7 +95,7 @@ namespace IG_Portal
 
         public void BindTaskTitleMaster(string projectID)
         {
-            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMaster(projectID);
+            ddlTaskTitle.DataSource = objcommon.GetTaskTitleMasterForAddBug(projectID);
             ddlTaskTitle.DataTextField = "TaskTitle";
             ddlTaskTitle.DataValueField = "ID";
 
@@ -156,6 +156,13 @@ namespace IG_Portal
             else
             {
                 txtTaskTitle.Visible = false;
+                ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
+                ddlTaskDetails.DataTextField = "TaskDetails";
+                ddlTaskDetails.DataValueField = "ID";
+
+                ddlTaskDetails.DataBind();
+                ddlTaskDetails.Items.Insert(0, new ListItem("--- Select ---", "0"));
+                txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             }
         }
 

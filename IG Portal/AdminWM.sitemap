@@ -29,5 +29,8 @@
 	<siteMapNode url="~/AssignTask.aspx" title="Add Task"  description="" />
  <siteMapNode url="~/PendingAssignTask.aspx" title="View Task"  description="" />
 	 <siteMapNode url="~/PrioritizeTask.aspx" title="Prioritize Task"  description="" />
+		<siteMapNode url="~/LeadDetails.aspx" title="Add Lead"  description="" />
+		<siteMapNode url="~/ViewLeads.aspx" title="View Lead"  description="" />
+
 	</siteMapNode>
 </siteMap>

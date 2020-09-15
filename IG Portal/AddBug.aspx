@@ -181,7 +181,22 @@
 
                                         <div class="clearfix"></div>
 
-                                          <div class="col m4">
+                                          <div class="col m3">
+                                            <div class="form-group">
+                                                <span class="title">
+                                                    <label>Task Details</label>
+
+                                                </span>
+                                                <asp:DropDownList ID="ddlTaskDetails" runat="server" Visible="false"></asp:DropDownList>
+                                                <asp:TextBox ID="txtTaskDetails" runat="server" placeholder="" Enabled="false"
+                                                    ClientIDMode="Static" TextMode="MultiLine" TabIndex="11">
+                                                </asp:TextBox>
+
+
+                                            </div>
+                                        </div>
+
+                                          <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
                                                     <label>Assign To </label>
@@ -194,7 +209,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col m4">
+                                        <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
                                                     <label>Status </label>
@@ -210,7 +225,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col m4">
+                                        <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
                                                     <label>Comments</label>

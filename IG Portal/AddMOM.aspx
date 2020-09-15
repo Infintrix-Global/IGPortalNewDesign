@@ -264,7 +264,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="8"  >
+                                                    ClientIDMode="Static" TabIndex="8" AutoPostBack="true"  OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" >
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="e" InitialValue="0"

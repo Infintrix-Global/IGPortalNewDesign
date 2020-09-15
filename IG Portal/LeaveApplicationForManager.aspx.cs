@@ -19,21 +19,19 @@ namespace IG_Portal
         {
             if (!IsPostBack)
             {
-                if (Session["Role"].ToString() == "2")
+                if (Session["Role"].ToString() == "4")
                 {
-                    //pbAdmin.Visible = true;
-                    // pbEmployee.Visible = false;
+                    BindEmployeeMaster();
 
                 }
-                else if (Session["Role"].ToString() == "1")
+                else if (Session["Role"].ToString() == "10")
                 {
-                    //pbEmployee.Visible = true;
-                    // pbAdmin.Visible = false;
+                    BindAllEmployee();
 
                 }
                 txtFromDate.Attributes["min"] = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
                 BindLeaveMaster();
-                BindEmployeeMaster();
+               // BindEmployeeMaster();
                
             }
         }
@@ -47,6 +45,15 @@ namespace IG_Portal
             ddlLeaveType.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
+        public void BindAllEmployee()
+        {
+            ddlEmployee.DataSource = objCommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlEmployee.DataTextField = "EmployeeName";
+            ddlEmployee.DataValueField = "ID";
+            ddlEmployee.DataBind();
+            ddlEmployee.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+
         public void BindEmployeeMaster()
         {
             ddlEmployee.DataSource = objCommon.GetEmployeeMasterbyManager(Session["LoginID"].ToString());
@@ -56,7 +63,7 @@ namespace IG_Portal
             ddlEmployee.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
-       
+
         protected void txtFromDate_TextChanged(object sender, EventArgs e)
         {
             if (txtFromDate.Text != "")

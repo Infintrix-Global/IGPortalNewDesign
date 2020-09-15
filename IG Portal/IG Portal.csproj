@@ -96,6 +96,7 @@
     <Content Include="EmployeeDocuments.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
     <Content Include="js\BsMultiSelect.js" />
+    <Content Include="LeadDetails.aspx" />
     <Content Include="LeaveApprovalHR.aspx" />
     <Content Include="ManagerDashBoardWM.aspx" />
     <Content Include="ChangePassword.aspx" />
@@ -140,6 +141,7 @@
     <Content Include="PendingAssignTask.aspx" />
     <Content Include="PrioritizeTask.aspx" />
     <Content Include="ProjectWiseReport.aspx" />
+    <Content Include="SalesDashBoard.aspx" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
     <Content Include="Scripts\ckeditor\ckeditor.asp" />
@@ -701,6 +703,7 @@
     <Content Include="ViewBug.aspx" />
     <Content Include="ViewBugDetails.aspx" />
     <Content Include="ViewEmployeeDocuments.aspx" />
+    <Content Include="ViewLEads.aspx" />
     <Content Include="ViewMOMDetails.aspx" />
     <Content Include="ViewSupportHistory.aspx" />
     <Content Include="ViewSupportTicket.aspx" />
@@ -821,6 +824,13 @@
     </Compile>
     <Compile Include="EmployeeWiseReport.aspx.designer.cs">
       <DependentUpon>EmployeeWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LeadDetails.aspx.cs">
+      <DependentUpon>LeadDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LeadDetails.aspx.designer.cs">
+      <DependentUpon>LeadDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="LeaveApprovalHR.aspx.cs">
       <DependentUpon>LeaveApprovalHR.aspx</DependentUpon>
@@ -981,6 +991,13 @@
     <Compile Include="AdminDashBoardWM.aspx.designer.cs">
       <DependentUpon>AdminDashBoardWM.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SalesDashBoard.aspx.cs">
+      <DependentUpon>SalesDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesDashBoard.aspx.designer.cs">
+      <DependentUpon>SalesDashBoard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SLAReport.aspx.cs">
       <DependentUpon>SLAReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1029,6 +1046,13 @@
     </Compile>
     <Compile Include="ViewEmployeeDocuments.aspx.designer.cs">
       <DependentUpon>ViewEmployeeDocuments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLEads.aspx.cs">
+      <DependentUpon>ViewLEads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewLEads.aspx.designer.cs">
+      <DependentUpon>ViewLEads.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewMOMDetails.aspx.cs">
       <DependentUpon>ViewMOMDetails.aspx</DependentUpon>
@@ -1109,6 +1133,7 @@
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
     <Content Include="Support.sitemap" />
+    <Content Include="Sales.sitemap" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
