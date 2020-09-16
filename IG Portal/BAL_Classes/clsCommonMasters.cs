@@ -889,6 +889,39 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetDepartmentMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 20);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", 0);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public int AddEmployeeDepartment(int employeeID,string DepartmentID)
+        {
+            int _isInserted = -1;
+            try
+            {
+               
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@DepartmentID", DepartmentID);
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", employeeID);
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddEmployeeDepartment");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isInserted;
+        }
+
         public DataTable GetProjectMasterByEmployee(int loginID)
         {
             try
@@ -1499,6 +1532,24 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", pName);
 
                 _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddProject");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int AddDepartment( string dName)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+               
+                objGeneral.AddParameterWithValueToSQLCommand("@DepartmentName", dName);
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddDepartment");
             }
             catch (Exception ex)
             {

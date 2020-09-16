@@ -343,3 +343,24 @@
    at System.Web.UI.WebControls.GridView.DataBind()
    at IG_Portal.LeaveApplication.BindGridLeave(String mode) in D:\GIT\IG Portal\IG Portal\LeaveApplication.aspx.cs:line 115
    at IG_Portal.LeaveApplication.btnsubmit_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\LeaveApplication.aspx.cs:line 95 at 10-Sep-20 12:17:22 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 196Thread was being aborted. at 16-Sep-20 05:10:46 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 203Thread was being aborted. at 16-Sep-20 05:58:39 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 203Thread was being aborted. at 16-Sep-20 05:59:05 PM

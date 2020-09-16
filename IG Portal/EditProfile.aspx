@@ -1,6 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="EditProfile.aspx.cs" Inherits="IG_Portal.EditProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <style>
+         .block1 {
+            height:100px;
+            width:250px;
+            border:1px solid aliceblue;
+            overflow-y:scroll;
+            margin-left:480px;
+            margin-top:-30px;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="card-body">
@@ -126,9 +137,24 @@
                                 <td>
                                     <asp:TextBox ID="txtPassword" runat="server" Text="" Font-Bold="true" ></asp:TextBox></td>
                             </tr>
+                            <tr id="department" runat="server">
+                                <td>Department:</td>
+                                </tr>
 
+                              </table>
 
-                        </table>
+                         <div class="row">
+                                   <div class="col m3">
+                              
+                                                   
+                                                   
+                                                
+                           <div class="block1" id="chkDept" runat="server">
+                          
+                            <asp:CheckBoxList ID="chkDepartment"  runat="server"   />
+                        </div>
+                         </div>
+                        </div>
                     </div>
                 </div>
                 <br />

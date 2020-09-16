@@ -185,9 +185,11 @@
                                     <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Master </a>
                                         <div class="collapsible-body">
                                             <ul>
-                                                <li><a href="<%= ResolveUrl("~/AddProject.aspx") %>">Project</a> </li>
+                                               <li><a href="<%= ResolveUrl("~/AddProject.aspx") %>">Project</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddEmployee.aspx") %>">Employee</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task Type</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/AddPage.aspx") %>">Page</a> </li>
+                                                 <li><a href="<%= ResolveUrl("~/AddDepartment.aspx") %>">Department</a> </li>
                                             </ul>
                                         </div>
                                     </li>
@@ -318,6 +320,7 @@
                                                 <li><a href="<%= ResolveUrl("~/AddEmployee.aspx") %>">Employee</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task Type</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddPage.aspx") %>">Page</a> </li>
+                                                 <li><a href="<%= ResolveUrl("~/AddDepartment.aspx") %>">Department</a> </li>
                                             </ul>
                                         </div>
                                     </li>

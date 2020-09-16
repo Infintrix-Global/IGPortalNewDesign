@@ -19,10 +19,20 @@ namespace IG_Portal
 
                 BindEmployeeMaster();
                 GetEmployeeList();
+                BindDepartment();
                 BindRole();
             }
         }
 
+
+        public void BindDepartment()
+        {
+            chkDepartment.DataSource = objCommon.GetDepartmentMaster();
+            chkDepartment.DataTextField = "DepartmentName";
+            chkDepartment.DataValueField = "ID";
+            chkDepartment.DataBind();
+           
+        }
         public void BindEmployeeMaster()
         {
             ddlManager.DataSource = objCommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
@@ -84,6 +94,14 @@ namespace IG_Portal
 
                         lblmsg.Text = "Employee Added ";
                         lblmsg.ForeColor = System.Drawing.Color.Green;
+                        foreach (ListItem item in chkDepartment.Items)
+                        {
+                            if (item.Selected)
+                            {
+                                 objCommon.AddEmployeeDepartment(_isInserted, item.Value);
+                            }
+                        }
+                       
                         objCommon.SendMail(txtEmail.Text.Trim(), txtMobile.Text.Trim(), "12345");
                         GetEmployeeList();
                         btclear_Click(sender, e);

@@ -672,6 +672,22 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataTable GetDepartmentByEmployee(int eid)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", eid);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetDepartmentByEmployee");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataSet GetLeaveDetailsByEmployee(string eid, string mode)
         {
             try

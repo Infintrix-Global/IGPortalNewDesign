@@ -81,6 +81,7 @@
   <ItemGroup>
     <Content Include="AddBug.aspx" />
     <Content Include="AddClientDetails.aspx" />
+    <Content Include="AddDepartment.aspx" />
     <Content Include="AddMOM.aspx" />
     <Content Include="AddPage.aspx" />
     <Content Include="AddProjectDetails.aspx" />
@@ -727,6 +728,13 @@
     </Compile>
     <Compile Include="AddClientDetails.aspx.designer.cs">
       <DependentUpon>AddClientDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddDepartment.aspx.cs">
+      <DependentUpon>AddDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddDepartment.aspx.designer.cs">
+      <DependentUpon>AddDepartment.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddMOM.aspx.cs">
       <DependentUpon>AddMOM.aspx</DependentUpon>

@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="AddEmployee.aspx.cs" Inherits="IG_Portal.EmployeeMaster" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+         .block1 {
+            height:100px;
+            width:250px;
+            border:1px solid aliceblue;
+            overflow-y:scroll;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
@@ -117,7 +125,18 @@
                             </div>
                         </div>
 
-                        
+                        <div class="row">
+                                   <div class="col m3">
+                               <span class="title">
+                                                    <label>Department</label>
+                                                    <span class="required">*</span>
+                                                </span>
+                           <div class="block1">
+                          
+                              <asp:CheckBoxList ID="chkDepartment" RepeatLayout="OrderedList" runat="server"   TabIndex="9"/>
+                        </div>
+                         </div>
+                        </div>
 
                         <div class="row" align="center">
                             <div class="col m6">

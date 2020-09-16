@@ -91,6 +91,13 @@
 
                                     </tr>
                                    
+                                     <tr>
+                                       
+                                        <td>Department:</td>
+                                            <td>
+                                            <asp:Label ID="lblDepartment" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+
+                                    </tr>
 
                                 </table>
                             </div>

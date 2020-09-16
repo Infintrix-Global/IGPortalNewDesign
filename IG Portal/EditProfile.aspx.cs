@@ -48,9 +48,18 @@ namespace IG_Portal
                 int x = Convert.ToInt32(eid);
                 BindRole();
                 BindEmployeeMaster();
+                BindDepartment();
                 bindEmployeeProfile(x);
 
             }
+        }
+
+        public void BindDepartment()
+        {
+            chkDepartment.DataSource = objCommon.GetDepartmentMaster();
+            chkDepartment.DataTextField = "DepartmentName";
+            chkDepartment.DataValueField = "ID";
+            chkDepartment.DataBind();
         }
 
         public void BindEmployeeMaster()
@@ -78,6 +87,8 @@ namespace IG_Portal
             txtEmail.Attributes.Add("readonly", "readonly");
             passsword.Visible = false;
             ddlRole.Enabled = false;
+            chkDept.Visible = false;
+            department.Visible = false;
             ddlManager.Enabled = false;
         }
 
@@ -111,6 +122,17 @@ namespace IG_Portal
                     }
                     ddlRole.SelectedValue = dt1.Rows[0]["Role"].ToString();
                     ddlManager.SelectedValue = dt1.Rows[0]["Manager"].ToString();
+                    DataTable dtDepartment = objTask.GetDepartmentByEmployee(eid);
+                    foreach (DataRow dr in dtDepartment.Rows)
+                    {
+                        foreach (ListItem item in chkDepartment.Items)
+                        {
+                            if (item.Value == dr["DepartmentID"].ToString())
+                                item.Selected = true;
+                        }
+                            //chkDepartment.SelectedValue = dr["DepartmentID"].ToString();
+                    }
+
 
                 }
 
@@ -145,10 +167,24 @@ namespace IG_Portal
                 {
                    
                     _isInserted = objCommon.UpdateEmployee(objEmployee,mode);
+                    foreach (ListItem item in chkDepartment.Items)
+                    {
+                        if (item.Selected)
+                        {
+                            objCommon.AddEmployeeDepartment(Convert.ToInt32(Session["EmployeeID"].ToString()), item.Value);
+                        }
+                    }
                 }
                else if (mode == 2)
                 {
                     _isInserted = objCommon.UpdateEmployee(objEmployee,mode);
+                    //foreach (ListItem item in chkDepartment.Items)
+                    //{
+                    //    if (item.Selected)
+                    //    {
+                    //        objCommon.AddEmployeeDepartment(Convert.ToInt32(Session["EmployeeID"].ToString()), item.Value);
+                    //    }
+                    //}
                 }
 
                 if (_isInserted == -1)

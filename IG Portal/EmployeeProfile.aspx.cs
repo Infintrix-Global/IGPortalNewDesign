@@ -83,6 +83,7 @@ namespace IG_Portal
                     }
                     lblRole.Text = dt1.Rows[0]["RoleName"].ToString();
                   lblManager.Text = dt1.Rows[0]["ManagerName"].ToString();
+                    lblDepartment.Text = dt1.Rows[0]["Department"].ToString();
                 }
                 
             }
