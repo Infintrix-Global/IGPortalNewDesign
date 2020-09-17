@@ -104,7 +104,7 @@
                     <div class="row" align="center">
                         <div class="input-field col s12 m12 l12">
 
-                            <asp:Button ID="btnchanngepass" OnClick="btnchanngepass_Click" class="btn" runat="server" Text="Change Password" ForeColor="White" TabIndex="3" />
+                            <asp:Button ID="btnchanngepass" ValidationGroup="p" OnClick="btnchanngepass_Click" class="btn" runat="server" Text="Change Password" ForeColor="White" TabIndex="3" />
                         </div>
 
 

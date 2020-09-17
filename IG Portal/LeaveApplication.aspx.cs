@@ -44,9 +44,18 @@ namespace IG_Portal
         {
             if(txtFromDate.Text!="")
             {
-              // rgvEndDate.ValueToCompare = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
-               txtToDate.Attributes["min"] = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
-                txtToDate.Text = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
+                if (Convert.ToDateTime(txtFromDate.Text).ToString("dddd") != "Sunday")
+                {
+                    // rgvEndDate.ValueToCompare = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
+                    txtToDate.Attributes["min"] = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
+                    txtToDate.Text = Convert.ToDateTime(txtFromDate.Text).ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtFromDate.Text = "";
+                    txtToDate.Text = "";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('From Date Cannot be Sunday')", true);
+                }
            
             }
             else
