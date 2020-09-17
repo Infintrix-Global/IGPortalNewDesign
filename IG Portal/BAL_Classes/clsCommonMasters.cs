@@ -1065,7 +1065,22 @@ namespace IG_Portal
             }
             return ds.Tables[0];
         }
+        public DataTable GetTaskMasterByLoginID(int loginID)
+        {
+            try
+            {
 
+                General objGeneral = new General();
+                
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", loginID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetTaskMasterByLoginID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+      
         public DataTable GetTaskMasterByProjectEmployeeMonthYear(int projectID, int employeeID, string Month, string Year)
         {
             try
@@ -1558,7 +1573,7 @@ namespace IG_Portal
             return _isInserted;
         }
 
-        public int AddTaskName(string companyID, string tName)
+        public int AddTaskName(string companyID, string tName,string departmentID)
         {
             int _isInserted = -1;
             try
@@ -1566,7 +1581,7 @@ namespace IG_Portal
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
                 objGeneral.AddParameterWithValueToSQLCommand("@TaskName", tName);
-
+                objGeneral.AddParameterWithValueToSQLCommand("@DepartmentID", departmentID);
                 _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddTask");
             }
             catch (Exception ex)

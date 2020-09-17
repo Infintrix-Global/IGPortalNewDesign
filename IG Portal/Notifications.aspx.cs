@@ -533,7 +533,8 @@ namespace IG_Portal
             {
                 int id = Convert.ToInt32(e.CommandArgument);
                 Session["BugIDReopen"] = id.ToString();
-                Response.Redirect("AddBug.aspx");
+                Response.Redirect("~/AddBug.aspx?BugIDReopen=" + objCommon.Encrypt(Session["BugIDReopen"].ToString()));
+               // Response.Redirect("AddBug.aspx");
             }
 
 

@@ -430,7 +430,8 @@ namespace IG_Portal
                 {
                     int bid = Convert.ToInt32(e.CommandArgument);
                     Session["BugID"] = bid.ToString();
-                    Response.Redirect("~/AddBug.aspx");
+                Response.Redirect("~/AddBug.aspx?BugID=" + objCommon.Encrypt(Session["BugID"].ToString()));
+                //Response.Redirect("~/AddBug.aspx");
                 }
 
                 if (e.CommandName == "ViewHistory")

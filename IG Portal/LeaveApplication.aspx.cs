@@ -165,18 +165,27 @@ namespace IG_Portal
         protected void btnDetails_Click(object sender, EventArgs e)
         {
             dtDate.Clear();
-            for (DateTime date = Convert.ToDateTime(txtFromDate.Text); date <= Convert.ToDateTime(txtToDate.Text); date = date.AddDays(1))
+            DataTable dtChk= objTask.CheckAppliedLeave(Session["LoginID"].ToString(),Convert.ToDateTime(txtFromDate.Text).ToString("dd/MMM/yy"),Convert.ToDateTime(txtToDate.Text).ToString("dd/MMM/yy"));
+            if (dtChk.Rows.Count == 0)
             {
-                if ((date.DayOfWeek != DayOfWeek.Saturday) && (date.DayOfWeek != DayOfWeek.Sunday))
+                for (DateTime date = Convert.ToDateTime(txtFromDate.Text); date <= Convert.ToDateTime(txtToDate.Text); date = date.AddDays(1))
                 {
-                    dtDate.Rows.Add(date.ToShortDateString());
+                    if ((date.DayOfWeek != DayOfWeek.Saturday) && (date.DayOfWeek != DayOfWeek.Sunday))
+                    {
+                        dtDate.Rows.Add(date.ToShortDateString());
+                    }
                 }
+
+
+                GridLeaveDay.DataSource = dtDate;
+                GridLeaveDay.DataBind();
+                lblMessage.Text = "";
+                divDetails.Visible = true;
             }
-
-
-            GridLeaveDay.DataSource = dtDate;
-            GridLeaveDay.DataBind();
-            divDetails.Visible = true;
+            else
+            {
+                lblMessage.Text = "Already Applied for leave in this date range";
+            }
             
         }
 

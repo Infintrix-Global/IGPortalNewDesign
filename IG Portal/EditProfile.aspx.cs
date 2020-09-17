@@ -121,6 +121,7 @@ namespace IG_Portal
                         txtJoinDate.Text = Convert.ToDateTime(dt1.Rows[0]["JoiningDate"].ToString()).ToString("yyyy-MM-dd");
                     }
                     ddlRole.SelectedValue = dt1.Rows[0]["Role"].ToString();
+                    txtPassword.Text= objCommon.Decrypt(dt1.Rows[0]["Password"].ToString());
                     ddlManager.SelectedValue = dt1.Rows[0]["Manager"].ToString();
                     DataTable dtDepartment = objTask.GetDepartmentByEmployee(eid);
                     foreach (DataRow dr in dtDepartment.Rows)

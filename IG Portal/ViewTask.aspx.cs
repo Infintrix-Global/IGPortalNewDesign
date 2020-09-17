@@ -134,7 +134,7 @@ namespace IG_Portal
 
         public void BindTaskMaster()
         {
-            ddlTaskType.DataSource = objcommon.GetTaskMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlTaskType.DataSource = objcommon.GetTaskMasterByLoginID(Convert.ToInt32(Session["LoginID"].ToString()));
             ddlTaskType.DataTextField = "TaskName";
             ddlTaskType.DataValueField = "ID";
 

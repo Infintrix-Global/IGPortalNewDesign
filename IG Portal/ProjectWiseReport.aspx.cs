@@ -68,7 +68,17 @@ namespace IG_Portal
         public void BindTaskMaster()
         {
             ddlTaskType.DataSource = objcommon.GetTaskMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
-            ddlTaskType.DataTextField = "TaskName";
+            ddlTaskType.DataTextField = "TaskDepartment";
+            ddlTaskType.DataValueField = "ID";
+
+            ddlTaskType.DataBind();
+            ddlTaskType.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+
+        public void BindTaskMasterByLoginID()
+        {
+            ddlTaskType.DataSource = objcommon.GetTaskMasterByLoginID(Convert.ToInt32(ddlEmployeeName.SelectedValue));
+            ddlTaskType.DataTextField = "TaskDepartment";
             ddlTaskType.DataValueField = "ID";
 
             ddlTaskType.DataBind();
@@ -430,9 +440,15 @@ namespace IG_Portal
 
         protected void ddlEmployeeName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-           
-            btSearch_Click(sender, e);
+            if (ddlEmployeeName.SelectedIndex > 0)
+            {
+                BindTaskMasterByLoginID();
+                btSearch_Click(sender, e);
+            }
+            else {
+                BindTaskMaster();
+                btSearch_Click(sender, e);
+            }
 
 
         }

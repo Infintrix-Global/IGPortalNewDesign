@@ -34,6 +34,14 @@ namespace IG_Portal
                 BindSuggestedByMaster();
                 BindAssignToMaster();
                 txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
+                if (Request.QueryString["BugID"] != null)
+                {
+                    Session["BugID"] = objcommon.Decrypt(Request.QueryString["BugID"]);
+                }
+                if (Request.QueryString["BugIDReopen"] != null)
+                {
+                    Session["BugIDReopen"] = objcommon.Decrypt(Request.QueryString["BugIDReopen"]);
+                }
                 bugID = Session["BugID"] as string;
                 ReopenBugID = Session["BugIDReopen"] as string;
                 {

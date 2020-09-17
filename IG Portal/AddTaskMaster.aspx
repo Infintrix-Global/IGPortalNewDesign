@@ -30,6 +30,16 @@
                     <ContentTemplate>
                          <asp:Label ID="lblmsg" runat="server"></asp:Label>
                 <div class="row">
+                       <div class=" col m3">
+                                  <div class="form-group">
+                                      <label>Department Name</label>
+                                      <asp:DropDownList ID="ddlDepartment" runat="server" class="form-control" placeholder=""
+                                          ClientIDMode="Static" ValidationGroup="e"></asp:DropDownList>
+                                      <asp:RequiredFieldValidator ID="requiredProject" runat="server" ControlToValidate="ddlDepartment" ErrorMessage="Please Select Department Name" InitialValue="0" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
+
+                                  </div>
+                              </div>
+
                     <div class=" col m3">
                         <div class="form-group">
                             <label>Task Name</label>
@@ -78,6 +88,12 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
 
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                              <asp:TemplateField HeaderText="Department Name" HeaderStyle-CssClass="autostyle2">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("DepartmentName")  %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

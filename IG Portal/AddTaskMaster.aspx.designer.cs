@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class AddTask {
-        
+namespace IG_Portal
+{
+
+
+    public partial class AddTask
+    {
+
         /// <summary>
         /// SrciptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager SrciptManager1;
-        
+
         /// <summary>
         /// lbltitle control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbltitle;
-        
+
         /// <summary>
         /// upProject control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upProject;
-        
+
         /// <summary>
         /// lblmsg control.
         /// </summary>
@@ -47,7 +49,25 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmsg;
-        
+
+        /// <summary>
+        /// ddlDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDepartment;
+
+        /// <summary>
+        /// requiredProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredProject;
+
         /// <summary>
         /// txtTaskName control.
         /// </summary>
@@ -56,7 +76,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTaskName;
-        
+
         /// <summary>
         /// requiredTask control.
         /// </summary>
@@ -65,7 +85,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredTask;
-        
+
         /// <summary>
         /// btAdd control.
         /// </summary>
@@ -74,7 +94,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btAdd;
-        
+
         /// <summary>
         /// btclear control.
         /// </summary>
@@ -83,7 +103,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btclear;
-        
+
         /// <summary>
         /// count control.
         /// </summary>
@@ -92,7 +112,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label count;
-        
+
         /// <summary>
         /// GridTask control.
         /// </summary>

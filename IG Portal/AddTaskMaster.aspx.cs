@@ -17,13 +17,23 @@ namespace IG_Portal
             {
 
                 GetTaskList();
-
+                BindDepartmentMaster();
             }
+        }
+
+        public void BindDepartmentMaster()
+             {
+            ddlDepartment.DataSource = objCommon.GetDepartmentMaster();
+            ddlDepartment.DataTextField = "DepartmentName";
+            ddlDepartment.DataValueField = "ID";
+            ddlDepartment.DataBind();
+            ddlDepartment.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
         }
         protected void btAdd_Click(object sender, EventArgs e)
         {
             int _isInserted = -1;
-            _isInserted = objCommon.AddTaskName(Session["CompanyID"].ToString(), txtTaskName.Text);
+            _isInserted = objCommon.AddTaskName(Session["CompanyID"].ToString(), txtTaskName.Text,ddlDepartment.SelectedValue);
             if (_isInserted == -1)
             {
 

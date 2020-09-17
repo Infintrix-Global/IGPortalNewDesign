@@ -67,7 +67,7 @@ namespace IG_Portal
 
         public void BindTaskMaster()
         {
-            ddlTaskType.DataSource = objcommon.GetTaskMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlTaskType.DataSource = objcommon.GetTaskMasterByLoginID(Convert.ToInt32(Session["LoginID"].ToString()));
             ddlTaskType.DataTextField = "TaskName";
             ddlTaskType.DataValueField = "ID";
 
@@ -120,7 +120,7 @@ namespace IG_Portal
                     Comment = txtComment.Text,
                     TaskDetails = txtTaskDescription.Text,
                    
-                    EstimatedWorkDate = (Convert.ToDateTime(txtDate.Text)).ToString("dd MMMM yyyy"),
+                    EstimatedWorkDate = (Convert.ToDateTime(txtDate.Text)).ToString("dd MMM yyyy"),
                    
                      EstimatedWorkTime=txtTime.Text,
                    

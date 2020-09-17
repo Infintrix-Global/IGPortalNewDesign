@@ -162,6 +162,21 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
+        public DataTable CheckAppliedLeave(string LoginID, string fromDate, string ToDate)
+        {
+            try { 
+            objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+            objGeneral.AddParameterWithValueToSQLCommand("@FromDate", fromDate);
+            objGeneral.AddParameterWithValueToSQLCommand("@ToDate", ToDate);
+            ds = objGeneral.GetDatasetByCommand_SP("SP_CheckAppliedLeave");
+        }
+            catch(Exception ex)
+            {
+
+            }
+            return ds.Tables[0];
+        }
+
         public int AssignTask(TaskAssignDetails objTaskAssignDetails)
         {
             int _isInserted = -1;

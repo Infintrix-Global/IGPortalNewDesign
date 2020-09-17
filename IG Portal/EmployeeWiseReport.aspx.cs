@@ -23,7 +23,7 @@ namespace IG_Portal
                 txtFromDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 BindEmployeeMaster();
                 BindGridTask();
-                BindTaskMaster();
+                //BindTaskMaster();
                 BindStatusMaster();
                 BindTaskTitleMaster("0");
 
@@ -65,7 +65,7 @@ namespace IG_Portal
 
         public void BindTaskMaster()
         {
-            ddlTaskType.DataSource = objcommon.GetTaskMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlTaskType.DataSource = objcommon.GetTaskMasterByLoginID(Convert.ToInt32(ddlEmployeeName.SelectedValue));
             ddlTaskType.DataTextField = "TaskName";
             ddlTaskType.DataValueField = "ID";
 
@@ -433,6 +433,7 @@ namespace IG_Portal
         {
             
             BindProjectMaster();
+            BindTaskMaster();
             btSearch_Click(sender, e);
            
 
