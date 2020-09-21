@@ -9,20 +9,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card-body">
         <div class="portlet-body">
-            <%--  <div class="page-bar" >
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="EmployeeDashBoard.aspx">Home</a>
-                        <i class="fa fa-angle-right"></i>
-
-
-                        <a href="AddTimeSheet.aspx">Add TimeSheet</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                </ul>
-
-            </div>--%>
+           
             <!-- BEGIN FORM-->
 
             <script>
@@ -54,6 +41,24 @@
                     }
 
                 }
+
+                function DateTime12Validation(sender, args) {
+                    var start = document.getElementById("<%=txtStartTime.ClientID %>").value;
+                     var end = document.getElementById("<%=txtEndTime.ClientID %>").value;
+                     var date1 = new Date();
+                     var startTime = new Date(date1.getMonth() + "/" + date1.getDate() + "/" + date1.getYear() + " " + start);
+
+                     var endTime = new Date(date1.getMonth() + "/" + date1.getDate() + "/" + date1.getYear() + " " + end);
+
+
+                    var diff = (endTime.getTime() - startTime.getTime()) / 1000;
+                    diff /= (60 * 60);
+                    
+                    if(diff>12) {
+                         args.IsValid = false;
+                     }
+
+                 }
             </script>
 
             <div class="form-body">
@@ -63,14 +68,15 @@
                 </div>
                 <br />
 
-                <asp:UpdatePanel ID="upEmployee" runat="server">
-                    <ContentTemplate>
+               
 
                         <div class="row">
                             <div class=" col m12">
                                 <div class="portlet light ">
                                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                                     <div class="row">
+                                         <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>
                                         <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
@@ -78,7 +84,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder="" AutoPostBack="true"
-                                                    ClientIDMode="Static" TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" >
+                                                    TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" >
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
@@ -93,8 +99,8 @@
                                                     <label>Task Category</label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:DropDownList ID="ddlTaskCategory" runat="server" placeholder="" AutoPostBack="true"
-                                                    ClientIDMode="Static" TabIndex="2" OnSelectedIndexChanged="ddlTaskCategory_SelectedIndexChanged">
+                                                <asp:DropDownList ID="ddlTaskCategory" runat="server" placeholder=""  AutoPostBack="true"
+                                                     TabIndex="2" OnSelectedIndexChanged="ddlTaskCategory_SelectedIndexChanged">
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlTaskCategory" ValidationGroup="at" InitialValue="0"
@@ -126,7 +132,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlTaskTitle" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="4" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true">
+                                                    TabIndex="4" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
                                                 <asp:DropDownList ID="ddlAssignTask" runat="server" placeholder="" Visible="false"
                                                     ClientIDMode="Static" >
@@ -147,6 +153,9 @@
                                                 </span>
                                             </div>
                                         </div>
+
+                                      </ContentTemplate>
+                    </asp:UpdatePanel>
                                         <div class="clearfix"></div>
 
                                         <div class="col m3">
@@ -175,7 +184,7 @@
                                                     </label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="6"   ></asp:TextBox>
+                                                <asp:TextBox ID="txtDate"  ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Date" TabIndex="6"   ></asp:TextBox>
                                                 <%-- <asp:ImageButton ID="imgPopup" ImageUrl="~/images/calendar.png" UseSubmitBehavior="false" OnClick="imgPopup_Click" runat="server" TabIndex="5" />
                                         <asp:Calendar ID="Calendar1" Visible="false" OnSelectionChanged="Calendar1_SelectionChanged" runat="server" OnDayRender="Calendar1_DayRender" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt"
                                             ForeColor="#663399" ShowGridLines="True">
@@ -202,7 +211,7 @@
                                                         Start Time</label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtStartTime" runat="server" class="form-control" TabIndex="7" TextMode="Time" Format="hh:mm tt" ></asp:TextBox>
+                                                <asp:TextBox ID="txtStartTime" ClientIDMode="Static" runat="server" class="form-control" TabIndex="7" TextMode="Time" Format="hh:mm tt" ></asp:TextBox>
 
                                                 <asp:RequiredFieldValidator ID="requiredStartTime" runat="server" ControlToValidate="txtStartTime" ErrorMessage="Please Enter Start Time " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
@@ -215,14 +224,19 @@
                                                         End Time</label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtEndTime" runat="server" class="form-control" TabIndex="8" TextMode="Time" Format="hh:mm tt" ></asp:TextBox>
+                                                <asp:TextBox ID="txtEndTime" runat="server" ClientIDMode="Static" class="form-control" TabIndex="8" TextMode="Time" Format="hh:mm tt" ></asp:TextBox>
                                                 <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="End Time should be greater than Start Time"
                                                     ForeColor="Red" ControlToValidate="txtEndTime" Display="Dynamic" ClientValidationFunction="DateTimeValidation" ValidationGroup="at"></asp:CustomValidator>
+                                                 <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Difference between End Time and Start Time shoud be less than 12 hours"
+                                                    ForeColor="Red" ControlToValidate="txtEndTime" Display="Dynamic" ClientValidationFunction="DateTime12Validation" ValidationGroup="at"></asp:CustomValidator>
                                                 <asp:RequiredFieldValidator ID="requiredEndTime" runat="server" ControlToValidate="txtEndTime" ErrorMessage="Please Enter End Time " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
 
                                         <div class="clearfix"></div>
+                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+
                                         <div class="col m4">
                                             <div class="form-group">
                                                 <span class="title">
@@ -252,18 +266,21 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                   
+                              <div class="clearfix"></div>
 
                                     <div class="row" align="center">
                                         <asp:Button ID="btnsubmit" runat="server" TabIndex="11" ClientIDMode="Static" Text="Submit" class="btn" CausesValidation="true" OnClick="btnsubmit_Click" ValidationGroup="at" UseSubmitBehavior="false"   ></asp:Button>
                                     </div>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
+                                         </div>
                                 </div>
                             </div>
 
                         </div>
 
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                   
             </div>
 
         </div>

@@ -34,7 +34,7 @@
                                   <div class="form-group">
                                       <label>Department Name</label>
                                       <asp:DropDownList ID="ddlDepartment" runat="server" class="form-control" placeholder=""
-                                          ClientIDMode="Static" ValidationGroup="e"></asp:DropDownList>
+                                           ValidationGroup="e"></asp:DropDownList>
                                       <asp:RequiredFieldValidator ID="requiredProject" runat="server" ControlToValidate="ddlDepartment" ErrorMessage="Please Select Department Name" InitialValue="0" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
 
                                   </div>

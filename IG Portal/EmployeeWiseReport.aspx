@@ -41,7 +41,8 @@
                 <br />
                 <!-- END PAGE HEADER-->
 
-
+                  <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
 
                 <div class="row">
 
@@ -49,7 +50,7 @@
                         <div class="form-group">
                             <label>Employee Name</label>
                             <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">
+                                OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">
                             </asp:DropDownList>
 
 
@@ -58,14 +59,13 @@
                 </div>
 
                 <div class="clearfix"></div>
-                <asp:UpdatePanel ID="upTask" runat="server">
-                    <ContentTemplate>
+              
                         <div class="row">
                             <div class=" col m2 ">
                                 <div class="form-group">
                                     <label>Project Name </label>
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
-                                        ClientIDMode="Static" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
+                                        OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
                                     </asp:DropDownList>
 
 
@@ -129,8 +129,7 @@
                             </div>
                         </div>
 
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                  
 
                 <div class="row" align="center">
 
@@ -285,7 +284,8 @@
 
                     </div>
 
-
+                      </ContentTemplate>
+                </asp:UpdatePanel>
                 </div>
             </div>
             </div>

@@ -199,7 +199,8 @@
                         </div>
 
                         </div>
-
+                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
                          <div class="row">
                                <div class="col m3">
                                             <div class="form-group">
@@ -224,7 +225,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlMeetingPlace" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="5" AutoPostBack="true" OnSelectedIndexChanged="ddlMeetingPlace_SelectedIndexChanged"  >
+                                                     TabIndex="5" AutoPostBack="true" OnSelectedIndexChanged="ddlMeetingPlace_SelectedIndexChanged"  >
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlMeetingPlace" ValidationGroup="e" InitialValue="0"
@@ -264,7 +265,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="8" AutoPostBack="true"  OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" >
+                                                   TabIndex="8" AutoPostBack="true"  OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" >
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="e" InitialValue="0"
@@ -379,6 +380,8 @@
                     </div>
                     </asp:Panel>
                     <br />
+
+                       
                     <div class="row">
                        
 
@@ -415,6 +418,8 @@
 
                     </div>
 
+                         </ContentTemplate>
+                          </asp:UpdatePanel>
                 </div>
 
 

@@ -15,14 +15,15 @@
                 <!-- END PAGE HEADER-->
 
 
-
+                  <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
                 <div class="row">
 
                     <div class=" col m3">
                         <div class="form-group">
                             <label>Month Name</label>
                             <asp:DropDownList ID="ddlMonthName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" >
+                                 OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" >
                                 <asp:ListItem Text="January" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="February" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="March" Value="3"></asp:ListItem>
@@ -56,7 +57,7 @@
                         <div class="form-group">
                             <label>Employee Name</label>
                             <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true" >
+                                OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true" >
                             </asp:DropDownList>
 
                         </div>
@@ -66,7 +67,7 @@
                                 <div class="form-group">
                                     <label>Project Name </label>
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" 
-                                        ClientIDMode="Static" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
+                                        OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
                                     </asp:DropDownList>
 
 
@@ -102,7 +103,8 @@
                         </div>
                     </div>
                 </div>
-
+                        
+                  
                 <div class="clearfix"></div>
          
                 
@@ -204,6 +206,8 @@
 
 
                 </div>
+                           </ContentTemplate>
+                        </asp:UpdatePanel>
             </div>
             </div>
         </div>

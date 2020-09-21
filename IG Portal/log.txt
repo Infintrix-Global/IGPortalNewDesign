@@ -364,3 +364,11 @@
    at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
    at System.Web.HttpResponse.Redirect(String url)
    at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 203Thread was being aborted. at 16-Sep-20 05:59:05 PM
+*****Error message=****   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at IG_Portal.EmployeeWiseReport.<btSearch_Click>g__GridFillSearch|13_0(<>c__DisplayClass13_0& ) in D:\GIT\IG Portal\IG Portal\EmployeeWiseReport.aspx.cs:line 296
+   at IG_Portal.EmployeeWiseReport.btSearch_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EmployeeWiseReport.aspx.cs:line 280Column 'TotalTime' does not belong to table Table. at 18-Sep-20 02:53:34 PM
+*****Error message=****   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at IG_Portal.EmployeeWiseReport.<btSearch_Click>g__GridFillSearch|13_0(<>c__DisplayClass13_0& )
+   at IG_Portal.EmployeeWiseReport.btSearch_Click(Object sender, EventArgs e)Column 'TotalTime' does not belong to table Table. at 18-Sep-20 02:54:57 PM

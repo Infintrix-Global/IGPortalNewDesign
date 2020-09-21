@@ -43,6 +43,7 @@ namespace IG_Portal
                 {
                     Session["TimeSheetID"] = objcommon.Decrypt(Request.QueryString["TimeSheetID"]);
                 }
+                
                 BindProjectMaster();
                 BindTaskMaster();
                 BindTaskCategory();

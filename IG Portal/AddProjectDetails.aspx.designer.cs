@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class AddProjectDetails {
-        
+namespace IG_Portal
+{
+
+
+    public partial class AddProjectDetails
+    {
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// lbltitle control.
         /// </summary>
@@ -29,7 +31,16 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbltitle;
-        
+
+        /// <summary>
+        /// upEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upEmployee;
+
         /// <summary>
         /// lblMessage control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
-        
+
         /// <summary>
         /// ddlProjectName control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProjectName;
-        
+
         /// <summary>
         /// requiredProjectName control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredProjectName;
-        
+
         /// <summary>
         /// txtProjectDesription control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProjectDesription;
-        
+
         /// <summary>
         /// ddlProjectManager control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProjectManager;
-        
+
         /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
+
         /// <summary>
         /// txtWebsiteLInk control.
         /// </summary>
@@ -92,7 +103,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWebsiteLInk;
-        
+
         /// <summary>
         /// lblAPLive control.
         /// </summary>
@@ -101,7 +112,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAPLive;
-        
+
         /// <summary>
         /// txtAPLiveLink control.
         /// </summary>
@@ -110,7 +121,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAPLiveLink;
-        
+
         /// <summary>
         /// txtLiveUserName control.
         /// </summary>
@@ -119,7 +130,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLiveUserName;
-        
+
         /// <summary>
         /// txtLivePasssword control.
         /// </summary>
@@ -128,7 +139,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLivePasssword;
-        
+
         /// <summary>
         /// lblAPUAT control.
         /// </summary>
@@ -137,7 +148,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAPUAT;
-        
+
         /// <summary>
         /// txtAPUATLink control.
         /// </summary>
@@ -146,7 +157,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAPUATLink;
-        
+
         /// <summary>
         /// txtUATUserName control.
         /// </summary>
@@ -155,7 +166,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUATUserName;
-        
+
         /// <summary>
         /// txtUATPassword control.
         /// </summary>
@@ -164,7 +175,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUATPassword;
-        
+
         /// <summary>
         /// lblAPK control.
         /// </summary>
@@ -173,7 +184,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAPK;
-        
+
         /// <summary>
         /// txtAPKLink control.
         /// </summary>
@@ -182,7 +193,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAPKLink;
-        
+
         /// <summary>
         /// txtAPKUsename control.
         /// </summary>
@@ -191,7 +202,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAPKUsename;
-        
+
         /// <summary>
         /// txtAPKPassword control.
         /// </summary>
@@ -200,7 +211,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAPKPassword;
-        
+
         /// <summary>
         /// FileUpReciept control.
         /// </summary>
@@ -209,7 +220,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpReciept;
-        
+
         /// <summary>
         /// Label2 control.
         /// </summary>
@@ -218,7 +229,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-        
+
         /// <summary>
         /// btnFileUpload control.
         /// </summary>
@@ -227,7 +238,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFileUpload;
-        
+
         /// <summary>
         /// lblReciept control.
         /// </summary>
@@ -236,7 +247,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReciept;
-        
+
         /// <summary>
         /// btnsubmit control.
         /// </summary>

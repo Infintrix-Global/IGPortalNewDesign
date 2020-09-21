@@ -39,6 +39,7 @@
                                 <div class="portlet light ">
                                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                                     <div class="row">
+                                        
                                         <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
@@ -46,7 +47,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged"  AutoPostBack="true">
+                                                    TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged"  AutoPostBack="true">
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
@@ -62,7 +63,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlTaskType" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="2">
+                                                    TabIndex="2">
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredTaskType" runat="server" ControlToValidate="ddlTaskType" ValidationGroup="at" InitialValue="0"
@@ -94,7 +95,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlTaskTitle" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="3" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true" >
+                                                    TabIndex="3" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true" >
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredTaskTitle" runat="server" ControlToValidate="ddlTaskTitle" ValidationGroup="at" InitialValue="0"
@@ -119,21 +120,17 @@
                                          <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
-                                                    <label>Bug Details</label>
-                                                    <span class="required">*</span>
-                                                </span>
-                                                <asp:TextBox ID="txtBugDescription" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TextMode="MultiLine" Height="100px" TabIndex="5">
-                                                </asp:TextBox>
-                                                <span class="help-block">
-                                                    <asp:RequiredFieldValidator ID="requiredBugDescription" runat="server" ControlToValidate="txtBugDescription" ValidationGroup="at"
-                                                        SetFocusOnError="true" ErrorMessage="Please Enter Bug Description" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    <label>Task Details</label>
 
                                                 </span>
+                                                <asp:DropDownList ID="ddlTaskDetails" runat="server" Visible="false"></asp:DropDownList>
+                                                <asp:TextBox ID="txtTaskDetails" runat="server" placeholder="" Enabled="false"
+                                                    ClientIDMode="Static" TextMode="MultiLine" TabIndex="11">
+                                                </asp:TextBox>
+
 
                                             </div>
                                         </div>
-
 
                                         <div class="col m3">
                                             <div class="form-group">
@@ -181,20 +178,26 @@
 
                                         <div class="clearfix"></div>
 
-                                          <div class="col m3">
+                                        
+                                         <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
-                                                    <label>Task Details</label>
+                                                    <label>Bug Details</label>
+                                                    <span class="required">*</span>
+                                                </span>
+                                                <asp:TextBox ID="txtBugDescription" runat="server" placeholder=""
+                                                    ClientIDMode="Static" TextMode="MultiLine" Height="100px" TabIndex="5">
+                                                </asp:TextBox>
+                                                <span class="help-block">
+                                                    <asp:RequiredFieldValidator ID="requiredBugDescription" runat="server" ControlToValidate="txtBugDescription" ValidationGroup="at"
+                                                        SetFocusOnError="true" ErrorMessage="Please Enter Bug Description" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                                 </span>
-                                                <asp:DropDownList ID="ddlTaskDetails" runat="server" Visible="false"></asp:DropDownList>
-                                                <asp:TextBox ID="txtTaskDetails" runat="server" placeholder="" Enabled="false"
-                                                    ClientIDMode="Static" TextMode="MultiLine" TabIndex="11">
-                                                </asp:TextBox>
-
 
                                             </div>
                                         </div>
+
+                                         
 
                                           <div class="col m3">
                                             <div class="form-group">
@@ -262,9 +265,9 @@
                             </div>
 
                         </div>
-
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+</ContentTemplate>
+                    </asp:UpdatePanel>
+                  
             </div>
 
         </div>

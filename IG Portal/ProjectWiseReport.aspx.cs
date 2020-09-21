@@ -201,7 +201,9 @@ namespace IG_Portal
 
                 else
                 {
-                    strqtime = "SELECT CONVERT(TIME, DATEADD(s, SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod)), 0)) AS TotalTime FROM   TimeSheet TS where  TS.IsActive=1";
+                    strqtime = "DECLARE @TimeinSecond INT  SET @TimeinSecond = ";
+                    strqtime += "(SELECT  SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod)) AS TotalTime FROM   TimeSheet TS where  TS.IsActive=1";
+                    //strqtime = "SELECT CONVERT(TIME, DATEADD(s, SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod)), 0)) AS TotalTime FROM   TimeSheet TS where  TS.IsActive=1";
                     strQuery = "Select TS.LoginID,TS.ID ,L.EmployeeName,TTM.TaskTitle,TS.StartTime,TS.EndTime,TS.TimePeriod,TS.Comment,TM.TaskName,PM.ProjectName,TS.TaskDetails,WorkDate,SM.StatusName from TimeSheet TS inner join TaskMaster TM on TS.TaskType=TM.ID inner join ProjectMaster PM on PM.ID=TS.ProjectName inner join StatusMaster SM on TS.Status=SM.ID inner join TaskTitleMaster TTM on TS.TaskTitle=TTM.ID inner join Login L on L.ID=TS.LoginID where TS.IsActive=1";
                     if (Session["Role"].ToString() == "2")
                     {
@@ -244,7 +246,7 @@ namespace IG_Portal
                         }
 
                         strQuery += "order by WorkDate DESC ";
-
+                        strqtime += ")  SELECT RIGHT('0' + CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT('0' + CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2) + ':' + RIGHT('0' + CAST(@TimeinSecond % 60 AS VARCHAR), 2) AS TotalTime";
                         dtTime = objGeneral.GetDatasetByCommand(strqtime);
                         dtSearch1 = objTask.SearchTask(strQuery);
                         GridFillSearch();
@@ -283,7 +285,7 @@ namespace IG_Portal
                         strQuery += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                         strqtime += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                         strQuery += "order by WorkDate DESC ";
-
+                        strqtime += ")  SELECT RIGHT('0' + CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT('0' + CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2) + ':' + RIGHT('0' + CAST(@TimeinSecond % 60 AS VARCHAR), 2) AS TotalTime";
                         dtTime = objGeneral.GetDatasetByCommand(strqtime);
                         dtSearch1 = objTask.SearchTask(strQuery);
                         GridFillSearch();

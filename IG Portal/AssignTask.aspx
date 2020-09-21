@@ -50,7 +50,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder="" AutoPostBack="true"
-                                                    ClientIDMode="Static" TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" >
+                                                     TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" >
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
@@ -83,7 +83,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlTaskTitle" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="3" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true">
+                                                    TabIndex="3" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredTaskTitle" runat="server" ControlToValidate="ddlTaskTitle" ValidationGroup="at" InitialValue="0"

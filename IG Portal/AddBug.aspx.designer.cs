@@ -141,22 +141,22 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredtxttitle;
 
         /// <summary>
-        /// txtBugDescription control.
+        /// ddlTaskDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBugDescription;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTaskDetails;
 
         /// <summary>
-        /// requiredBugDescription control.
+        /// txtTaskDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredBugDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtTaskDetails;
 
         /// <summary>
         /// txtDate control.
@@ -204,22 +204,22 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredSuggestedBy;
 
         /// <summary>
-        /// ddlTaskDetails control.
+        /// txtBugDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTaskDetails;
+        protected global::System.Web.UI.WebControls.TextBox txtBugDescription;
 
         /// <summary>
-        /// txtTaskDetails control.
+        /// requiredBugDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTaskDetails;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredBugDescription;
 
         /// <summary>
         /// ddlAssignTo control.

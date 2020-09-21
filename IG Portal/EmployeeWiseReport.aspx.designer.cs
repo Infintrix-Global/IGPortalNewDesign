@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class EmployeeWiseReport {
-        
+namespace IG_Portal
+{
+
+
+    public partial class EmployeeWiseReport
+    {
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// lbltitle control.
         /// </summary>
@@ -29,16 +31,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbltitle;
-        
-        /// <summary>
-        /// ddlEmployeeName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmployeeName;
-        
+
         /// <summary>
         /// upTask control.
         /// </summary>
@@ -47,7 +40,16 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upTask;
-        
+
+        /// <summary>
+        /// ddlEmployeeName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmployeeName;
+
         /// <summary>
         /// ddlProjectName control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProjectName;
-        
+
         /// <summary>
         /// ddlTaskType control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTaskType;
-        
+
         /// <summary>
         /// ddlTaskTitle control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTaskTitle;
-        
+
         /// <summary>
         /// ddlStatus control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
-        
+
         /// <summary>
         /// txtFromDate control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFromDate;
-        
+
         /// <summary>
         /// requiredFromDate control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFromDate;
-        
+
         /// <summary>
         /// txtToDate control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtToDate;
-        
+
         /// <summary>
         /// requiredToDate control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredToDate;
-        
+
         /// <summary>
         /// btclear control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btclear;
-        
+
         /// <summary>
         /// btSearch control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSearch;
-        
+
         /// <summary>
         /// count control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label count;
-        
+
         /// <summary>
         /// tottime control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label tottime;
-        
+
         /// <summary>
         /// btExport control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btExport;
-        
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// GridTask control.
         /// </summary>

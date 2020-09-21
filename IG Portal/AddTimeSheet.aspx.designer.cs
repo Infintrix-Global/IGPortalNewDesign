@@ -33,15 +33,6 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.Label lbltitle;
 
         /// <summary>
-        /// upEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upEmployee;
-
-        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
+
+        /// <summary>
+        /// upEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upEmployee;
 
         /// <summary>
         /// ddlProjectName control.
@@ -231,6 +231,15 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
 
         /// <summary>
+        /// CustomValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
+
+        /// <summary>
         /// requiredEndTime control.
         /// </summary>
         /// <remarks>
@@ -238,6 +247,15 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredEndTime;
+
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
         /// ddlStatus control.

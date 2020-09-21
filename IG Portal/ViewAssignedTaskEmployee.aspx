@@ -13,7 +13,8 @@
                 </div>
                 <br />
 
-
+                 <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>
 
                  <asp:Label runat="server" Text="" ID="lblmsg"></asp:Label>
                  <div class="row">
@@ -22,7 +23,7 @@
                         <div class="form-group">
                             <label>Project</label>
                             <asp:DropdownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true"></asp:DropdownList>
+                                OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true"></asp:DropdownList>
 
 
                         </div>
@@ -162,7 +163,8 @@
                                 </div>
 
                             </div>
-
+                        </ContentTemplate>
+                     </asp:UpdatePanel>
                 </div>
             </div>
          </div>

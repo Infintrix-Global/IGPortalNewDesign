@@ -15,12 +15,14 @@ namespace IG_Portal
         clsCommonMasters objCommon = new clsCommonMasters();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            //Session.Clear();
-            if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+            if (!IsPostBack)
             {
-                txtUserName.Text = Request.Cookies["UserName"].Value;
-                txtPassword.Attributes["value"] = Request.Cookies["Password"].Value;
+                //Session.Clear();
+                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                {
+                    txtUserName.Text = Request.Cookies["UserName"].Value;
+                    txtPassword.Attributes["value"] = Request.Cookies["Password"].Value;
+                }
             }
         }
 

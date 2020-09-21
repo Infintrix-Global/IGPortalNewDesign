@@ -13,7 +13,8 @@
                 </div>
                 <br />
 
-
+                 <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
 
                  <asp:Label runat="server" Text="" ID="lblmsg"></asp:Label>
                  <div class="row">
@@ -190,7 +191,8 @@
                                 </div>
 
                             </div>
-
+</ContentTemplate>
+                     </asp:UpdatePanel>
                 </div>
             </div>
          </div>

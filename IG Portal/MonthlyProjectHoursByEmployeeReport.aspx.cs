@@ -201,7 +201,7 @@ namespace IG_Portal
 
         protected void ddlEmployeeName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlEmployeeName.SelectedValue != "0")
+            if (ddlEmployeeName.SelectedIndex > 0)
             {
                 ddlProjectName.DataSource = objcommon.GetProjectMasterByEmployeeMonthYear(Convert.ToInt32(ddlEmployeeName.SelectedValue), ddlMonthName.SelectedValue, ddlYear.SelectedValue);
                 ddlProjectName.DataTextField = "ProjectName";

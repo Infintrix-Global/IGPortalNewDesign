@@ -126,15 +126,17 @@
                 <!-- END PAGE HEADER-->
   <asp:Label ID="lblMessage" runat="server"></asp:Label>
                 <br />
-
-                <div class="row">
+                 <div class="row">
+                 <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>
+               
 
                   
                     <div class=" col m2 ">
                                 <div class="form-group">
                                     <label>Project Name </label>
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" 
-                                        ClientIDMode="Static" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
+                                         OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
                                     </asp:DropDownList>
 
 
@@ -186,7 +188,10 @@
                                                 
                                             </div>
                                         </div>
-
+                      
+                      </ContentTemplate>
+                     </asp:UpdatePanel>
+               
                     <div class=" col m2">
                                 <div class="form-group">
                                     <label>Work Date</label>
@@ -196,8 +201,8 @@
 
                                 </div>
                             </div>
-                    
-                    </div>            
+                    </div>
+                             
                 <br />
                 <div class="row" align="center">
 
@@ -397,6 +402,8 @@
                         </div>
 
                     </div>
+
+                      
             </div>
             </div>
          </div>

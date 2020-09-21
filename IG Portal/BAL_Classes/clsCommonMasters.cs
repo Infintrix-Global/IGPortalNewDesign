@@ -1782,6 +1782,45 @@ namespace IG_Portal
             return _isInserted;
         }
 
+
+        public DataTable GetTimeSheetHoursForBarGraphByEmployee(string LoginID, string mode)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetAssignedTaskListByEmployee(string LoginID, string mode)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetRoleRights(string role,int menuID)
         {
             try

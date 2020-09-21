@@ -15,7 +15,8 @@
                 <!-- END PAGE HEADER-->
   <asp:Label ID="lblMessage" runat="server"></asp:Label>
                 <br />
-
+                   <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
                 <div class="row">
 
                   
@@ -70,7 +71,10 @@
                                 </div>
                             </div>
                     
-                    </div>            
+                    </div>    
+                        
+                        </ContentTemplate>
+                       </asp:UpdatePanel>
                 <br />
                 <div class="row" align="center">
 

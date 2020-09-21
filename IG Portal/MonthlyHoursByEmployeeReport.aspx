@@ -14,7 +14,8 @@
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->
-
+                 <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
 
 
                 <div class="row">
@@ -23,7 +24,7 @@
                         <div class="form-group">
                             <label>Month Name</label>
                             <asp:DropDownList ID="ddlMonthName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" AutoPostBack="true">
+                                 OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Text="January" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="February" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="March" Value="3"></asp:ListItem>
@@ -156,6 +157,9 @@
 
 
                 </div>
+
+                        </ContentTemplate>
+                     </asp:UpdatePanel>
             </div>
             </div>
         </div>

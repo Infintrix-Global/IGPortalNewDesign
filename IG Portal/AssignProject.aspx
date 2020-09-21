@@ -42,8 +42,8 @@
                 </div>
                 <br />
 
-              <%--  <asp:UpdatePanel ID="upEmployee" runat="server">
-                    <ContentTemplate>--%>
+                <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>
 
                         <div class="row">
                             <div class=" col m12">
@@ -58,7 +58,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlEmployee" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="1" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged">
+                                                    TabIndex="1" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged">
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEmployee" ValidationGroup="at" InitialValue="0"
@@ -148,8 +148,8 @@
                 </div>
 
                         <div class="clearfix"></div>
-                       <%-- </ContentTemplate>
-                    </asp:UpdatePanel>--%>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
          </div>

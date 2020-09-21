@@ -14,16 +14,17 @@
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->
-
-
+                   
+                    <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
 
                 <div class="row">
 
                     <div class=" col m3">
                         <div class="form-group">
                             <label>Month Name</label>
-                            <asp:DropDownList ID="ddlMonthName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" >
+                            <asp:DropDownList ID="ddlMonthName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
+                              OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" >
                                 <asp:ListItem Text="January" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="February" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="March" Value="3"></asp:ListItem>
@@ -57,8 +58,8 @@
                         <div class=" col m3">
                         <div class="form-group">
                             <label>Employee Name</label>
-                            <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPost="true" >
+                            <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder="" ClientIDMode="Static"
+                                 OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPost="true" >
                             </asp:DropDownList>
 
                         </div>
@@ -89,7 +90,7 @@
  
                     <div class="col m4">
                         <div class="form-group form-md-line-input ">
-                            <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" />
+                            <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  />
                         </div>
                     </div>
                 </div>
@@ -189,6 +190,10 @@
 
 
                 </div>
+
+                        
+                     </ContentTemplate>
+                        </asp:UpdatePanel>
             </div>
             </div>
         </div>

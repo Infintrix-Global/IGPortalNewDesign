@@ -17,14 +17,15 @@
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->
-
+                  <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
                 <div class="row">
 
                     <div class=" col m3">
                         <div class="form-group">
                             <label>Employee Name</label>
                             <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">
+                                OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">
                             </asp:DropDownList>
 
                         </div>
@@ -32,14 +33,13 @@
                 </div>
 
                 <div class="clearfix"></div>
-                <asp:UpdatePanel ID="upTask" runat="server">
-                    <ContentTemplate>
+              
                         <div class="row">
                             <div class=" col m2 ">
                                 <div class="form-group">
                                     <label>Project Name </label>
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
-                                        ClientIDMode="Static" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
+                                         OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
                                     </asp:DropDownList>
 
 
@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label>Task Category </label>
                                     <asp:DropDownList ID="ddlTaskCategory" runat="server" class="form-control" placeholder=""
-                                        ClientIDMode="Static" OnSelectedIndexChanged="ddlTaskCategory_SelectedIndexChanged" AutoPostBack="true">
+                                        OnSelectedIndexChanged="ddlTaskCategory_SelectedIndexChanged" AutoPostBack="true">
                                     </asp:DropDownList>
 
 
@@ -154,6 +154,8 @@
                                     <div class="col m2">
                                         <button class="btn" runat="server" onserverclick="btnExport_Click" visible="false" id="btExport"><i class="fa fa-download"></i>Export</button>
                                         <%--<asp:Button ID="btnExport" Text="Export To Excel" runat="server" OnClick="btnExport_Click" /></div>--%>
+                                    </div>
+
                                     </div>
                                     <br />
                                     <div class="clearfix"></div>
@@ -283,7 +285,7 @@
                                            <%-- </ContentTemplate>
                                        </asp:UpdatePanel>--%>
                                         </asp:Panel>
-                                            </div>
+                                            
                                       
                                 </div>
                             </div>

@@ -19,7 +19,8 @@
                 </div>
                 <br />
 
-               
+                <asp:UpdatePanel ID="upEmployee" runat="server">
+                    <ContentTemplate>
                         <div class="row">
                             <div class=" col m12">
                                 <div class="portlet light ">
@@ -32,7 +33,7 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
+                                                     TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
@@ -242,6 +243,9 @@
 
                 
             </div>
+
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
 
         </div>
 
