@@ -1572,6 +1572,21 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataTable GetTimeSheetHoursForBarGraphForManager(string date,string ManagerID)
+        {
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", date);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", ManagerID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetTimeSheetHoursForBarGraphForManager");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetAdminDashBoardProjectBug()
         {
             try

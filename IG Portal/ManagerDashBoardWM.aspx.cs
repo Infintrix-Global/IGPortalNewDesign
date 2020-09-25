@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 using IG_Portal.BAL_Classes;
 
@@ -18,216 +20,226 @@ namespace IG_Portal
         {
             if (!IsPostBack)
             {
-                Session["EmployeeID"] = Session["LoginID"];
-                //BindNotifications();
+                if (!IsPostBack)
+                {
+                    DataTable AllData = objTask.GetEmployeeByID(Convert.ToInt32(Session["LoginID"].ToString()));
+                    BindProjectMaster();
+                    BindBugCount();
+                    BindTaskCount();
+                    BindTaskList();
+                    BindBugList();
+                    BindProjectCount();
+                    PopulateChart();
+                    txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                    PopulateChartEmployeeTimeSheet();
+                    BindProjectBugTaskChart();
+                    Session["EmployeeID"] = Session["LoginID"];
+                    //BindNotifications();
+                }
             }
         }
 
-        //public void BindNotifications()
-        //{
-        //    dtNotifications = objTask.GetNotifications(Session["LoginID"].ToString());
-        //    GridNotification.DataSource = dtNotifications;
-        //    GridNotification.DataBind();
-        //    ViewState["dirState"] = dtNotifications;
-        //    ViewState["sortdr"] = "Asc";
-        //}
+        public void BindProjectMaster()
+        {
+            ddlPRoject.DataSource = objCommon.GetProjectMasterByEmployee(Convert.ToInt32(Session["LoginID"].ToString()));
+            ddlPRoject.DataTextField = "ProjectName";
+            ddlPRoject.DataValueField = "ID";
+            ddlPRoject.DataBind();
+            ddlPRoject.Items.Insert(0, new ListItem("--- Select All---", "0"));
 
-        //protected void GridNotification_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    GridNotification.PageIndex = e.NewPageIndex;
-        //    BindNotifications();
-        //}
+            ddlProjectBug.DataSource = objCommon.GetProjectMasterByEmployee(Convert.ToInt32(Session["LoginID"].ToString()));
+            ddlProjectBug.DataTextField = "ProjectName";
+            ddlProjectBug.DataValueField = "ID";
+            ddlProjectBug.DataBind();
+            ddlProjectBug.Items.Insert(0, new ListItem("--- Select All---", "0"));
+        }
 
-        //protected void GridNotification_Sorting(object sender, GridViewSortEventArgs e)
-        //{
-        //    DataTable dtrslt = (DataTable)ViewState["dirState"];
-        //    if (dtrslt.Rows.Count > 0)
-        //    {
-        //        if (Convert.ToString(ViewState["sortdr"]) == "Asc")
-        //        {
-        //            dtrslt.DefaultView.Sort = e.SortExpression + " Desc";
-        //            ViewState["sortdr"] = "Desc";
-        //        }
-        //        else
-        //        {
-        //            dtrslt.DefaultView.Sort = e.SortExpression + " Asc";
-        //            ViewState["sortdr"] = "Asc";
-        //        }
-        //        GridNotification.DataSource = dtrslt;
-        //        GridNotification.DataBind();
-        //    }
-        //}
+        public void BindProjectCount()
+        {
+            long result = 0;
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("@mode", "1");
+            nv.Add("@LoginID", Session["LoginID"].ToString());
+            result = objCommon.GetManagerDashBoardCount(Session["LoginID"].ToString(), "1","0");
+            lblProject.Text = result.ToString();
+        }
+        public void BindBugCount()
+        {
+            long result = 0;
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("@mode", "2");
+            nv.Add("@LoginID", Session["LoginID"].ToString());
+            result = objCommon.GetManagerDashBoardCount(Session["LoginID"].ToString(), "2", "0");
+            lnkBug.Text = result.ToString();
+        }
 
-        //protected void GridNotification_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.Row.RowType == DataControlRowType.DataRow)
-        //        {
-        //            DataTable dtNotify = new DataTable();
-        //            int nid = Convert.ToInt32(GridNotification.DataKeys[e.Row.RowIndex].Value.ToString());
-        //            dtNotify = objTask.GetNotificationsByID(nid);
+        public void BindTaskCount()
+        {
+            long result = 0;
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("@mode", "3");
+            nv.Add("@LoginID", Session["LoginID"].ToString());
+            result = objCommon.GetManagerDashBoardCount(Session["LoginID"].ToString(), "3", "0");
+            lnkTask.Text = result.ToString();
+        }
 
+        public void BindBugList()
+        {
 
-        //            if (dtNotify.Rows[0]["Type"].ToString() == "1")
-        //            {
-        //                ((Button)e.Row.FindControl("btnConfirm")).Visible = true;
-        //                ((Button)e.Row.FindControl("btnReject")).Visible = true;
-        //                ((Button)e.Row.FindControl("btnAssign")).Visible = false;
-        //                ((LinkButton)e.Row.FindControl("btnDetails")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnClosed")).Visible = false;
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = false;
-        //            }
-        //            if (dtNotify.Rows[0]["Type"].ToString() == "2")
-        //            {
-        //                ((Button)e.Row.FindControl("btnConfirm")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnReject")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnAssign")).Visible = true;
-        //                ((Button)e.Row.FindControl("btnClosed")).Visible = false;
-        //                ((LinkButton)e.Row.FindControl("btnDetails")).Visible = true;
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = true;
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataSource = objCommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataTextField = "EmployeeName";
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataValueField = "ID";
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).DataBind();
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("@mode", "4");
+            nv.Add("@LoginID", Session["LoginID"].ToString());
+            DataTable dtTask = objCommon.GetManagerDashBoardDataList(Session["LoginID"].ToString(), "4",ddlProjectBug.SelectedValue);
+            DataList1.DataSource = dtTask;
+            DataList1.DataBind();
+        }
 
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).Items.Insert(0, new ListItem("--- Select Developer ---", "0"));
-        //            }
+        public void BindTaskList()
+        {
+
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("@mode", "5");
+            nv.Add("@LoginID", Session["LoginID"].ToString());
+            DataTable dtTask = objCommon.GetManagerDashBoardDataList(Session["LoginID"].ToString(), "5",ddlPRoject.SelectedValue);
+            dlTask.DataSource = dtTask;
+            dlTask.DataBind();
+        }
 
 
-        //            if (dtNotify.Rows[0]["Type"].ToString() == "3")
-        //            {
-        //                ((Button)e.Row.FindControl("btnConfirm")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnReject")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnAssign")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnClosed")).Visible = false;
-        //                ((LinkButton)e.Row.FindControl("btnDetails")).Visible = true;
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = false;
-        //            }
+        public void PopulateChart()
+        {
+            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
+            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+            //Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+            DataTable dt = objCommon.GetManagerDashBoardDataList(Session["LoginID"].ToString(), "6","0");
+            Chart1.DataSource = dt;
+            Chart1.Series[0].ChartType = SeriesChartType.Column;
+            Chart1.Legends[0].Enabled = true;
 
-        //            if (dtNotify.Rows[0]["Type"].ToString() == "4")
-        //            {
-        //                ((Button)e.Row.FindControl("btnConfirm")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnReject")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnAssign")).Visible = false;
-        //                ((Button)e.Row.FindControl("btnClosed")).Visible = true;
-        //                ((LinkButton)e.Row.FindControl("btnDetails")).Visible = true;
-        //                ((DropDownList)e.Row.FindControl("ddlDeveloper")).Visible = false;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
+            Chart1.ChartAreas[0].AxisY.Interval = 1;
+            Chart1.Series[0].XValueMember = "WorkDate";
+            Chart1.Series[0].YValueMembers = "Hours";
+            Chart1.DataBind();
+        }
 
-        //    }
-        //}
+        public void BindProjectBugTaskChart()
+        {
+            Chart2.ChartAreas["ChartArea2"].AxisX.MajorGrid.Enabled = false;
+            Chart2.ChartAreas["ChartArea2"].AxisY.MajorGrid.Enabled = false;
+            DataTable dt = objCommon.GetManagerDashBoardDataList(Session["LoginID"].ToString(), "8", "0");
+            foreach (DataRow r in dt.Rows)
+            {
+                Series s = new Series( (r["ProjectName"].ToString()));
+                s.ChartType = SeriesChartType.Column;
+               
+                if (!(r["Bugs"] is  null))
+                {
+                    s.ToolTip = r["ProjectName"].ToString();
+                    s.Points.AddXY("Bugs", new object[] { r["Bugs"] });
+                }
+                else
+                    {
+                    s.Points.AddXY("Bugs", 0);
+                }
+                if (!(r["Tasks"] is null))
+                {
+                    s.ToolTip = r["ProjectName"].ToString();
+                    s.Points.AddXY("Tasks", new object[] { r["Tasks"] });
+                }
+                else
+                {
+                    s.Points.AddXY("Tasks", 0);
+                }
+               
+                Chart2.Series.Add(s);
+            }
 
-        //protected void GridNotification_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.CommandName == "Confirm")
-        //        {
-        //            int _IsConfirm = -1;
-        //            int id = Convert.ToInt32(e.CommandArgument);
-        //            _IsConfirm = objTask.ConfirmMOMNotification(id);
-        //            if (_IsConfirm == -1)
-        //            {
-        //                lblmsg.Text = "Failed To Confirm";
-        //                lblmsg.ForeColor = System.Drawing.Color.Red;
-        //            }
-        //            else
-        //            {
-        //                lblmsg.Text = "TimeSheet Added for Meeting";
-        //                lblmsg.ForeColor = System.Drawing.Color.Green;
-        //            }
-        //        }
+            //Chart2.ChartAreas["ChartArea2"].AxisX.MajorGrid.Enabled = false;
+            //Chart2.ChartAreas["ChartArea2"].AxisY.MajorGrid.Enabled = false;
+            ////Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+           
+            //Chart2.DataSource = dt;
+            //Chart2.Series[0].ChartType = SeriesChartType.Column;
+            //Chart2.Legends[0].Enabled = true;
 
-        //        if (e.CommandName == "Reject")
-        //        {
-        //            int _IsConfirm = -1;
-        //            int id = Convert.ToInt32(e.CommandArgument);
-        //            _IsConfirm = objTask.RejectMOMNotification(id);
-        //            if (_IsConfirm == -1)
-        //            {
-        //                lblmsg.Text = "Failed to Reject";
-        //                lblmsg.ForeColor = System.Drawing.Color.Red;
-        //            }
-        //            else
-        //            {
+            //Chart2.ChartAreas[0].AxisY.Interval = 1;
+            //Chart2.Series[0].XValueMember = "Project";
+            //Chart2.Series[0].YValueMembers = "Hours";
+            //Chart2.DataBind();
+        }
 
-        //                lblmsg.Text = "Rejected";
-        //                lblmsg.ForeColor = System.Drawing.Color.Green;
-        //                BindNotifications();
-        //            }
-        //        }
+        protected void PopulateChartEmployeeTimeSheet()
+        {
 
-        //        if (e.CommandName == "Assign")
-        //        {
-        //            int _IsConfirm = -1;
+            DataTable dt = objTask.GetTimeSheetHoursForBarGraphForManager(txtDate.Text, Session["LoginID"].ToString());
+            Chart3.DataSource = dt;
+            Chart3.Series[0].ChartType = SeriesChartType.Bar;
+            Chart3.Legends[0].Enabled = true;
 
-        //            int rowIndex = Convert.ToInt32(e.CommandArgument);
-        //            GridViewRow row = GridNotification.Rows[rowIndex];
-        //            string developerID = (row.FindControl("ddlDeveloper") as DropDownList).SelectedValue;
-        //            string id = (row.FindControl("lblID") as Label).Text;
-        //            if (developerID == "0")
-        //            {
-        //                lblmsg.Text = "Failed-Please Select Developer ";
-        //                lblmsg.ForeColor = System.Drawing.Color.Red;
-        //            }
-        //            else
-        //            {
-        //                _IsConfirm = objTask.AssignBug(Convert.ToInt32(id), developerID);
-        //                if (_IsConfirm == -1)
-        //                {
-        //                    lblmsg.Text = "Failed To Assign";
-        //                    lblmsg.ForeColor = System.Drawing.Color.Red;
-        //                }
-        //                else
-        //                {
+            Chart3.ChartAreas[0].AxisY.Interval = 1;
+            Chart3.Series[0].XValueMember = "EmployeeName";
+            Chart3.Series[0].YValueMembers = "Hours";
+            Chart3.DataBind();
+        }
 
-        //                    lblmsg.Text = "Bug Assigned";
-        //                    lblmsg.ForeColor = System.Drawing.Color.Green;
-        //                    BindNotifications();
-        //                }
-        //            }
-        //        }
+        protected void txtDate_TextChanged(object sender, EventArgs e)
+        {
+            PopulateChartEmployeeTimeSheet();
+        }
 
-        //        if (e.CommandName == "Details")
-        //        {
-        //            int id = Convert.ToInt32(e.CommandArgument);
-        //            Session["BugID"] = id.ToString();
-        //            Response.Redirect("ViewBugDetails.aspx");
-        //        }
+        protected void ddlPRoject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindTaskList();
+        }
 
-        //        if (e.CommandName == "Close")
-        //        {
-        //            int _IsClosed = -1;
+        protected void ddlProjectBug_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindBugList();
+        }
 
-        //            int id = Convert.ToInt32(e.CommandArgument);
+        protected void dlTask_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            try
+            {
 
-        //            _IsClosed = objTask.CloseBug(Convert.ToInt32(id));
-        //            if (_IsClosed == -1)
-        //            {
-        //                lblmsg.Text = "Failed To Close";
-        //                lblmsg.ForeColor = System.Drawing.Color.Red;
-        //            }
-        //            else
-        //            {
-
-        //                lblmsg.Text = "Bug Closed";
-        //                lblmsg.ForeColor = System.Drawing.Color.Green;
-        //                BindNotifications();
-        //            }
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
+                if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+                {
 
 
+                    Label label = e.Item.FindControl("lblstatus") as Label;
+                    if ((label.Text == "1") || (label.Text == "7") || (label.Text == "5"))
+                    {
+                        (e.Item.FindControl("lblStatusName") as Label).BackColor = System.Drawing.Color.Red;
+                    }
+                    else if (label.Text == "2")
+
+                    {
+                        (e.Item.FindControl("lblStatusName") as Label).BackColor = System.Drawing.Color.Green;
+                    }
+
+                    else if (label.Text == "4")
+
+                    {
+                        (e.Item.FindControl("lblStatusName") as Label).BackColor = System.Drawing.Color.Yellow;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void lnkBug_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewBug.aspx");
+        }
+
+        protected void lnkTask_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/PendingAssignTask.aspx");
+        }
     }
 }

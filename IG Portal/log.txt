@@ -372,3 +372,31 @@
    at System.Data.DataRow.get_Item(String columnName)
    at IG_Portal.EmployeeWiseReport.<btSearch_Click>g__GridFillSearch|13_0(<>c__DisplayClass13_0& )
    at IG_Portal.EmployeeWiseReport.btSearch_Click(Object sender, EventArgs e)Column 'TotalTime' does not belong to table Table. at 18-Sep-20 02:54:57 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 225Thread was being aborted. at 24-Sep-20 03:28:41 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 225Thread was being aborted. at 24-Sep-20 03:29:07 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 225Thread was being aborted. at 24-Sep-20 03:29:57 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 229Thread was being aborted. at 25-Sep-20 01:20:16 PM

@@ -1146,6 +1146,23 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+
+        public DataTable GetEmployeeStatus( )
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 21);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", 0);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetClientMaster(int companyID)
         {
             try
@@ -1693,6 +1710,10 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@Manager", objEmployee.Manager);
                 objGeneral.AddParameterWithValueToSQLCommand("@Password", objEmployee.Password);
                 objGeneral.AddParameterWithValueToSQLCommand("@Mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LastDay", objEmployee.LastDay);
+                objGeneral.AddParameterWithValueToSQLCommand("@Status", objEmployee.Status);
+                objGeneral.AddParameterWithValueToSQLCommand("@Photo", objEmployee.Photo);
+                objGeneral.AddParameterWithValueToSQLCommand("@LinkedIn", objEmployee.LinkedIn);
                 _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_UpdateEmployee");
             }
             catch (Exception ex)
@@ -1780,6 +1801,44 @@ namespace IG_Portal
                 throw (ex);
             }
             return _isInserted;
+        }
+
+        public int GetManagerDashBoardCount(string LoginID, string mode, string ProjectID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_GetManagerDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return _isInserted;
+        }
+
+        public DataTable GetManagerDashBoardDataList(string LoginID, string mode, string ProjectID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetManagerDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return ds.Tables[0];
         }
 
 
@@ -1973,6 +2032,10 @@ public class Employee
     public string Password { get; set; }
     public string Role { get; set; }
     public string Manager { get; set; }
+    public string Status { get; set; }
+    public string LastDay { get; set; }
+    public string Photo { get; set; }
+    public string LinkedIn { get; set; }
 }
 
 

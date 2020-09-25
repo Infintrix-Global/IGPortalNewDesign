@@ -33,20 +33,29 @@ namespace IG_Portal
                 BindTaskMaster();
                 BindSuggestedByMaster();
                 BindAssignToMaster();
-                txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
+                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 if (Request.QueryString["BugID"] != null)
                 {
                     Session["BugID"] = objcommon.Decrypt(Request.QueryString["BugID"]);
                 }
+                else
+                {
+                    Session["BugID"] = null;
+                }
                 if (Request.QueryString["BugIDReopen"] != null)
                 {
                     Session["BugIDReopen"] = objcommon.Decrypt(Request.QueryString["BugIDReopen"]);
+                }
+                else
+                {
+                    Session["BugIDReopen"] = null;
                 }
                 bugID = Session["BugID"] as string;
                 ReopenBugID = Session["BugIDReopen"] as string;
                 {
                     if ((string.IsNullOrEmpty(bugID)) && (string.IsNullOrEmpty(ReopenBugID)))
                     {
+                        txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                         BindInitialStatusMaster();
                         Clear();
                         ddlStatus.SelectedValue = "1";
@@ -150,6 +159,7 @@ namespace IG_Portal
             {
                 BindTaskTitleMaster(ddlProjectName.SelectedValue);
                 BindPageMaster(ddlProjectName.SelectedValue);
+                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
         }
 

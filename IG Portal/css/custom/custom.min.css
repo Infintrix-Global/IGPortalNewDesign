@@ -17,9 +17,9 @@
     background-color:lightgray;
 }
 
-.paging {
+/*.paging {*/
    /* display: inline-block;*/
-}
+/*}
 
     .paging a {
         color: black;
@@ -36,7 +36,29 @@
             padding: 2px 2px;
             text-decoration: none;
             border-bottom:solid;
-        }
+        }*/
+
+    .paging a, .paging span {
+        display: block;
+        height: 25px;
+        width: 25px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .paging a {
+        background-color: #f5f5f5;
+        color: #969696;
+        border: 1px solid #969696;
+    }
+
+    .paging span {
+        background-color: #A1DCF2;
+        color: #000;
+        border: 1px solid #3AC0F2;
+    }
+
 
     .font-timesheet{
         font-size:12px;

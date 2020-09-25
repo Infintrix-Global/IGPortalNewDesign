@@ -94,7 +94,7 @@
                             <div class=" col m2">
                                 <div class="form-group">
                                     <label>From Date</label>
-                                    <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder=""
+                                    <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" TextMode="Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="requiredFromDate" runat="server" ControlToValidate="txtFromDate" ValidationGroup="vt"
                                         SetFocusOnError="true" ErrorMessage="Enter From Date" ForeColor="Red" Enabled="false"></asp:RequiredFieldValidator>

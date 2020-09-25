@@ -45,7 +45,18 @@ namespace IG_Portal
             }
             if (!string.IsNullOrEmpty(sid))
             {
-                ddlStatus.SelectedValue = Session["TSBStatusID"].ToString();
+                List<ListItem> name = (List<ListItem>)Session["TSBStatusID"];
+
+                foreach (ListItem li in name)
+                {
+                    foreach (ListItem item in chkStatus.Items)
+                    {
+                        if (item.Value == li.Value)
+                            item.Selected = true;
+                    }
+                   
+                }
+                //ddlStatus.SelectedValue = Session["TSBStatusID"].ToString();
             }
             if (!string.IsNullOrEmpty(prid))
             {
@@ -178,12 +189,14 @@ namespace IG_Portal
 
         public void BindBugStatusMaster()
         {
-            ddlStatus.DataSource = objCommon.GetBugStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
-            ddlStatus.DataTextField = "StatusName";
-            ddlStatus.DataValueField = "ID";
+            chkStatus.DataSource = objCommon.GetBugStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            chkStatus.DataTextField = "StatusName";
+            chkStatus.DataValueField = "ID";
 
-            ddlStatus.DataBind();
-            ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            chkStatus.DataBind();
+           // chkStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
+            
         }
 
         
@@ -244,7 +257,8 @@ namespace IG_Portal
         {
             ddlProjectName.SelectedIndex = 0;
             ddlTaskType.SelectedIndex = 0;
-            ddlStatus.SelectedIndex = 0;
+            // ddlStatus.SelectedIndex = 0;
+            chkStatus.ClearSelection();
             txtWorkDate.Text = "";
             ddlPriority.SelectedIndex = 0;
         }
@@ -288,10 +302,22 @@ namespace IG_Portal
                     strQuery1 += " and B.TaskTypeID ='" + ddlTaskType.SelectedValue + "'";
 
                 }
-                if (ddlStatus.SelectedIndex > 0)
+                //if (chkStatus. > 0)
+                int c = 0;
+                string x = "";
+                foreach (ListItem i in chkStatus.Items)
                 {
-                    strQuery += " and B.Status ='" + ddlStatus.SelectedValue + "'";
-                    strQuery1 += " and B.Status ='" + ddlStatus.SelectedValue + "'";
+                    if (i.Selected)
+                    {
+                        c = 1;
+                        x += i.Value + ",";
+                    }
+                }
+                string chkSelected = x.Remove(x.Length - 1, 1);
+                if (c>0)
+                { 
+                    strQuery += " and B.Status in (" + chkSelected + ")";
+                    strQuery1 += " and B.Status in (" + chkSelected + ")";
                 }
                 if (ddlPriority.SelectedIndex > 0)
                 {
@@ -429,8 +455,8 @@ namespace IG_Portal
                 if (e.CommandName == "Edit")
                 {
                     int bid = Convert.ToInt32(e.CommandArgument);
-                    Session["BugID"] = bid.ToString();
-                Response.Redirect("~/AddBug.aspx?BugID=" + objCommon.Encrypt(Session["BugID"].ToString()));
+                   // Session["BugID"] = bid.ToString();
+                Response.Redirect("~/AddBug.aspx?BugID=" + objCommon.Encrypt(bid.ToString()));
                 //Response.Redirect("~/AddBug.aspx");
                 }
 
@@ -446,10 +472,18 @@ namespace IG_Portal
                 int bid = Convert.ToInt32(e.CommandArgument);
                 Session["AddTSBugID"] = bid.ToString();
                 Session["TSBProjectID"] = ddlProjectName.SelectedValue;
-                Session["TSBStatusID"] = ddlStatus.SelectedValue;
+                //Session["TSBStatusID"] = ddlStatus.SelectedValue;
                 Session["TSBPriorityID"] = ddlPriority.SelectedValue;
                 Session["TSBTaskID"] = ddlTaskType.SelectedValue;
-               
+                List<ListItem> selectItems = new List<ListItem>();
+
+                foreach (ListItem item in chkStatus.Items)
+                {
+                    if (item.Selected)
+                        selectItems.Add(item);
+                }
+
+                Session.Add("TSBStatusID", selectItems);
                 //string url = "~/AddTimeSheet.aspx?AddTSBugID=" + objCommon.Encrypt(Session["AddTSBugID"].ToString());
                 //StringBuilder sb = new StringBuilder();
                 //sb.Append("<script type = 'text/javascript'>");
@@ -459,7 +493,7 @@ namespace IG_Portal
                 //sb.Append("</script>");
                 //ClientScript.RegisterStartupScript(this.GetType(),
                 //        "script", sb.ToString());
-               Response.Redirect("~/AddTimeSheet.aspx?AddTSBugID=" + objCommon.Encrypt(Session["AddTSBugID"].ToString()));
+                Response.Redirect("~/AddTimeSheet.aspx?AddTSBugID=" + objCommon.Encrypt(Session["AddTSBugID"].ToString()));
             }
             //}
             //catch(Exception ex)

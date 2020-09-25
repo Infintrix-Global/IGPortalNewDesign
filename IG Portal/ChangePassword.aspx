@@ -114,7 +114,11 @@
 
                 </div>
 
-               
+               <div id="LoginLink" runat="server" visible="false">
+                   <div class="row" align="center"> 
+                       <asp:LinkButton ID="lnkLogin" runat="server" Text="Click here to Login" OnClick="lnkLogin_Click"></asp:LinkButton>
+                   </div>
+               </div>
 
             </div>
         </div>

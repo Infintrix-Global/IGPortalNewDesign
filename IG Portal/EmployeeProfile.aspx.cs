@@ -81,9 +81,30 @@ namespace IG_Portal
                     {
                         lblJoinDate.Text = Convert.ToDateTime(dt1.Rows[0]["JoiningDate"].ToString()).ToString("dd-MMM-yyyy");
                     }
+                    lnkLinkedIn.Text = dt1.Rows[0]["LinkedIn"].ToString();
                     lblRole.Text = dt1.Rows[0]["RoleName"].ToString();
                   lblManager.Text = dt1.Rows[0]["ManagerName"].ToString();
                     lblDepartment.Text = dt1.Rows[0]["Department"].ToString();
+                    lblStatus.Text= dt1.Rows[0]["StatusName"].ToString();
+                    if(dt1.Rows[0]["Status"].ToString()=="4")
+                    {
+                        LastDay.Visible = true;
+                        lblLastDay.Text= Convert.ToDateTime(dt1.Rows[0]["LastWorkingDay"].ToString()).ToString("dd-MMM-yyyy");
+                    }
+                    else
+                    {
+                        LastDay.Visible = false;
+                    }
+                    if(dt1.Rows[0]["Photo"].ToString() !="")
+                    {
+                        //ImagePhoto11.ImageUrl = "~/VisitorProfile/" + dt1.Rows[0]["ProfileImage"].ToString();
+                        ImagePhoto.ImageUrl = "~/EmployeeProfile/"+ dt1.Rows[0]["Photo"].ToString();
+                    }
+                    else
+                    {
+                        ImagePhoto.ImageUrl = "~/EmployeeProfile/no-photo.jpg";
+                    }
+                    
                 }
                 
             }
@@ -96,6 +117,11 @@ namespace IG_Portal
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/EditProfile.aspx");
+        }
+
+        protected void lnkLinkedIn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(lnkLinkedIn.Text);
         }
     }
 }

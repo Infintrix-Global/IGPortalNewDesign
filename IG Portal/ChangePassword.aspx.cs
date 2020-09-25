@@ -46,6 +46,9 @@ namespace IG_Portal
                 lblCPass.Text = "Password Successfully Changed";
                 txtPassword.Text = "";
                 txtConfirmpass.Text = "";
+                LoginLink.Visible = true;
+                dPassword.Visible = false;
+                //Response.Redirect("Login.aspx");
                 
             }
             else
@@ -72,6 +75,9 @@ namespace IG_Portal
             }
         }
 
-       
+        protected void lnkLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
     }
 }

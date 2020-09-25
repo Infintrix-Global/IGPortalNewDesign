@@ -15,15 +15,6 @@ namespace IG_Portal
     {
 
         /// <summary>
-        /// lnkBug control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBug;
-
-        /// <summary>
         /// lnkTask control.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkTask;
+
+        /// <summary>
+        /// lnkBug control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBug;
 
         /// <summary>
         /// dlTask control.

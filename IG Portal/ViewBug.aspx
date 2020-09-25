@@ -109,7 +109,15 @@
 
          
      </script>
-   
+   <style>
+        .block1 {
+            height: 100px;
+            width: 200px;
+            border: 1px solid aliceblue;
+            overflow-y: scroll;
+            
+        }
+    </style>
      
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -168,10 +176,12 @@
                          <div class="col m2">
                                             <div class="form-group">
                                                     <label>Status </label>
-                                                <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
+                                             <%--   <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
                                                     ClientIDMode="Static" >
-                                                </asp:DropDownList>
-                                                
+                                                </asp:DropDownList>--%>
+                                                  <div class="block1" id="chkDept" runat="server">
+                                                <asp:CheckBoxList id="chkStatus" runat="server"></asp:CheckBoxList>
+                                                </div>
                                             </div>
                                         </div>
 

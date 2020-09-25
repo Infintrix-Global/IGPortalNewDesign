@@ -108,8 +108,8 @@ namespace IG_Portal
                 int bid = Convert.ToInt32(e.CommandArgument);
                 Session["TSTProjectID"] = ddlProjectName.SelectedValue;
                 Session["TSTStatusID"] = ddlStatus.SelectedValue;
-                Session["AddTSTaskID"] = bid.ToString();
-                Response.Redirect("~/AddTimeSheet.aspx?AddTSTaskID=" + objcommon.Encrypt(Session["AddTSTaskID"].ToString()));
+              //  Session["AddTSTaskID"] = bid.ToString();
+                Response.Redirect("~/AddTimeSheet.aspx?AddTSTaskID=" + objcommon.Encrypt(bid.ToString()));
                 //Response.Redirect("~/AddTimeSheet.aspx");
             }
         }

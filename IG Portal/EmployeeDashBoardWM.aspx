@@ -12,17 +12,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    
   <div class="row">
-        <div class="col m3">
-            <div class="card">
-                <div class="card-content  red white-text">
-                    <p class="card-stats-title">
-                      Pending Bugs-
-                    
-                        <asp:LinkButton ID="lnkBug" runat="server" OnClick="lblBug_Click"  ></asp:LinkButton>
-                    </p>
-                </div>
-            </div>
-        </div>
+     
 
          <div class="col m3">
             <div class="card">
@@ -31,6 +21,17 @@
                       Pending Task-
                     
                         <asp:LinkButton ID="lnkTask" runat="server" OnClick="lblTask_Click"  ></asp:LinkButton>
+                    </p>
+                </div>
+            </div>
+        </div>
+         <div class="col m3">
+            <div class="card">
+                <div class="card-content  red white-text">
+                    <p class="card-stats-title">
+                      Pending Bugs-
+                    
+                        <asp:LinkButton ID="lnkBug" runat="server" OnClick="lblBug_Click"  ></asp:LinkButton>
                     </p>
                 </div>
             </div>
@@ -47,7 +48,7 @@
                                         <i class="mdi-file-folder circle light-blue darken-2"></i>
                                         <span class="collection-header">My Task</span>
                                       <p>Latest Assigned</p>
-                                          <a href="AssignedTask.aspx" class="secondary-content"><i class="mdi-action-grade">View All</i></a>
+                                          <a href="ViewAssignedTaskEmployee.aspx" class="secondary-content"><i class="mdi-action-grade">View All</i></a>
                                     </li>
                                    <%-- <li class="collection-header cyan">
                                          <i class="mdi-file-folder circle light-blue darken-2"></i>

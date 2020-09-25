@@ -33,6 +33,15 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.Button btnEdit;
 
         /// <summary>
+        /// ImagePhoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImagePhoto;
+
+        /// <summary>
         /// lblEmpCode control.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.Label lblManager;
 
         /// <summary>
+        /// lnkLinkedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkLinkedIn;
+
+        /// <summary>
         /// lblDOB control.
         /// </summary>
         /// <remarks>
@@ -121,5 +139,32 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDepartment;
+
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+
+        /// <summary>
+        /// LastDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow LastDay;
+
+        /// <summary>
+        /// lblLastDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLastDay;
     }
 }

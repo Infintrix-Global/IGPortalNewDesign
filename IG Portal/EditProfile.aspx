@@ -1,22 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="EditProfile.aspx.cs" Inherits="IG_Portal.EditProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <style>
-         .block1 {
-            height:100px;
-            width:250px;
-            border:1px solid aliceblue;
-            overflow-y:scroll;
-            margin-left:480px;
-            margin-top:-30px;
+    <style>
+        .block1 {
+            height: 100px;
+            width: 250px;
+            border: 1px solid aliceblue;
+            overflow-y: scroll;
+            margin-left: 480px;
+            margin-top: -30px;
         }
     </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="sc1" runat="server"></asp:ScriptManager>
     <div class="card-body">
         <div class="portlet-body">
-           <%-- <div class="page-bar" id="pbEmployee" runat="server" visible="false">
+            <%-- <div class="page-bar" id="pbEmployee" runat="server" visible="false">
                 <ul class="page-breadcrumb">
                     <li>
                         <i class="icon-home"></i>
@@ -60,12 +61,45 @@
                 <asp:Label ID="lblmsg" runat="server"></asp:Label>
                 <div class="row" align="center">
                     <div class="col m12 s12 l12">
-                        <table>
 
+
+                        <%--<div class="col m3">
+                            <label>Profile Image </label>
+                        </div>
+
+                        <div class="col m3">
+                        </div>
+                        <div class="col m3">
+                        </div>--%>
+
+
+                        <table>
+                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
+                            <tr id="photoupload1" runat="server">
+                                <td>
+                                    Image Upload
+                                    <asp:FileUpload ID="FileUpProfile" runat="server" ClientIDMode="Static" />
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnProfile" class="btn blue"  CausesValidation="False"
+                                        runat="server" Text="Upload" OnClick="btnImageProfile_Click" />
+                                    <asp:Label ID="Label2" runat="server" Text="(Format supported:jpeg,png,jpg)" ForeColor="Red"></asp:Label>
+                                    <asp:Label ID="lblProfile" runat="server" Visible="true"></asp:Label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Image :</td>
+                                <td>
+                                    <asp:Image ID="ImageProfile" runat="server" Height="80px" Width="80px" GenerateEmptyAlternateText="True" ImageUrl="~/Images/no-photo.jpg" />
+                            </tr>
+                            </ContentTemplate>
+                            </asp:UpdatePanel>
                             <tr>
                                 <td>Employee Code :</td>
                                 <td>
-                                <asp:TextBox ID="txtEmpCode" runat="server" class="form-control" placeholder="Enter Employee Code" TabIndex="1"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtEmpCode" runat="server" class="form-control" placeholder="Enter Employee Code" TabIndex="1"></asp:TextBox></td>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtEmpCode"
                                     ErrorMessage="Please Enter Employee Code" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                             </tr>
@@ -127,33 +161,59 @@
                             </tr>
 
                             <tr>
+                                <td>LinkedIn Profile:</td>
+                                <td>
+                                    <asp:TextBox ID="txtLinkedIn" runat="server" Text="" Font-Bold="true"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtLinkedIn" ForeColor="red" ErrorMessage="Invalid!" ValidationExpression="^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)" ValidationGroup="e"></asp:RegularExpressionValidator>
+                                    </td>
+
+                            </tr>
+
+                            <tr>
                                 <td>Date Of Birth:</td>
                                 <td>
                                     <asp:TextBox ID="txtDOB" runat="server" Text="" Font-Bold="true" TextMode="date"></asp:TextBox></td>
                             </tr>
 
-                             <tr id="passsword" runat="server">
+                            <tr id="passsword" runat="server">
                                 <td>Password:</td>
                                 <td>
-                                    <asp:TextBox ID="txtPassword" runat="server" Text="" Font-Bold="true" ></asp:TextBox></td>
+                                    <asp:TextBox ID="txtPassword" runat="server" Text="" Font-Bold="true"></asp:TextBox></td>
                             </tr>
+                            <asp:UpdatePanel ID="up2" runat="server">
+                                <ContentTemplate>
+                                    <tr>
+                                        <td>Status:</td>
+                                        <td>
+                                            <asp:DropDownList ID="ddlStatus" runat="server" ClientIDMode="Static" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+
+                                    <tr id="LastDay" runat="server" visible="false">
+                                        <td>Last Working Day:</td>
+                                        <td>
+                                            <asp:TextBox ID="txtLastDay" TextMode="Date" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                             <tr id="department" runat="server">
                                 <td>Department:</td>
-                                </tr>
+                            </tr>
 
-                              </table>
+                        </table>
 
-                         <div class="row">
-                                   <div class="col m3">
-                              
-                                                   
-                                                   
-                                                
-                           <div class="block1" id="chkDept" runat="server">
-                          
-                            <asp:CheckBoxList ID="chkDepartment"  runat="server"   />
-                        </div>
-                         </div>
+                        <div class="row">
+                            <div class="col m3">
+
+
+
+
+                                <div class="block1" id="chkDept" runat="server">
+
+                                    <asp:CheckBoxList ID="chkDepartment" runat="server" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

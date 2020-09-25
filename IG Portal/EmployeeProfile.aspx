@@ -20,9 +20,21 @@
                 <br />
                  <div class="row"  align="center">
                             <div class="col m12 s12 l12">
+                                  <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+
+                                    <asp:Image ID="ImagePhoto"  runat="server" Height="80px" Width="80px" GenerateEmptyAlternateText="True"
+                                         />
+                                 
+                                </div>
+                            </div>
+
+
+                        </div>
                                 <table >
                                     <colgroup span="12"></colgroup>
-                                    
+                                   
                                      <tr>
                                         
                                     
@@ -82,7 +94,12 @@
                                       <tr>
                                         <td>Manager:</td>
                                         <td> <asp:Label ID="lblManager" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+                                          </tr>
 
+                                      <tr>
+                                        <td>LinkedIn:</td>
+                                        <td> <asp:LinkButton ID="lnkLinkedIn" runat="server" Text="" Font-Bold="true" OnClick="lnkLinkedIn_Click"></asp:LinkButton></td>
+                                          </tr>
                                      <tr>
                                        
                                         <td>Date Of Birth:</td>
@@ -99,6 +116,21 @@
 
                                     </tr>
 
+                                     <tr>
+                                       
+                                        <td>Status:</td>
+                                            <td>
+                                            <asp:Label ID="lblStatus" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+
+                                    </tr>
+
+                                     <tr id="LastDay" runat="server">
+                                       
+                                        <td>Last Working Day:</td>
+                                            <td>
+                                            <asp:Label ID="lblLastDay" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+
+                                    </tr>
                                 </table>
                             </div>
                         </div>

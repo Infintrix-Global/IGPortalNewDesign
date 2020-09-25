@@ -35,15 +35,27 @@ namespace IG_Portal
                 { 
                     Session["AddTSBugID"] = objcommon.Decrypt(Request.QueryString["AddTSBugID"]);
             }
+                else
+                {
+                    Session["AddTSBugID"] = null;
+                }
                 if (Request.QueryString["AddTSTaskID"] != null)
                 {
                     Session["AddTSTaskID"] = objcommon.Decrypt(Request.QueryString["AddTSTaskID"]);
+                }
+                else
+                {
+                    Session["AddTSTaskID"] = null;
                 }
                 if (Request.QueryString["TimeSheetID"] != null)
                 {
                     Session["TimeSheetID"] = objcommon.Decrypt(Request.QueryString["TimeSheetID"]);
                 }
-                
+                else
+                {
+                    Session["TimeSheetID"] = null;
+                }
+
                 BindProjectMaster();
                 BindTaskMaster();
                 BindTaskCategory();
@@ -128,7 +140,7 @@ namespace IG_Portal
         public void BindTaskMaster()
         {
             ddlTaskType.DataSource = objcommon.GetTaskMasterByLoginID(Convert.ToInt32(Session["LoginID"].ToString()));
-            ddlTaskType.DataTextField = "TaskName";
+            ddlTaskType.DataTextField = "TaskDepartment";
             ddlTaskType.DataValueField = "ID";
 
             ddlTaskType.DataBind();

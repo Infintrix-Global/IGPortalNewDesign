@@ -106,7 +106,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                `<asp:TextBox ID="txtTaskTitle" class="form-control" placeholder="Enter Task Title" TabIndex="4" Visible="false" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtTaskTitle" class="form-control" placeholder="Enter Task Title" TabIndex="4" Visible="false" runat="server"></asp:TextBox>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredtxttitle" runat="server" ControlToValidate="txtTaskTitle" ValidationGroup="at"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Task Title " ForeColor="Red"></asp:RequiredFieldValidator>
@@ -140,7 +140,7 @@
                                                     </label>
                                                     <span class="required">*</span>
                                                 </span>
-                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"  TextMode="Date" TabIndex="6"  ></asp:TextBox>
+                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" ClientIDMode="Static"  TextMode="Date" TabIndex="6"  ></asp:TextBox>
                                                
                                                 <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date "  ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
@@ -154,10 +154,10 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 
-                                                <asp:RadioButtonList ID="radPriority"  runat="server" class="form-control" TabIndex="7">
-                                                    <asp:ListItem Text="High Priority" Value="High Priority" Selected="True"></asp:ListItem>
-                                                    <asp:ListItem Text="Medium Priority" Value="Medium Priority"></asp:ListItem>
-                                                    <asp:ListItem Text="Low Priority" Value="Low Priority"></asp:ListItem>
+                                                <asp:RadioButtonList ID="radPriority"  runat="server" RepeatDirection="Horizontal" class="form-control" TabIndex="7">
+                                                    <asp:ListItem Text="High" Value="High Priority" Selected="True"></asp:ListItem>
+                                                    <asp:ListItem Text="Medium" Value="Medium Priority"></asp:ListItem>
+                                                    <asp:ListItem Text="Low" Value="Low Priority"></asp:ListItem>
 
                                                 </asp:RadioButtonList>
                                                

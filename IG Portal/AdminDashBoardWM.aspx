@@ -17,7 +17,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <hr />
-                            <asp:Chart ID="Chart1" runat="server" Height="300px" Width="400px">
+                            <asp:Chart ID="Chart1" runat="server" Height="300px" Width="400px" >
                                 <Titles>
                                     <asp:Title ShadowOffset="3" Name="Items" />
                                 </Titles>

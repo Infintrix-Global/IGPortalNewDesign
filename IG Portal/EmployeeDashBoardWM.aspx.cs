@@ -69,7 +69,7 @@ namespace IG_Portal
         {
             long result = 0;
             NameValueCollection nv = new NameValueCollection();
-            nv.Add("@mode", "1");
+            nv.Add("@mode", "2");
             nv.Add("@LoginID", Session["LoginID"].ToString());
             result = objCommon.GetPendingTaskCount(Session["LoginID"].ToString(), "2");
             lnkTask.Text = result.ToString();

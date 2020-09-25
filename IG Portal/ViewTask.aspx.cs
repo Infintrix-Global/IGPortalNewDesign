@@ -26,7 +26,8 @@ namespace IG_Portal
                 BindTaskMaster();
                 BindInitialStatusMaster();
                 BindTaskTitleMasterRegularTask("0");
-
+                txtToDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                txtFromDate.Text = DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd");
             }
         }
 
@@ -135,7 +136,7 @@ namespace IG_Portal
         public void BindTaskMaster()
         {
             ddlTaskType.DataSource = objcommon.GetTaskMasterByLoginID(Convert.ToInt32(Session["LoginID"].ToString()));
-            ddlTaskType.DataTextField = "TaskName";
+            ddlTaskType.DataTextField = "TaskDepartment";
             ddlTaskType.DataValueField = "ID";
 
             ddlTaskType.DataBind();
@@ -582,8 +583,8 @@ namespace IG_Portal
             if(e.CommandName == "Edit")
             {
                 int tid = Convert.ToInt32(e.CommandArgument);
-                Session["TimeSheetID"] = tid.ToString();// Convert.ToInt32(((Label)row.FindControl("lblTID")).Text);
-                Response.Redirect("~/AddTimeSheet.aspx?TimeSheetID=" + objcommon.Encrypt(Session["TimeSheetID"].ToString()));
+               // Session["TimeSheetID"] = tid.ToString();// Convert.ToInt32(((Label)row.FindControl("lblTID")).Text);
+                Response.Redirect("~/AddTimeSheet.aspx?TimeSheetID=" + objcommon.Encrypt(tid.ToString()));
                 //Response.Redirect("~/AddTimeSheet.aspx");
             }
         }
