@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ViewAssignedTaskEmployee.aspx.cs" Inherits="IG_Portal.ViewAssignedTaskEmployee" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -44,13 +45,12 @@
                     </div>
                      
 
-                    <div class="col m2">
+                    <div class="col m4">
                         <div class="form-group form-md-line-input ">
 
                           
-
-                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn blue" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
-
+                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn " ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
+                            <asp:Button ID="btclear" runat="server" Text="Clear"  class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
 
                         </div>
                     </div>
@@ -58,8 +58,6 @@
                         <div class="form-group form-md-line-input ">
 
                            
-                                <asp:Button ID="btclear" runat="server" Text="Clear"  class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
-
 
                         </div>
                     </div>

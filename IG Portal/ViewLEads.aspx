@@ -78,17 +78,17 @@
                 <br />
                 <div class="row" align="center">
 
-                    <div class="col m4">
+                    <div class="col m12">
                         <div class="form-group form-md-line-input ">
-
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn" />
+                               <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  CausesValidation="true" />
+                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue" />
                         </div>
                     </div>
 
  
                     <div class="col m4">
                         <div class="form-group form-md-line-input ">
-                            <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  CausesValidation="true" />
+                         
                         </div>
                     </div>
                 </div>

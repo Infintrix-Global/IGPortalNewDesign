@@ -142,7 +142,7 @@
                             <div class="col m6">
                                 <div class="form-group form-md-line-input ">
 
-                                    <asp:Button ID="btAdd" runat="server" Text="Add" TabIndex="10" class="btn blue" ClientIDMode="Static" OnClick="btAdd_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true';" ValidationGroup="e" />
+                                    <asp:Button ID="btAdd" runat="server" Text="Add" TabIndex="10" class="btn " ClientIDMode="Static" OnClick="btAdd_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true';" ValidationGroup="e" />
 
                                 </div>
                             </div>

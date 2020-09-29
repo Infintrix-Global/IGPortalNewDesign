@@ -458,6 +458,7 @@ namespace IG_Portal
             BindTaskTitleMaster(ddlProjectName.SelectedValue);
             ddlTaskType.SelectedValue = dtBug.Rows[0]["TaskTypeID"].ToString();
             ddlTaskTitle.SelectedValue = dtBug.Rows[0]["TaskTitleID"].ToString();
+            txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             BindPageMaster(ddlProjectName.SelectedValue);
             ddlPageTitle.SelectedValue= dtBug.Rows[0]["PageID"].ToString();
             txtBugDescription.Text = dtBug.Rows[0]["BugDetails"].ToString();

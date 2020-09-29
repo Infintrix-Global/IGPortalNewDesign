@@ -74,27 +74,26 @@
 
 
                         <table>
-                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
-                            <tr id="photoupload1" runat="server">
-                                <td>
-                                    Image Upload
+                                    <tr id="photoupload1" runat="server">
+                                        <td>Image Upload
                                     <asp:FileUpload ID="FileUpProfile" runat="server" ClientIDMode="Static" />
-                                </td>
-                                <td>
-                                    <asp:Button ID="btnProfile" class="btn blue"  CausesValidation="False"
-                                        runat="server" Text="Upload" OnClick="btnImageProfile_Click" />
-                                    <asp:Label ID="Label2" runat="server" Text="(Format supported:jpeg,png,jpg)" ForeColor="Red"></asp:Label>
-                                    <asp:Label ID="lblProfile" runat="server" Visible="true"></asp:Label>
-                                </td>
-                            </tr>
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="btnProfile" class="btn blue" CausesValidation="False"
+                                                runat="server" Text="Upload" OnClick="btnImageProfile_Click" />
+                                            <asp:Label ID="Label2" runat="server" Text="(Format supported:jpeg,png,jpg)" ForeColor="Red"></asp:Label>
+                                            <asp:Label ID="lblProfile" runat="server" Visible="true"></asp:Label>
+                                        </td>
+                                    </tr>
 
-                            <tr>
-                                <td>Image :</td>
-                                <td>
-                                    <asp:Image ID="ImageProfile" runat="server" Height="80px" Width="80px" GenerateEmptyAlternateText="True" ImageUrl="~/Images/no-photo.jpg" />
-                            </tr>
-                            </ContentTemplate>
+                                    <tr>
+                                        <td>Image :</td>
+                                        <td>
+                                            <asp:Image ID="ImageProfile" runat="server" Height="80px" Width="80px" GenerateEmptyAlternateText="True" ImageUrl="~/Images/no-photo.jpg" />
+                                    </tr>
+                                </ContentTemplate>
                             </asp:UpdatePanel>
                             <tr>
                                 <td>Employee Code :</td>
@@ -164,8 +163,8 @@
                                 <td>LinkedIn Profile:</td>
                                 <td>
                                     <asp:TextBox ID="txtLinkedIn" runat="server" Text="" Font-Bold="true"></asp:TextBox>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtLinkedIn" ForeColor="red" ErrorMessage="Invalid!" ValidationExpression="^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)" ValidationGroup="e"></asp:RegularExpressionValidator>
-                                    </td>
+                             <%--       <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtLinkedIn" ForeColor="red" ErrorMessage="Invalid!" ValidationExpression="/(http(s)?:\\)?([\w-]+\.)+[\w-]+[.com|.in|.org]+(\[\?%&=]*)?/" ValidationGroup="e"></asp:RegularExpressionValidator>--%>
+                                </td>
 
                             </tr>
 
@@ -221,7 +220,7 @@
 
                 <div class="row" align="center">
                     <div class="col m12 s12 l12">
-                        <asp:Button runat="server" ID="btnUpdate" class="btn blue" ClientIDMode="Static" OnClick="btnUpdate_Click" Text="Update" ValidationGroup="e" />
+                        <asp:Button runat="server" ID="btnUpdate" class="btn" ClientIDMode="Static" OnClick="btnUpdate_Click" Text="Update" ValidationGroup="e" />
                     </div>
                 </div>
                 <br />

@@ -259,6 +259,7 @@ namespace IG_Portal
             ddlTaskType.SelectedIndex = 0;
             // ddlStatus.SelectedIndex = 0;
             chkStatus.ClearSelection();
+            txtStatus.Text = "";
             txtWorkDate.Text = "";
             ddlPriority.SelectedIndex = 0;
         }
@@ -313,9 +314,10 @@ namespace IG_Portal
                         x += i.Value + ",";
                     }
                 }
-                string chkSelected = x.Remove(x.Length - 1, 1);
+                
                 if (c>0)
-                { 
+                {
+                    string chkSelected = x.Remove(x.Length - 1, 1);
                     strQuery += " and B.Status in (" + chkSelected + ")";
                     strQuery1 += " and B.Status in (" + chkSelected + ")";
                 }
@@ -565,5 +567,21 @@ namespace IG_Portal
             }
         }
 
+        protected void chkStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = "";
+
+
+
+            for (int i = 0; i < chkStatus.Items.Count; i++)
+            {
+                if (chkStatus.Items[i].Selected)
+                {
+                    name += chkStatus.Items[i].Text + ",";
+                 //   lID += chkStatus.Items[i].Value + ",";
+                }
+            }
+            txtStatus.Text = name;
+        }
     }
 }

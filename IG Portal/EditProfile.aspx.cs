@@ -120,6 +120,10 @@ namespace IG_Portal
 
                 if (dt1.Rows.Count > 0)
                 {
+                    txtLinkedIn.Text= dt1.Rows[0]["LinkedIn"].ToString();
+                    lblProfile.Text = dt1.Rows[0]["Photo"].ToString();
+                    lblProfile.Visible = false;
+                    ImageProfile.ImageUrl = @"~\EmployeeProfile\" + dt1.Rows[0]["Photo"].ToString();
                     txtEmpCode.Text = dt1.Rows[0]["EmployeeCode"].ToString();
                     txtName.Text = dt1.Rows[0]["EmployeeName"].ToString();
                     txtAddress.Text = dt1.Rows[0]["Address"].ToString();
@@ -299,7 +303,7 @@ namespace IG_Portal
 
                             ImageProfile.ImageUrl = @"~\EmployeeProfile\" + Imgname + ext;
                             ImageProfile.Visible = true;
-
+                            lblProfile.Visible = true;
                             lblProfile.Text = Imgname + ext;
 
                             //  IdentityPolicyImageUrl = Imgname + ext;

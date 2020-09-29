@@ -14,7 +14,7 @@
 
                    <div class="row"  align="center">
                             <div class="col m12 s12 l12">
-                                <asp:Button runat="server" id="btnEdit" class="btn blue" ClientIDMode="Static" OnClick="btnEdit_Click" Text="Edit"  />
+                                <asp:Button runat="server" id="btnEdit" class="btn " ClientIDMode="Static" OnClick="btnEdit_Click" Text="Edit"  />
                                 </div>
                      </div>
                 <br />

@@ -57,7 +57,7 @@
 
                           
 
-                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn blue" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
+                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
 
 
                         </div>

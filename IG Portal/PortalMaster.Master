@@ -190,6 +190,8 @@
                                                 <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task Type</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddPage.aspx") %>">Page</a> </li>
                                                  <li><a href="<%= ResolveUrl("~/AddDepartment.aspx") %>">Department</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/AddClientDetails.aspx") %>">Client</a> </li>
+
                                             </ul>
                                         </div>
                                     </li>
@@ -282,6 +284,7 @@
                                     </li>
                                 </ul>
                             </li>
+                              
                             <li class="bold"><a href="<%= ResolveUrl("~/AssignProject.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assign Project</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
                               <li class="bold"><a href="<%= ResolveUrl("~/Notifications.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Notifications</a> </li>

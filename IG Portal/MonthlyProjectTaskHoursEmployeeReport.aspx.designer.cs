@@ -87,15 +87,6 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.DropDownList ddlTaskType;
 
         /// <summary>
-        /// btclear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btclear;
-
-        /// <summary>
         /// btSearch control.
         /// </summary>
         /// <remarks>
@@ -103,6 +94,15 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSearch;
+
+        /// <summary>
+        /// btclear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btclear;
 
         /// <summary>
         /// count control.

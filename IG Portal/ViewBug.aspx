@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ViewBug.aspx.cs" Inherits="IG_Portal.ViewBug" EnableEventValidation="false" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
        
@@ -117,6 +118,9 @@
             overflow-y: scroll;
             
         }
+        .panel{
+            top:250px;
+        }
     </style>
      
 </asp:Content>
@@ -133,10 +137,11 @@
                 <br />
                 <!-- END PAGE HEADER-->
   <asp:Label ID="lblMessage" runat="server"></asp:Label>
-                <br />
-                 <div class="row">
                  <asp:UpdatePanel ID="upEmployee" runat="server">
                     <ContentTemplate>
+                <br />
+                 <div class="row">
+                
                
 
                   
@@ -173,17 +178,42 @@
                                 </div>
                             </div>
 
-                         <div class="col m2">
+                        <div class="col m2">
+                             <div class="form-group">
+                                                    <label>Status </label>
+                        <asp:TextBox ID="txtStatus" class="form-control " placeholder="Select Status" runat="server"></asp:TextBox>
+                                                                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server"
+                                                                                Enabled="True" ExtenderControlID="" TargetControlID="txtStatus" PopupControlID="Panel8"
+                                                                                OffsetY="22">
+                                                                            </asp:PopupControlExtender>
+
+ 
+
+                                                                            <asp:Panel ID="Panel8" Height="200px" Width="220px"  CssClass="panel"
+                                                                                BorderWidth="2px" Direction="LeftToRight" ScrollBars="Auto" runat="server">
+                                                                                 <asp:CheckBoxList ID="chkStatus" runat="server" BackColor="White" Height="200px" Width="220px"
+                                                                                    DataTextField="holiday_name" DataValueField="holiday_name" AutoPostBack="True"   RepeatLayout="UnorderedList" 
+                                                                                     OnSelectedIndexChanged="chkStatus_SelectedIndexChanged">
+                                                                                </asp:CheckBoxList>
+
+ 
+
+                                                                     </asp:Panel>
+                                 </div>
+                            </div>
+
+
+                    <%--            <div class="col m2">
                                             <div class="form-group">
                                                     <label>Status </label>
                                              <%--   <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
                                                     ClientIDMode="Static" >
-                                                </asp:DropDownList>--%>
+                                                </asp:DropDownList>
                                                   <div class="block1" id="chkDept" runat="server">
-                                                <asp:CheckBoxList id="chkStatus" runat="server"></asp:CheckBoxList>
+                                                <asp:CheckBoxList id="chkStatus" runat="server" RepeatLayout="OrderedList"></asp:CheckBoxList>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>--%>
 
                        <div class="col m2">
                                             <div class="form-group">
@@ -199,8 +229,7 @@
                                             </div>
                                         </div>
                       
-                      </ContentTemplate>
-                     </asp:UpdatePanel>
+                   
                
                     <div class=" col m2">
                                 <div class="form-group">
@@ -216,17 +245,17 @@
                 <br />
                 <div class="row" align="center">
 
-                    <div class="col m4">
+                    <div class="col m12">
                         <div class="form-group form-md-line-input ">
-
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn" />
+                              <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  CausesValidation="true" />
+                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue" />
                         </div>
                     </div>
 
  
                     <div class="col m4">
                         <div class="form-group form-md-line-input ">
-                            <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  CausesValidation="true" />
+                          
                         </div>
                     </div>
                 </div>
@@ -245,9 +274,9 @@
                                   <div class=" col m9">
                                         <asp:Label runat="server" Text="" ID="count"></asp:Label>
                                     </div>
-                                   
-                                    <div class="col m3">
-                                        <button class="btn" runat="server" onserverclick="btnExport_Click"  id="btExport"><i class="fa fa-download"></i>Export</button>
+                                   <div class="clearfix"></div>
+                                    <div class="col m12" align="right">
+                                        <button class="btn green" runat="server" onserverclick="btnExport_Click"  id="btExport"><i class="fa fa-download"></i>Export</button>
                                         <%--<asp:Button ID="btnExport" Text="Export To Excel" runat="server" OnClick="btnExport_Click" /></div>--%>
                                     </div>
                                     <br />
@@ -413,7 +442,8 @@
 
                     </div>
 
-                      
+                    </ContentTemplate>
+                     </asp:UpdatePanel>     
             </div>
             </div>
          </div>

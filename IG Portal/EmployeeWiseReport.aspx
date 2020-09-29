@@ -5,34 +5,7 @@
       <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card-body">
         <div class="portlet-body">
-            <%-- <div class="page-bar" id="pbEmployee" runat="server" visible="false">
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="EmployeeDashBoard.aspx">Home</a>
-                        <i class="fa fa-angle-right"></i>
-
-
-                        <a href="ViewTask.aspx">View TimeSheet</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="page-bar" id="pbAdmin" runat="server" visible="false">
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="AdminDashBoard.aspx">Home</a>
-                        <i class="fa fa-angle-right"></i>
-
-
-                        <a href="ViewTask.aspx">View TimeSheet</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                </ul>
-
-            </div>--%>
+      
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
@@ -131,20 +104,21 @@
 
                   
 
-                <div class="row" align="center">
+                <div class="row" >
 
-
-                    <div class="col m6">
-                        <div class="form-group form-md-line-input ">
-
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn" />
-                        </div>
-                    </div>
-                    <div class="col m2">
+                     <div class="col m12" align="center">
                         <div class="form-group form-md-line-input ">
                             <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" />
+                              <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue" />
                         </div>
                     </div>
+                    <div class="col m1">
+                        <div class="form-group form-md-line-input ">
+
+                          
+                        </div>
+                    </div>
+                   
                 </div>
 
 
@@ -167,8 +141,9 @@
                                     <div class=" col m5">
                                         <asp:Label runat="server" Text="" ID="tottime"></asp:Label>
                                     </div>
-                                    <div class="col m2">
-                                        <button class="btn" runat="server" onserverclick="btnExport_Click" visible="false" id="btExport"><i class="fa fa-download"></i>Export</button>
+                                      <div class="clearfix"></div>
+                                    <div class="col m12" align="right">
+                                        <button class="btn green" style="" runat="server" onserverclick="btnExport_Click" visible="false" id="btExport"><i class="fa fa-download"></i>Export</button>
                                         <%--<asp:Button ID="btnExport" Text="Export To Excel" runat="server" OnClick="btnExport_Click" /></div>--%>
                                     </div>
                                     <br />
@@ -289,5 +264,5 @@
                 </div>
             </div>
             </div>
-        </div>
+       
 </asp:Content>

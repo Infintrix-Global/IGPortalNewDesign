@@ -188,7 +188,7 @@ namespace IG_Portal
 
                 else
                 {
-                    lblmsg.Text = "MOM Added ";
+                   // lblmsg.Text = "MOM Added ";
                     objTask.AddMOMPoints(dtMeetingPoint, _isInserted);
                     if (FileUpReciept.HasFile)
                     {

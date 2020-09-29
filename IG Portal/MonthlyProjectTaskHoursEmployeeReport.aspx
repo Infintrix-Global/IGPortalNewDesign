@@ -89,17 +89,17 @@
                 <br />
                 <div class="row" align="center">
 
-                    <div class="col m4">
+                    <div class="col m12">
                         <div class="form-group form-md-line-input ">
-
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn" />
+                             <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" />
+                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue" />
                         </div>
                     </div>
 
  
                     <div class="col m4">
                         <div class="form-group form-md-line-input ">
-                            <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" />
+                           
                         </div>
                     </div>
                 </div>
@@ -122,9 +122,9 @@
                                     <div class=" col m5">
                                         <asp:Label runat="server" Text="" ID="count"></asp:Label>
                                     </div>
-                                 
-                                    <div class="col m2">
-                                        <button class="btn" runat="server" onserverclick="btnExport_Click"  id="btExport"><i class="fa fa-download"></i>Export</button>
+                                    <div class="clearfix"></div>
+                                    <div class="col m12" align="right">
+                                        <button class="btn green" runat="server" onserverclick="btnExport_Click"  id="btExport"><i class="fa fa-download"></i>Export</button>
                                         <%--<asp:Button ID="btnExport" Text="Export To Excel" runat="server" OnClick="btnExport_Click" /></div>--%>
                                     </div>
                                     <br />
