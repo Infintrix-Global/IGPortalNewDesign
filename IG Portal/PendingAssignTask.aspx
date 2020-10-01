@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                      <div class=" col m2">
+                      <div class=" col m3">
                         <div class="form-group">
                             <label> Status</label>
                             <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
@@ -52,26 +52,38 @@
                         </div>
                     </div>
 
+                     <div class=" col m3">
+                        <div class="form-group">
+                            <label> Status</label>
+                            <asp:DropDownList ID="ddlTaskStatus" runat="server" class="form-control" placeholder=""
+                                ClientIDMode="Static">
+                               
+                            </asp:DropDownList>
+
+
+                        </div>
+                    </div>
+
+                     <div class="clearfix"></div>
+                     <div class="row" align="center">
+
+                    <div class="col m12">
+                        <div class="form-group form-md-line-input ">
+
+
+                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
+                                 <asp:Button ID="btclear" runat="server" Text="Clear"  class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
+
+                        </div>
+                    </div>
                     <div class="col m2">
                         <div class="form-group form-md-line-input ">
 
                           
 
-                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
-
-
                         </div>
                     </div>
-                    <div class="col m2">
-                        <div class="form-group form-md-line-input ">
-
-                           
-                                <asp:Button ID="btclear" runat="server" Text="Clear"  class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
-
-
-                        </div>
-                    </div>
-
+                     </div>
                 </div>
 
                   <div class="row">

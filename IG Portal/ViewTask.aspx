@@ -94,7 +94,7 @@
                             <div class=" col m2">
                                 <div class="form-group">
                                     <label>From Date</label>
-                                    <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder="" 
+                                    <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
                                         ClientIDMode="Static" TextMode="Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="requiredFromDate" runat="server" ControlToValidate="txtFromDate" ValidationGroup="vt"
                                         SetFocusOnError="true" ErrorMessage="Enter From Date" ForeColor="Red" Enabled="false"></asp:RequiredFieldValidator>
@@ -105,13 +105,15 @@
                             <div class=" col m2">
                                 <div class="form-group">
                                     <label>To Date</label>
-                                    <asp:TextBox ID="txtToDate" runat="server" class="form-control" placeholder=""
+                                    <asp:TextBox ID="txtToDate" runat="server" class="form-control" placeholder="" AutoPostBack="true"
                                         ClientIDMode="Static" TextMode="Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="requiredToDate" runat="server" ControlToValidate="txtToDate" ValidationGroup="vt"
                                         SetFocusOnError="true" ErrorMessage="Enter To Date" ForeColor="Red" Enabled="false"></asp:RequiredFieldValidator>
 
                                 </div>
                             </div>
+
+                   
                         </div>
 
                     </ContentTemplate>
@@ -119,11 +121,11 @@
 
                 <div class="row" align="center">
 
-
-                    <div class="col m12">
+                             
+                    <div class="col m12" align="center">
                         <div class="form-group form-md-line-input ">
-                               <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" />
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue" />
+                               <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" AutoPostBack="true"  />
+                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue"  />
                         </div>
                     </div>
                     <div class="col m2">
@@ -133,7 +135,7 @@
                     </div>
                 </div>
 
-
+           
                 <div class="clearfix"></div>
 
                 <br />
@@ -292,6 +294,8 @@
                             </div>
                         </div>
                     </div>
+
+                         
             </div>
             </div>
         </div>

@@ -45,7 +45,7 @@
                     </div>
                      
 
-                    <div class="col m4">
+                    <div class="col m6">
                         <div class="form-group form-md-line-input ">
 
                           

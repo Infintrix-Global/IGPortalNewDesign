@@ -458,7 +458,15 @@ namespace IG_Portal
             BindTaskTitleMaster(ddlProjectName.SelectedValue);
             ddlTaskType.SelectedValue = dtBug.Rows[0]["TaskTypeID"].ToString();
             ddlTaskTitle.SelectedValue = dtBug.Rows[0]["TaskTitleID"].ToString();
+            /* Bind Task Details */
+            ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
+            ddlTaskDetails.DataTextField = "TaskDetails";
+            ddlTaskDetails.DataValueField = "ID";
+
+            ddlTaskDetails.DataBind();
+            ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
             txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
+            /* end bind Task Detail */
             BindPageMaster(ddlProjectName.SelectedValue);
             ddlPageTitle.SelectedValue= dtBug.Rows[0]["PageID"].ToString();
             txtBugDescription.Text = dtBug.Rows[0]["BugDetails"].ToString();

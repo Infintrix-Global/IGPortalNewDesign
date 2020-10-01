@@ -20,11 +20,21 @@ namespace IG_Portal
                 BindProjectMaster();
                 BindEmployeeMaster();
                 BindGridAssignTask();
-
+                BindStatusMaster();
             }
             lblmsg.Text = "";
         }
 
+
+        public void BindStatusMaster()
+        {
+            ddlTaskStatus.DataSource = objcommon.GetStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlTaskStatus.DataTextField = "StatusName";
+            ddlTaskStatus.DataValueField = "ID";
+
+            ddlTaskStatus.DataBind();
+            ddlTaskStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
 
         public void BindProjectMaster()
         {
@@ -185,6 +195,13 @@ namespace IG_Portal
                 strQuery1 += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";
                
             }
+
+            if(ddlTaskStatus.SelectedIndex > 0)
+            {
+                strQuery += " and TS.Status ='" + ddlTaskStatus.SelectedValue + "'";
+                strQuery1 += " and TS.Status ='" + ddlTaskStatus.SelectedValue + "'";
+            }
+
             if (ddlStatus.SelectedValue == "1")
             {
                
