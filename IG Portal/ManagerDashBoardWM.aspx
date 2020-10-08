@@ -59,10 +59,10 @@
                             <hr />
                             <asp:Chart ID="Chart3" EnableViewState="true" runat="server" Height="300px" Width="400px">
                                 <Titles>
-                                    <asp:Title ShadowOffset="3" Name="Items" />
+                                    <asp:Title ShadowOffset="3" Name="Items" Text="TimeSheet of Employee" />
                                 </Titles>
                                 <Legends>
-                                    <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False" Name="Default"
+                                    <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False" Name="Hours"
                                         LegendStyle="Row"  />
                                 </Legends>
                                 <Series>
@@ -220,7 +220,7 @@
                                     <asp:Title  Name="Items" Text="TimeSheet Hours of the Week" />
                                 </Titles>
                                 <Legends>
-                                    <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False" Name="TimeSheet Hours"
+                                    <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False"  Name="TimeSheet Hours"
                                         LegendStyle="Row"  />
                                 </Legends>
                                 <Series>

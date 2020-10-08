@@ -13,5 +13,21 @@ namespace IG_Portal
         {
 
         }
+
+        protected void Raise_Command(object sender, CommandEventArgs e)
+        {
+            if(e.CommandName=="Chat")
+            {
+                Response.Redirect("~/Chat.aspx");
+            }
+            if (e.CommandName == "Raise")
+            {
+                Response.Redirect("~/ClientSupport.aspx");
+            }
+            if (e.CommandName == "View")
+            {
+                Response.Redirect("~/ViewSupportTicket.aspx");
+            }
+        }
     }
 }

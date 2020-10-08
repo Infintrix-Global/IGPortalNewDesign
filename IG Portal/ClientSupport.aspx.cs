@@ -15,7 +15,8 @@ namespace IG_Portal
         BAL_Task objTask = new BAL_Task();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            FileUpReciept.Attributes["onchange"] = "UploadFile(this)";
+            if (!IsPostBack)
             {
                 BindProjectMaster();
             }
@@ -29,30 +30,30 @@ namespace IG_Portal
             ddlProjectName.DataValueField = "ID";
 
             ddlProjectName.DataBind();
-            ddlProjectName.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
         }
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
             int _isInserted = -1;
             SupportDetails objSupportDetails = new SupportDetails()
             {
-                Details = txtDetails.Text,
-               IssueIn = ddlIssueIn.SelectedValue,
-               IssueType = ddlIssueType.SelectedValue,
-               ProjectName = ddlProjectName.SelectedValue,
+                Details = CKEditor1.Text,
+                IssueIn = ddlIssueIn.SelectedValue,
+                IssueType = ddlIssueType.SelectedValue,
+                ProjectName = ddlProjectName.SelectedValue,
                 LoginID = Session["LoginID"].ToString(),
-               
+
             };
-            if (FileUpReciept.HasFile)
+            if (lblReciept.Text !="")
             {
-                objSupportDetails.FileName = FileUpReciept.PostedFile.FileName;
-                    }
+                objSupportDetails.FileName = lblReciept.Text;
+            }
 
             else
             {
                 objSupportDetails.FileName = "";
             }
-            Upload();
+           // Upload();
             _isInserted = objTask.AddSupport(objSupportDetails);
 
             if (_isInserted == -1)
@@ -64,9 +65,9 @@ namespace IG_Portal
             {
 
                 lblMessage.Text = "Support Issue Added ";
-               
+
                 lblMessage.ForeColor = System.Drawing.Color.Green;
-               
+
                 Clear();
 
             }
@@ -118,7 +119,7 @@ namespace IG_Portal
                                 System.IO.Directory.CreateDirectory(path);
                                 FileUpReciept.SaveAs(path + newfile);
 
-                                //lblReciept.Text = newfile;
+                                lblReciept.Text = newfile;
 
                             }
                             catch (Exception ex)
@@ -143,8 +144,93 @@ namespace IG_Portal
             ddlProjectName.SelectedIndex = 0;
             ddlIssueIn.SelectedIndex = 0;
             ddlIssueType.SelectedIndex = 0;
-            txtDetails.Text = "";
+            CKEditor1.Text = "";
             FileUpReciept.Attributes.Clear();
         }
+
+        protected void techHelp_Command(object sender, CommandEventArgs e)
+        {
+            try
+            {
+
+                if (e.CommandName == "techHelp")
+                {
+                    ddlIssueType.SelectedValue = "Technical Help";
+                    IssueType.Visible = false;
+                    Project.Visible = true;
+                }
+                if (e.CommandName == "BnP")
+                {
+                    ddlIssueType.SelectedValue = "Billing & Payment";
+                    IssueType.Visible = false;
+                    Project.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                General.ErrorMessage(ex.StackTrace);
+            }
+        }
+
+        protected void btnProjectNext_Click(object sender, EventArgs e)
+        {
+            Project.Visible = false;
+            IssueIn.Visible = true;
+        }
+        protected void btnProjectPrev_Click(object sender, EventArgs e)
+        {
+            Project.Visible = false;
+            IssueType.Visible = true;
+          
+        }
+
+        protected void btnIssueInPrev_Click(object sender, EventArgs e)
+        {
+            IssueIn.Visible = false;
+            Project.Visible = true;
+        }
+
+        protected void btnIssueInNext_Click(object sender, EventArgs e)
+        {
+            IssueIn.Visible = false;
+            Details.Visible = true;
+        }
+
+        protected void btnDetailsPrev_Click(object sender, EventArgs e)
+        {
+            Details.Visible = false;
+            IssueIn.Visible = true;
+        }
+
+        protected void btnDetailsNext_Click(object sender, EventArgs e)
+        {
+            Details.Visible = false;
+            Upload();
+            Summary.Visible = true;
+            BindSummary();
+        }
+
+        public void BindSummary()
+        {
+            SIssueIn.Text = ddlIssueIn.SelectedValue;
+            SIssueType.Text = ddlIssueType.SelectedValue;
+            SProjectName.Text = ddlProjectName.SelectedItem.Text;
+            SDetails.Text = CKEditor1.Text;
+            if(lblReciept.Text!="")
+            {
+                image.Visible = true;
+                Simage.ImageUrl = @"~\Support\" + lblReciept.Text;
+            }
+            else
+            {
+                image.Visible = false;
+            }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            Details.Visible = true;
+            Summary.Visible = false;
+        }
     }
-}
+    }

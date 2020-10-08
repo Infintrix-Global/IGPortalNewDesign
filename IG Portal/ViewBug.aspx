@@ -181,7 +181,7 @@
                         <div class="col m2">
                              <div class="form-group">
                                                     <label>Status </label>
-                        <asp:TextBox ID="txtStatus" class="form-control " placeholder="Select Status" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtStatus" class="form-control " placeholder="Select Status" runat="server" autocomplete="off"></asp:TextBox>
                                                                             <asp:PopupControlExtender ID="PopupControlExtender1" runat="server"
                                                                                 Enabled="True" ExtenderControlID="" TargetControlID="txtStatus" PopupControlID="Panel8"
                                                                                 OffsetY="22">
