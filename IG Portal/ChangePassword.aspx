@@ -77,7 +77,7 @@
                         </div>
                         <div class="col m4">
                             <asp:TextBox ID="txtPassword" TextMode="Password" placeholder="" runat="server" TabIndex="1"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"  ValidationGroup="p"
                                 ErrorMessage="Use At least one lower case letter, At least one upper case letter, At least special character, At least one number, At least 8 characters length"
                                 ValidationExpression="^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$"
                                 ControlToValidate="txtPassword" ForeColor="Red"></asp:RegularExpressionValidator>

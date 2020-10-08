@@ -40,7 +40,7 @@
 
                       <div class=" col m3">
                         <div class="form-group">
-                            <label> Status</label>
+                            <label>Assign Status</label>
                             <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static">
                                 <asp:ListItem Text="Not Assigned" Value="1"></asp:ListItem>
@@ -54,7 +54,7 @@
 
                      <div class=" col m3">
                         <div class="form-group">
-                            <label> Status</label>
+                            <label>Work Status</label>
                             <asp:DropDownList ID="ddlTaskStatus" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static">
                                
