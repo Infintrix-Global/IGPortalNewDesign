@@ -97,6 +97,8 @@
     <Content Include="EmployeeDocuments.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
     <Content Include="js\BsMultiSelect.js" />
+    <Content Include="js\jquery-3.5.1.js" />
+    <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="LeadDetails.aspx" />
     <Content Include="LeaveApprovalHR.aspx" />
     <Content Include="ManagerDashBoardWM.aspx" />

@@ -169,7 +169,7 @@
                                                 
                                                 <div class="table-scrollable table-scrollable-borderless">
                                                     <asp:GridView ID="GridTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                                        class="table table-hover table-light" OnSorting="GridTask_Sorting" AllowSorting="true" 
+                                                        class="striped" OnSorting="GridTask_Sorting" AllowSorting="true" 
                                                         GridLines="None" OnRowCommand="GridTask_RowCommand" OnRowDataBound="GridTask_RowDataBound"
                                                         ShowHeaderWhenEmpty="True" Width="100%" OnPageIndexChanging="GridTask_PageIndexChanging" PageSize="10">
                                                         <Columns>
