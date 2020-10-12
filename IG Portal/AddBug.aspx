@@ -123,7 +123,7 @@
                                                     <label>Task Details</label>
 
                                                 </span>
-                                                <asp:DropDownList ID="ddlTaskDetails" runat="server" Visible="false"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlTaskDetails" runat="server" Visible="false" ClientIDMode="Static"></asp:DropDownList>
                                                 <asp:TextBox ID="txtTaskDetails" runat="server" placeholder="" Enabled="false"
                                                     ClientIDMode="Static" TextMode="MultiLine" TabIndex="11">
                                                 </asp:TextBox>

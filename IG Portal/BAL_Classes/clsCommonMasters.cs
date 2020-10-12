@@ -1824,7 +1824,7 @@ namespace IG_Portal
 
         public DataTable GetManagerDashBoardDataList(string LoginID, string mode, string ProjectID)
         {
-            int _isInserted = -1;
+            
             try
             {
                 General objGeneral = new General();
@@ -1833,6 +1833,27 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetManagerDashBoardDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetQADashBoardDetails(string LoginID, string mode, string ProjectID,DateTime FromDate,DateTime ToDate)
+        {
+
+            try
+            {
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
+                objGeneral.AddParameterWithValueToSQLCommand("@FromDate", FromDate);
+                objGeneral.AddParameterWithValueToSQLCommand("@ToDate", ToDate);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetQADashBoardDetails");
             }
             catch (Exception ex)
             {

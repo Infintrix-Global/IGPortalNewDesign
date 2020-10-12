@@ -182,6 +182,7 @@ namespace IG_Portal
                 ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
                 txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             }
+            txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
        

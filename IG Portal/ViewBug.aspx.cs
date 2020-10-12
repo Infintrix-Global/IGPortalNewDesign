@@ -35,7 +35,7 @@ namespace IG_Portal
         {
 
             string pid = Session["TSBProjectID"] as String;
-            string sid = Session["TSBStatusID"] as String;
+            List<ListItem> sid = Session["TSBStatusID"] as List<ListItem>;
             string prid = Session["TSBPriorityID"] as String;
             string tid = Session["TSBTaskID"] as String;
             string pageid = Session["TSBPageNumber"] as String;
@@ -43,7 +43,8 @@ namespace IG_Portal
             {
                 ddlProjectName.SelectedValue = Session["TSBProjectID"].ToString();
             }
-            if (!string.IsNullOrEmpty(sid))
+            if(sid !=null)
+           if (sid.Count>0)
             {
                 List<ListItem> name = (List<ListItem>)Session["TSBStatusID"];
 

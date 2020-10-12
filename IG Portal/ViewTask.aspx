@@ -241,7 +241,7 @@
 
                                                             <asp:TemplateField HeaderText="Time Spent" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
-                                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("TimePeriod")  %>' CssClass="font-timesheet"></asp:Label>
+                                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("TimePeriod" ) %>' CssClass="font-timesheet"></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 

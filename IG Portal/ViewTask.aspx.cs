@@ -332,7 +332,7 @@ namespace IG_Portal
 
                         strQuery += ") union  ";
                         strQuery1 += ")  order by TS.WorkDate DESC ";
-                        strqtime += ")  SELECT RIGHT('0' + CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT('0' + CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2) + ':' + RIGHT('0' + CAST(@TimeinSecond % 60 AS VARCHAR), 2) AS TotalTimehours";
+                        strqtime += ")  SELECT RIGHT( CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT( CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2)  AS TotalTimehours";
                         strqueryfinal = strQuery + strQuery1;
                         dtTime = objGeneral.GetDatasetByCommand(strqtime);
                         dtSearch1 = objTask.SearchTask(strqueryfinal);
@@ -389,7 +389,7 @@ namespace IG_Portal
                         strQuery += ") union  ";
                         strQuery1 += ")  order by TS.WorkDate DESC ";
                         strqueryfinal = strQuery + strQuery1;
-                        strqtime += ")  SELECT RIGHT('0' + CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT('0' + CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2) + ':' + RIGHT('0' + CAST(@TimeinSecond % 60 AS VARCHAR), 2) AS TotalTimehours";
+                        strqtime += ")  SELECT RIGHT( CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT( CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2) AS TotalTimehours";
                         dtTime = objGeneral.GetDatasetByCommand(strqtime);
                         dtSearch1 = objTask.SearchTask(strqueryfinal);
                         GridFillSearch();

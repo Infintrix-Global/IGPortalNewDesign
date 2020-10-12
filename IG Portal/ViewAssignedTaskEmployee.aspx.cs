@@ -73,7 +73,7 @@ namespace IG_Portal
         {
 
             GridAssignTask.PageIndex = e.NewPageIndex;
-            BindGridAssignTask();
+            btSearch_Click(sender,e);
         }
 
         protected void GridAssignTask_Sorting(object sender, GridViewSortEventArgs e)

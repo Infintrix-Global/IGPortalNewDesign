@@ -97,8 +97,6 @@
     <Content Include="EmployeeDocuments.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
     <Content Include="js\BsMultiSelect.js" />
-    <Content Include="js\jquery-3.5.1.js" />
-    <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="LeadDetails.aspx" />
     <Content Include="LeaveApprovalHR.aspx" />
     <Content Include="ManagerDashBoardWM.aspx" />
@@ -144,6 +142,7 @@
     <Content Include="PendingAssignTask.aspx" />
     <Content Include="PrioritizeTask.aspx" />
     <Content Include="ProjectWiseReport.aspx" />
+    <Content Include="QADashBoard.aspx" />
     <Content Include="SalesDashBoard.aspx" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -1000,6 +999,13 @@
     </Compile>
     <Compile Include="AdminDashBoardWM.aspx.designer.cs">
       <DependentUpon>AdminDashBoardWM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QADashBoard.aspx.cs">
+      <DependentUpon>QADashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QADashBoard.aspx.designer.cs">
+      <DependentUpon>QADashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalesDashBoard.aspx.cs">
       <DependentUpon>SalesDashBoard.aspx</DependentUpon>

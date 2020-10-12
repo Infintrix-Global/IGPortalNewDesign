@@ -59,7 +59,7 @@
                             <hr />
                             <asp:Chart ID="Chart3" EnableViewState="true" runat="server" Height="300px" Width="400px">
                                 <Titles>
-                                    <asp:Title ShadowOffset="3" Name="Items" Text="TimeSheet of Employee" />
+                                    <asp:Title ShadowOffset="0" Name="Items" Text="TimeSheet of Employee" />
                                 </Titles>
                                 <Legends>
                                     <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False" Name="Hours"
@@ -78,6 +78,9 @@
 
 
                             <asp:Chart ID="Chart2" runat="server" EnableViewState="true" Height="400px" Width="600px">
+                                <Titles>
+                                    <asp:Title Name="Items" Text="Number of Bugs and Tasks per Project"></asp:Title>
+                                </Titles>
         <ChartAreas>
             <asp:ChartArea Name="ChartArea2">
                 <AxisY>
@@ -201,7 +204,7 @@
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                               
                                 <FooterTemplate>
-                                    <asp:Label Visible='<%#bool.Parse((dlTask.Items.Count==0).ToString())%>' runat="server"
+                                    <asp:Label Visible='<%#bool.Parse((DataList1.Items.Count==0).ToString())%>' runat="server"
                                         ID="lblNoRecord" Text="No Record Found!"></asp:Label>
                                 </FooterTemplate>
                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />

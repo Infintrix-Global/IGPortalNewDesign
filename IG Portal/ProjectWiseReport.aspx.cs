@@ -285,7 +285,7 @@ namespace IG_Portal
                         strQuery += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                         strqtime += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                         strQuery += "order by WorkDate DESC ";
-                        strqtime += ")  SELECT RIGHT('0' + CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT('0' + CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2) + ':' + RIGHT('0' + CAST(@TimeinSecond % 60 AS VARCHAR), 2) AS TotalTime";
+                        strqtime += ")  SELECT RIGHT( CAST(@TimeinSecond / 3600 AS VARCHAR),4) + ':' + RIGHT('0' + CAST((@TimeinSecond / 60) % 60 AS VARCHAR), 2)  AS TotalTime";
                         dtTime = objGeneral.GetDatasetByCommand(strqtime);
                         dtSearch1 = objTask.SearchTask(strQuery);
                         GridFillSearch();
