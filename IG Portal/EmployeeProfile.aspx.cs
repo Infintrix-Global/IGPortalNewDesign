@@ -82,7 +82,7 @@ namespace IG_Portal
                         lblJoinDate.Text = Convert.ToDateTime(dt1.Rows[0]["JoiningDate"].ToString()).ToString("dd-MMM-yyyy");
                     }
                     lnkLinkedIn.Text = dt1.Rows[0]["LinkedIn"].ToString();
-                    lblRole.Text = dt1.Rows[0]["RoleName"].ToString();
+                    lblRole.Text = dt1.Rows[0]["Roles"].ToString();
                   lblManager.Text = dt1.Rows[0]["ManagerName"].ToString();
                     lblDepartment.Text = dt1.Rows[0]["Department"].ToString();
                     lblStatus.Text= dt1.Rows[0]["StatusName"].ToString();

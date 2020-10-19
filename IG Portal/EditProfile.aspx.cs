@@ -84,11 +84,11 @@ namespace IG_Portal
 
         public void BindRole()
         {
-            ddlRole.DataSource = objCommon.GetRole();
-            ddlRole.DataTextField = "RoleName";
-            ddlRole.DataValueField = "ID";
-            ddlRole.DataBind();
-            ddlRole.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            chkRole.DataSource = objCommon.GetRole();
+            chkRole.DataTextField = "RoleName";
+            chkRole.DataValueField = "ID";
+            chkRole.DataBind();
+           // chkRole.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         public void bindEmployeeFeilds()
@@ -98,7 +98,8 @@ namespace IG_Portal
             txtEmail.Attributes.Add("readonly", "readonly");
             ddlStatus.Enabled = false;
             passsword.Visible = false;
-            ddlRole.Enabled = false;
+            // ddlRole.Enabled = false;
+            chkRole.Enabled = false;
             chkDept.Visible = false;
             department.Visible = false;
             ddlManager.Enabled = false;
@@ -108,7 +109,8 @@ namespace IG_Portal
         public void bindAdminFeilds()
         {
 
-            ddlRole.Enabled = true;
+            // ddlRole.Enabled = true;
+            chkRole.Enabled = true;
         }
 
         public void bindEmployeeProfile(int eid)
@@ -137,16 +139,27 @@ namespace IG_Portal
                     {
                         txtJoinDate.Text = Convert.ToDateTime(dt1.Rows[0]["JoiningDate"].ToString()).ToString("yyyy-MM-dd");
                     }
-                    ddlRole.SelectedValue = dt1.Rows[0]["Role"].ToString();
+                   // ddlRole.SelectedValue = dt1.Rows[0]["Role"].ToString();
                     ddlStatus.SelectedValue = dt1.Rows[0]["Status"].ToString();
                     txtPassword.Text = objCommon.Decrypt(dt1.Rows[0]["Password"].ToString());
                     ddlManager.SelectedValue = dt1.Rows[0]["Manager"].ToString();
                     DataTable dtDepartment = objTask.GetDepartmentByEmployee(eid);
+
                     foreach (DataRow dr in dtDepartment.Rows)
                     {
                         foreach (ListItem item in chkDepartment.Items)
                         {
                             if (item.Value == dr["DepartmentID"].ToString())
+                                item.Selected = true;
+                        }
+                        //chkDepartment.SelectedValue = dr["DepartmentID"].ToString();
+                    }
+                    DataTable dtRole = objTask.GetRoleByLoginID(eid.ToString());
+                         foreach (DataRow dr in dtRole.Rows)
+                    {
+                        foreach (ListItem item in chkRole.Items)
+                        {
+                            if (item.Value == dr["ID"].ToString())
                                 item.Selected = true;
                         }
                         //chkDepartment.SelectedValue = dr["DepartmentID"].ToString();
@@ -174,7 +187,7 @@ namespace IG_Portal
                     Name = txtName.Text,
                     Mobile = txtMobileNo.Text,
                     Email = txtEmail.Text,
-                    Role = ddlRole.SelectedValue,
+                   // Role = ddlRole.SelectedValue,
                     DOB = txtDOB.Text,
                     JoinDate = txtJoinDate.Text,
                     Address = txtAddress.Text,
@@ -193,7 +206,7 @@ namespace IG_Portal
                 {
                     objEmployee.LastDay = "";
                 }
-                if (mode == 1)
+                if (mode == 1)  /* Admin edit */
                 {
 
                     _isInserted = objCommon.UpdateEmployee(objEmployee, mode);
@@ -204,8 +217,16 @@ namespace IG_Portal
                             objCommon.AddEmployeeDepartment(Convert.ToInt32(Session["EmployeeID"].ToString()), item.Value);
                         }
                     }
+
+                    foreach (ListItem item in chkRole.Items)
+                    {
+                        if (item.Selected)
+                        {
+                            objCommon.AddEmployeeRole(Convert.ToInt32(Session["EmployeeID"].ToString()), item.Value);
+                        }
+                    }
                 }
-                else if (mode == 2)
+                else if (mode == 2)  /* Employee edit */
                 {
                     _isInserted = objCommon.UpdateEmployee(objEmployee, mode);
                     //foreach (ListItem item in chkDepartment.Items)

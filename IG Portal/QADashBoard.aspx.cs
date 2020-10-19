@@ -24,6 +24,7 @@ namespace IG_Portal
                 txtToDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 txtDate.Text = DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd");
                 BindProjectStatusBugChart();
+                BindProjectTaskBugRatio();
                 BindProjectMaster();
             }
         }
@@ -43,7 +44,26 @@ namespace IG_Portal
             Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
             //Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
-            DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "1", "0",DateTime.Now,DateTime.Now);
+            DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "1", "0",DateTime.Now.ToString(), DateTime.Now.ToString());
+
+            //foreach (DataRow r in dt.Rows)
+            //{
+            //    Series s = new Series((r["WorkDate"].ToString()));
+            //    s.ChartType = SeriesChartType.Column;
+
+            //    if (!(r["Hours"] is null))
+            //    {
+            //        s.Points.AddXY("Hours", new object[] { r["Hours"] });
+            //        s.Points[0].ToolTip = r["WorkDate"].ToString() + ":" + r["Hours"].ToString();
+
+            //    }
+            //    else
+            //    {
+            //        s.Points.AddXY("Bug/Task", 0);
+            //    }
+
+            //    Chart1.Series.Add(s);
+            //}
             Chart1.DataSource = dt;
             Chart1.Series[0].ChartType = SeriesChartType.Column;
             Chart1.Legends[0].Enabled = true;
@@ -60,7 +80,7 @@ namespace IG_Portal
             NameValueCollection nv = new NameValueCollection();
             nv.Add("@mode", "2");
             nv.Add("@LoginID", Session["LoginID"].ToString());
-            DataTable dtTask = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "2", ddlProjectBug.SelectedValue,DateTime.Now,DateTime.Now);
+            DataTable dtTask = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "2", ddlProjectBug.SelectedValue,DateTime.Now.ToString(), DateTime.Now.ToString());
             DataList1.DataSource = dtTask;
             DataList1.DataBind();
         }
@@ -77,11 +97,11 @@ namespace IG_Portal
 
         public void BindProjectStatusBugChart()
         {
-            Chart2.ChartAreas.Clear();
+            Chart2.Series.Clear();
             Chart2.ChartAreas["ChartArea2"].AxisX.MajorGrid.Enabled = false;
             Chart2.ChartAreas["ChartArea2"].AxisY.MajorGrid.Enabled = false;
            
-            DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "3", "0",Convert.ToDateTime(txtDate.Text), Convert.ToDateTime(txtToDate.Text));
+            DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "3", "0",txtDate.Text, txtToDate.Text);
             foreach (DataRow r in dt.Rows)
             {
                 Series s = new Series((r["ProjectName"].ToString()));
@@ -89,8 +109,9 @@ namespace IG_Portal
 
                 if (!(r["CompletedBug"] is null))
                 {
-                    s.ToolTip = r["ProjectName"].ToString() + ":" + r["CompletedBug"];
+                   /// s.ToolTip = r["ProjectName"].ToString() + ":" + r["CompletedBug"].ToString();
                     s.Points.AddXY("Completed", new object[] { r["CompletedBug"] });
+                    s.Points[0].ToolTip = r["ProjectName"].ToString() + ":" + r["CompletedBug"].ToString();
                 }
                 else
                 {
@@ -98,8 +119,9 @@ namespace IG_Portal
                 }
                 if (!(r["OpenBug"] is null))
                 {
-                    s.ToolTip = r["ProjectName"].ToString() + ":" + r["OpenBug"];
+                    //s.ToolTip = r["ProjectName"].ToString() + ":" + r["OpenBug"].ToString();
                     s.Points.AddXY("Open", new object[] { r["OpenBug"] });
+                    s.Points[1].ToolTip = r["ProjectName"].ToString() + ":" + r["OpenBug"].ToString();
                 }
                 else
                 {
@@ -108,8 +130,9 @@ namespace IG_Portal
 
                 if (!(r["ClosedBug"] is null))
                 {
-                    s.ToolTip = r["ProjectName"].ToString() + ":" + r["ClosedBug"];
+                  //  s.ToolTip = r["ProjectName"].ToString() + ":" + r["ClosedBug"].ToString();
                     s.Points.AddXY("Closed", new object[] { r["ClosedBug"] });
+                    s.Points[2].ToolTip = r["ProjectName"].ToString() + ":" + r["ClosedBug"].ToString();
                 }
                 else
                 {
@@ -121,7 +144,41 @@ namespace IG_Portal
            
         }
 
+        public void BindProjectTaskBugRatio()
+        {
+            
+            Chart3.ChartAreas["ChartArea3"].AxisX.MajorGrid.Enabled = false;
+            Chart3.ChartAreas["ChartArea3"].AxisY.MajorGrid.Enabled = false;
+
+            DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "4", "0", DateTime.Now.ToString(), DateTime.Now.ToString());
+            foreach (DataRow r in dt.Rows)
+            {
+                Series s = new Series((r["ProjectName"].ToString()));
+                s.ChartType = SeriesChartType.Column;
+
+                if (!(r["Ratio"] is null))
+                {
+                    s.Points.AddXY("Bug/Task", new object[] { r["Ratio"] });
+                    s.Points[0].ToolTip = r["ProjectName"].ToString() + ":" + r["Ratio"].ToString();
+
+                }
+                else
+                {
+                    s.Points.AddXY("Bug/Task", 0);
+                }
+               
+                Chart3.Series.Add(s);
+            }
+
+
+        }
+
         protected void txtToDate_TextChanged(object sender, EventArgs e)
+        {
+            BindProjectStatusBugChart();
+        }
+
+        protected void go_Click(object sender, EventArgs e)
         {
             BindProjectStatusBugChart();
         }

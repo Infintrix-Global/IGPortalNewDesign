@@ -7,51 +7,53 @@
             width: 250px;
             border: 1px solid aliceblue;
             overflow-y: scroll;
-            margin-left: 480px;
+           
+            margin-top: -30px;
+        }
+         .block2 {
+            height: 100px;
+            width: 250px;
+            border: 1px solid aliceblue;
+            overflow-y: scroll;
+           margin-left:480px;
             margin-top: -30px;
         }
     </style>
+    <script type="text/javascript">
+    function ValidateCheckBoxList(sender, args) {
+        var checkBoxList = document.getElementById("<%=chkRole.ClientID %>");
+        var checkboxes = checkBoxList.getElementsByTagName("input");
+        var isValid = false;
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                isValid = true;
+                break;
+            }
+        }
+        args.IsValid = isValid;
+    }
+    </script>
 
+      <script type="text/javascript">
+          function ValidateCheckBoxListDept(sender, args) {
+              var checkBoxList = document.getElementById("<%=chkDepartment.ClientID %>");
+              var checkboxes = checkBoxList.getElementsByTagName("input");
+              var isValid = false;
+              for (var i = 0; i < checkboxes.length; i++) {
+                  if (checkboxes[i].checked) {
+                      isValid = true;
+                      break;
+                  }
+              }
+              args.IsValid = isValid;
+          }
+      </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="sc1" runat="server"></asp:ScriptManager>
     <div class="card-body">
         <div class="portlet-body">
-            <%-- <div class="page-bar" id="pbEmployee" runat="server" visible="false">
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="EmployeeDashBoard.aspx">Home</a>
-                        <i class="fa fa-angle-right"></i>
-
-                        <a href="EmployeeProfile.aspx">Profile</a>
-                        <i class="fa fa-angle-right"></i>
-
-                        <a href="EditProfile.aspx">Edit Profile</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="page-bar" id="pbSAdmin" runat="server" visible="false">
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="SuperAdminDashBoard.aspx">Home</a>
-                        <i class="fa fa-angle-right"></i>
-
-                        <a href="AddEmployee.aspx">Add Employee</a>
-                        <i class="fa fa-angle-right"></i>
-
-                        <a href="EmployeeProfile.aspx">Profile</a>
-                        <i class="fa fa-angle-right"></i>
-
-                        <a href="EditProfile.aspx">Edit Profile</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                </ul>
-
-            </div>--%>
+          
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
@@ -149,8 +151,12 @@
                             <tr>
                                 <td>Role:</td>
                                 <td>
-                                    <asp:DropDownList ID="ddlRole" runat="server"></asp:DropDownList></td>
-                                <asp:RequiredFieldValidator ID="requiredRole" runat="server" ControlToValidate="ddlRole" InitialValue="0" ErrorMessage="Please Select Role" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
+                                    <div class="block1">
+                                    <asp:CheckBoxList ID="chkRole" runat="server"></asp:CheckBoxList>
+                                </div></td>
+                                <%--<asp:RequiredFieldValidator ID="requiredRole" runat="server" ControlToValidate="chkRole" InitialValue="0" ErrorMessage="Please Select Role" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>--%>
+                                  <asp:CustomValidator ID="CustomValidator1" ErrorMessage="Please select at least one role."
+    ForeColor="Red" ClientValidationFunction="ValidateCheckBoxList" runat="server" ValidationGroup="e" />
                             </tr>
                             <tr>
                                 <td>Manager:</td>
@@ -198,20 +204,17 @@
                             </asp:UpdatePanel>
                             <tr id="department" runat="server">
                                 <td>Department:</td>
+                              
                             </tr>
 
                         </table>
 
                         <div class="row">
-                            <div class="col m3">
-
-
-
-
-                                <div class="block1" id="chkDept" runat="server">
-
+                            <div <div class="block2" id="chkDept" runat="server">
                                     <asp:CheckBoxList ID="chkDepartment" runat="server" />
                                 </div>
+                                  <asp:CustomValidator ID="CustomValidator2" ErrorMessage="Please select at least one department."
+    ForeColor="Red" ClientValidationFunction="ValidateCheckBoxListDept" runat="server" ValidationGroup="e" />
                             </div>
                         </div>
                     </div>

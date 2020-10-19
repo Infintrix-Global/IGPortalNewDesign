@@ -45,6 +45,32 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
+        public int AddProjectDeliveryDetails(ProjectDeliveryDetails objProjectDetails)
+        {
+            int _isInserted = -1;
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", objProjectDetails.ProjectID);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectType", objProjectDetails.ProjectType);
+                objGeneral.AddParameterWithValueToSQLCommand("@AMC", objProjectDetails.AMC);
+                objGeneral.AddParameterWithValueToSQLCommand("@Cost", objProjectDetails.Cost);
+                objGeneral.AddParameterWithValueToSQLCommand("@Technology", objProjectDetails.Technology);
+                objGeneral.AddParameterWithValueToSQLCommand("@FreeSupport", objProjectDetails.FreeSupport);
+                objGeneral.AddParameterWithValueToSQLCommand("@WorkingDays", objProjectDetails.WorkingDays);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", objProjectDetails.Mode);
+
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddProjectDeliveryDetails");
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
         public DataTable AutoFillProjectDetails(int pid)
         {
             try
@@ -61,6 +87,22 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataSet AutoFillProjectDeliveryDetails(int pid)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", pid);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetProjectDeliveryDetailsByProjectID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds;
+        }
+
         public int AddScreenShot(string ProjectID, string imgname)
         {
             int _isInserted = -1;
@@ -71,6 +113,27 @@ namespace IG_Portal.BAL_Classes
 
 
                 _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddScreenshot");
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int AddScope(string ProjectID, string imgname)
+        {
+            int _isInserted = -1;
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Imgname", imgname);
+
+
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddScope");
 
 
             }
@@ -680,6 +743,22 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@ID", eid);
 
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeByID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetRoleByLoginID(string mob)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", mob);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetRoleByLoginID");
             }
             catch (Exception ex)
             {

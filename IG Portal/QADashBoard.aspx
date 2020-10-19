@@ -32,11 +32,16 @@
        <div class="col s12 m12 l4">
               <div class="row">
                                  <div class="col s12 m12 l6">
-                                <asp:TextBox ID="txtDate" TextMode="Date" runat="server" ClientIDMode="Static"  AutoPostBack="true" />
+                                     <asp:Label ID="lblFdate" runat="server" Text="From Date"></asp:Label>
+                                <asp:TextBox ID="txtDate" TextMode="Date" runat="server" ClientIDMode="Static"  OnTextChanged="txtToDate_TextChanged" AutoPostBack="true"   />
                             </div>
                    <div class="col s12 m12 l6">
-                                <asp:TextBox ID="txtToDate" TextMode="Date" runat="server" ClientIDMode="Static" OnTextChanged="txtToDate_TextChanged" AutoPostBack="true" />
+                             <asp:Label ID="lblTDate" runat="server" Text="To Date"></asp:Label>
+                                <asp:TextBox ID="txtToDate" TextMode="Date" runat="server" ClientIDMode="Static" OnTextChanged="txtToDate_TextChanged" AutoPostBack="true"     />
                             </div>
+               <%--   <div class="col s12 m12 l4">
+                      <asp:Button ID="go" runat="server" Text="Go" Width="35px" OnClick="go_Click" />
+                  </div>--%>
                   </div>
      <asp:Chart ID="Chart2" runat="server" EnableViewState="true" Height="400px" Width="600px">
                                 <Titles>
@@ -71,7 +76,7 @@
                                 <ul id="issues-collection" class="collection">
                                     <li class="collection-item avatar">
                                         <i class="mdi-action-bug-report circle red darken-2"></i>
-                                        <span class="collection-header">Issues</span>
+                                        <span class="collection-header">Bugs</span>
                                         <p>Completed for Testing </p>
                                         <a href="ViewBug.aspx" class="secondary-content"> <i class="mdi-action-grade">View All</i></a>
                                     </li>
@@ -108,6 +113,31 @@
                                    
                                 </ul>
                             </div>
+
+                 <div class="col s12 m12 l4">
+                      <asp:Chart ID="Chart3" runat="server" EnableViewState="true" Height="400px" Width="600px">
+                                <Titles>
+                                    <asp:Title Name="Items" Text="Project Wise Bug/Task "></asp:Title>
+                                </Titles>
+        <ChartAreas>
+            <asp:ChartArea Name="ChartArea3">
+                <AxisY>
+                    <MajorGrid LineColor="DarkGray" LineDashStyle="Dot" />
+                    <LabelStyle  Interval="3" />
+                </AxisY>
+                <AxisX>
+                    <MajorGrid LineColor="DarkGray" LineDashStyle="Dot" />
+                </AxisX>
+            </asp:ChartArea>
+        </ChartAreas>
+        <Legends>
+            <asp:Legend Name="Legend1">
+            </asp:Legend>
+        </Legends>
+    </asp:Chart>
+
+                     </div>
+
             </div>
             </ContentTemplate>
         </asp:UpdatePanel>

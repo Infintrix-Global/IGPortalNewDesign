@@ -63,59 +63,67 @@ namespace IG_Portal
                     Response.Cookies["Password"].Value = txtPassword.Text.Trim();
                     Session["LoginID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                     Session["CompanyID"] = int.Parse(_dtLogin.Rows[0]["CompanyID"].ToString());
-                    Session["Role"] = _dtLogin.Rows[0]["Role"].ToString();
+                    Session["Role"] = _dtLogin.Rows[0]["RoleID"].ToString();
                     Session["Mobile"] = _dtLogin.Rows[0]["EmployeeID"].ToString();
 
                     Session["EmployeeName"] = _dtLogin.Rows[0]["EmployeeName"].ToString();
 /*admin */
-                    if (_dtLogin.Rows[0]["Role"].ToString() == "2" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "2" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/Notifications.aspx");
                     }
                     /*manager */
-                    if (_dtLogin.Rows[0]["Role"].ToString() == "4" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "4" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
-                        Response.Redirect("~/Notifications.aspx");
+                        Response.Redirect("~/ManagerDashBoardWM.aspx");
                     }
                     /*consultant */
-                    if (_dtLogin.Rows[0]["Role"].ToString() == "7" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "7" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/Notifications.aspx");
                     }
                     /*employee */
-                    else if (_dtLogin.Rows[0]["Role"].ToString() == "1" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    else if (_dtLogin.Rows[0]["RoleID"].ToString() == "1" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/EmployeeDashBoardWM.aspx");
 
                     }
                     /*client */
-                    else if (_dtLogin.Rows[0]["Role"].ToString() == "8" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    else if (_dtLogin.Rows[0]["RoleID"].ToString() == "8" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/ClientDashBoard.aspx");
 
                     }
                     /*support */
-                    else if (_dtLogin.Rows[0]["Role"].ToString() == "9" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    else if (_dtLogin.Rows[0]["RoleID"].ToString() == "9" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/SupportDashBoard.aspx");
 
                     }
-                    if (_dtLogin.Rows[0]["Role"].ToString() == "10" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    /*HR  */
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "10" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/Notifications.aspx");
+                    }
+                   /* Sales*/
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "11" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/Notifications.aspx");
                     }
 
-                    if (_dtLogin.Rows[0]["Role"].ToString() == "11" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    /* QA*/
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "12" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
                     {
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
-                        Response.Redirect("~/Notifications.aspx");
+                        Response.Redirect("~/QADashBoard.aspx");
                     }
                 }
                 else

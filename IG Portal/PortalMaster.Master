@@ -64,6 +64,9 @@
                         </ul>
                         <ul class="right">
                             <li>
+                                <asp:DropDownList ID="ddlRole" runat="server" Visible="false" OnSelectedIndexChanged="ddlRole_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                            </li>
+                            <li>
                                 <asp:LinkButton ID="lnkchangepassword" runat="server" Text="Change Password" OnClick="lnkchangepassword_Click"></asp:LinkButton>
 
                             </li>
@@ -158,6 +161,67 @@
                         </ul>
                         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
                     </div>
+
+                      <div id="qa" runat="server" visible="false">
+                        <ul id="slide-out8" class="side-nav leftside-navigation">
+
+                            <li class="user-details cyan darken-2">
+                                <div class="row">
+                                    <div class="col col s4 m4 l4">
+                                       
+                                    </div>
+                                    <div class="col col s8 m8 l8">
+                                      <%--  <ul id="profile-dropdown" class="dropdown-content">
+                                            <li><a href="EmployeeProfile.aspx"><i class="mdi-action-face-unlock"></i>Profile</a> </li>
+                                            <li><a href=""><i class="mdi-action-settings"></i>Setting</a> </li>
+                                            <li class="divider"></li>
+                                            <li><a href="Login.aspx"><i class="mdi-hardware-keyboard-tab"></i>Logout</a> </li>
+                                        </ul>--%>
+
+
+                                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="" data-activates="profile-dropdown">
+                                            <asp:Label ID="lblQA" runat="server"></asp:Label>
+                                            <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                                        <p class="user-roal"></p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="bold"><a href="<%= ResolveUrl("~/QADashBoard.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>DashBoard</a> </li>
+                               <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>TimeSheet </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="<%= ResolveUrl("~/AddTimeSheet.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewTask.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/ViewAssignedTaskEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Task</a> </li>
+                              <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Bugs </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="<%= ResolveUrl("~/AddBug.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewBug.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="bold"><a href="<%= ResolveUrl("~/LeaveApplication.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Apply for Leave</a> </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
+                            <li class="bold"><a href="<%= ResolveUrl("~/Notifications.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Notifications</a> </li>
+                        </ul>
+                        <a href="#" data-activates="slide-out8" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
+                    </div>
+
 
                     <div id="admin" runat="server" visible="false">
                         <ul id="slide-out1" class="side-nav leftside-navigation">

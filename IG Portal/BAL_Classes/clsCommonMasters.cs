@@ -873,6 +873,21 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable ProjectDeliveryTypeMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_ProjectDeliveryTypeMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetProjectMaster(int companyID)
         {
             try
@@ -915,6 +930,40 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@DepartmentID", DepartmentID);
                 objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", employeeID);
                 _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddEmployeeDepartment");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isInserted;
+        }
+
+        public int AddProjectDeliveryType(int projectID, string DeliveryTypeID)
+        {
+            int _isInserted = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
+                objGeneral.AddParameterWithValueToSQLCommand("@DeliveryTypeID", DeliveryTypeID);
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddProjectDeliveryTypeMap");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isInserted;
+        }
+
+        public int AddEmployeeRole(int employeeID, string RoleID)
+        {
+            int _isInserted = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@RoleID", RoleID);
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", employeeID);
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddEmployeeRole");
             }
             catch (Exception ex)
             {
@@ -1641,7 +1690,7 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@Name", objEmployee.Name);
                 objGeneral.AddParameterWithValueToSQLCommand("@Email", objEmployee.Email);
                 objGeneral.AddParameterWithValueToSQLCommand("@Password", objEmployee.Password);
-                objGeneral.AddParameterWithValueToSQLCommand("@Role", objEmployee.Role);
+               // objGeneral.AddParameterWithValueToSQLCommand("@Role", objEmployee.Role);
                 objGeneral.AddParameterWithValueToSQLCommand("@DOB", objEmployee.DOB);
                 objGeneral.AddParameterWithValueToSQLCommand("@JoinDate", objEmployee.JoinDate);
                 objGeneral.AddParameterWithValueToSQLCommand("@Address", objEmployee.Address);
@@ -1703,7 +1752,7 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@Mobile", objEmployee.Mobile);
                 objGeneral.AddParameterWithValueToSQLCommand("@Name", objEmployee.Name);
                 objGeneral.AddParameterWithValueToSQLCommand("@Email", objEmployee.Email);
-                objGeneral.AddParameterWithValueToSQLCommand("@Role", objEmployee.Role);
+               // objGeneral.AddParameterWithValueToSQLCommand("@Role", objEmployee.Role);
                 objGeneral.AddParameterWithValueToSQLCommand("@DOB", objEmployee.DOB);
                 objGeneral.AddParameterWithValueToSQLCommand("@JoinDate", objEmployee.JoinDate);
                 objGeneral.AddParameterWithValueToSQLCommand("@Address", objEmployee.Address);
@@ -1738,6 +1787,23 @@ namespace IG_Portal
             }
             return _isDeleted;
         }
+
+        public int RemoveScope(int ScopeID)
+        {
+            int _isDeleted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ScopeID", ScopeID);
+                _isDeleted = objGeneral.GetExecuteScalarByCommand_SP("SP_RemoveScope");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isDeleted;
+        }
+
 
         public int AddMOM(MOM objMOM)
         {
@@ -1841,7 +1907,7 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
-        public DataTable GetQADashBoardDetails(string LoginID, string mode, string ProjectID,DateTime FromDate,DateTime ToDate)
+        public DataTable GetQADashBoardDetails(string LoginID, string mode, string ProjectID,string FromDate,string ToDate)
         {
 
             try
@@ -1851,8 +1917,8 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
                 objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
-                objGeneral.AddParameterWithValueToSQLCommand("@FromDate", FromDate);
-                objGeneral.AddParameterWithValueToSQLCommand("@ToDate", ToDate);
+                objGeneral.AddParameterWithValueToSQLCommand("@FromDate", Convert.ToDateTime(FromDate));
+                objGeneral.AddParameterWithValueToSQLCommand("@ToDate", Convert.ToDateTime(ToDate));
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetQADashBoardDetails");
             }
             catch (Exception ex)
@@ -1995,6 +2061,22 @@ public class ProjectDetails
     public string APUATPassword { get; set; }
     public string APKLink { get; set; }
     public string ProjectManager { get; set; }
+
+}
+
+public class ProjectDeliveryDetails
+{
+    public string ProjectID { get; set; }
+    public string Scope { get; set; }
+    public string Technology { get; set; }
+    public string ProjectType { get; set; }
+    public string FreeSupport { get; set; }
+    public string AMC { get; set; }
+    public string WorkingDays { get; set; }
+    public string Cost { get; set; }
+
+    public int Mode { get; set; }
+
 
 }
 

@@ -102,7 +102,7 @@
                                         <i class="mdi-action-bug-report circle red darken-2"></i>
                                         <span class="collection-header">Issues</span>
                                         <p>Assigned to you</p>
-                                        <a href="ViewBugs.aspx" class="secondary-content"> <i class="mdi-action-grade">View All</i></a>
+                                        <a href="ViewBug.aspx" class="secondary-content"> <i class="mdi-action-grade">View All</i></a>
                                     </li>
                                     <li class="collection-item dismissable">
                                            <asp:DataList ID="DataList1" class="striped" runat="server" CellPadding="4" ForeColor="#333333">

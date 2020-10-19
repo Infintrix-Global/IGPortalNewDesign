@@ -44,11 +44,11 @@ namespace IG_Portal
 
         public void BindRole()
         {
-            ddlRole.DataSource = objCommon.GetRole();
-            ddlRole.DataTextField = "RoleName";
-            ddlRole.DataValueField = "ID";
-            ddlRole.DataBind();
-            ddlRole.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            chkRole.DataSource = objCommon.GetRole();
+            chkRole.DataTextField = "RoleName";
+            chkRole.DataValueField = "ID";
+            chkRole.DataBind();
+            //chkRole.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         protected void btAdd_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace IG_Portal
                         Mobile = txtMobile.Text,
                         Password = objCommon.Encrypt("12345"),
                         Email = txtEmail.Text,
-                        Role = ddlRole.SelectedValue,
+                      //  Role = ddlRole.SelectedValue,
                         DOB = txtDOB.Text,
                         JoinDate = txtJoinDate.Text,
                         Address = txtAddress.Text,
@@ -101,7 +101,13 @@ namespace IG_Portal
                                  objCommon.AddEmployeeDepartment(_isInserted, item.Value);
                             }
                         }
-                       
+                        foreach (ListItem item in chkRole.Items)
+                        {
+                            if (item.Selected)
+                            {
+                                objCommon.AddEmployeeRole(_isInserted, item.Value);
+                            }
+                        }
                         objCommon.SendMail(txtEmail.Text.Trim(), txtMobile.Text.Trim(), "12345");
                         GetEmployeeList();
                         btclear_Click(sender, e);
@@ -123,7 +129,9 @@ namespace IG_Portal
         {
             txtName.Text = "";
             txtMobile.Text = "";
-            ddlRole.SelectedIndex = 0;
+            //ddlRole.SelectedIndex = 0;
+            chkRole.ClearSelection();
+            chkDepartment.ClearSelection();
             ddlManager.SelectedIndex = 0;
             txtDOB.Text = "";
             txtJoinDate.Text = "";

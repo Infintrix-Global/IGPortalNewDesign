@@ -141,6 +141,7 @@
     <Content Include="Notifications.aspx" />
     <Content Include="PendingAssignTask.aspx" />
     <Content Include="PrioritizeTask.aspx" />
+    <Content Include="ProjectDelivery.aspx" />
     <Content Include="ProjectWiseReport.aspx" />
     <Content Include="QADashBoard.aspx" />
     <Content Include="SalesDashBoard.aspx" />
@@ -985,6 +986,13 @@
     <Compile Include="PrioritizeTask.aspx.designer.cs">
       <DependentUpon>PrioritizeTask.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProjectDelivery.aspx.cs">
+      <DependentUpon>ProjectDelivery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectDelivery.aspx.designer.cs">
+      <DependentUpon>ProjectDelivery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProjectWiseReport.aspx.cs">
       <DependentUpon>ProjectWiseReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1150,6 +1158,7 @@
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
     <Content Include="Support.sitemap" />
     <Content Include="Sales.sitemap" />
+    <Content Include="QA.sitemap" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

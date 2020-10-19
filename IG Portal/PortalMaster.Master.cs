@@ -38,8 +38,14 @@ namespace IG_Portal
                 }
                 else
                 {
+                    DataTable dtRole = objTask.GetRoleByLoginID(Session["LoginID"].ToString());
+                    if (dtRole.Rows.Count > 1)
+                    {
+                        ddlRole.Visible = true;
+                        BindRole(dtRole);
+                    }
                     DataTable AllData = objTask.GetEmployeeByID(Convert.ToInt32(Session["LoginID"].ToString()));
-
+                   
                     empName.Text = "Welcome " + AllData.Rows[0]["EmployeeName"].ToString();
                    
                
@@ -104,198 +110,21 @@ namespace IG_Portal
                         SiteMapPath1.SiteMapProvider = "SiteMapSales";
                         SiteMapPath1.DataBind();
                     }
+
+                    else if (Session["Role"].ToString() == "12" && Session["CompanyID"].ToString() == "2")
+                    {
+                        qa.Visible = true;
+                        lblQA.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        SiteMapPath1.SiteMapProvider = "SiteMapQA";
+                        SiteMapPath1.DataBind();
+                    }
                 }
 
             }
 
         }
 
-        //private void BindMenu()
-        //{
-        //    try
-        //    {
-        //        int iRoleId = Convert.ToInt32(Session["Role"].ToString());
-
-        //        IEnumerable<MenuMaster_Tbl> ParentMenuID = MenuMasterBAL.GetParentMenuID();
-        //        HtmlGenericControl ul;
-        //        HtmlGenericControl li;
-        //        AjaxControlToolkit.AccordionPane pn;
-        //        string SelectedParentID = "0";
-        //        int pnCount = 1;
-        //        foreach (var item in ParentMenuID)
-        //        {
-        //            //Object ObjRoleWiseMenuAccess = MenuMasterBAL.GetRoleWiseMenu(Convert.ToInt32(item.ParentID),Convert.ToInt32(SessionUtilities.CurrentRoleId));
-        //            TemplateBuilder head = new TemplateBuilder();
-        //            pn = new AjaxControlToolkit.AccordionPane();
-        //            pn.ID = item.MenuID.ToString(); //"AccordionPane_" + pnCount.ToString();
-        //            pnCount++;
-
-
-        //            //pn.ID = "AccordionPane" + item.MenuID;
-        //            string sHeaderLink = "MenuSubMenu.aspx";
-        //            string[] sSeperator = HttpContext.Current.Request.Url.AbsolutePath.Split('/');
-        //            if (sSeperator.Count() == 3)
-        //            {
-        //                sHeaderLink = sHeaderLink.TrimStart('~');
-        //            }
-        //            else if (sSeperator.Count() == 4)
-        //            {
-        //                sHeaderLink = "../Dashboard/" + sHeaderLink.TrimStart('~');
-        //            }
-        //            //pn.HeaderContainer.Controls.Add(new LiteralControl("<a href=?Sel=" + mparnet.Navigation_URL + " onClick=javascript:gotopage('" + mparnet.Navigation_URL  + "');>" + mparnet.MenuText + "</a>"));
-        //            //pn.HeaderContainer.Controls.Add(new LiteralControl("<a href=?Sel=" + mparnet.Navigation_URL + " onClick=javascript:gotopage('MenuSubmenu.aspx?Menu');>" + mparnet.MenuText + "</a>"));
-        //            //pn.HeaderContainer.Controls.Add(new LiteralControl("<a href=?Sel=" + item.Navigation_URL + " onClick=javascript:getmenuheader('" + item.MenuID + "');>" + item.MenuText + "</a>"));
-        //            pn.HeaderContainer.Controls.Add(new LiteralControl("<a>" + item.MenuText + "</a>"));
-        //            // head.AppendLiteralString("<a href=?Sel=" + mparnet.Navigation_URL + " onClick='javascript:alert('" + mparnet.MenuText + "');'>" + mparnet.MenuText + "</a>");
-        //            pn.Header = head;
-        //            List<ParentMenuID> menulist = MenuMasterBAL.GetRoleWiseMenu(item.MenuID.ToString(), Convert.ToInt32(SessionUtilities.CurrentRoleId));
-        //            if (menulist.Count > 0)
-        //            {
-        //                foreach (var menu in menulist)
-        //                {
-        //                    //if (menu.MenuText == "reportseparator")
-        //                    //{
-        //                    //    Label lbl = new Label();
-        //                    //    lbl.Text = "Reports<hr/>";
-        //                    //    lbl.ID = item.MenuID.ToString();
-        //                    //    pn.ContentContainer.Controls.Add(lbl);
-        //                    //}
-        //                    //else if (menu.MenuText == "lockersepearator")
-        //                    //{
-        //                    //    Label lbl = new Label();
-        //                    //    lbl.Text = "Locker Management<hr/>";
-        //                    //    lbl.ID = item.MenuID.ToString();
-        //                    //    pn.ContentContainer.Controls.Add(lbl);
-        //                    //}
-
-        //                    //else
-        //                    //{
-
-        //                    //TemplateBuilder content = new TemplateBuilder();
-        //                    ul = new HtmlGenericControl("ul");
-        //                    ul.Attributes.Add("class", "submenu");
-        //                    li = new HtmlGenericControl("li");
-        //                    //li.InnerHtml="<a href=?Sel=" + c.Navigation_URL + "class=accordionLink>" + c.MenuText + "</a>";
-        //                    li.InnerHtml = "<a href=?Sel=" + menu.Navigation_URL + ">" + menu.MenuText + "</a>";
-        //                    string sURL1 = HttpContext.Current.Request.Url.ToString();
-        //                    string[] URLSegments = sURL1.Split('/');
-
-        //                    string requestURL = URLSegments[URLSegments.Length - 1].ToString().ToLower();
-        //                    if (!string.IsNullOrEmpty(requestURL) && menu.Navigation_URL.ToString().ToLower().Contains(requestURL))
-        //                    {
-        //                        SelectedParentID = menu.ParentID;
-        //                        GetDisplayRank_Menu(menu.ParentID);
-        //                        displayrank_menu = Convert.ToInt32(menu.ParentID);
-        //                        //- -- select Displayrank from m enu where menuid=c.parentid
-        //                    }
-        //                    ul.Controls.Add(li);
-        //                    pn.ContentContainer.Controls.Add(ul);
-        //                    string CmpText = "#" + menu.MenuText + "#";
-        //                    string RptText = "#" + menu.MenuText + "#";
-        //                    if (MenuSeparatorText.Contains(CmpText))
-        //                    {
-        //                        Label lbl = new Label();
-        //                        lbl.Text = "<hr/>";
-        //                        lbl.ID = item.MenuID.ToString();
-        //                        pn.ContentContainer.Controls.Add(lbl);
-        //                    }
-        //                    if (ReportSeparatorText.Contains(RptText))
-        //                    {
-        //                        Label lbl = new Label();
-        //                        lbl.Text = "Reports<hr/>";
-        //                        lbl.ID = item.MenuID.ToString();
-        //                        pn.ContentContainer.Controls.Add(lbl);
-        //                    }
-        //                    //}
-        //                }
-        //                acrStatic.Panes.Add(pn);
-        //                acrStatic.RequireOpenedPane = false;
-        //                acrStatic.SuppressHeaderPostbacks = true;
-        //                acrStatic.FramesPerSecond = 40;
-        //                acrStatic.TransitionDuration = 250;
-        //                //  acrStatic.SelectedIndex = 06;
-        //                // string checkhidden = hdAccordionSelectedIndex.Value;
-        //                // if(LabelIndex.Text!="" && LabelIndex.Text != null)
-        //                // acrStatic.SelectedIndex =Convert.ToInt32( LabelIndex.Text);
-
-        //                string sURL = HttpContext.Current.Request.Url.ToString();
-        //                string[] URLSegments1 = sURL.Split('/');
-        //                string requestURL1 = URLSegments1[URLSegments1.Length - 1].ToString().ToLower();
-
-        //                if (requestURL1.ToLower().Contains("menusubmenu.aspx") && Request.QueryString["id"] != null)
-        //                {
-        //                    Session["ACCORDIONID"] = Convert.ToUInt32(Request.QueryString["id"].ToString());
-        //                }
-        //                else if (requestURL1 == "studentadmissionfrom.aspx" && IsPostBack)
-        //                {
-        //                    if (Session["ACCORDIONID"] != null && Session["ACCORDIONID"].ToString() != "0")
-        //                    {
-        //                        Session["ACCORDIONID"] = Convert.ToInt32(Session["ACCORDIONID"]);
-        //                    }
-        //                    else
-        //                    {
-        //                        Session["ACCORDIONID"] = "0";
-        //                    }
-        //                }
-        //                else
-        //                {
-
-        //                    if (!string.IsNullOrEmpty(SelectedParentID) && int.Parse(SelectedParentID) > 0)
-        //                    {
-        //                        Session["ACCORDIONID"] = displayrank_menu;
-        //                        //
-        //                    }
-        //                }
-        //                int drank = Convert.ToInt32(Session["ACCORDIONID"]);
-        //                if (drank == 0)
-        //                {
-        //                    acrStatic.SelectedIndex = -1;//drank;
-
-        //                }
-        //                else
-        //                {
-        //                    for (int i = 0; i < acrStatic.Panes.Count; i++)
-        //                    {
-        //                        if (acrStatic.Panes[i].ID.ToString() == Session["ACCORDIONID"].ToString())
-        //                            acrStatic.SelectedIndex = i;
-        //                    }
-        //                    //if (drank == 1)
-        //                    //{
-        //                    //    acrStatic.SelectedIndex = 0;
-        //                    //}
-        //                    //else
-        //                    //{
-        //                    //    //acrStatic.SelectedIndex = Convert.ToInt32(Session["ACCORDIONID"]) - 2;
-
-        //                    //    acrStatic.SelectedIndex =Convert.ToInt32(Session["ACCORDIONID"]);
-        //                    //}
-        //                }
-
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        //   throw;
-        //    }
-
-        //}
-
-        //public int GetDisplayRank_Menu(string Parentid)
-        //{
-
-        //    List<MenuMaster_Tbl> displayrank = MenuMasterBAL.GetDisplayRank(Parentid);
-        //    if ((displayrank.Count > 0))
-        //    {
-        //        for (int i = 0; i < displayrank.Count; i++)
-        //        {
-        //            displayrank_menu = displayrank[i].DisplayRank;
-        //        }
-        //    }
-        //    return displayrank_menu;
-        //}
-
+      
         protected void lnkLogout_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Login.aspx", false);
@@ -304,6 +133,85 @@ namespace IG_Portal
         protected void lnkchangepassword_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ChangePassword.aspx", false);
+        }
+
+        protected void ddlRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+           
+            Session["Role"] = ddlRole.SelectedValue;
+           
+            CheckRole();
+        }
+
+        public void BindRole(DataTable dt)
+        {
+            ddlRole.DataSource = dt;
+            ddlRole.DataTextField = "RoleName";
+            ddlRole.DataValueField = "ID";
+            ddlRole.DataBind();
+            ddlRole.SelectedValue = Session["Role"].ToString();
+        }
+
+        public void CheckRole()
+        {
+            if (Session["Role"].ToString() == "2" && Session["CompanyID"].ToString() == "2")
+            {
+              //  Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/Notifications.aspx");
+            }
+            /*manager */
+            if (Session["Role"].ToString() == "4" && Session["CompanyID"].ToString() == "2")
+            {
+               // Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/ManagerDashBoardWM.aspx");
+            }
+            /*consultant */
+            if (Session["Role"].ToString() == "7" && Session["CompanyID"].ToString() == "2")
+            {
+               // Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/Notifications.aspx");
+            }
+            /*employee */
+            else if (Session["Role"].ToString() == "1" && Session["CompanyID"].ToString() == "2")
+            {
+              //  Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/EmployeeDashBoardWM.aspx");
+
+            }
+            /*client */
+            else if (Session["Role"].ToString() == "8" && Session["CompanyID"].ToString() == "2")
+            {
+              //  Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/ClientDashBoard.aspx");
+
+            }
+            /*support */
+            else if (Session["Role"].ToString() == "9" && Session["CompanyID"].ToString() == "2")
+            {
+               // Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/SupportDashBoard.aspx");
+
+            }
+            /*HR  */
+            if (Session["Role"].ToString() == "10" && Session["CompanyID"].ToString() == "2")
+            {
+             //   Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/Notifications.aspx");
+            }
+            /* Sales*/
+            if (Session["Role"].ToString() == "11" && Session["CompanyID"].ToString() == "2")
+            {
+              //  Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/Notifications.aspx");
+            }
+
+            /* QA*/
+            if (Session["Role"].ToString() == "12" && Session["CompanyID"].ToString() == "2")
+            {
+               // Session["EmployeeID"] = int.Parse(Session["ID"].ToString());
+                Response.Redirect("~/QADashBoard.aspx");
+            }
         }
     }
 }

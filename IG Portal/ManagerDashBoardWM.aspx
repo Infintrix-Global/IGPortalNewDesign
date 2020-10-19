@@ -176,8 +176,8 @@
                                 <ul id="issues-collection" class="collection">
                                     <li class="collection-item avatar">
                                         <i class="mdi-action-bug-report circle red darken-2"></i>
-                                        <span class="collection-header">Issues</span>
-                                        <p>Assigned to you</p>
+                                        <span class="collection-header">Bugs</span>
+                                        <p>Assigned to Team Members</p>
                                         <a href="ViewBug.aspx" class="secondary-content"> <i class="mdi-action-grade">View All</i></a>
                                     </li>
                                     <li class="collection-item dismissable">

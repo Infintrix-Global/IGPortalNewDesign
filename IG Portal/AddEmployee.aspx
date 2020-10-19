@@ -9,6 +9,36 @@
             overflow-y:scroll;
         }
     </style>
+
+    <script type="text/javascript">
+    function ValidateCheckBoxList(sender, args) {
+        var checkBoxList = document.getElementById("<%=chkRole.ClientID %>");
+        var checkboxes = checkBoxList.getElementsByTagName("input");
+        var isValid = false;
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                isValid = true;
+                break;
+            }
+        }
+        args.IsValid = isValid;
+    }
+    </script>
+
+      <script type="text/javascript">
+          function ValidateCheckBoxListDept(sender, args) {
+              var checkBoxList = document.getElementById("<%=chkDepartment.ClientID %>");
+              var checkboxes = checkBoxList.getElementsByTagName("input");
+              var isValid = false;
+              for (var i = 0; i < checkboxes.length; i++) {
+                  if (checkboxes[i].checked) {
+                      isValid = true;
+                      break;
+                  }
+              }
+              args.IsValid = isValid;
+          }
+      </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
@@ -70,7 +100,7 @@
                                 </asp:RegularExpressionValidator>
                             </div>
 
-                            <div class="col m4">
+                            <div class="col m3">
 
                                 <label><span class="auto-style1">Email</span><span class="required">*</span> </label>
 
@@ -84,10 +114,15 @@
                                 </asp:RegularExpressionValidator>
                             </div>
 
-                            <div class="col m2">
+                            <div class="col m3">
                                 <label><span class="auto-style1">Role</span><span class="required">*</span> </label>
-                                <asp:DropDownList ID="ddlRole" runat="server" class="form-control" TabIndex="5"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requiredRole" runat="server" ControlToValidate="ddlRole" InitialValue="0" ErrorMessage="Please Select Role" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
+                                <div class="block1">
+                                <asp:CheckBoxList ID="chkRole" RepeatLayout="OrderedList" runat="server" class="form-control" TabIndex="5"></asp:CheckBoxList>
+                                     </div>
+                              <%--  <asp:RequiredFieldValidator ID="requiredRole" runat="server" ControlToValidate="chkRole" InitialValue="0" ErrorMessage="Please Select Role" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>--%>
+                                <asp:CustomValidator ID="CustomValidator1" ErrorMessage="Please select at least one role."
+    ForeColor="Red" ClientValidationFunction="ValidateCheckBoxList" runat="server" ValidationGroup="e" />
+                                   
                             </div>
                         </div>
 
@@ -135,6 +170,8 @@
                           
                               <asp:CheckBoxList ID="chkDepartment" RepeatLayout="OrderedList" runat="server"   TabIndex="9"/>
                         </div>
+                                       <asp:CustomValidator ID="CustomValidator2" ErrorMessage="Please select at least one department."
+    ForeColor="Red" ClientValidationFunction="ValidateCheckBoxListDept" runat="server" ValidationGroup="e" />
                          </div>
                         </div>
 

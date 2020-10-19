@@ -204,7 +204,7 @@ namespace IG_Portal
                     strqtime = "DECLARE @TimeinSecond INT  SET @TimeinSecond = ";
                     strqtime += "(SELECT  SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod)) AS TotalTime FROM   TimeSheet TS where  TS.IsActive=1";
                     //strqtime = "SELECT CONVERT(TIME, DATEADD(s, SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod)), 0)) AS TotalTime FROM   TimeSheet TS where  TS.IsActive=1";
-                    strQuery = "Select TS.LoginID,TS.ID ,L.EmployeeName,TTM.TaskTitle,TS.StartTime,TS.EndTime,TS.TimePeriod,TS.Comment,TM.TaskName,PM.ProjectName,TS.TaskDetails,WorkDate,SM.StatusName from TimeSheet TS inner join TaskMaster TM on TS.TaskType=TM.ID inner join ProjectMaster PM on PM.ID=TS.ProjectName inner join StatusMaster SM on TS.Status=SM.ID inner join TaskTitleMaster TTM on TS.TaskTitle=TTM.ID inner join Login L on L.ID=TS.LoginID where TS.IsActive=1";
+                    strQuery = "Select TS.LoginID,TS.ID ,L.EmployeeName,TTM.TaskTitle,TS.StartTime,TS.EndTime,Convert(nvarchar(5),TS.TimePeriod) as TimePeriod,TS.Comment,TM.TaskName,PM.ProjectName,TS.TaskDetails,WorkDate,SM.StatusName from TimeSheet TS inner join TaskMaster TM on TS.TaskType=TM.ID inner join ProjectMaster PM on PM.ID=TS.ProjectName inner join StatusMaster SM on TS.Status=SM.ID inner join TaskTitleMaster TTM on TS.TaskTitle=TTM.ID inner join Login L on L.ID=TS.LoginID where TS.IsActive=1";
                     if (Session["Role"].ToString() == "2")
                     {
                         //add nothing

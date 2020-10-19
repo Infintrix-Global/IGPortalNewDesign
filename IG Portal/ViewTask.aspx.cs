@@ -274,10 +274,10 @@ namespace IG_Portal
                     
                     
                         
-                        strQuery = "(Select TS.LoginID,TS.ID ,SUBSTRING(EmployeeName, 1, (SELECT CHARINDEX(' ',EmployeeName ))) as EmployeeName,TTM.TaskTitle,TS.StartTime,TS.EndTime,TS.TimePeriod,TS.Comment,TM.TaskName,PM.ProjectName,TS.TaskDetails,WorkDate,SM.StatusName,TC.TaskCategory from TimeSheet TS" +
+                        strQuery = "(Select TS.LoginID,TS.ID ,SUBSTRING(EmployeeName, 1, (SELECT CHARINDEX(' ',EmployeeName ))) as EmployeeName,TTM.TaskTitle,TS.StartTime,TS.EndTime,Convert(nvarchar(5),TS.TimePeriod) as TimePeriod,TS.Comment,TM.TaskName,PM.ProjectName,TS.TaskDetails,WorkDate,SM.StatusName,TC.TaskCategory from TimeSheet TS" +
                         " inner join TaskMaster TM on TS.TaskType=TM.ID inner join ProjectMaster PM on PM.ID=TS.ProjectName inner join StatusMaster SM on TS.Status=SM.ID inner join TaskTitleMaster TTM on TS.TaskTitle=TTM.ID inner join Login L on L.ID=TS.LoginID inner join TaskCategory TC on TC.ID=TS.TaskCategory where TS.IsActive=1 and TC.ID=1";
 
-                    strQuery1 = "(Select TS.LoginID,TS.ID ,SUBSTRING(EmployeeName, 1, (SELECT CHARINDEX(' ',EmployeeName ))) as EmployeeName,TTM.BugDetails as TaskTitle,TS.StartTime,TS.EndTime,TS.TimePeriod,TS.Comment,TM.TaskName,PM.ProjectName,TS.TaskDetails,TS.WorkDate,SM.StatusName,TC.TaskCategory from TimeSheet TS" +
+                    strQuery1 = "(Select TS.LoginID,TS.ID ,SUBSTRING(EmployeeName, 1, (SELECT CHARINDEX(' ',EmployeeName ))) as EmployeeName,TTM.BugDetails as TaskTitle,TS.StartTime,TS.EndTime,Convert(nvarchar(5),TS.TimePeriod) as TimePeriod,TS.Comment,TM.TaskName,PM.ProjectName,TS.TaskDetails,TS.WorkDate,SM.StatusName,TC.TaskCategory from TimeSheet TS" +
                        " inner join TaskMaster TM on TS.TaskType=TM.ID inner join ProjectMaster PM on PM.ID=TS.ProjectName inner join StatusMaster SM on TS.Status=SM.ID inner join Bug TTM on TS.TaskTitle=TTM.ID inner join Login L on L.ID=TS.LoginID inner join TaskCategory TC on TC.ID=TS.TaskCategory where TS.IsActive=1 and TC.ID=2";
                     if (Session["Role"].ToString() == "2")
                     {

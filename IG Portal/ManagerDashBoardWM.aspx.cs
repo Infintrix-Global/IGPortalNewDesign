@@ -134,8 +134,10 @@ namespace IG_Portal
                
                 if (!(r["Bugs"] is  null))
                 {
-                    s.ToolTip = r["ProjectName"].ToString() + ":" + r["Bugs"];
+                    
+                  //  s.ToolTip = r["ProjectName"].ToString() + ":" + r["Bugs"].ToString();
                     s.Points.AddXY("Bugs", new object[] { r["Bugs"] });
+                    s.Points[0].ToolTip = r["ProjectName"].ToString() + ":" + r["Bugs"].ToString();
                 }
                 else
                     {
@@ -143,8 +145,9 @@ namespace IG_Portal
                 }
                 if (!(r["Tasks"] is null))
                 {
-                    s.ToolTip = r["ProjectName"].ToString()+ ":" + r["Tasks"];
+                   // s.ToolTip = r["ProjectName"].ToString()+ ":" + r["Tasks"].ToString();
                     s.Points.AddXY("Tasks", new object[] { r["Tasks"] });
+                    s.Points[1].ToolTip = r["ProjectName"].ToString() + ":" + r["Tasks"].ToString();
                 }
                 else
                 {

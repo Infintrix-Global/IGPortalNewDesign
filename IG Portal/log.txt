@@ -425,3 +425,10 @@
    at System.Web.UI.WebControls.GridView.DataBind()
    at IG_Portal.ProjectWiseReport.<btSearch_Click>g__GridFillSearch|14_0(<>c__DisplayClass14_0& )
    at IG_Portal.ProjectWiseReport.btSearch_Click(Object sender, EventArgs e)Input string was not in a correct format. at 09-Oct-20 02:33:00 PM
+*****Error message=****   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at IG_Portal.EditProfile.btnUpdate_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\EditProfile.aspx.cs:line 254Thread was being aborted. at 14-Oct-20 03:54:21 PM
