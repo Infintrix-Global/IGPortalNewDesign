@@ -26,6 +26,7 @@ namespace IG_Portal
                 BindProjectStatusBugChart();
                 BindProjectTaskBugRatio();
                 BindProjectMaster();
+                BindTaskList();
             }
         }
 
@@ -38,6 +39,12 @@ namespace IG_Portal
             ddlProjectBug.DataValueField = "ID";
             ddlProjectBug.DataBind();
             ddlProjectBug.Items.Insert(0, new ListItem("--- Select All---", "0"));
+
+            ddlProjectTask.DataSource = objCommon.GetProjectMasterByEmployee(Convert.ToInt32(Session["LoginID"].ToString()));
+            ddlProjectTask.DataTextField = "ProjectName";
+            ddlProjectTask.DataValueField = "ID";
+            ddlProjectTask.DataBind();
+            ddlProjectTask.Items.Insert(0, new ListItem("--- Select All---", "0"));
         }
         public void PopulateChart()
         {
@@ -83,6 +90,17 @@ namespace IG_Portal
             DataTable dtTask = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "2", ddlProjectBug.SelectedValue,DateTime.Now.ToString(), DateTime.Now.ToString());
             DataList1.DataSource = dtTask;
             DataList1.DataBind();
+        }
+
+        public void BindTaskList()
+        {
+
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("@mode", "3");
+            nv.Add("@LoginID", Session["LoginID"].ToString());
+            DataTable dtTask = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "5", ddlProjectBug.SelectedValue, DateTime.Now.ToString(), DateTime.Now.ToString());
+            DataList2.DataSource = dtTask;
+            DataList2.DataBind();
         }
 
         protected void ddlProjectBug_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,6 +199,18 @@ namespace IG_Portal
         protected void go_Click(object sender, EventArgs e)
         {
             BindProjectStatusBugChart();
+        }
+
+      
+
+        protected void ddlTaskBug_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindTaskList();
+        }
+
+        protected void ddlProjectTask_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

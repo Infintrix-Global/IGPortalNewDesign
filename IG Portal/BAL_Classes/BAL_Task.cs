@@ -299,6 +299,66 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
+        public int UpdateTask(TaskAssignDetails objTaskAssignDetails)
+        {
+            int _isInserted = -1;
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", objTaskAssignDetails.LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", objTaskAssignDetails.ProjectName);
+                // objGeneral.AddParameterWithValueToSQLCommand("@Priority", objTaskAssignDetails.Priority);
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskName", objTaskAssignDetails.TaskName);
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskTitle", objTaskAssignDetails.TaskTitle);
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskDetails", objTaskAssignDetails.TaskDetails);
+                //  objGeneral.AddParameterWithValueToSQLCommand("@AssignTo", objTaskAssignDetails.AssignTo);
+                objGeneral.AddParameterWithValueToSQLCommand("@EstimatedWorkDate", objTaskAssignDetails.EstimatedWorkDate);
+                objGeneral.AddParameterWithValueToSQLCommand("@EstimatedWorkTime", objTaskAssignDetails.EstimatedWorkTime);
+
+                objGeneral.AddParameterWithValueToSQLCommand("@Comment", objTaskAssignDetails.Comment);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", objTaskAssignDetails.Mode);
+
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_UpdateTask");
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+
+
+        public int UpdateAssignTask(TaskAssignDetails objTaskAssignDetails)
+        {
+            int _isInserted = -1;
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@AssignTaskID", objTaskAssignDetails.AssignTaskID);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", objTaskAssignDetails.LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", objTaskAssignDetails.ProjectName);
+                //  objGeneral.AddParameterWithValueToSQLCommand("@Priority", objTaskAssignDetails.Priority);
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskName", objTaskAssignDetails.TaskName);
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskTitle", objTaskAssignDetails.TaskTitle);
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskDetails", objTaskAssignDetails.TaskDetails);
+                objGeneral.AddParameterWithValueToSQLCommand("@AssignTo", objTaskAssignDetails.AssignTo);
+                objGeneral.AddParameterWithValueToSQLCommand("@EstimatedWorkDate", objTaskAssignDetails.EstimatedWorkDate);
+                objGeneral.AddParameterWithValueToSQLCommand("@EstimatedWorkTime", objTaskAssignDetails.EstimatedWorkTime);
+
+                objGeneral.AddParameterWithValueToSQLCommand("@Comment", objTaskAssignDetails.Comment);
+                objGeneral.AddParameterWithValueToSQLCommand("@Mode", objTaskAssignDetails.Mode);
+
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_UpdateAssignTask");
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
 
         public DataTable GetAllTask()
         {
@@ -325,6 +385,22 @@ namespace IG_Portal.BAL_Classes
                 
                 objGeneral.AddParameterWithValueToSQLCommand("EmployeeID", empID);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetAllTaskByEmployee");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetApprovedTaskForQA(string empID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("EmployeeID", empID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetApprovedTaskForQA");
             }
             catch (Exception ex)
             {
@@ -1409,6 +1485,23 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@BugID", Bugid);
                 objGeneral.AddParameterWithValueToSQLCommand("@LoginID", loginID);
                 _isDeleted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_RemoveBug");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isDeleted;
+        }
+
+        public int RemoveTask(int TaskID)
+        {
+            int _isDeleted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskID", TaskID);
+            
+                _isDeleted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_RemoveTask");
             }
             catch (Exception ex)
             {

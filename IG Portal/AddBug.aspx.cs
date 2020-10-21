@@ -15,10 +15,11 @@ namespace IG_Portal
         BAL_Task objTask = new BAL_Task();
         static string bugID;
         static string ReopenBugID;
+        static string AddBugID;
 
         protected void Page_UnLoad(object sender, EventArgs e)
         {
-
+            Session["TaskIDAddBug"] = null;
             Session["BugID"] =null;
             Session["BugIDReopen"] = null;
         }
@@ -50,15 +51,30 @@ namespace IG_Portal
                 {
                     Session["BugIDReopen"] = null;
                 }
+                if (Request.QueryString["TaskIDAddBug"] != null)
+                {
+                    Session["TaskIDAddBug"] = objcommon.Decrypt(Request.QueryString["TaskIDAddBug"]);
+                }
+                else
+                {
+                    Session["BugIDAdd"] = null;
+                }
                 bugID = Session["BugID"] as string;
                 ReopenBugID = Session["BugIDReopen"] as string;
+                AddBugID = Session["TaskIDAddBug"] as string;
                 {
-                    if ((string.IsNullOrEmpty(bugID)) && (string.IsNullOrEmpty(ReopenBugID)))
+                    if ((string.IsNullOrEmpty(bugID)) && (string.IsNullOrEmpty(ReopenBugID))&& (string.IsNullOrEmpty(AddBugID)))
                     {
                         txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                         BindInitialStatusMaster();
                         Clear();
                         ddlStatus.SelectedValue = "1";
+                    }
+                    else if(!(string.IsNullOrEmpty(AddBugID)))
+                    {
+                        BindInitialStatusMaster();
+                        txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                        AutoFillAddBugDetails();
                     }
                     else
                     {
@@ -185,7 +201,28 @@ namespace IG_Portal
             txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
-       
+        public void ddlTaskTitle_SelectedIndexChanged()
+        {
+            if (ddlTaskTitle.SelectedItem.Text == "Other")
+            {
+                txtTaskTitle.Visible = true;
+
+            }
+
+            else
+            {
+                txtTaskTitle.Visible = false;
+                ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
+                ddlTaskDetails.DataTextField = "TaskDetails";
+                ddlTaskDetails.DataValueField = "ID";
+
+                ddlTaskDetails.DataBind();
+                ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
+                txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
+            }
+            txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
 
         public void Upload(int bugID)
         {
@@ -314,7 +351,7 @@ namespace IG_Portal
                     }
                 }
 
-                else if (string.IsNullOrEmpty(ReopenBugID))
+                else if (string.IsNullOrEmpty(ReopenBugID) && string.IsNullOrEmpty(AddBugID))
                 {
                     
                         objBugDetails.BugID = Convert.ToInt32(bugID);
@@ -366,7 +403,7 @@ namespace IG_Portal
                     }
                 }
 
-                else if (string.IsNullOrEmpty(bugID))
+                else if (string.IsNullOrEmpty(bugID) && string.IsNullOrEmpty(AddBugID))
                 {
                     objBugDetails.BugID = Convert.ToInt32(ReopenBugID);
                     if (ddlAssignTo.SelectedIndex == 0)
@@ -436,7 +473,7 @@ namespace IG_Portal
             txtTaskTitle.Visible = false;
            // ddlSuggetedBy.SelectedIndex = 0;
             
-            ddlStatus.SelectedIndex = 0;
+            ddlStatus.SelectedValue="0";
             txtBugDescription.Text = "";
             requiredtxttitle.Enabled = true;
             ddlTaskTitle.SelectedIndex = 0;
@@ -487,6 +524,25 @@ namespace IG_Portal
             }
             ddlSuggetedBy.SelectedValue = dtBug.Rows[0]["SuggestedBy"].ToString();
             txtComment.Text = dtBug.Rows[0]["Comment"].ToString();
+        }
+
+        public void AutoFillAddBugDetails()
+        {
+            DataTable dtTask = new DataTable();
+           
+
+            if (!string.IsNullOrEmpty(AddBugID))
+            {
+                dtTask = objTask.GetAssignedTaskDetailsByID(Convert.ToInt32(AddBugID.Trim()));
+            }
+            ddlProjectName.SelectedValue = dtTask.Rows[0]["ProjectName"].ToString();
+            BindPageMaster(ddlProjectName.SelectedValue);
+            BindTaskTitleMaster(ddlProjectName.SelectedValue);
+           
+            ddlTaskTitle.SelectedValue = dtTask.Rows[0]["TaskTitle"].ToString();
+            ddlTaskTitle_SelectedIndexChanged();
+            ddlAssignTo.SelectedValue = dtTask.Rows[0]["AssignTo"].ToString();
+            ddlStatus.SelectedValue = "1";
         }
     }
 }

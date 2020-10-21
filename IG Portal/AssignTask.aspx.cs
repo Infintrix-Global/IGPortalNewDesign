@@ -14,11 +14,12 @@ namespace IG_Portal
         clsCommonMasters objcommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
         static string ReopenTaskID;
+        static string EditTaskID;
         protected void Page_UnLoad(object sender, EventArgs e)
         {
 
-           
             Session["TaskIDReopen"] = null;
+            Session["TaskIDEdit"] = null;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,18 +29,46 @@ namespace IG_Portal
                 BindProjectMaster();
                 BindTaskMaster();
                 BindAssignToMaster();
-                ReopenTaskID = Session["TaskIDReopen"] as string;
-                if ((string.IsNullOrEmpty(ReopenTaskID)))
+
+                //ReopenTaskID = Session["TaskIDReopen"] as string;
+                if (Request.QueryString["TaskIDReopen"] != null)
                 {
-                   
-                    Clear();
+                    Session["TaskIDReopen"] = objcommon.Decrypt(Request.QueryString["TaskIDReopen"]);
+                   // Clear();
                 }
 
                 else
                 {
-                   
-                    AutoFillTask();
+                    Session["TaskIDReopen"] = null;
+                   // AutoFillTask();
                 }
+
+                if (Request.QueryString["TaskIDEdit"] != null)
+                {
+                    Session["TaskIDEdit"] = objcommon.Decrypt(Request.QueryString["TaskIDEdit"]);
+                }
+                else
+                {
+                    Session["TaskIDEdit"] = null;
+                }
+
+
+
+                EditTaskID = Session["TaskIDEdit"] as string;
+                ReopenTaskID = Session["TaskIDReopen"] as string;
+                {
+                    if ((string.IsNullOrEmpty(EditTaskID)) && (string.IsNullOrEmpty(ReopenTaskID)))
+                    {
+                        
+                        Clear();
+                    }
+                    else
+                    {
+                        AutoFillTask();
+                    }
+
+                }
+
 
             }
         }
@@ -137,7 +166,7 @@ namespace IG_Portal
                     objTaskAssignDetails.Mode = 1;
                 }
 
-                if (string.IsNullOrEmpty(ReopenTaskID) )
+                if (string.IsNullOrEmpty(ReopenTaskID) && string.IsNullOrEmpty(EditTaskID))
                 {
                     if (ddlAssignTo.SelectedIndex == 0)
                     {
@@ -182,7 +211,7 @@ namespace IG_Portal
                     }
                 }
 
-                else
+                else if (string.IsNullOrEmpty(EditTaskID))
                 {
                     objTaskAssignDetails.AssignTaskID = Convert.ToInt32(ReopenTaskID);
                     objTaskAssignDetails.AssignTo = ddlAssignTo.SelectedValue;
@@ -206,7 +235,58 @@ namespace IG_Portal
                     }
                    
                 }
-               
+
+                else if (string.IsNullOrEmpty(ReopenTaskID))
+                {
+
+                    objTaskAssignDetails.AssignTaskID = Convert.ToInt32(EditTaskID);
+                    if (ddlAssignTo.SelectedIndex == 0)
+                    {
+                        _isInserted = objTask.UpdateTask(objTaskAssignDetails);
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Update Task";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                            lblMessage.Text = "Task Updated";
+                            
+                            Session["TaskIDEdit"] = null;
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            Clear();
+
+                            Response.Redirect("~/PendingAssignTask.aspx");
+
+                        }
+                    }
+                    else
+                    {
+                        objTaskAssignDetails.AssignTo = ddlAssignTo.SelectedValue;
+                        _isInserted = objTask.UpdateAssignTask(objTaskAssignDetails);
+
+                        if (_isInserted == -1)
+                        {
+                            lblMessage.Text = "Failed to Assign Task ";
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                            lblMessage.Text = "Task Assigned";
+                          
+                            Session["TaskIDEdit"] = null;
+                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                           
+                            Clear();
+                            Response.Redirect("~/PendingAssignTask.aspx");
+
+
+                        }
+                    }
+                }
+
             }
 
             catch (Exception ex)
@@ -241,7 +321,11 @@ namespace IG_Portal
             {
                 dtTask = objTask.GetAssignedTaskDetailsByID(Convert.ToInt32(ReopenTaskID.Trim()));
             }
-           
+            
+            if (!string.IsNullOrEmpty(EditTaskID))
+            {
+                dtTask = objTask.GetAssignedTaskDetailsByID(Convert.ToInt32(EditTaskID.Trim()));
+            }
             ddlProjectName.SelectedValue = dtTask.Rows[0]["ProjectName"].ToString();
             BindTaskTitleMasterRegularTask(ddlProjectName.SelectedValue);
             ddlTaskType.SelectedValue = dtTask.Rows[0]["TaskType"].ToString();

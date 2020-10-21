@@ -711,6 +711,7 @@
     <Content Include="ViewSupportHistory.aspx" />
     <Content Include="ViewSupportTicket.aspx" />
     <Content Include="ViewTask.aspx" />
+    <Content Include="ViewTaskQA.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1112,6 +1113,13 @@
     </Compile>
     <Compile Include="IncompleteTimeSheet.aspx.designer.cs">
       <DependentUpon>IncompleteTimeSheet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTaskQA.aspx.cs">
+      <DependentUpon>ViewTaskQA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewTaskQA.aspx.designer.cs">
+      <DependentUpon>ViewTaskQA.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

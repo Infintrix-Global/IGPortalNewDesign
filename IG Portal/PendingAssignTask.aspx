@@ -12,7 +12,7 @@
                     <asp:Label ID="lbltitle" runat="server" Text="Pending Task" Font-Bold="true" Font-Size="Large"></asp:Label>
                 </div>
                 <br />
-
+                <asp:Label ID="lblMessage" runat="server"></asp:Label>
                  <asp:UpdatePanel ID="upTask" runat="server">
                     <ContentTemplate>
 
@@ -110,7 +110,7 @@
                                                         <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
                                                                 <asp:Label ID="Label1" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
-                                                               
+                                                                <asp:Label ID="lblCreatedBy" runat="server" Text='<%# Eval("CreatedBy")  %>' Visible="false"></asp:Label>
                                                                 <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
@@ -183,7 +183,20 @@
                                                             <asp:Button ID="btnAssign" runat="server"  Text="Assign"  OnClientClick="return GetApproveConfirmation();"  CommandArgument='<%# Container.DataItemIndex  %>' CommandName="Assign" ></asp:Button>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-
+                                                         <asp:TemplateField>
+                                                                <ItemTemplate>
+                                                                    <asp:ImageButton ID="lnkEdit" Text="Edit" runat="server" CommandName="Edit" Visible="false" CommandArgument='<%# Eval("ID")  %>' ImageUrl="~/images/edit.png" AlternateText="edit" ToolTip="edit"  />
+                                                                </ItemTemplate>
+                                                                <%--<EditItemTemplate>
+                                                                    <asp:LinkButton Text="Update" runat="server" OnClick="OnUpdate" ForeColor="SlateBlue" />
+                                                                    <asp:LinkButton Text="Cancel" runat="server" OnClick="OnCancel" ForeColor="CadetBlue" />
+                                                                </EditItemTemplate>--%>
+                                                            </asp:TemplateField>
+                                                            <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
+                                                                <ItemTemplate>
+                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Remove" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return GetApproveConfirmation();" ></asp:ImageButton>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                         
                                                     </Columns>
 

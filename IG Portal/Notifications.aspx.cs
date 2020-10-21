@@ -920,7 +920,7 @@ namespace IG_Portal
             {
                 int id = Convert.ToInt32(e.CommandArgument);
                 Session["TaskIDReopen"] = id.ToString();
-                Response.Redirect("AssignTask.aspx");
+                Response.Redirect("AssignTask.aspx?TaskIDReopen=" + objCommon.Encrypt(Session["TaskIDReopen"].ToString()));
             }
         }
 

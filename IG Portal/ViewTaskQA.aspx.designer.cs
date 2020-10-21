@@ -11,124 +11,88 @@ namespace IG_Portal
 {
 
 
-    public partial class QADashBoard
+    public partial class ViewTaskQA
     {
 
         /// <summary>
-        /// Sc1 control.
+        /// SrciptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager Sc1;
+        protected global::System.Web.UI.ScriptManager SrciptManager1;
 
         /// <summary>
-        /// upManager control.
+        /// lbltitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upManager;
+        protected global::System.Web.UI.WebControls.Label lbltitle;
 
         /// <summary>
-        /// Chart3 control.
+        /// upEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart3;
+        protected global::System.Web.UI.UpdatePanel upEmployee;
 
         /// <summary>
-        /// lblFdate control.
+        /// lblmsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFdate;
+        protected global::System.Web.UI.WebControls.Label lblmsg;
 
         /// <summary>
-        /// txtDate control.
+        /// ddlProjectName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProjectName;
 
         /// <summary>
-        /// lblTDate control.
+        /// btSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTDate;
+        protected global::System.Web.UI.WebControls.Button btSearch;
 
         /// <summary>
-        /// txtToDate control.
+        /// btclear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtToDate;
+        protected global::System.Web.UI.WebControls.Button btclear;
 
         /// <summary>
-        /// Chart2 control.
+        /// count control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart2;
+        protected global::System.Web.UI.WebControls.Label count;
 
         /// <summary>
-        /// ddlProjectBug control.
+        /// GridAssignTask control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProjectBug;
-
-        /// <summary>
-        /// DataList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList1;
-
-        /// <summary>
-        /// ddlProjectTask control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProjectTask;
-
-        /// <summary>
-        /// DataList2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList2;
-
-        /// <summary>
-        /// Chart1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
+        protected global::System.Web.UI.WebControls.GridView GridAssignTask;
     }
 }

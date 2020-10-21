@@ -133,6 +133,35 @@ namespace IG_Portal
                         }
                     }
                 }
+
+                if (e.CommandName == "Remove")
+                {
+                    int _isDeleted = -1;
+                    int bid = Convert.ToInt32(e.CommandArgument);
+                    _isDeleted = objTask.RemoveTask(bid);
+                    if (_isDeleted == -1)
+                    {
+                        lblMessage.Text = "Failed to delete Task";
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+
+                        lblMessage.Text = "Task deleted ";
+                        lblMessage.ForeColor = System.Drawing.Color.Green;
+                        BindGridAssignTask();
+                    }
+
+
+                }
+
+                if (e.CommandName == "Edit")
+                {
+                    int bid = Convert.ToInt32(e.CommandArgument);
+                    // Session["BugID"] = bid.ToString();
+                    Response.Redirect("~/AssignTask.aspx?TaskIDEdit=" + objcommon.Encrypt(bid.ToString()));
+                    //Response.Redirect("~/AddBug.aspx");
+                }
             }
             catch (Exception ex)
             {
@@ -162,6 +191,18 @@ namespace IG_Portal
                     ((Button)e.Row.FindControl("btnAssign")).Visible = false;
                     
                 }
+
+                if (((Label)e.Row.FindControl("lblCreatedBy")).Text == Session["LoginID"].ToString())
+                {
+                    ((ImageButton)e.Row.FindControl("imgDelete")).Visible = true;
+                    ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = true;
+                }
+                else
+                {
+                    ((ImageButton)e.Row.FindControl("imgDelete")).Visible = false;
+                    ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = false;
+                }
+
             }
         }
 
