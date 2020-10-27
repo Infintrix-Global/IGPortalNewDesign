@@ -32,6 +32,7 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", objProjectDetails.ProjectID);
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectManager", objProjectDetails.ProjectManager);
                 objGeneral.AddParameterWithValueToSQLCommand("@WebsiteLink", objProjectDetails.WebsiteLink);
+                objGeneral.AddParameterWithValueToSQLCommand("@StartDate", objProjectDetails.StartDate);
 
                 _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_UpdateProjectDetails");
 
@@ -1090,13 +1091,29 @@ namespace IG_Portal.BAL_Classes
             return ds;
         }
 
-        public DataSet GetBug()
+        public DataSet GetEditMOMDetails(int MOMID)
         {
             try
             {
 
                 General objGeneral = new General();
 
+                objGeneral.AddParameterWithValueToSQLCommand("@MOMID", MOMID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEditMOMDetails");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds;
+        }
+
+        public DataSet GetBug(string LoginID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
 
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetBug");
             }
@@ -1111,11 +1128,22 @@ namespace IG_Portal.BAL_Classes
         {
             try
             {
-
                 General objGeneral = new General();
-
-
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetLeads");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+
+        public DataTable GetProjectStatusReport()
+        {
+            try
+            {
+                General objGeneral = new General();
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetProjectStatusReport");
             }
             catch (Exception ex)
             {
@@ -1123,7 +1151,6 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
 
         }
-
         public DataTable GetSupportTickets()
         {
             try
@@ -1215,6 +1242,26 @@ namespace IG_Portal.BAL_Classes
 
                     _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddMOMPoints");
                 }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+
+
+        }
+
+        public int ClearOldPoints( int MOMid)
+
+        {
+            int _isInserted = -1;
+            try
+            {
+                    objGeneral.AddParameterWithValueToSQLCommand("@MOMID", MOMid);
+
+                    _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_ClearOldPoints");
+                
             }
             catch (Exception ex)
             {
@@ -1410,6 +1457,21 @@ namespace IG_Portal.BAL_Classes
             }
             return ds.Tables[0];
         }
+
+        public DataTable CheckMOMAccepted(int MOMID)
+        {
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@MOMID", MOMID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_CheckMOMAccepted");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
 
         public DataTable GetBugScreenshots(int BugID)
         {

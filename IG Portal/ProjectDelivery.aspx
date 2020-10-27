@@ -70,12 +70,12 @@
                                                   
                                                 </span>
                                               
-                                                <asp:DropDownList ID="ddlTechnology" runat="server" placeholder=""
+                                                <asp:DropDownList ID="ddlTechnology" runat="server" placeholder="" AutoPostBack="true"
                                                     ClientIDMode="Static" TabIndex="2">
                                                 </asp:DropDownList>
                                               <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlTechnology" ValidationGroup="at" InitialValue="0"
-                                                        SetFocusOnError="true" ErrorMessage="Please Select Technology" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        SetFocusOnError="true" ErrorMessage="Please Select Technology" ForeColor="Red" ></asp:RequiredFieldValidator>
                                                 </span>
                                                   <asp:TextBox ID="txtTechnology" class="form-control"  TabIndex="19" Visible="false" runat="server" ></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="reqtxtTechnology" runat="server" ControlToValidate="txtTechnology" ValidationGroup="e"

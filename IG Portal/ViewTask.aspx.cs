@@ -61,6 +61,7 @@ namespace IG_Portal
                 else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
                 {
                     BindEmployeeMaster();
+                    string x= Session["LoginID"].ToString();
                     ddlEmployeeName.SelectedValue = Session["LoginID"].ToString();
                     ddlEmployeeName.Enabled = false;
                     BindEmployeeTask(ddlEmployeeName.SelectedValue);

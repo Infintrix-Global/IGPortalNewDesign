@@ -11,7 +11,7 @@ namespace IG_Portal
 {
 
 
-    public partial class AdminDashBoard
+    public partial class ManagerDashBoardWM
     {
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace IG_Portal
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProject;
+        protected global::System.Web.UI.WebControls.LinkButton lblProject;
 
         /// <summary>
         /// txtDate control.

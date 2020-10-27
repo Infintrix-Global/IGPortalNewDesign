@@ -120,7 +120,7 @@ namespace IG_Portal
             {
                 if ((((Label)e.Row.FindControl("lblAssignTo")).Text == Session["LoginID"].ToString()))
                 {
-                    if ((((Label)e.Row.FindControl("lblStatus")).Text == "3") || (((Label)e.Row.FindControl("lblStatus")).Text == "6"))
+                    if ((((Label)e.Row.FindControl("lblStatus")).Text == "3") || (((Label)e.Row.FindControl("lblStatus")).Text == "6") || (((Label)e.Row.FindControl("lblStatus")).Text == "8"))
                     {
                         ((LinkButton)e.Row.FindControl("lnkAddTS")).Visible = false;
                     }

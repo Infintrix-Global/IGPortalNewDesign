@@ -142,6 +142,8 @@
     <Content Include="PendingAssignTask.aspx" />
     <Content Include="PrioritizeTask.aspx" />
     <Content Include="ProjectDelivery.aspx" />
+    <Content Include="ProjectStatusDetails.aspx" />
+    <Content Include="ProjectStatusReport.aspx" />
     <Content Include="ProjectWiseReport.aspx" />
     <Content Include="QADashBoard.aspx" />
     <Content Include="SalesDashBoard.aspx" />
@@ -993,6 +995,20 @@
     </Compile>
     <Compile Include="ProjectDelivery.aspx.designer.cs">
       <DependentUpon>ProjectDelivery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectStatusDetails.aspx.cs">
+      <DependentUpon>ProjectStatusDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectStatusDetails.aspx.designer.cs">
+      <DependentUpon>ProjectStatusDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectStatusReport.aspx.cs">
+      <DependentUpon>ProjectStatusReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectStatusReport.aspx.designer.cs">
+      <DependentUpon>ProjectStatusReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProjectWiseReport.aspx.cs">
       <DependentUpon>ProjectWiseReport.aspx</DependentUpon>

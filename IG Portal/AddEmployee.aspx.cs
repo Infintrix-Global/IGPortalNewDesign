@@ -143,7 +143,7 @@ namespace IG_Portal
         public void GetEmployeeList()
         {
             DataTable dt = new DataTable();
-            dt = objCommon.GetEmployeeMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            dt = objCommon.GetAllEmployeeList();
             GridEmployee.DataSource = dt;
             GridEmployee.DataBind();
             count.Text = "Number of Employees =" + dt.Rows.Count;

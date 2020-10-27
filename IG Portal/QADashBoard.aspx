@@ -37,7 +37,7 @@
               <div class="row">
                                  <div class="col s12 m12 l6">
                                      <asp:Label ID="lblFdate" runat="server" Text="From Date"></asp:Label>
-                                <asp:TextBox ID="txtDate" TextMode="Date" runat="server" ClientIDMode="Static"  OnTextChanged="txtToDate_TextChanged" AutoPostBack="true"   />
+                                <asp:TextBox ID="txtDate" TextMode="Date" runat="server" ClientIDMode="Static" OnTextChanged="txtDate_TextChanged"  AutoPostBack="true"  />
                             </div>
                    <div class="col s12 m12 l6">
                              <asp:Label ID="lblTDate" runat="server" Text="To Date"></asp:Label>

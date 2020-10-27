@@ -11,7 +11,7 @@ using IG_Portal.BAL_Classes;
 
 namespace IG_Portal
 {
-    public partial class AdminDashBoard : System.Web.UI.Page
+    public partial class ManagerDashBoardWM : System.Web.UI.Page
     {
         DataTable dtNotifications = new DataTable();
         clsCommonMasters objCommon = new clsCommonMasters();
@@ -111,6 +111,8 @@ namespace IG_Portal
             Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
             //Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+            Chart1.ChartAreas["ChartArea1"].AxisX.Title = "Date";
+            Chart1.ChartAreas["ChartArea1"].AxisY.Title = "Hours";
             DataTable dt = objCommon.GetManagerDashBoardDataList(Session["LoginID"].ToString(), "6","0");
             Chart1.DataSource = dt;
             Chart1.Series[0].ChartType = SeriesChartType.Column;
@@ -126,6 +128,8 @@ namespace IG_Portal
         {
             Chart2.ChartAreas["ChartArea2"].AxisX.MajorGrid.Enabled = false;
             Chart2.ChartAreas["ChartArea2"].AxisY.MajorGrid.Enabled = false;
+            Chart2.ChartAreas["ChartArea2"].AxisX.Title = "Projects";
+            Chart2.ChartAreas["ChartArea2"].AxisY.Title = "Bug Count";
             DataTable dt = objCommon.GetManagerDashBoardDataList(Session["LoginID"].ToString(), "8", "0");
             foreach (DataRow r in dt.Rows)
             {
@@ -153,7 +157,7 @@ namespace IG_Portal
                 {
                     s.Points.AddXY("Tasks", 0);
                 }
-               
+                s["PixelPointWidth"] = "85";
                 Chart2.Series.Add(s);
             }
 
@@ -182,6 +186,8 @@ namespace IG_Portal
             Chart3.ChartAreas[0].AxisY.Interval = 1;
             Chart3.Series[0].XValueMember = "EmployeeName";
             Chart3.Series[0].YValueMembers = "Hours";
+            Chart3.ChartAreas["ChartArea3"].AxisX.Title = "Employee Name";
+            Chart3.ChartAreas["ChartArea3"].AxisY.Title = "Hours";
             Chart3.DataBind();
         }
 
@@ -243,6 +249,22 @@ namespace IG_Portal
         protected void lnkTask_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/PendingAssignTask.aspx");
+        }
+
+        protected void lblProject_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AssignProject.aspx");
+        }
+
+       
+        protected void lnkDTask_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/PendingAssignTask.aspx");
+        }
+
+        protected void lnkGBug_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewBug.aspx");
         }
     }
 }

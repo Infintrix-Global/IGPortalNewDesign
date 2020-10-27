@@ -145,7 +145,8 @@
                                                     <span class="required">*</span>
                                                 </span>
                                                 <asp:TextBox ID="txtTime" runat="server" class="form-control" TabIndex="6"  ></asp:TextBox>
-
+                                                 <asp:RegularExpressionValidator runat="server" ErrorMessage="Decimal Only" ControlToValidate="txtTime"
+      ValidationExpression="^[1-9]\d*(\.\d+)?$"></asp:RegularExpressionValidator>
                                                 <asp:RequiredFieldValidator ID="requiredStartTime" runat="server" ControlToValidate="txtTime" ErrorMessage="Please Enter Work Time " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>

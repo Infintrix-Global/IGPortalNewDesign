@@ -86,11 +86,12 @@ namespace IG_Portal
                 strQuery = "Select TS.ID,TS.CreatedBy,TS.ID , TS.Comment,TS.Priority,TS.TaskAddedDateTime,L.EmployeeName,TM.TaskName,PM.ProjectName,TS.TaskDetails," +
                     "TTM.TaskTitle,TS.AssignTo,TS.EstiamtedWorkTime,Convert(nvarchar(max), TS.EstimatedWorkDate, 103) as EstimatedWorkDate from AssignedTask TS" +
                     " inner  join TaskMaster TM on TS.TaskType = TM.ID inner join ProjectMaster PM on PM.ID = TS.ProjectName   " +
-                    "  inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID inner    join Login L on L.ID = TS.AssignTo   where TS.IsActive = 1   and TS.Status = 8";
+                    "  inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID inner    join Login L on L.ID = TS.AssignTo   where TS.IsActive = 1   and TS.Status = 8 " +
+                    "and TS.ProjectName in (Select ProjectID from  ProjectEmployeeMap where LoginID=" + Session["LoginID"].ToString() + " and IsActive=1 )";
 
 
 
-
+                
                 if (ddlProjectName.SelectedIndex > 0)
                 {
                     strQuery += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";

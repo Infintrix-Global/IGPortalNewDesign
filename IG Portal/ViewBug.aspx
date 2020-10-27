@@ -234,7 +234,7 @@
                     <div class=" col m2">
                                 <div class="form-group">
                                     <label>Work Date</label>
-                                    <asp:TextBox ID="txtWorkDate" runat="server" class="form-control" placeholder=""
+                                    <asp:TextBox ID="txtWorkDate" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" TextMode="Date" ></asp:TextBox>
                                  
 
@@ -243,6 +243,10 @@
                     </div>
                              
                 <br />
+
+                         </ContentTemplate>
+                     </asp:UpdatePanel>    
+
                 <div class="row" align="center">
 
                     <div class="col m12">
@@ -262,7 +266,8 @@
 
                 <div class="clearfix"></div>
          
-                
+                  <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
                 <div class="clearfix"></div>
                  <div class="row" align="rignt">
                  <asp:Label runat="server" Text="Click on Sr.No. to view history" Font-Size="Small" ID="lblHistory"></asp:Label>

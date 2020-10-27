@@ -21,6 +21,9 @@ namespace IG_Portal
             {
                 PopulateChart();
                 BindBugList();
+                int x = DateTime.Today.Day;
+                txtDate.Attributes["max"] = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");
+                txtToDate.Attributes["min"] = Convert.ToDateTime(DateTime.Today.AddDays(-7)).ToString("yyyy-MM-dd");
                 txtToDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 txtDate.Text = DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd");
                 BindProjectStatusBugChart();
@@ -50,6 +53,8 @@ namespace IG_Portal
         {
             Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+            Chart1.ChartAreas["ChartArea1"].AxisX.Title = "Date";
+            Chart1.ChartAreas["ChartArea1"].AxisY.Title = "Hours";
             //Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
             DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "1", "0",DateTime.Now.ToString(), DateTime.Now.ToString());
 
@@ -120,6 +125,8 @@ namespace IG_Portal
             Chart2.ChartAreas["ChartArea2"].AxisY.MajorGrid.Enabled = false;
            
             DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "3", "0",txtDate.Text, txtToDate.Text);
+            Chart2.ChartAreas["ChartArea2"].AxisX.Title = "Projects";
+            Chart2.ChartAreas["ChartArea2"].AxisY.Title = "Bug Count";
             foreach (DataRow r in dt.Rows)
             {
                 Series s = new Series((r["ProjectName"].ToString()));
@@ -157,6 +164,7 @@ namespace IG_Portal
                     s.Points.AddXY("Closed", 0);
                 }
                 Chart2.Series.Add(s);
+               
             }
 
            
@@ -167,7 +175,8 @@ namespace IG_Portal
             
             Chart3.ChartAreas["ChartArea3"].AxisX.MajorGrid.Enabled = false;
             Chart3.ChartAreas["ChartArea3"].AxisY.MajorGrid.Enabled = false;
-
+            Chart3.ChartAreas["ChartArea3"].AxisX.Title = "Projects";
+            Chart3.ChartAreas["ChartArea3"].AxisY.Title = "Bug/Task";
             DataTable dt = objCommon.GetQADashBoardDetails(Session["LoginID"].ToString(), "4", "0", DateTime.Now.ToString(), DateTime.Now.ToString());
             foreach (DataRow r in dt.Rows)
             {
@@ -211,6 +220,22 @@ namespace IG_Portal
         protected void ddlProjectTask_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void txtDate_TextChanged(object sender, EventArgs e)
+        {
+            txtToDate.Attributes["min"] = Convert.ToDateTime(txtDate.Text).ToString("yyyy-MM-dd");
+          
+                int x =DateTime.Compare(Convert.ToDateTime(txtDate.Text), Convert.ToDateTime(txtToDate.Text)) ;
+                if (x<=0)
+            {
+                BindProjectStatusBugChart();
+            }
+            else
+            {
+                txtToDate.Text = Convert.ToDateTime(txtDate.Text).ToString("yyyy-MM-dd");
+            }
+            
         }
     }
 }

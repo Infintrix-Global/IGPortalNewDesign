@@ -10,6 +10,7 @@ using System.Text;
 using System.Web;
 
 using System.Web.Mail;
+using System.Web.UI.WebControls;
 using IG_Portal.BAL_Classes;
 using MailMessage = System.Net.Mail.MailMessage;
 
@@ -635,6 +636,80 @@ namespace IG_Portal
             }
         }
 
+        public void SendMailMOM(DataTable dtMeetingpoint,DataTable dtAttendee, string date, string frtime, string totime, string agenda,string meetingtype,string meetingplace, string meetingInitiator)
+        {
+
+            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
+            DataTable dtEmpDetails;
+            try
+            {
+                // Gmail Address from where you send the mail
+                var fromAddress = "igportalmail@gmail.com";//"infintrix.world@gmail.com";
+                                                           // any address where the email will be sending
+                for (int i = 0; i < dtAttendee.Rows.Count; i++)
+                {
+                    dtEmpDetails = objTask.GetEmployeeByID(Convert.ToInt32(dtAttendee.Rows[i]["Attendee"].ToString()));
+                    mailMessage.To.Add(new MailAddress(dtEmpDetails.Rows[0]["Email"].ToString()));
+                }
+                dtEmpDetails = objTask.GetEmployeeByID(Convert.ToInt32(meetingInitiator));
+                mailMessage.To.Add(new MailAddress(dtEmpDetails.Rows[0]["Email"].ToString()));
+
+                //string htmlTableStart = "<table style=\"border-collapse:collapse; text-align:center;\" >";
+                //string htmlTableEnd = "</table>";
+                //string htmlTrStart = "<tr style=\"color:#555555;\">";
+                //string htmlTrEnd = "</tr>";
+                //string htmlTdStart = "<td style=\" border-color:#5c87b2; border-style:solid; border-width:thin; padding: 5px;\">";
+                //string htmlTdEnd = "</td>";
+
+
+                //Password of your gmail address
+                const string fromPassword = "admin@1234";
+                // Passing the values and make a email formate to display
+                string subject = "MOM of " + meetingtype + " on " + Convert.ToDateTime(date).ToString("dd/MMM/yy"); 
+                string body = "Details of the Meeting :- ";
+                body += "Date: " + Convert.ToDateTime(date).ToString("dd/MMM/yy") +  "\n\n";
+                body += "From Time: " + Convert.ToDateTime(frtime).ToString("hh:mm tt") + "\n\n";
+                body += "To Time: " + Convert.ToDateTime(totime).ToString("hh:mm tt") + "\n\n";
+                body += "Agenda: " + agenda + "\n\n";
+                body += "Meeting Points:-" + "\n\n";
+
+               
+                for (int i = 0; i <= dtMeetingpoint.Rows.Count - 1; i++)
+                {
+                   
+                    body +=   dtMeetingpoint.Rows[i]["Meeting Point"].ToString() + " : "; //adding meeting point  
+                    body +=  dtMeetingpoint.Rows[i]["Status"].ToString()  +"\n\n"; //adding status  
+                    
+
+                }
+               
+
+                body += "Thank you" + "\n";
+                body += "Warm Regards" + "\n";
+                // smtp settings
+                var smtp = new System.Net.Mail.SmtpClient();
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                    smtp.Timeout = 50000;
+                }
+                // Passing values to smtp object
+                mailMessage.From = new MailAddress(fromAddress);
+             //   mailMessage.To.Add(new MailAddress(toAddress));
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                smtp.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                General.ErrorMessage(ex.Message + ex.StackTrace);
+            }
+        }
+
         private string GenerateRandomOTP(int iOTPLength, string[] saAllowedCharacters)
 
         {
@@ -1178,7 +1253,7 @@ namespace IG_Portal
             }
             return ds.Tables[0];
         }
-
+         /* Roles except CLient */
         public DataTable GetEmployeeMaster(int companyID)
         {
             try
@@ -1188,6 +1263,22 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@mode", 3);
                 objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
                 ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetAllEmployeeList()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+               
+                
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAllEmployeeList");
             }
             catch (Exception ex)
             {
@@ -1228,6 +1319,7 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        /* All Roles  */
         public DataTable GetLoginMaster(int companyID)
         {
             try
@@ -1788,6 +1880,22 @@ namespace IG_Portal
             return _isDeleted;
         }
 
+        public int RemoveMOM(int MOMID)
+        {
+            int _isDeleted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@MOMID", MOMID);
+                _isDeleted = objGeneral.GetExecuteScalarByCommand_SP("SP_RemoveMOM");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isDeleted;
+        }
+
         public int RemoveScope(int ScopeID)
         {
             int _isDeleted = -1;
@@ -2061,6 +2169,8 @@ public class ProjectDetails
     public string APUATPassword { get; set; }
     public string APKLink { get; set; }
     public string ProjectManager { get; set; }
+
+    public string StartDate { get; set; }
 
 }
 

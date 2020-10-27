@@ -14,6 +14,7 @@ namespace IG_Portal
     {
         clsCommonMasters objCommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
+        string EditMOMID;
 
         public static DataTable dtMeetingPoint = new DataTable()
         { Columns = { "Meeting Point", "Status" } };
@@ -29,8 +30,21 @@ namespace IG_Portal
                 BindMeetingPlace();
                 BindProjectMaster();
                 BindStatusMaster();
-
+                CheckRole();
                 BindMOM();
+            }
+        }
+
+        public void CheckRole()
+        {
+            DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 2);
+            if (dtCheckRights.Rows[0]["IsInsertAllowed"] is true)
+            {
+                btnAddNew.Visible = true;
+            }
+            else
+            {
+                btnAddNew.Visible = false;
             }
         }
 
@@ -119,6 +133,7 @@ namespace IG_Portal
 
         protected void btAdd_Click(object sender, EventArgs e)
         {
+            EditMOMID = Session["EditMOM"] as string;
             try
             {
                 int _isInserted = -1;
@@ -177,31 +192,47 @@ namespace IG_Portal
                     }
                 }
 
-                _isInserted = objCommon.AddMOM(objMOM);
-
-                if (_isInserted == -1)
+                if (EditMOMID is null)
                 {
+                    _isInserted = objCommon.AddMOM(objMOM);
 
-                    lblmsg.Text = "Failed to Add MOM";
-                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                    if (_isInserted == -1)
+                    {
+
+                        lblmsg.Text = "Failed to Add MOM";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+
+                    else
+                    {
+                        // lblmsg.Text = "MOM Added ";
+                        objTask.AddMOMPoints(dtMeetingPoint, _isInserted);
+                        if (FileUpReciept.HasFile)
+                        {
+                            UploadReciept();
+                        }
+                        objTask.AddMOMAttendee(dtAttendee, _isInserted, ddlMeetingInitiator.SelectedValue);
+                        objCommon.SendMailMOM(dtMeetingPoint, dtAttendee, txtDateTime.Text, txtFromTime.Text, txtToTime.Text, txtAgenda.Text, ddlMeetingType.SelectedItem.Text, ddlMeetingPlace.SelectedItem.Text,ddlMeetingInitiator.SelectedValue);
+                        lblmsg.ForeColor = System.Drawing.Color.Green;
+                        btnAddNew.Visible = true;
+                        addMOM.Visible = false;
+                        viewMOM.Visible = true;
+
+                        BindMOM();
+                        btclear_Click(sender, e);
+                    }
                 }
-
                 else
                 {
-                   // lblmsg.Text = "MOM Added ";
-                    objTask.AddMOMPoints(dtMeetingPoint, _isInserted);
-                    if (FileUpReciept.HasFile)
-                    {
-                        UploadReciept();
-                    }
-                    objTask.AddMOMAttendee(dtAttendee, _isInserted,ddlMeetingInitiator.SelectedValue);
-                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                    objTask.ClearOldPoints(Convert.ToInt32(EditMOMID));
+                   objTask.AddMOMPoints(dtMeetingPoint, Convert.ToInt32(EditMOMID));
+                    Session["EditMOMID"] = null;
                     btnAddNew.Visible = true;
                     addMOM.Visible = false;
                     viewMOM.Visible = true;
-                    
                     BindMOM();
                     btclear_Click(sender, e);
+
                 }
             }
             catch (Exception ex)
@@ -356,12 +387,28 @@ namespace IG_Portal
                 Response.TransmitFile(Server.MapPath("~/MOM/") + e.CommandArgument);
                 Response.End();
             }
+            if(e.CommandName=="RemoveMOM")
+            {
+                int mid = Convert.ToInt32(e.CommandArgument);
+             
+                objCommon.RemoveMOM(mid);
+                BindMOM();
+            }
+
+            if(e.CommandName=="EditMOM")
+            {
+                int mid = Convert.ToInt32(e.CommandArgument);
+                DataSet dtEdit = objTask.GetEditMOMDetails(mid);
+                Session["EditMOM"] = mid.ToString();
+                ddlMeetingType_SelectedIndexChanged(dtEdit);
+            }
         }
 
 
 
         protected void btnMeetingPoint_Click(object sender, EventArgs e)
         {
+           
             try
             {
 
@@ -372,7 +419,7 @@ namespace IG_Portal
                 txtMeetingPoint.Text = "";
 
                 ddlStatus.SelectedIndex = 0;
-
+               
 
             }
             catch (Exception ex)
@@ -409,12 +456,37 @@ namespace IG_Portal
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-
+                DataTable dtMOMAccepted = new DataTable();
                 int vid = Convert.ToInt32(GridMOM.DataKeys[e.Row.RowIndex].Value.ToString());
                 GridView gvMeetingPoint = e.Row.FindControl("gvmp") as GridView;
                 gvMeetingPoint.DataSource = objTask.GetMeetingPoints(vid);
                 gvMeetingPoint.DataBind();
 
+                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 2);
+                if (dtCheckRights.Rows[0]["IsEditAllowed"] is true)
+                {
+                    (e.Row.FindControl("imgEdit") as ImageButton).Visible=true;
+                }
+                else
+                {
+                    (e.Row.FindControl("imgEdit") as ImageButton).Visible = false;
+                }
+                if (dtCheckRights.Rows[0]["IsDeleteAllowed"] is true)
+                {
+                    dtMOMAccepted = objTask.CheckMOMAccepted(vid);
+                    if (dtMOMAccepted.Rows.Count > 0)
+                    {
+                        (e.Row.FindControl("imgDelete") as ImageButton).Visible = false;
+                    }
+                    else
+                    {
+                        (e.Row.FindControl("imgDelete") as ImageButton).Visible = true;
+                    }
+                }
+                else
+                {
+                    (e.Row.FindControl("imgDelete") as ImageButton).Visible = false;
+                }
 
             }
         }
@@ -461,6 +533,63 @@ namespace IG_Portal
             }
         }
 
+        public void ddlMeetingType_SelectedIndexChanged(DataSet dtEdit)
+        {
+            viewMOM.Visible = false;
+            btnAddNew.Visible = false;
+            ddlMeetingType.SelectedValue = dtEdit.Tables[0].Rows[0]["MeetingType"].ToString();
+            if (ddlMeetingType.SelectedValue != "0")
+            {
+                addMOM.Visible = true;
+                lblMtype.Text = ddlMeetingType.SelectedItem.Text;
+                meetingType.Visible = false;
+                if (ddlMeetingType.SelectedValue == "1")
+                {
+                    divClient.Visible = false;
+                    divProject.Visible = true;
+                    BindEmployeeMaster();
+                    ddlProjectName.SelectedValue= dtEdit.Tables[0].Rows[0]["ProjectName"].ToString();
+                    ddlProjectName.Enabled = false;
+                }
+                if (ddlMeetingType.SelectedValue == "2")
+                {
+                    divClient.Visible = true;
+                    divProject.Visible = true;
+                    BindEmployeeMaster();
+                    ddlProjectName.SelectedValue = dtEdit.Tables[0].Rows[0]["ProjectName"].ToString();
+                    txtClientName.Text = dtEdit.Tables[0].Rows[0]["ClientName"].ToString();
+                    ddlProjectName.Enabled = false;
+                    txtClientName.Enabled = false;
+                }
+                if (ddlMeetingType.SelectedValue == "3")
+                {
+                    divClient.Visible = true;
+                    divProject.Visible = false;
+                    BindEmployeeMaster();
+                    txtClientName.Text = dtEdit.Tables[0].Rows[0]["ClientName"].ToString();
+                    txtClientName.Enabled = false;
+                }
+                if (ddlMeetingType.SelectedValue == "4")
+                {
+                    divProject.Visible = false;
+                    divClient.Visible = false;
+                    BindEmployeeMasterBoardMeeting();
+                }
+
+                if (ddlMeetingType.SelectedValue == "5")
+                {
+                    divProject.Visible = true;
+                    divClient.Visible = false;
+                    ddlProjectName.SelectedValue = dtEdit.Tables[0].Rows[0]["ProjectName"].ToString();
+                    ddlProjectName.Enabled = false;
+                    BindEmployeeMasterByProject();
+                    // BindEmployeeMasterBoardMeeting();
+                }
+                AutoFillMOM(dtEdit);
+
+            }
+        }
+
         protected void ddlMeetingPlace_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlMeetingPlace.SelectedItem.Text == "Other")
@@ -480,6 +609,44 @@ namespace IG_Portal
             {
                 BindEmployeeMasterByProject();
             }
+        }
+
+        public void AutoFillMOM(DataSet dtEdit)
+        {
+            txtDateTime.Text= Convert.ToDateTime(dtEdit.Tables[0].Rows[0]["MeetingDate"].ToString()).ToString("yyyy-MM-dd");
+            txtFromTime.Text = dtEdit.Tables[0].Rows[0]["FromTime"].ToString();
+            txtToTime.Text = dtEdit.Tables[0].Rows[0]["ToTime"].ToString();
+            ddlMeetingInitiator.SelectedValue= dtEdit.Tables[0].Rows[0]["MeetingInitiator"].ToString();
+            ddlMeetingPlace.SelectedValue= dtEdit.Tables[0].Rows[0]["MeetingPlace"].ToString();
+            txtAgenda.Text= dtEdit.Tables[0].Rows[0]["Agenda"].ToString();
+            
+            for (int i=0;i<dtEdit.Tables[2].Rows.Count;i++) 
+            {
+                dtMeetingPoint.Rows.Add(dtEdit.Tables[2].Rows[i]["MeetingPoint"].ToString(), dtEdit.Tables[2].Rows[i]["Status"].ToString());
+
+                GridMeetingPoint.DataSource = dtMeetingPoint;
+                GridMeetingPoint.DataBind();
+                txtMeetingPoint.Text = "";
+
+                ddlStatus.SelectedIndex = 0;
+            }
+            foreach (DataRow dr in dtEdit.Tables[1].Rows)
+            {
+                foreach (ListItem item in chkAttendees.Items)
+                {
+                    if (item.Value == dr["AttendeeID"].ToString())
+                        item.Selected = true;
+                }
+                
+            }
+            txtDateTime.Enabled = false;
+            txtFromTime.Enabled = false;
+            txtToTime.Enabled = false;
+            ddlMeetingInitiator.Enabled = false;
+            ddlMeetingPlace.Enabled = false;
+            txtAgenda.Enabled = false;
+            chkAttendees.Enabled = false;
+
         }
     }
 }

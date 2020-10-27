@@ -85,22 +85,27 @@ namespace IG_Portal
                 DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 6);
                 if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
                 {
-                    if (Session["Role"].ToString() == "2")
-                    {
-                        BindDeveloperMaster();
-                        //ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    //if (Session["Role"].ToString() == "2")
+                    //{
+                    //    BindDeveloperMaster();
+                    //    //ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    //    ddlDeveloper.Enabled = true;
+                    //    BindBugs();
+                    //    // BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    //}
+                    //else if (Session["Role"].ToString() == "4")
+                    //{
+                    //    BindDeveloperMaster();
+                    //    //ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    //    ddlDeveloper.Enabled = true;
+                    //    BindBugs();
+                    //    //  BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    //}
+
+                    BindDeveloperMaster();
+                        ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
                         ddlDeveloper.Enabled = true;
                         BindBugs();
-                        // BindEmployeeTask(ddlEmployeeName.SelectedValue);
-                    }
-                    else if (Session["Role"].ToString() == "4")
-                    {
-                        BindDeveloperMaster();
-                        //ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
-                        ddlDeveloper.Enabled = true;
-                        BindBugs();
-                        //  BindEmployeeTask(ddlEmployeeName.SelectedValue);
-                    }
                 }
                 else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
                 {
@@ -213,7 +218,7 @@ namespace IG_Portal
         {
             DataSet dtBug;
 
-            dtBug = objTask.GetBug();
+            dtBug = objTask.GetBug(Session["LoginID"].ToString());
             GridBug.DataSource = dtBug.Tables[0];
             GridBug.DataBind();
             count.Text = "Number of Bugs =" + dtBug.Tables[0].Rows.Count;
@@ -279,14 +284,16 @@ namespace IG_Portal
                          "inner join BugsTaskMaster BTM on BTM.ID = B.TaskTypeID inner join TaskTitleMaster TTM on TTM.ID = B.TaskTitleID " +
                          "inner join Login L on L.ID = B.CrossCheckedBy " +
                  "inner join PageMaster PGM on PGM.ID = B.PageID inner join SuggestedByMaster SBM on SBM.ID = B.SuggestedBy " +
-                 "inner join BugStatusMaster SM on SM.ID = B.Status where B.IsActive = 1 and B.Developer is null";
+                 "inner join BugStatusMaster SM on SM.ID = B.Status where B.ProjectID in (Select ProjectID from ProjectEmployeeMap where LoginID=" +
+                  Session["LoginID"].ToString() +") and B.IsActive = 1 and B.Developer is null";
 
                 strQuery1 = "(Select B.*,PM.ProjectName,BTM.TaskName,TTM.TaskTitle,PGM.PageName,SBM.SuggestedName,SM.StatusName,L.EmployeeName as CrossCheckedByName,L2.EmployeeName as DeveloperName from Bug B" +
                              " inner join ProjectMaster PM on PM.ID=B.ProjectID " +
                          "inner join BugsTaskMaster BTM on BTM.ID = B.TaskTypeID inner join TaskTitleMaster TTM on TTM.ID = B.TaskTitleID " +
                          "inner join Login L on L.ID = B.CrossCheckedBy inner join Login L2 on L2.ID=B.Developer " +
                  "inner join PageMaster PGM on PGM.ID = B.PageID inner join SuggestedByMaster SBM on SBM.ID = B.SuggestedBy " +
-                 "inner join BugStatusMaster SM on SM.ID = B.Status where B.IsActive = 1 and B.Developer is not null";
+                 "inner join BugStatusMaster SM on SM.ID = B.Status where B.ProjectID in (Select ProjectID from ProjectEmployeeMap where LoginID=" +
+                  Session["LoginID"].ToString() + ") and B.IsActive = 1 and B.Developer is not null";
 
                 if (ddlProjectName.SelectedIndex > 0)
                 {

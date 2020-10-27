@@ -239,7 +239,7 @@
 
                                                     <asp:TemplateField HeaderText="Role" HeaderStyle-CssClass="autostyle2" SortExpression="RoleName">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="Label10" runat="server" Text='<%# Eval("RoleName")  %>'></asp:Label>
+                                                            <asp:Label ID="Label10" runat="server" Text='<%# Eval("Roles")  %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
 

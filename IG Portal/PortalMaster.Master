@@ -156,6 +156,7 @@
                              <li class="bold"><a href="<%= ResolveUrl("~/ViewAssignedTaskEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Task</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/ViewBug.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>View Bug</a> </li>
                             <li class="bold"><a href="<%= ResolveUrl("~/LeaveApplication.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Apply for Leave</a> </li>
+                              <li class="bold"><a href="<%= ResolveUrl("~/AddMOM.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>MOM</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
                             <li class="bold"><a href="<%= ResolveUrl("~/Notifications.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Notifications</a> </li>
                         </ul>
@@ -215,7 +216,9 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="bold"><a href="<%= ResolveUrl("~/ViewTaskQA.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Task for Testing</a> </li>
                             <li class="bold"><a href="<%= ResolveUrl("~/LeaveApplication.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Apply for Leave</a> </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/AddMOM.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>MOM</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
                             <li class="bold"><a href="<%= ResolveUrl("~/Notifications.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Notifications</a> </li>
                         </ul>
@@ -470,6 +473,7 @@
                                     </li>
                                 </ul>
                             </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/ProjectDelivery.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Project Delivery</a> </li>
                             <li class="bold"><a href="<%= ResolveUrl("~/AssignProject.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assign Project</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
                             <li class="bold"><a href="<%= ResolveUrl("~/Notifications.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Notifications</a> </li>

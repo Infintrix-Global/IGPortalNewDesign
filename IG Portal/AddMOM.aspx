@@ -541,12 +541,13 @@
                                                      
                                                 </asp:TemplateField>
 
-                                                 <%--  <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
+                                                   <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="imgEmail" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Email" ImageUrl="~/images/email.png" AlternateText="email" ToolTip="email" OnCommand="imgEmail_Command" ></asp:ImageButton>
+                                                            <asp:ImageButton ID="imgEdit" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="EditMOM" ImageUrl="~/images/edit.png" AlternateText="edit" ToolTip="edit" Visible="false"  ></asp:ImageButton>
+                                                             <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="RemoveMOM" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to delete this MOM?');" ></asp:ImageButton>
                                                             
                                                         </ItemTemplate>
-                                                    </asp:TemplateField>--%>
+                                                    </asp:TemplateField>
 
 
 

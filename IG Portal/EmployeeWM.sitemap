@@ -11,6 +11,7 @@
 		  </siteMapNode>
 	  </siteMapNode>
 	  <siteMapNode url="~/LeaveApplication.aspx" title="Apply For Leave"  description="" />
+	   <siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
 	  <siteMapNode url="~/ChangePassword.aspx" title="Change Password"  description="" />
   </siteMapNode>
 </siteMap>

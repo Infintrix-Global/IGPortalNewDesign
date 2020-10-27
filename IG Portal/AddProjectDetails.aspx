@@ -73,6 +73,22 @@
                                         </div>
 
                                         <div class="col m3">
+                                              <div class="form-group">
+                                                <span class="title">
+                                                    <label>
+                                                      Start Date
+                                                    </label>
+                                                    <span class="required">*</span>
+                                                </span>
+                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"  TabIndex="4" TextMode="Date"   ></asp:TextBox>
+                                               
+                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="col m3">
                                             <div class="form-group">
                                                 <span class="title">
                                                     <label>Website Link</label>

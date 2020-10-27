@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ManagerDashBoardWM.aspx.cs" Inherits="IG_Portal.AdminDashBoard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ManagerDashBoardWM.aspx.cs" Inherits="IG_Portal.ManagerDashBoardWM" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
    
 </asp:Content>
@@ -39,7 +39,7 @@
                     <p class="card-stats-title">
                      Assigned Projects-
                     
-                        <asp:Label ID="lblProject" runat="server"   ></asp:Label>
+                        <asp:LinkButton ID="lblProject" runat="server" OnClick="lblProject_Click"   ></asp:LinkButton>
                     </p>
                 </div>
             </div>
@@ -139,7 +139,7 @@
                                                <asp:Label ID="lblstatus" runat="server" Text='<%# Eval("Status")  %>' Visible="false" ></asp:Label>
                                              <asp:Label ID="Label1" runat="server" Text='<%# Eval("Project")  %>' Font-Bold="true"></asp:Label>
                                           <br />
-                                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("TaskDetails")  %>' ></asp:Label>
+                                            <asp:LinkButton ID="lnkDTask" runat="server" Text='<%# Eval("TaskDetails")  %>'  OnClick="lnkDTask_Click"></asp:LinkButton>
                                               
                                          <a class="secondary-content"> <span class="ultra-small"><asp:Label ID="lblDate" runat="server" Text='<%# Eval("TaskAssignedDateTime","{0:dd/MMM/yy}")  %>'></asp:Label></span></a>
                                             <br />
@@ -191,7 +191,7 @@
                                                <asp:Label ID="lblstatus" runat="server" Text='<%# Eval("Status")  %>' Visible="false" ></asp:Label>
                                           <%-- <p class="collections-content">--%><asp:Label ID="lblProjectName" runat="server" Font-Bold="true" Text='<%# Eval("ProjectName")  %>'></asp:Label><%--</p>--%>
                                           <br />
-                                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("BugDetails")  %>' ></asp:Label>
+                                            <asp:LinkButton ID="lnkGBug" runat="server" Text='<%# Eval("BugDetails")  %>' OnClick="lnkGBug_Click" ></asp:LinkButton>
                                               
                                         
                                               

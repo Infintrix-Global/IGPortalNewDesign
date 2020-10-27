@@ -128,7 +128,8 @@ namespace IG_Portal
                     APUATPassword=txtUATPassword.Text,
                     APUATUsername=txtUATUserName.Text,
                     WebsiteLink=txtWebsiteLInk.Text,
-                    ProjectDescription=txtProjectDesription.Text
+                    ProjectDescription=txtProjectDesription.Text,
+                    StartDate= (Convert.ToDateTime(txtDate.Text)).ToString("dd MMM yyyy")
                 };
                
               
@@ -177,7 +178,10 @@ namespace IG_Portal
                 txtUATUserName.Text = dtobjProjectDetails.Rows[0]["AdminPanelUATUsername"].ToString();
                 txtWebsiteLInk.Text = dtobjProjectDetails.Rows[0]["WebsiteLink"].ToString();
                 txtProjectDesription.Text = dtobjProjectDetails.Rows[0]["ProjectDescription"].ToString();
-
+                if (dtobjProjectDetails.Rows[0]["StartDate"].ToString() != "")
+                {
+                    txtDate.Text = Convert.ToDateTime(dtobjProjectDetails.Rows[0]["StartDate"].ToString()).ToString("yyyy-MM-dd");
+                }
             }
         }
 

@@ -149,7 +149,7 @@ namespace IG_Portal
 
                         lblMessage.Text = "Task deleted ";
                         lblMessage.ForeColor = System.Drawing.Color.Green;
-                        BindGridAssignTask();
+                        btnSearch();
                     }
 
 
@@ -288,6 +288,97 @@ namespace IG_Portal
                     GridAssignTask.DataSource = dt;
                     GridAssignTask.DataBind();
                     
+                    count.Text = "Number of Tasks= 0";
+                }
+                ViewState["dirState"] = dtSearch1;
+                ViewState["sortdr"] = "Asc";
+
+
+            }
+        }
+
+        public void btnSearch()
+        {
+            DataTable dtSearch1;
+            string strqueryfinal = "";
+            string strQuery = "";
+            string strQuery1 = "";
+            strQuery = "(Select TS.ID,TS.CreatedBy,TS.ID , TS.Comment,TS.Priority,TS.TaskAddedDateTime,'' as EmployeeName,TM.TaskName,PM.ProjectName" +
+                ",TS.TaskDetails,TTM.TaskTitle,TS.AssignTo,TS.EstiamtedWorkTime,Convert(nvarchar(max),TS.EstimatedWorkDate,103) as EstimatedWorkDate from AssignedTask TS inner join TaskMaster TM on TS.TaskType = TM.ID inner join " +
+                "ProjectMaster PM on PM.ID = TS.ProjectName inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID " +
+                " where TS.IsActive = 1 and IsDeleted=0  and TS.AssignTo is null";
+
+            strQuery1 = " (Select TS.ID,TS.CreatedBy,TS.ID , " +
+                "TS.Comment,TS.Priority,TS.TaskAddedDateTime,L.EmployeeName,TM.TaskName,PM.ProjectName,TS.TaskDetails,TTM.TaskTitle,TS.AssignTo" +
+                ",TS.EstiamtedWorkTime,Convert(nvarchar(max),TS.EstimatedWorkDate,103) as EstimatedWorkDate " +
+                "from AssignedTask TS inner join TaskMaster TM on TS.TaskType = TM.ID inner join ProjectMaster PM on PM.ID = TS.ProjectName " +
+                "inner join TaskTitleMaster TTM on TS.TaskTitle = TTM.ID inner join Login L on L.ID = TS.AssignTo   where TS.IsActive = 1 " +
+                " and IsDeleted=0 and TS.AssignTo is not null";
+
+            if (ddlempName.SelectedIndex > 0)
+            {
+                strQuery += " and TTS.AssignTo ='" + ddlempName.SelectedValue + "'";
+                strQuery1 += " and TS.AssignTo ='" + ddlempName.SelectedValue + "'";
+
+            }
+            if (ddlProjectName.SelectedIndex > 0)
+            {
+                strQuery += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";
+                strQuery1 += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";
+
+            }
+
+            if (ddlTaskStatus.SelectedIndex > 0)
+            {
+                strQuery += " and TS.Status ='" + ddlTaskStatus.SelectedValue + "'";
+                strQuery1 += " and TS.Status ='" + ddlTaskStatus.SelectedValue + "'";
+            }
+
+            if (ddlStatus.SelectedValue == "1")
+            {
+
+                strQuery += ")  order by TS.[TaskAddedDateTime] desc";
+                strqueryfinal = strQuery;
+                dtSearch1 = objTask.SearchTask(strqueryfinal);
+                GridFillSearch();
+
+            }
+            if (ddlStatus.SelectedValue == "2")
+            {
+
+                strQuery1 += ")  order by TS.[TaskAddedDateTime] desc";
+                strqueryfinal = strQuery1;
+                dtSearch1 = objTask.SearchTask(strqueryfinal);
+                GridFillSearch();
+
+            }
+            if (ddlStatus.SelectedValue == "3")
+            {
+                strQuery += ") union  ";
+                strQuery1 += ")  order by TS.[TaskAddedDateTime] desc";
+                strqueryfinal = strQuery + strQuery1;
+                dtSearch1 = objTask.SearchTask(strqueryfinal);
+                GridFillSearch();
+
+            }
+
+
+            void GridFillSearch()
+            {
+                if (dtSearch1 != null)
+                {
+                    //DataTable dtSearch = dtSearch1.CopyToDataTable();
+                    GridAssignTask.DataSource = dtSearch1;
+                    GridAssignTask.DataBind();
+
+                    count.Text = "Number of Tasks= " + (dtSearch1.Rows.Count).ToString();
+                }
+                else
+                {
+                    DataTable dt = new DataTable();
+                    GridAssignTask.DataSource = dt;
+                    GridAssignTask.DataBind();
+
                     count.Text = "Number of Tasks= 0";
                 }
                 ViewState["dirState"] = dtSearch1;

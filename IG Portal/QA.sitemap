@@ -3,7 +3,8 @@
   <siteMapNode url="~/QADashBoard.aspx" title="Home"  description="">
     <siteMapNode url="~/AddTimeSheet.aspx" title="Add TimeSheet"  description="" />
 	  <siteMapNode url="~/Notifications.aspx" title="Notifications"  description="" />
-	  
+	   <siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
+	  <siteMapNode url="~/ViewTaskQA.aspx" title="Task for Testing"  description="" />
     <siteMapNode url="~/ViewTask.aspx" title="View TimeSheet"  description="" />
 	   <siteMapNode url="~/AddBug.aspx" title="Add Bug"  description="" />
 	  <siteMapNode url="~/ViewBug.aspx" title="View Bug"  description="" />
