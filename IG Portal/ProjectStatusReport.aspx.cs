@@ -24,8 +24,7 @@ namespace IG_Portal
 
         public void BindGridProject()
         {
-            DataTable dt = new DataTable();
-           objTask.GetProjectStatusReport();
+            DataTable dt = objTask.GetProjectStatusReport();
             GridProject.DataSource = dt;
             GridProject.DataBind();
             GridFillTask();

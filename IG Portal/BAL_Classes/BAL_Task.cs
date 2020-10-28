@@ -827,6 +827,22 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataTable GetProjectStatusReportbyProjectID(int projectID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetProjectStatusReportbyProjectID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetRoleByLoginID(string mob)
         {
             try

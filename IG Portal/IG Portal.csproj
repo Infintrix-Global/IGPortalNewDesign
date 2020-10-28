@@ -144,6 +144,7 @@
     <Content Include="ProjectDelivery.aspx" />
     <Content Include="ProjectStatusDetails.aspx" />
     <Content Include="ProjectStatusReport.aspx" />
+    <Content Include="ProjectTaskReport.aspx" />
     <Content Include="ProjectWiseReport.aspx" />
     <Content Include="QADashBoard.aspx" />
     <Content Include="SalesDashBoard.aspx" />
@@ -1009,6 +1010,13 @@
     </Compile>
     <Compile Include="ProjectStatusReport.aspx.designer.cs">
       <DependentUpon>ProjectStatusReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTaskReport.aspx.cs">
+      <DependentUpon>ProjectTaskReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectTaskReport.aspx.designer.cs">
+      <DependentUpon>ProjectTaskReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProjectWiseReport.aspx.cs">
       <DependentUpon>ProjectWiseReport.aspx</DependentUpon>
