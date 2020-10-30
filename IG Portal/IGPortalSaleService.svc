@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="IG_Portal.Service1" CodeBehind="IGPortalSaleService.svc.cs" %>

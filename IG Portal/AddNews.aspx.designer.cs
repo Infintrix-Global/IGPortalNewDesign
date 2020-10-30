@@ -11,17 +11,17 @@ namespace IG_Portal
 {
 
 
-    public partial class ProjectTaskReport
+    public partial class AddNews
     {
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// SrciptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.ScriptManager SrciptManager1;
 
         /// <summary>
         /// lbltitle control.
@@ -33,67 +33,76 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.Label lbltitle;
 
         /// <summary>
-        /// upTask control.
+        /// lblmsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upTask;
+        protected global::System.Web.UI.WebControls.Label lblmsg;
 
         /// <summary>
-        /// ddlProjectName control.
+        /// radType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProjectName;
+        protected global::System.Web.UI.WebControls.RadioButtonList radType;
 
         /// <summary>
-        /// txtFromDate control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFromDate;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
 
         /// <summary>
-        /// requiredFromDate control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFromDate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// txtToDate control.
+        /// txtTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtToDate;
+        protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// requiredToDate control.
+        /// requiredProjectName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredToDate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredProjectName;
 
         /// <summary>
-        /// btSearch control.
+        /// CKEditor1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSearch;
+        protected global::CKEditor.NET.CKEditorControl CKEditor1;
+
+        /// <summary>
+        /// btAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btAdd;
 
         /// <summary>
         /// btclear control.
@@ -103,50 +112,5 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btclear;
-
-        /// <summary>
-        /// count control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label count;
-
-        /// <summary>
-        /// tottime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label tottime;
-
-        /// <summary>
-        /// actualtime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label actualtime;
-
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
-        /// <summary>
-        /// GridTask control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridTask;
     }
 }

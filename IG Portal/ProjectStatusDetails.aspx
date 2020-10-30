@@ -14,18 +14,9 @@
 
                   <div class="row"  align="center">
                             <div class="col m12 s12 l12">
-                                  <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
+                                
 
-                                  
-                                        
-                                 
-                                </div>
-                            </div>
-
-
-                        </div>
+                       
                                 <table >
                                     <colgroup span="3"></colgroup>
                                    
@@ -33,14 +24,14 @@
                                     
                                         <td colspan="1">Project Name :</td>
                                             <td colspan="2"><asp:Label ID="lblProjectName" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+
+                                             <td colspan="1">Proposed Hours :</td>
+                                            <td colspan="2"><asp:Label ID="lblProposedhrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
                                         
                                     </tr>
                                     <tr>
                                         
                                     
-                                        <td colspan="1">Proposed Hours :</td>
-                                            <td colspan="2"><asp:Label ID="lblProposedhrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-                                       
                                         
                                     </tr>
                                      <tr>
@@ -49,15 +40,15 @@
                                             <td colspan="2">
                                             <asp:Label ID="lblPTask" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
-
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td colspan="1">Planned Task Hours :</td>
+                                          <td colspan="1">Planned Task Hours :</td>
                                             <td colspan="2">
                                             <asp:Label ID="lblPTaskHrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
 
+                                    </tr>
+                                    <tr>
+                                        
+                                       
                                     </tr>
                                   
                                       <tr>
@@ -66,15 +57,15 @@
                                             <td colspan="2">
                                             <asp:Label ID="lblATask" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
-
-                                    </tr>
-                                    <tr>
-                                        
+                                             
                                         <td colspan="1">Actual Task Hours :</td>
                                             <td colspan="2">
                                             <asp:Label ID="lblATaskHrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
 
+                                    </tr>
+                                    <tr>
+                                     
                                     </tr>
                                   
                                     <tr>
@@ -83,11 +74,7 @@
                                             <td colspan="2">
                                             <asp:Label ID="lblBugs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
-                                    </tr>
-
-                                     <tr>
-                                         
-                                        <td colspan="1">Bug Hours  :</td>
+                                          <td colspan="1">Bug Hours  :</td>
                                             <td colspan="2">
                                             <asp:Label ID="lblBugHrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
@@ -95,24 +82,25 @@
 
                                      <tr>
                                          
-                                        <td colspan="1">Rework Hours :</td>
-                                            <td colspan="2">
-                                            <asp:Label ID="lblReworkHrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-
+                                      
                                     </tr>
+
+                                    
 
                                       <tr>
                                         <td colspan="1">Testing Hours :</td>
                                         <td colspan="2"> <asp:Label ID="lblTestingHrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+
+                                             <td colspan="1">ReWork Teting Hours:</td>
+                                            <td colspan="2">
+                                            <asp:Label ID="lblReTestingHrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+
                                           </tr>
 
                                      
                                      <tr>
                                        
-                                        <td colspan="1">ReWork Teting Hours:</td>
-                                            <td colspan="2">
-                                            <asp:Label ID="lblReTestingHrs" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-
+                                     
                                     </tr>
                                    
                                      <tr>
@@ -121,14 +109,15 @@
                                             <td colspan="2">
                                             <asp:Label ID="lblTimeSpent" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
+                                           <td colspan="1">Status:</td>
+                                            <td colspan="2">
+                                            <asp:Label ID="lblStatus" runat="server" Text="" Font-Bold="true"></asp:Label></td>
+
                                     </tr>
 
                                      <tr>
                                        
-                                        <td colspan="1">Status:</td>
-                                            <td colspan="2">
-                                            <asp:Label ID="lblStatus" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-
+                                      
                                     </tr>
 
                                      <tr >
@@ -137,21 +126,23 @@
                                             <td colspan="2">
                                             <asp:Label ID="lblMTimeDiff" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
-                                    </tr>
-
-                                     <tr >
-                                       
-                                        <td colspan="1" >Development Time Difference :</td>
+                                          <td colspan="1" >Development Time Difference :</td>
                                             <td colspan="2">
                                             <asp:Label ID="lblDTimeDiff" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
-                                    </tr>
-                                     <tr >
-                                       
+                                         
                                         <td colspan="1" >Total Time Difference :</td>
                                             <td colspan="2">
                                             <asp:Label ID="lblTTimeDiff" runat="server" Text="" Font-Bold="true"></asp:Label></td>
 
+                                    </tr>
+
+                                     <tr >
+                                       
+                                       
+                                    </tr>
+                                     <tr >
+                                       
                                     </tr>
 
                                       <tr>

@@ -843,6 +843,40 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataTable GetNewsDetailsByID(string NewsID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@NewsID", NewsID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetNewsDetailsByID");      
+
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public int RemoveNews(int NewsID)
+        {
+            int _isUpdated = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@NewsID", NewsID);
+
+                _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_RemoveNews");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isUpdated;
+        }
+
         public DataTable GetRoleByLoginID(string mob)
         {
             try
@@ -1160,6 +1194,21 @@ namespace IG_Portal.BAL_Classes
             {
                 General objGeneral = new General();
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetProjectStatusReport");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
+        public DataTable GetProjectTaskReport(string LoginID)
+        {
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetProjectTaskReport");
             }
             catch (Exception ex)
             {

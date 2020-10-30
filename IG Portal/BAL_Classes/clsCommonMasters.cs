@@ -1596,6 +1596,21 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetNewsMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+               
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetNewsMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetTaskTitleMaster(string projectID)
         {
             try
@@ -1723,6 +1738,48 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@DepartmentName", dName);
 
                 _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddDepartment");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int AddNews(string LoginID,string type,string date,string title,string Description)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Type", type);
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", Convert.ToDateTime(date).ToString("dd/MMM/yyyy"));
+                objGeneral.AddParameterWithValueToSQLCommand("@Title", title);
+                objGeneral.AddParameterWithValueToSQLCommand("@Description", Description);
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddNews");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int UpdateNews(string LoginID, string type, string date, string title, string Description,string NewsID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Type", type);
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", Convert.ToDateTime(date).ToString("dd/MMM/yyyy"));
+                objGeneral.AddParameterWithValueToSQLCommand("@Title", title);
+                objGeneral.AddParameterWithValueToSQLCommand("@Description", Description);
+                objGeneral.AddParameterWithValueToSQLCommand("@NewsID", NewsID);
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_UpdateNews");
             }
             catch (Exception ex)
             {

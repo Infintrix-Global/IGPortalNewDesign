@@ -55,6 +55,12 @@
       <HintPath>..\packages\CkeditorForASP.NET.3.6.4.0\lib\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -83,12 +89,14 @@
     <Content Include="AddClientDetails.aspx" />
     <Content Include="AddDepartment.aspx" />
     <Content Include="AddMOM.aspx" />
+    <Content Include="AddNews.aspx" />
     <Content Include="AddPage.aspx" />
     <Content Include="AddProjectDetails.aspx" />
     <Content Include="AddTaskMaster.aspx" />
     <Content Include="AddTimeSheet.aspx" />
     <Content Include="AssignProject.aspx" />
     <Content Include="AssignTask.aspx" />
+    <Content Include="IGPortalSaleService.svc" />
     <Content Include="BugHistory.aspx" />
     <Content Include="CImage.aspx" />
     <Content Include="ClientDashBoard.aspx" />
@@ -711,6 +719,7 @@
     <Content Include="ViewEmployeeDocuments.aspx" />
     <Content Include="ViewLEads.aspx" />
     <Content Include="ViewMOMDetails.aspx" />
+    <Content Include="ViewNews.aspx" />
     <Content Include="ViewSupportHistory.aspx" />
     <Content Include="ViewSupportTicket.aspx" />
     <Content Include="ViewTask.aspx" />
@@ -748,6 +757,13 @@
     </Compile>
     <Compile Include="AddMOM.aspx.designer.cs">
       <DependentUpon>AddMOM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNews.aspx.cs">
+      <DependentUpon>AddNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNews.aspx.designer.cs">
+      <DependentUpon>AddNews.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddPage.aspx.cs">
       <DependentUpon>AddPage.aspx</DependentUpon>
@@ -793,6 +809,10 @@
     </Compile>
     <Compile Include="BAL_Classes\MenuMasterBAL.cs" />
     <Compile Include="BAL_Classes\RandomImage.cs" />
+    <Compile Include="CommonControl.cs" />
+    <Compile Include="IGPortalSaleService.svc.cs">
+      <DependentUpon>IGPortalSaleService.svc</DependentUpon>
+    </Compile>
     <Compile Include="BugHistory.aspx.cs">
       <DependentUpon>BugHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -818,6 +838,8 @@
     <Compile Include="ClientSupport.aspx.designer.cs">
       <DependentUpon>ClientSupport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\CommonDC.cs" />
     <Compile Include="ConsultantDashBoardWM.aspx.cs">
       <DependentUpon>ConsultantDashBoardWM.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -839,6 +861,7 @@
     <Compile Include="EmployeeWiseReport.aspx.designer.cs">
       <DependentUpon>EmployeeWiseReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IIGPortalSaleService.cs" />
     <Compile Include="LeadDetails.aspx.cs">
       <DependentUpon>LeadDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1109,6 +1132,13 @@
     </Compile>
     <Compile Include="ViewMOMDetails.aspx.designer.cs">
       <DependentUpon>ViewMOMDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewNews.aspx.cs">
+      <DependentUpon>ViewNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewNews.aspx.designer.cs">
+      <DependentUpon>ViewNews.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSupportHistory.aspx.cs">
       <DependentUpon>ViewSupportHistory.aspx</DependentUpon>

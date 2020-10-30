@@ -9,7 +9,7 @@
 			<siteMapNode url="~/EditProfile.aspx" title="Edit Profile"  description="">
 			</siteMapNode>
 		</siteMapNode>
-		
+		 <siteMapNode url="~/ViewAssignedTaskEmployee.aspx" title="Assigned Task"  description="" />
 		<siteMapNode url="~/ChangePassword.aspx" title="Change Password"  description="" />
 	</siteMapNode>
 </siteMap>

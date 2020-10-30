@@ -277,6 +277,7 @@
                                     </li>
                                 </ul>
                             </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/ViewAssignedTaskEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Task</a> </li>
 
                               <li class="no-padding">
                                 <ul class="collapsible collapsible-accordion">
@@ -391,11 +392,27 @@
                                                 <li><a href="<%= ResolveUrl("~/AddTaskMaster.aspx") %>">Task Type</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddPage.aspx") %>">Page</a> </li>
                                                  <li><a href="<%= ResolveUrl("~/AddDepartment.aspx") %>">Department</a> </li>
+                                                   
                                             </ul>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
+
+                             <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>News </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                 <li><a href="<%= ResolveUrl("~/AddNews.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewNews.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li class="no-padding">
                                 <ul class="collapsible collapsible-accordion">
                                     <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>TimeSheet </a>
@@ -409,7 +426,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                             <li class="bold"><a href="<%= ResolveUrl("~/ViewAssignedTaskEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Task</a> </li>
 
 
                             <li class="no-padding">
@@ -467,7 +484,7 @@
                                                 <li><a href="<%= ResolveUrl("~/MonthlyProjectHoursByEmployeeReport.aspx") %>">Monthly Project Hours</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/MonthlyProjectTaskHoursEmployeeReport.aspx") %>">Monthly Task Hours</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/SLAReport.aspx") %>">SLA Report</a> </li>
-
+                                                <li><a href="<%= ResolveUrl("~/ProjectStatusReport.aspx") %>">Project Status Report</a> </li>
                                             </ul>
                                         </div>
                                     </li>
@@ -520,6 +537,7 @@
                                     </li>
                                 </ul>
                             </li>
+                             <li class="bold"><a href="<%= ResolveUrl("~/ViewAssignedTaskEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Task</a> </li>
                                <li class="bold"><a href="<%= ResolveUrl("~/ViewBug.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>View Bug</a> </li>
                              <li class="bold"><a href="<%= ResolveUrl("~/EmployeeProfile.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Profile</a> </li>
                            

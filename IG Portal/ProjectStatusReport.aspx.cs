@@ -32,8 +32,8 @@ namespace IG_Portal
 
             void GridFillTask()
             {
-                count.Text = "Number of Tasks= " + dt.Rows.Count;
-                btExport.Visible = true;
+                count.Text = "Number of Projects= " + dt.Rows.Count;
+              
                 ViewState["dirState"] = dt;
                 ViewState["sortdr"] = "Asc";
             }
@@ -76,50 +76,8 @@ namespace IG_Portal
             }
         }
 
-        public override void VerifyRenderingInServerForm(Control control)
-        {
-            //required to avoid the runtime error "  
-            //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
-        }
+       
 
-        protected void btnExport_Click(object sender, EventArgs e)
-        {
-            string FileName;
-            try
-            {
-                Response.Clear();
-                Response.Buffer = true;
-                Response.ClearContent();
-                Response.ClearHeaders();
-                Response.Charset = "";
-                
-                FileName = "ProjectStatusReport-" + DateTime.Now + ".xls";
-                
-                using (StringWriter sw = new StringWriter())
-                {
-                    HtmlTextWriter hw = new HtmlTextWriter(sw);
-
-                    //To Export all pages
-                    GridProject.AllowPaging = false;
-                    GridProject.AllowSorting = false;
-                 
-                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                    Response.ContentType = "application/vnd.ms-excel";
-                    Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-                    GridProject.GridLines = GridLines.Both;
-                    GridProject.HeaderStyle.Font.Bold = true;
-                    GridProject.RenderControl(hw);
-                    Response.Write(sw.ToString());
-                    Response.End();
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                // General.ErrorMessage(ex.StackTrace + ex.Message);
-
-            }
-        }
+       
     }
 }

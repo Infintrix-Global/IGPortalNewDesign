@@ -163,7 +163,7 @@ namespace IG_Portal
                 }
                 if (ddlStatus.SelectedIndex == 0)
                 {
-                    strQuery += " and TS.Status not in (3,6) " ;
+                    strQuery += " and TS.Status not in (3,6,8) " ;
                     
                 }
                 

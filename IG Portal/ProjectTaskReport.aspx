@@ -88,14 +88,15 @@
                                     <div class=" col m5">
                                         <asp:Label runat="server" Text="" ID="count"></asp:Label>
                                     </div>
+                                     <div class="clearfix"></div>
                                     <div class=" col m5">
                                         <asp:Label runat="server" Text="" ID="tottime"></asp:Label>
                                     </div>
+                                     <div class=" col m5">
+                                        <asp:Label runat="server" Text="" ID="actualtime"></asp:Label>
+                                    </div>
                                       <div class="clearfix"></div>
-                                    <%--<div class="col m12" align="right">
-                                        <button class="btn green" runat="server" onserverclick="btnExport_Click" visible="false" id="btExport"><i class="fa fa-download"></i>Export</button>
-                                        <%--<asp:Button ID="btnExport" Text="Export To Excel" runat="server" OnClick="btnExport_Click" /></div>--%>
-                                    </div>--%>
+                                   
                                     <br />
                                     <div class="clearfix"></div>
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
