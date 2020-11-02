@@ -678,6 +678,23 @@
                                 </ul>
                             </li>
 
+                              <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Reports </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="<%= ResolveUrl("~/EmployeeWiseReport.aspx") %>">Employee Report</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ProjectWiseReport.aspx") %>">Project Report</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/MonthlyHoursByEmployeeReport.aspx") %>">Monthly Employee Hours</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/MonthlyProjectHoursByEmployeeReport.aspx") %>">Monthly Project Hours</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/MonthlyProjectTaskHoursEmployeeReport.aspx") %>">Monthly Task Hours</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/SLAReport.aspx") %>">SLA Report</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
 
                            <li class="bold"><a href="<%= ResolveUrl("~/AddEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Add Employee</a> </li>
                             

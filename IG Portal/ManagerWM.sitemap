@@ -30,6 +30,7 @@
 	  <siteMapNode url="~/ProjectStatusReport.aspx" title="Project Status Report"  description="" >
 	   <siteMapNode url="~/ProjectStatusDetails.aspx" title="Project Status Details"  description=""/>
 		  </siteMapNode>
+	  <siteMapNode url="~/ProjectTaskReport.aspx" title="Project Task Report"  description="" />
 	  <siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
 	  <siteMapNode url="~/AddBug.aspx" title="Add Bug"  description="" />
 	  <siteMapNode url="~/ViewBug.aspx" title="View Bug"  description="" />

@@ -14,8 +14,17 @@
 		<siteMapNode url="~/ChangePassword.aspx" title="Change Password"  description="" />
 		<siteMapNode url="~/LeaveApprovalHR.aspx" title="Leave Approval Applications"  description="" />
 
-		
+		<siteMapNode url="~/EmployeeWiseReport.aspx" title="Employee Report"  description="" />
+		<siteMapNode url="~/ProjectWiseReport.aspx" title="Project Report"  description="" />
+		<siteMapNode url="~/MonthlyHoursByEmployeeReport.aspx" title="Hours Spent By Employee"  description="" />
+		<siteMapNode url="~/MonthlyProjectHoursByEmployeeReport.aspx" title="Hours Spent By Employee/Project"  description="" />
+		<siteMapNode url="~/MonthlyProjectTaskHoursEmployeeReport.aspx" title="Hours Spent By Project/Task"  description="" />
+		<siteMapNode url="~/SLAReport.aspx" title="Hours Spent By Employee/Total Working Hours"  description="" />
+		<siteMapNode url="~/ProjectStatusReport.aspx" title="Project Status Report"  description="" >
+			<siteMapNode url="~/ProjectStatusDetails.aspx" title="Project Status Details"  description=""/>
+		</siteMapNode>
+		<siteMapNode url="~/ProjectTaskReport.aspx" title="Project Task Report"  description="" />
 		<siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
-		>
+	
 	</siteMapNode>
 </siteMap>
