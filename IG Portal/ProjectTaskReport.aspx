@@ -146,13 +146,13 @@
 
                                                             <asp:TemplateField HeaderText="Estimated Hours" HeaderStyle-CssClass="autostyle2" SortExpression="EstiamtedWorkTime">
                                                                 <ItemTemplate>
-                                                                    <asp:Label ID="Label11" runat="server" Text='<%# Eval("EstiamtedWorkTime")  %>'></asp:Label>
+                                                                    <asp:Label ID="Label11" runat="server" Text='<%# Eval("EstiamtedWorkTime","{0:n}")  %>'></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
                                                             <asp:TemplateField HeaderText="Actual Completion Hours" HeaderStyle-CssClass="autostyle2" SortExpression="ActualTimeSpent" >
                                                                 <ItemTemplate>
-                                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("ActualTimeSpent")  %>' ></asp:Label>
+                                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("ActualTimeSpent","{0:n}")  %>' ></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 

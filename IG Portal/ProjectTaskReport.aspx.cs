@@ -47,8 +47,9 @@ namespace IG_Portal
         {
             if (dtTaskDetails.Rows.Count > 0)
             {
-              //  tottime.Text = "Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
-            }
+                    tottime.Text = "Total Task Estimated Hours=" + dtTaskDetails.Rows[0]["TotalEstimatedHours"].ToString();
+                    actualtime.Text = "Total Task Actual Completion Hours=" + dtTaskDetails.Rows[0]["ActualTaskHours"].ToString();
+                }
             else
             {
                // tottime.Text = "";
@@ -70,27 +71,38 @@ namespace IG_Portal
             try
             {
                 string strQuery2 = "";
+                string strsubq2 = "";
+                string strsubq3 = "";
                 string strQuery3 = "";
                 string strQuery = "";
                 string strQuery1 = "";
                
                 string strQueryfinal = "";
                 DataTable dtSearch1;
-                strQuery2 = "DECLARE @TotalTimeSpent INT  SET @TotalTimeSpent = (Select SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod))/3600 AS TotalTimeSpent from TImeSHeet TS" +
-                     " where TS.ProjectName in(Select ProjectID from PRojectEmployeeMap where LoginID=" + Session["LoginID"].ToString() +")" ;
+                strQuery2 = "DECLARE @TotalTimeSpent INT  SET @TotalTimeSpent = (Select cast(SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod)) as decimal(18,2))/3600 AS TotalTimeSpent from TImeSHeet TS" +
+                     " where TS.ProjectName in(Select ProjectID from PRojectEmployeeMap where LoginID=" + Session["LoginID"].ToString() + ")  ";
+
+                strsubq2 = "and TaskTitle in(Select TaskTitle from AssignedTask where IsActive=1";
 
                 strQuery3 = "DECLARE @TotalTaskHours INT  SET @TotalTaskHours =(Select sum(cast(EstiamtedWorkTime as decimal(18,2)))  from AssignedTask AT inner join ProjectMaster PM on PM.ID=AT.ProjectNAme " +
                     "where Pm.ID in(Select ProjectID from PRojectEmployeeMap where LoginID ="+ Session["LoginID"].ToString() + ")";
 
+                strsubq3 = "and AT.TaskTitle in (Select TaskTitle from TimeSheet where IsActive=1";
+
+
+
                 strQuery = "Select *,@TotalTaskHours as TotalEstimatedHours,@TotalTimeSpent as ActualTaskHours from (Select AT.ID,AT.TaskDetails,PM.ProjectName,AT.EstimatedWorkDate,AT.EndDate,AT.EstiamtedWorkTime,At.TaskTitle from AssignedTask AT inner join ProjectMaster PM on PM.ID=AT.ProjectNAme " +
                     "where Pm.ID in(Select ProjectID from PRojectEmployeeMap where LoginID ="+ Session["LoginID"].ToString() + ")";
 
-                strQuery1 = "(Select TaskTitle,SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod))/3600 AS ActualTimeSpent from TImeSHeet TS" +
+                strQuery1 = "(Select TaskTitle,cast(SUM(( DATEPART(hh, TimePeriod) * 3600 ) + ( DATEPART(mi, TimePeriod) * 60 ) + DATEPART(ss, TimePeriod)) as decimal(18,2))/3600 AS ActualTimeSpent from TImeSHeet TS" +
                     " where TS.ProjectName in(Select ProjectID from PRojectEmployeeMap where LoginID=" + Session["LoginID"].ToString() + ")";
 
                 if (ddlProjectName.SelectedIndex > 0)
                 {
                     strQuery += " and AT.ProjectName ='" + ddlProjectName.SelectedValue + "'";
+                    strQuery3 += " and AT.ProjectName ='" + ddlProjectName.SelectedValue + "'";
+                    strsubq3 += " and ProjectName ='" + ddlProjectName.SelectedValue + "'";
+                    strsubq2 += " and ProjectName ='" + ddlProjectName.SelectedValue + "'";
                     strQuery3 += " and AT.ProjectName ='" + ddlProjectName.SelectedValue + "'";
                     strQuery1 += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";
                     strQuery2 += " and TS.ProjectName ='" + ddlProjectName.SelectedValue + "'";
@@ -100,12 +112,15 @@ namespace IG_Portal
                     strQuery += " and AT.EstimatedWorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                     strQuery1 += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                     strQuery3 += " and AT.EstimatedWorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
+                    strsubq3 += " and WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
+                    strsubq2 += " and EstimatedWorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                     strQuery2 += " and TS.WorkDate between '" + txtFromDate.Text + "'  and  '" + txtToDate.Text + "'";
                 }
 
-
-                strQuery2 += "  )";
-                strQuery3 += ")";
+                strsubq2 += "  )";
+                strsubq3 += "  )";
+                strQuery2 += strsubq2+ "  )";
+                strQuery3 += strsubq3 + ")";
 
                    strQuery += ") T1 inner join" ;
                 strQuery1 += "  group by TaskTitle) T2 on T1.TaskTitle=T2.TaskTitle order by projectName asc";

@@ -46,6 +46,44 @@ namespace IG_Portal
                     lblMTimeDiff.Text = dt1.Rows[0]["ManagerTD"].ToString();
                     lblDTimeDiff.Text = dt1.Rows[0]["DevelopmentTD"].ToString();
                     lblTTimeDiff.Text = dt1.Rows[0]["TimeDifference"].ToString();
+                   
+                    decimal status = ((Convert.ToDecimal(lblTimeSpent.Text) - Convert.ToDecimal(lblProposedhrs.Text)) / Convert.ToDecimal(lblProposedhrs.Text)) * 100;
+
+                    if (status < 0)
+                    {
+                        lblStatus.Text = "Before Time";
+                        lblStatus.BackColor = System.Drawing.Color.Green;
+                        lblStatus.ForeColor = System.Drawing.Color.White;
+                    }
+                    if (status < 15 && status > 0)
+                    {
+                        lblStatus.Text = "On Time";
+                        lblStatus.BackColor = System.Drawing.Color.GreenYellow;
+                        lblStatus.ForeColor = System.Drawing.Color.White;
+                    }
+
+                    if (status >= 15 && status < 30)
+                    {
+                        lblStatus.Text = "Slightly Delayed";
+                        lblStatus.BackColor = System.Drawing.Color.Yellow;
+                        lblStatus.ForeColor = System.Drawing.Color.White;
+                    }
+
+
+                    if (status >= 30 && status < 50)
+                    {
+                        lblStatus.Text = "Delay at Risk";
+                        lblStatus.BackColor = System.Drawing.Color.Orange;
+                        lblStatus.ForeColor = System.Drawing.Color.White;
+                    }
+
+
+                    if (status >= 50)
+                    {
+                        lblStatus.Text = "Delay at High Risk";
+                        lblStatus.BackColor = System.Drawing.Color.Red;
+                        lblStatus.ForeColor = System.Drawing.Color.White;
+                    }
                 }
 
             }

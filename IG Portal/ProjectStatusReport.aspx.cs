@@ -76,8 +76,60 @@ namespace IG_Portal
             }
         }
 
-       
+        protected void GridProject_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
 
-       
+                    string Atimespent = (e.Row.FindControl("lblATimespent") as Label).Text;
+                    string Ptime = (e.Row.FindControl("lblPtime") as Label).Text;
+                    decimal status = ((Convert.ToDecimal(Atimespent) - Convert.ToDecimal(Ptime)) / Convert.ToDecimal(Ptime)) * 100;
+
+                    if (status < 0)
+                    {
+                        (e.Row.FindControl("lblStatus") as Label).Text = "Before Time";
+                        (e.Row.FindControl("lblStatus") as Label).BackColor = System.Drawing.Color.Green;
+                        (e.Row.FindControl("lblStatus") as Label).ForeColor = System.Drawing.Color.White;
+
+                    }
+                    if (status < 15 && status>0)
+                    {
+                        (e.Row.FindControl("lblStatus") as Label).Text = "On Time";
+                        (e.Row.FindControl("lblStatus") as Label).BackColor= System.Drawing.Color.GreenYellow;
+                        (e.Row.FindControl("lblStatus") as Label).ForeColor = System.Drawing.Color.White;
+                    }
+
+                    if (status >=15 && status <30)
+                    {
+                        (e.Row.FindControl("lblStatus") as Label).Text = "Slightly Delayed";
+                        (e.Row.FindControl("lblStatus") as Label).BackColor = System.Drawing.Color.Yellow;
+                        (e.Row.FindControl("lblStatus") as Label).ForeColor = System.Drawing.Color.White;
+                    }
+
+
+                    if (status >= 30 && status < 50)
+                    {
+                        (e.Row.FindControl("lblStatus") as Label).Text = "Delay at Risk";
+                        (e.Row.FindControl("lblStatus") as Label).BackColor = System.Drawing.Color.Orange;
+                        (e.Row.FindControl("lblStatus") as Label).ForeColor = System.Drawing.Color.White;
+                    }
+
+
+                    if (status >= 50 )
+                    {
+                        (e.Row.FindControl("lblStatus") as Label).Text = "Delay at High Risk";
+                        (e.Row.FindControl("lblStatus") as Label).BackColor = System.Drawing.Color.Red;
+                        (e.Row.FindControl("lblStatus") as Label).ForeColor = System.Drawing.Color.White;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

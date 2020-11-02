@@ -346,7 +346,8 @@
                                                 <li><a href="<%= ResolveUrl("~/MonthlyProjectHoursByEmployeeReport.aspx") %>">Monthly Project Hours</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/MonthlyProjectTaskHoursEmployeeReport.aspx") %>">Monthly Task Hours</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/SLAReport.aspx") %>">SLA Report</a> </li>
-
+                                                  <li><a href="<%= ResolveUrl("~/ProjectStatusReport.aspx") %>">Project Status Report</a> </li>
+                                                  <li><a href="<%= ResolveUrl("~/ProjectTaskReport.aspx") %>">Project Task Report</a> </li>
                                             </ul>
                                         </div>
                                     </li>
@@ -485,6 +486,7 @@
                                                 <li><a href="<%= ResolveUrl("~/MonthlyProjectTaskHoursEmployeeReport.aspx") %>">Monthly Task Hours</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/SLAReport.aspx") %>">SLA Report</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ProjectStatusReport.aspx") %>">Project Status Report</a> </li>
+                                                  <li><a href="<%= ResolveUrl("~/ProjectTaskReport.aspx") %>">Project Task Report</a> </li>
                                             </ul>
                                         </div>
                                     </li>
@@ -689,7 +691,8 @@
                                                 <li><a href="<%= ResolveUrl("~/MonthlyProjectHoursByEmployeeReport.aspx") %>">Monthly Project Hours</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/MonthlyProjectTaskHoursEmployeeReport.aspx") %>">Monthly Task Hours</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/SLAReport.aspx") %>">SLA Report</a> </li>
-
+                                                  <li><a href="<%= ResolveUrl("~/ProjectStatusReport.aspx") %>">Project Status Report</a> </li>
+                                                  <li><a href="<%= ResolveUrl("~/ProjectTaskReport.aspx") %>">Project Task Report</a> </li>
                                             </ul>
                                         </div>
                                     </li>
