@@ -6,6 +6,8 @@
 		  <siteMapNode url="~/AddProject.aspx" title="Add Project"   description="" />
 		<siteMapNode url="~/AddPage.aspx" title="Add Page"  description="" />
 		<siteMapNode url="~/AddDepartment.aspx" title="Add Department"  description="" />
+		<siteMapNode url="~/AddNews.aspx" title="Add News/Annoucements"  description="" />
+		<siteMapNode url="~/ViewNews.aspx" title="View News/Announcements"  description="" />
 	  <siteMapNode url="~/AddTaskMaster.aspx" title="Add Task"  description="" />
 	  <siteMapNode url="~/AddTimeSheet.aspx" title="Add TimeSheet"  description="" />
 	  <siteMapNode url="~/AddEmployee.aspx" title="Add Employee"  description="" />

@@ -27,7 +27,8 @@
             <div class="form-body">
 
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Add Bugs" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Add Bugs</h4>
+                  <%--  <asp:Label ID="lbltitle" runat="server" Text="Add Bugs" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -41,11 +42,11 @@
                                     <div class="row">
                                         
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project Name </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                    
+                                                  <%--  <span class="required">*</span>
+                                                </span>--%>
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
                                                     TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged"  AutoPostBack="true">
                                                 </asp:DropDownList>
@@ -53,15 +54,17 @@
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Project Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                   </div>
+                                                <label>Project Name </label>
                                             </div>
                                         </div>
 
                                            <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Task Type</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                   
+                                                  <%--  <span class="required">*</span>
+                                                </span>--%>
                                                 <asp:DropDownList ID="ddlTaskType" runat="server" placeholder=""
                                                     TabIndex="2">
                                                 </asp:DropDownList>
@@ -69,15 +72,17 @@
                                                     <asp:RequiredFieldValidator ID="requiredTaskType" runat="server" ControlToValidate="ddlTaskType" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Task Type" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                   </div>
+                                                 <label>Task Type</label>
                                             </div>
                                         </div>
 
                                           <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Page Name</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                  
+                                                   <%-- <span class="required">*</span>
+                                                </span>--%>
                                                 <asp:DropDownList ID="ddlPageTitle" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="4">
                                                 </asp:DropDownList>
@@ -85,15 +90,17 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlPageTitle" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Page Title" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                   </div>
+                                                  <label>Page Name</label>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Task Title</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                  
+                                                  <%--  <span class="required">*</span>
+                                                </span>--%>
                                                 <asp:DropDownList ID="ddlTaskTitle" runat="server" placeholder=""
                                                     TabIndex="3" OnSelectedIndexChanged="ddlTaskTitle_SelectedIndexChanged" AutoPostBack="true" >
                                                 </asp:DropDownList>
@@ -102,10 +109,12 @@
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Task Title" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                                 </span>
+                                                   </div>
+                                                  <label>Task Title</label>
 
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="input-field">
                                                 <asp:TextBox ID="txtTaskTitle" class="form-control" placeholder="Enter Task Title" TabIndex="4" Visible="false" runat="server"></asp:TextBox>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredtxttitle" runat="server" ControlToValidate="txtTaskTitle" ValidationGroup="at"
@@ -118,41 +127,42 @@
                                           <div class="clearfix"></div>
 
                                          <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Task Details</label>
-
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                  
                                                 <asp:DropDownList ID="ddlTaskDetails" runat="server" Visible="false" ClientIDMode="Static"></asp:DropDownList>
                                                 <asp:TextBox ID="txtTaskDetails" runat="server" placeholder="" Enabled="false"
                                                     ClientIDMode="Static" TextMode="MultiLine" TabIndex="11">
                                                 </asp:TextBox>
-
+                                        </div>
+                                                  <label>Task Details</label>
 
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                  
+                                                   <%-- <span class="required">*</span>
+                                                </span>--%>
+                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" ClientIDMode="Static"  TextMode="Date" TabIndex="6"  ></asp:TextBox>
+                                               <span class="help-block">
+                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date "  ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+                                                   </span>
+                                                   </div>
+                                                     <label>
                                                         Date
                                                     </label>
-                                                    <span class="required">*</span>
-                                                </span>
-                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" ClientIDMode="Static"  TextMode="Date" TabIndex="6"  ></asp:TextBox>
-                                               
-                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date "  ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        Priority</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                   
+                                                   <%-- <span class="required">*</span>
+                                                </span>--%>
                                                 
                                                 <asp:RadioButtonList ID="radPriority"  runat="server" RepeatDirection="Horizontal" class="form-control" TabIndex="7">
                                                     <asp:ListItem Text="High" Value="High Priority" Selected="True"></asp:ListItem>
@@ -160,19 +170,25 @@
                                                     <asp:ListItem Text="Low" Value="Low Priority"></asp:ListItem>
 
                                                 </asp:RadioButtonList>
-                                               
+                                               </div>
+                                                 <label>
+                                                        Priority</label>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        Suggested By</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+
+                                                    <%--<span class="required">*</span>
+                                                </span>--%>
                                                 <asp:DropDownList ID="ddlSuggetedBy" runat="server" class="form-control" TabIndex="8"  ></asp:DropDownList>
+                                                    <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="requiredSuggestedBy" runat="server" ControlToValidate="ddlSuggetedBy" ErrorMessage="Please Select Suggested By" InitialValue="0" ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+                                                        </span>
+                                                   </div>
+                                                <label>
+                                                        Suggested By</label>
                                             </div>
                                         </div>
 
@@ -180,11 +196,11 @@
 
                                         
                                          <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Bug Details</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                   
+                                                  <%--  <span class="required">*</span>
+                                                </span>--%>
                                                 <asp:TextBox ID="txtBugDescription" runat="server" placeholder=""
                                                     ClientIDMode="Static" TextMode="MultiLine" Height="100px" TabIndex="5">
                                                 </asp:TextBox>
@@ -193,6 +209,8 @@
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Bug Description" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                                 </span>
+                                                   </div>
+                                                 <label>Bug Details</label>
 
                                             </div>
                                         </div>
@@ -200,24 +218,26 @@
                                          
 
                                           <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Assign To </label>
-                                                    <span class="required"></span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                  
+                                                   <%-- <span class="required"></span>
+                                                </span>--%>
                                                 <asp:DropDownList ID="ddlAssignTo" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="9" >
                                                 </asp:DropDownList>
+                                                   </div>
+                                                  <label>Assign To </label>
                                                
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Status </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                   
+                                                    <%--<span class="required">*</span>
+                                                </span>--%>
                                                 <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="10" >
                                                 </asp:DropDownList>
@@ -225,18 +245,21 @@
                                                     <asp:RequiredFieldValidator ID="requiredStatus" runat="server" ControlToValidate="ddlStatus" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Select Status" ForeColor="Red" ></asp:RequiredFieldValidator>
                                                 </span>
+                                                   </div>
+                                                    <label>Status </label>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Comments</label>
-
-                                                </span>
-                                                <asp:TextBox ID="txtComment" runat="server" placeholder=""
+                                            <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                                    
+                                                
+                                                <asp:TextBox ID="txtComment" runat="server" placeholder="" Height="100px"
                                                     ClientIDMode="Static" TextMode="MultiLine" TabIndex="11">
                                                 </asp:TextBox>
+                                                   </div>
+                                                   <label>Comments</label>
 
 
                                             </div>

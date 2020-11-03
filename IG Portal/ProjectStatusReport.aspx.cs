@@ -94,7 +94,7 @@ namespace IG_Portal
                         (e.Row.FindControl("lblStatus") as Label).ForeColor = System.Drawing.Color.White;
 
                     }
-                    if (status < 15 && status>0)
+                    if (status < 15 && status>=0)
                     {
                         (e.Row.FindControl("lblStatus") as Label).Text = "On Time";
                         (e.Row.FindControl("lblStatus") as Label).BackColor= System.Drawing.Color.GreenYellow;

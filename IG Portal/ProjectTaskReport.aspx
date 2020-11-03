@@ -105,7 +105,7 @@
                                                 <div class="table-scrollable">
                                                     <asp:GridView ID="GridTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                                                         class="striped" OnSorting="GridTask_Sorting" AllowSorting="true"  
-                                                        GridLines="None"
+                                                        GridLines="None" OnRowDataBound="GridTask_RowDataBound"
                                                         ShowHeaderWhenEmpty="True" Width="100%" OnPageIndexChanging="GridTask_PageIndexChanging" PageSize="20">
                                                         <Columns>
                                                            
@@ -146,16 +146,21 @@
 
                                                             <asp:TemplateField HeaderText="Estimated Hours" HeaderStyle-CssClass="autostyle2" SortExpression="EstiamtedWorkTime">
                                                                 <ItemTemplate>
-                                                                    <asp:Label ID="Label11" runat="server" Text='<%# Eval("EstiamtedWorkTime","{0:n}")  %>'></asp:Label>
+                                                                    <asp:Label ID="lblPTime" runat="server" Text='<%# Eval("EstiamtedWorkTime","{0:n}")  %>'></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
                                                             <asp:TemplateField HeaderText="Actual Completion Hours" HeaderStyle-CssClass="autostyle2" SortExpression="ActualTimeSpent" >
                                                                 <ItemTemplate>
-                                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("ActualTimeSpent","{0:n}")  %>' ></asp:Label>
+                                                                    <asp:Label ID="lblATime" runat="server" Text='<%# Eval("ActualTimeSpent","{0:n}")  %>' ></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
+                                                             <asp:TemplateField HeaderText="Status" HeaderStyle-CssClass="autostyle2" >
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="lblStatus" runat="server" ></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                          
 
                                                         </Columns>

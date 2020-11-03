@@ -10,7 +10,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Add News/Announcements" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Add News/Announcements</h4>
+                    <%--<asp:Label ID="lbltitle" runat="server" Text="Add News/Announcements" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                

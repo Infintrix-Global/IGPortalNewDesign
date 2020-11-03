@@ -28,7 +28,7 @@
     <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
     <%--<link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">--%>
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <%-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--%>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -258,6 +258,12 @@
                                                 <li><a href="<%= ResolveUrl("~/AddPage.aspx") %>">Page</a> </li>
                                                  <li><a href="<%= ResolveUrl("~/AddDepartment.aspx") %>">Department</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddClientDetails.aspx") %>">Client</a> </li>
+                                                  
+                                                 <li><a href="<%= ResolveUrl("~/AddNews.aspx") %>">Add News</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewNews.aspx") %>">View News</a> </li>
+
+                                         
+                              
 
                                             </ul>
                                         </div>
@@ -656,6 +662,19 @@
                                             <ul>
                                                 <li><a href="<%= ResolveUrl("~/AddTimeSheet.aspx") %>">Add</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ViewTask.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                             <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>News </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                 <li><a href="<%= ResolveUrl("~/AddNews.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewNews.aspx") %>">View</a> </li>
 
                                             </ul>
                                         </div>

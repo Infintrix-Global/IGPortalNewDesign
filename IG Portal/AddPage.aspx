@@ -22,7 +22,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text=" Add Page" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Add Page</h4>
+                   <%-- <asp:Label ID="lbltitle" runat="server" Text=" Add Page" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                
@@ -32,11 +33,9 @@
                 <div class="row">
 
                       <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project Name </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                  
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
@@ -44,20 +43,27 @@
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Project Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                    </div>
+                                                  <label>Project Name </label>
+                                                   
                                             </div>
                                         </div>
 
 
                     <div class=" col m3">
-                        <div class="form-group">
-                            <span class="title">
-                            <label>Page Name</label>
-                                 <span class="required">*</span>
-                                                </span>
+                        <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                           
+                          
+                                
                             <asp:TextBox ID="txtPageName" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static" ValidationGroup="e"></asp:TextBox>
+                                  <span class="help-block">
                             <asp:RequiredFieldValidator ID="requiredPage" runat="server" ControlToValidate="txtPageName" ErrorMessage="Please Enter Page Name" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
-
+</span>
+                                                    </div>
+                              <label>Page Name</label>
+                                
                         </div>
                     </div>
 

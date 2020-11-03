@@ -359,7 +359,7 @@ namespace IG_Portal
                     GridTask.HeaderStyle.Font.Bold = true;
                     GridTask.RenderControl(hw);
                     Response.Write(sw.ToString());
-
+                    HttpContext.Current.ApplicationInstance.CompleteRequest();
                     Response.End();
 
 

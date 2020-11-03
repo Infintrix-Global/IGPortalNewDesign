@@ -24,15 +24,6 @@ namespace IG_Portal
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// lbltitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbltitle;
-
-        /// <summary>
         /// upBug control.
         /// </summary>
         /// <remarks>

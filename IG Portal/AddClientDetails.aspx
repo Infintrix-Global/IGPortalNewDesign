@@ -9,7 +9,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Add Client" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Add Client</h4>
+                    <%--<asp:Label ID="lbltitle" runat="server" Text="Add Client" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -21,46 +22,70 @@
 
                         <div class="row">
                             <div class="col m3">
-
-                                <label><span class="auto-style1">Mobile Number</span> <span class="required">*</span></label>
-                                <asp:TextBox ID="txtMobile" runat="server" class="form-control" placeholder="Enter Mobile" TabIndex="2"></asp:TextBox>
+                                <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                
+                                <asp:TextBox ID="txtMobile" runat="server" class="form-control" placeholder="" TabIndex="2"></asp:TextBox>
+                                                    <span class="help-block">
                                 <asp:RequiredFieldValidator ID="RequiredMobile" runat="server" ControlToValidate="txtMobile" ErrorMessage="Please Enter Mobile Number" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidatorMobile" runat="server" ControlToValidate="txtMobile" Display="Dynamic" ErrorMessage="Please enter valid Mobile Number" ForeColor="Red" SetFocusOnError="True" ValidationExpression="[0-9]{10}" ValidationGroup="e"></asp:RegularExpressionValidator>
+                                                        </span>
+                                                   </div>
+                                    <label>Mobile Number</label>
+                                    </div>
+
                             </div>
                             <div class="col m3">
+                                <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                
 
-                                <label><span class="auto-style1">Name</span><span class="required">*</span> </label>
-
-                                <asp:TextBox ID="txtName" class="form-control" placeholder="Name" TabIndex="3" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtName" class="form-control" placeholder="" TabIndex="3" runat="server"></asp:TextBox>
+                                                    <span class="help-block">
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtName" ValidationGroup="e"
                                     SetFocusOnError="true" ErrorMessage="Please Enter Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator27" runat="server" ValidationGroup="e"
                                     ForeColor="Red" ErrorMessage="Only text is allowed" Display="Dynamic" ControlToValidate="txtName"
                                     SetFocusOnError="True" ValidationExpression="^\s*[a-zA-Z,\s]+\s*$">
                                 </asp:RegularExpressionValidator>
+   </span>
+                                                   </div>
+                                    <label>Name </label>
+                                    </div>
                             </div>
 
                             <div class="col m3">
+                                <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                              
 
-                                <label><span class="auto-style1">Email</span><span class="required">*</span> </label>
-
-                                <asp:TextBox ID="txtEmail" class="form-control" placeholder="Email ID" TabIndex="4" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" class="form-control" placeholder="" TabIndex="4" runat="server"></asp:TextBox>
+                                                     <span class="help-block">
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmail" ValidationGroup="e"
                                     SetFocusOnError="true" ErrorMessage="Please Enter Email" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ValidationGroup="e"
                                     ForeColor="Red" ErrorMessage="Enter valid Email" Display="Dynamic" ControlToValidate="txtEmail"
                                     SetFocusOnError="True" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
                                 </asp:RegularExpressionValidator>
+                                                          </span>
+                                                   </div>
+                                      <label>Email</label>
+                                    </div>
                             </div>
 
                                 <div class="col m3">
+                                    <div class="input-field">
+                                               <div class="select-wrapper initialized">
+                                
 
-                                <label><span class="auto-style1">Location</span><span class="required">*</span> </label>
-
-                                <asp:TextBox ID="txtLocation" class="form-control" placeholder="Location" TabIndex="4" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtLocation" class="form-control" placeholder="" TabIndex="4" runat="server"></asp:TextBox>
+                                                     <span class="help-block">
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLocation" ValidationGroup="e"
                                     SetFocusOnError="true" ErrorMessage="Please Enter Location" ForeColor="Red"></asp:RequiredFieldValidator>
-                              
+                                </span>
+                                                   </div>
+                                        <label>Location</label>
+                                        </div>
                             </div>
                            
                         </div>

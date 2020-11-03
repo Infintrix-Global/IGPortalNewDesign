@@ -9,7 +9,8 @@
               <!-- BEGIN FORM-->
               <div class="form-body">
                   <div class="row" align="center">
-                      <asp:Label ID="lbltitle" runat="server" Text=" Add Department " Font-Bold="true" Font-Size="Large"></asp:Label>
+                      <h4 class="header2">Add Department</h4>
+                      <%--<asp:Label ID="lbltitle" runat="server" Text=" Add Department " Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                   </div>
                   <br />
 
@@ -18,11 +19,16 @@
                           <asp:Label ID="lblmsg" runat="server"></asp:Label>
                           <div class="row">
                               <div class=" col m3">
-                                  <div class="form-group">
-                                      <label>Department Name</label>
+                                  <div class="input-field">
+                                       <div class="select-wrapper initialized">
+                                    
                                       <asp:TextBox ID="txtDepartmentName" runat="server" class="form-control" placeholder=""
                                           ClientIDMode="Static" ValidationGroup="e"></asp:TextBox>
+                                              <span class="help-block">
                                       <asp:RequiredFieldValidator ID="requiredProject" runat="server" ControlToValidate="txtDepartmentName" ErrorMessage="Please Enter Department Name" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
+</span>
+                                           </div>
+                                        <label>Department Name</label>
 
                                   </div>
                               </div>
