@@ -38,7 +38,8 @@
             <div class="form-body">
 
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Assign Project" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Assign Project</h4>
+                    <%--<asp:Label ID="lbltitle" runat="server" Text="Assign Project" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -52,11 +53,10 @@
                                      
                                     <div class="row">
                                          <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Employee Name</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                              <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                    
+                                                    
                                                 <asp:DropDownList ID="ddlEmployee" runat="server" placeholder=""
                                                     TabIndex="1" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged">
                                                 </asp:DropDownList>
@@ -64,22 +64,25 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEmployee" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Select Employee Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                    </div>
+                                                  <label>Employee Name</label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project List </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                             <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                   
+                                                   
                                                 <div class="block1">
                             <asp:ListBox ID="lstProject" runat="server" Visible="false" SelectionMode="Multiple" AppendDataBoundItems="true" ></asp:ListBox>
                               
                           
                               <asp:CheckBoxList ID="chkProject" RepeatLayout="OrderedList" runat="server"   TabIndex="2"/>
+                                                    </div>
+                                                     <label>Project List </label>
                         </div>
                                             </div>
                                         </div>

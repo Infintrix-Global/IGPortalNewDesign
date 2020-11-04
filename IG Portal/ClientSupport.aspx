@@ -18,7 +18,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Support" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Support</h4>
+                <%--    <asp:Label ID="lbltitle" runat="server" Text="Support" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -62,20 +63,21 @@
                                     <div id="Project" runat="server" visible="false">
                                         <div class="row" align="center">
                                            <div class="col m4" >
-                            <span class="title">
-                                                    <label>Project Name<span class="required">*</span></label>
-                                                   
-                                                </span>
-                                               </div>
-                                                 <div class="col m4" >
-                    <asp:DropDownList ID="ddlProjectName" runat="server" TabIndex="1" >
+                             <div class="input-field">
+                                  <div class="select-wrapper initialized">
+                                  <asp:DropDownList ID="ddlProjectName" runat="server" TabIndex="1" >
                     </asp:DropDownList>
                             <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Project Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
-                            </div>
+                                      </div>
+                                               
+                                                    <label>Project Name</label>
+                                                   </div>
+                                               </div>
                                             </div>
+                                            
           <div class="clearfix"></div>
                                            <div class="row" >
                                         <div class="col m10">
@@ -91,17 +93,19 @@
                                     <div id="IssueIn" runat="server" visible="false">
                                         <div class="row" align="center">
                                             <div class="col m4">
-                            <span class="title">
-                                                    <label>Issue In<span class="required">*</span></label>
-                                                </span>
-                                                </div>
-                                            <div class="col m4">
-                    <asp:DropDownList ID="ddlIssueIn" runat="server" TabIndex="3" >
+                              <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                     <asp:DropDownList ID="ddlIssueIn" runat="server" TabIndex="3" >
                      <asp:ListItem Text="Android App" Value="Android App"></asp:ListItem>
                         <asp:ListItem Text="Mobile App" Value="Mobile App"></asp:ListItem>
                         <asp:ListItem Text="Web" Value="Web"></asp:ListItem>
                     </asp:DropDownList>
-                            </div>
+                                                    </div>
+                                                    <label>Issue In</label>
+                                              </div>
+                                               
+                                                </div>
+                                          
                                             </div>
                                             <div class="clearfix"></div>
                                         <div class="row">
@@ -118,18 +122,19 @@
                <div id="Details" runat="server" visible="false">
                 <div class="row" align="center">
                       <div class="col m4">
-
-                                <label><span class="title">Details</span><span class="required">*</span> </label>
-                          </div>
-                          <div class="col m6">
-                              
-                           <CKEditor:CKEditorControl ID="CKEditor1" BasePath="~/Scripts/ckeditor/" runat="server" style="width: 700px; " >
+                            <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                       <CKEditor:CKEditorControl ID="CKEditor1" BasePath="~/Scripts/ckeditor/" runat="server" style="width: 700px; " >
    </CKEditor:CKEditorControl>
                                 <%--<asp:TextBox ID="txtDetails" class="form-control"  TabIndex="4" runat="server" TextMode="MultiLine" Height="150px" Width="450px"></asp:TextBox>--%>
+                                                     <span class="help-block">
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="CKEditor1" ValidationGroup="e"
                                     SetFocusOnError="true" ErrorMessage="Please Enter Details" ForeColor="Red"></asp:RequiredFieldValidator>
-                              
-                            </div>
+                                                         </span>
+                              </div>
+                                <label>Details</label>
+                          </div>
+                         </div>
                   
                     </div>
                      <div class=" clearfix"></div>

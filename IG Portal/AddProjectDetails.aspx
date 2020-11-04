@@ -15,7 +15,8 @@
             <div class="form-body">
 
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Add Project Details" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Add Project Details</h4>
+                 <%--   <asp:Label ID="lbltitle" runat="server" Text="Add Project Details" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -27,11 +28,9 @@
                                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                                     <div class="row">
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project Name </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                   
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
                                                      TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
@@ -39,29 +38,31 @@
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Project Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                </div>
+                                                 <label>Project Name </label>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project Description</label>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                   
                                                   
-                                                </span>
+                                               
                                               
                                                 <asp:TextBox ID="txtProjectDesription" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="2">
                                                 </asp:TextBox>
-                                              
+                                              </div>
+                                                 <label>Project Description</label>
                                             </div>
                                         </div>
 
                                           <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project Manager </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                             <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                    
+                                                   
                                                 <asp:DropDownList ID="ddlProjectManager" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="1"  >
                                                 </asp:DropDownList>
@@ -69,34 +70,38 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlProjectManager" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Select Project Manager" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                </div>
+                                                 <label>Project Manager </label>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                              <div class="form-group">
-                                                <span class="title">
+                                              <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                  
+                                                   
+                                                </span>
+                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"  TabIndex="4" TextMode="Date"   ></asp:TextBox>
+                                                <span class="help-block">
+                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+                                                    </span>
+                                                </div>
                                                     <label>
                                                       Start Date
                                                     </label>
-                                                    <span class="required">*</span>
-                                                </span>
-                                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"  TabIndex="4" TextMode="Date"   ></asp:TextBox>
-                                               
-                                                <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
-
                                                
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Website Link</label>
-                                                </span>
+                                           <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                 
                                                 <asp:TextBox ID="txtWebsiteLInk" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="3" >
                                                 </asp:TextBox>
-                                               
+                                               </div>
+                                                  <label>Website Link</label>
                                             </div>
 
                                         </div>
@@ -108,40 +113,40 @@
                                          <div class="clearfix"></div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label> Link</label>
-                                                   
-                                                </span>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                  
                                                 <asp:TextBox ID="txtAPLiveLink" runat="server" placeholder=""
                                                     ClientIDMode="Static"  TabIndex="4">
                                                 </asp:TextBox>
-                                            
+                                                </div>
+                                              <label> Link</label>
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
+                                             <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                <asp:TextBox ID="txtLiveUserName" runat="server" CssClass="form-control"  TabIndex="5" ></asp:TextBox>
+                                             </div>
                                                     <label>
                                                         User Name
                                                     </label>
                                                    
-                                                </span>
-                                                <asp:TextBox ID="txtLiveUserName" runat="server" CssClass="form-control"  TabIndex="5" ></asp:TextBox>
-                                             
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        Password</label>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                 
                                                     
-                                                </span>
+                                                
                                                 <asp:TextBox ID="txtLivePasssword" runat="server" class="form-control" TabIndex="6"  ></asp:TextBox>
                                             </div>
+                                                   <label>
+                                                        Password</label>
+                                                </div>
                                         </div>
 
                                           <div class="clearfix"></div>
@@ -152,39 +157,37 @@
                                          <div class="clearfix"></div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label> Link</label>
+                                          <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
                                                    
-                                                </span>
                                                 <asp:TextBox ID="txtAPUATLink" runat="server" placeholder=""
                                                     ClientIDMode="Static"  TabIndex="7">
                                                 </asp:TextBox>
-                                            
+                                                </div>
+                                             <label> Link</label>
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                  
+                                                <asp:TextBox ID="txtUATUserName" runat="server" CssClass="form-control"  TabIndex="8" ></asp:TextBox>
+                                                </div>
+                                               <label>
                                                         User Name
                                                     </label>
-                                                   
-                                                </span>
-                                                <asp:TextBox ID="txtUATUserName" runat="server" CssClass="form-control"  TabIndex="8" ></asp:TextBox>
-                                             
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        Password</label>
-                                                    
-                                                </span>
+                                           <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                   
                                                 <asp:TextBox ID="txtUATPassword" runat="server" class="form-control" TabIndex="9"  ></asp:TextBox>
+                                                </div>
+                                                <label>
+                                                        Password</label>
                                             </div>
                                         </div>
 
@@ -196,39 +199,37 @@
                                          <div class="clearfix"></div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label> Link</label>
-                                                   
-                                                </span>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                               
                                                 <asp:TextBox ID="txtAPKLink" runat="server" placeholder=""
                                                     ClientIDMode="Static"  TabIndex="10">
                                                 </asp:TextBox>
-                                            
+                                            </div>
+                                                 <label> Link</label>
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                 
+                                                <asp:TextBox ID="txtAPKUsename" runat="server" CssClass="form-control"  TabIndex="11" ></asp:TextBox>
+                                             </div>
+                                                   <label>
                                                         User Name
                                                     </label>
-                                                   
-                                                </span>
-                                                <asp:TextBox ID="txtAPKUsename" runat="server" CssClass="form-control"  TabIndex="11" ></asp:TextBox>
-                                             
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        Password</label>
-                                                    
-                                                </span>
+                                            <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                                                   
                                                 <asp:TextBox ID="txtAPKPassword" runat="server" class="form-control" TabIndex="12"  ></asp:TextBox>
+                                                </div>
+                                                 <label>
+                                                        Password</label>
                                             </div>
                                         </div>
 

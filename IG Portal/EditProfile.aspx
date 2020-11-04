@@ -57,7 +57,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Employee Details" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Employee Details</h4>
+                 <%--   <asp:Label ID="lbltitle" runat="server" Text="Employee Details" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                 <asp:Label ID="lblmsg" runat="server"></asp:Label>

@@ -22,7 +22,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text=" Add Project " Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Add Project</h4>
+                 <%--   <asp:Label ID="lbltitle" runat="server" Text=" Add Project " Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                
@@ -31,12 +32,16 @@
  <asp:Label ID="lblmsg" runat="server"></asp:Label>
                 <div class="row">
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Project Name</label>
+                       <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                           
                             <asp:TextBox ID="txtProjectName" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static" ValidationGroup="e"></asp:TextBox>
+                                                   <span class="help-block">
                             <asp:RequiredFieldValidator ID="requiredProject" runat="server" ControlToValidate="txtProjectName" ErrorMessage="Please Enter Project Name" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
-
+</span>
+                                                </div>
+                            <label>Project Name</label>
                         </div>
                     </div>
 
