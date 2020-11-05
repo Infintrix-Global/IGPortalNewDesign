@@ -9,7 +9,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Support History" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Support History</h4>
+                   <%-- <asp:Label ID="lbltitle" runat="server" Text="Support History" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->

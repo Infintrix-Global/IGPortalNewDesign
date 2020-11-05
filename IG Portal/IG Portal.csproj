@@ -104,6 +104,7 @@
     <Content Include="ConsultantDashBoardWM.aspx" />
     <Content Include="EmployeeDocuments.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
+    <Content Include="Index.aspx" />
     <Content Include="js\BsMultiSelect.js" />
     <Content Include="LeadDetails.aspx" />
     <Content Include="LeaveApprovalHR.aspx" />
@@ -862,6 +863,13 @@
       <DependentUpon>EmployeeWiseReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="IIGPortalSaleService.cs" />
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LeadDetails.aspx.cs">
       <DependentUpon>LeadDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

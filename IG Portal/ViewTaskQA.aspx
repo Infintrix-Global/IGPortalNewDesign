@@ -9,7 +9,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="View Task" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">View Task</h4>
+                    <%--<asp:Label ID="lbltitle" runat="server" Text="View Task" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -20,12 +21,13 @@
                  <div class="row">
                    
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Project</label>
+                        <div class="input-field col m4"> 											
+											<div class="select-wrapper initialized">
+                          
                             <asp:DropdownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""
                                 OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true"></asp:DropdownList>
-
-
+</div>
+                              <label>Project</label>
                         </div>
                     </div>
 

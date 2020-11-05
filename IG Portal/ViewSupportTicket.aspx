@@ -35,7 +35,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="View Support Tickets" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">View Support Tickets</h4>
+                  <%--  <asp:Label ID="lbltitle" runat="server" Text="View Support Tickets" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->
@@ -46,23 +47,26 @@
 
                   
                     <div class=" col m3">
-                                <div class="form-group">
-                                    <label>Project Name </label>
+                                <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" >
                                     </asp:DropDownList>
-
+</div>
+                                        <label>Project Name </label>
 
                                 </div>
                             </div>
 
-                    <div class=" col m3">
-                                <div class="form-group">
-                                    <label>Client Name </label>
+                    <div class=" col m3"> <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                    
                                     <asp:DropDownList ID="ddlClient" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static"  >
                                     </asp:DropDownList>
-
+</div>
+                                                    <label>Client Name </label>
 
                                 </div>
                             </div>
@@ -70,12 +74,14 @@
                    
 
                          <div class="col m3">
-                                            <div class="form-group">
-                                                    <label>Status </label>
+                                           <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                    
                                                 <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
                                                     ClientIDMode="Static" >
                                                 </asp:DropDownList>
-                                                
+                                                </div>
+                                               <label>Status </label>
                                             </div>
                                         </div>
 

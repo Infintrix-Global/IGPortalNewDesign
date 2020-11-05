@@ -36,7 +36,8 @@
             <div class="form-body">
 
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Project Delivery Details" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Project Delivery Details</h4>
+                   <%-- <asp:Label ID="lbltitle" runat="server" Text="Project Delivery Details" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -48,11 +49,10 @@
                                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                                     <div class="row">
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project Name </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                             <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                   
+                                                    
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
                                                      TabIndex="1" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
@@ -60,16 +60,15 @@
                                                     <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Project Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                    </div>
+                                                  <label>Project Name </label>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Technology</label>
+                                           <div class="input-field">
+                                                <div class="select-wrapper initialized">
                                                   
-                                                </span>
-                                              
                                                 <asp:DropDownList ID="ddlTechnology" runat="server" placeholder="" AutoPostBack="true"
                                                     ClientIDMode="Static" TabIndex="2">
                                                 </asp:DropDownList>
@@ -80,16 +79,16 @@
                                                   <asp:TextBox ID="txtTechnology" class="form-control"  TabIndex="19" Visible="false" runat="server" ></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="reqtxtTechnology" runat="server" ControlToValidate="txtTechnology" ValidationGroup="e"
                                                     SetFocusOnError="true" ErrorMessage="Please Enter Technology " ForeColor="Red"></asp:RequiredFieldValidator>
-                                              
+                                              </div>
+                                                 <label>Technology</label>
                                             </div>
                                         </div>
 
                                           <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Project Type </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                            <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                   
+                                                   
                                                     <div class="block1">
                                                 <asp:CheckBoxList ID="chkProjectType"  runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="3" >
@@ -100,14 +99,15 @@
                                                    <asp:CustomValidator ID="CustomValidator1" ErrorMessage="Please select at least one type."
     ForeColor="Red" ClientValidationFunction="ValidateCheckBoxList" runat="server" ValidationGroup="e" />
                                                 </span>
+                                                    </div>
+                                                 <label>Project Type </label>
                                             </div>
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Free Support(In Months)</label>
-                                                </span>
+                                            <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                   
                                                 <asp:TextBox ID="txtFreeSupport" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="4"  >
                                                 </asp:TextBox>
@@ -117,17 +117,17 @@
                                                      <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ValidationGroup="at" ForeColor="Red"
  ControlToValidate="txtFreeSupport" ErrorMessage="Value must be a whole number" />
                                                 </span>
+                                                    </div>
+                                                 <label>Free Support(In Months)</label>
                                             </div>
 
                                         </div>
                                         <div class="clearfix"></div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label> % of AMC</label>
-                                                   
-                                                </span>
+                                          <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                  
                                                 <asp:TextBox ID="txtAMC" runat="server" placeholder=""
                                                     ClientIDMode="Static"  TabIndex="5" >
 
@@ -140,17 +140,15 @@
                                                         SetFocusOnError="true" ErrorMessage="Please Enter AMC %" ForeColor="Red"></asp:RequiredFieldValidator>
                                                
                                                      </span>
+                                                    </div>
+                                                <label> % of AMC</label>
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        Working Days
-                                                    </label>
-                                                   
-                                                </span>
+                                           <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                              
                                                 <asp:TextBox ID="txtWorkingDays" runat="server" CssClass="form-control"  TabIndex="6"  ></asp:TextBox>
                                               <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="at" 
@@ -158,16 +156,17 @@
                                                   <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ValidationGroup="at" ForeColor="Red"
  ControlToValidate="txtWorkingDays" ErrorMessage="Value must be a whole number" />
                                                 </span>
+                                                    </div>
+                                               <label>
+                                                        Working Days
+                                                    </label>
                                             </div>
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        Cost</label>
-                                                    
-                                                </span>
+                                            <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                  
                                                 <asp:TextBox ID="txtCost" runat="server" class="form-control" TabIndex="7"  ></asp:TextBox>
                                                    <span class="help-block">
                                              <asp:RegularExpressionValidator runat="server" ErrorMessage="Decimal Only" ControlToValidate="txtCost"
@@ -177,6 +176,9 @@
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Cost" ForeColor="Red"></asp:RequiredFieldValidator>
                                                
                                                      </span>
+                                                    </div>
+                                                 <label>
+                                                        Cost</label>
                                             </div>
                                         </div>
 
@@ -189,14 +191,15 @@
                                 
                           <div class="col m3">
                              
-                                                <span class="title">
-                                                    <label>
-                                                        Scope</label>
-                                                    
-                                                </span>
+                                              <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                   
             <asp:FileUpload ID="FileUpScope" runat="server" AllowMultiple="true" />
                                <asp:Label ID="Label2" runat="server" Text="(Format supported:doc,pdf,docx)" ForeColor="Red"></asp:Label>
-      
+      </div>
+                                                   <label>
+                                                        Scope</label>
+                                                </div>
                               </div>
                                          <div class="col m3">
                                            <asp:Button ID="btnFileUpload" runat="server" Text="Upload File"  OnClick="btnFileUpload_Click" />

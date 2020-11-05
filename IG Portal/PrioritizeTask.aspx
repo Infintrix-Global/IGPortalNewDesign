@@ -21,7 +21,8 @@
             <div class="form-body">
 
                  <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Prioritize Task" Font-Bold="true" Font-Size="Large"></asp:Label>
+                     <h4 class="header2">Prioritize Task</h4>
+                   <%-- <asp:Label ID="lbltitle" runat="server" Text="Prioritize Task" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -30,12 +31,14 @@
                  <asp:Label runat="server" Text="" ID="lblmsg"></asp:Label>
                  <div class="row">
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Employee Name</label>
+                       <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                         
                             <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
                                 ClientIDMode="Static" OnSelectedIndexChanged="ddlempName_SelectedIndexChanged"></asp:DropdownList>
+</div>
 
-
+                              <label>Employee Name</label>
                         </div>
                     </div>
 

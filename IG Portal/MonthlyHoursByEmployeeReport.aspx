@@ -10,7 +10,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Hours Spent By Employee" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Hours Spent By Employee</h4>
+                   <%-- <asp:Label ID="lbltitle" runat="server" Text="Hours Spent By Employee" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->
@@ -21,8 +22,9 @@
                 <div class="row">
 
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Month Name</label>
+                         <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                           
                             <asp:DropDownList ID="ddlMonthName" runat="server" class="form-control" placeholder=""
                                  OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Text="January" Value="1"></asp:ListItem>
@@ -40,17 +42,22 @@
                                
 
                             </asp:DropDownList>
+                                                    </div>
+                              <label>Month Name</label>
 
 
                         </div>
                     </div>
 
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Year</label>
+                           <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                           
                             <asp:DropDownList ID="ddlYear" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static" AutoPostBack="false">
                                 </asp:DropDownList>
+                                                    </div>
+                                <label>Year</label>
                             </div>
                         </div>
                     

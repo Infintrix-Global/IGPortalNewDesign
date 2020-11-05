@@ -88,7 +88,8 @@
             <div class="form-body">
 
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Leave Approval Application" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Leave Approval Application</h4>
+                   <%-- <asp:Label ID="lbltitle" runat="server" Text="Leave Approval Application" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 

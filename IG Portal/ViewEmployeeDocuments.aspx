@@ -7,7 +7,8 @@
         <div class="portlet-body">
              <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Employee Document" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Employee Document</h4>
+                 <%--   <asp:Label ID="lbltitle" runat="server" Text="Employee Document" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                

@@ -8,7 +8,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Project Details" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Project Details</h4>
+                    <%--<asp:Label ID="lbltitle" runat="server" Text="Project Details" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 

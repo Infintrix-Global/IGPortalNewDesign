@@ -132,7 +132,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="View Bugs" Font-Bold="true" Font-Size="Large"></asp:Label>
+                  <%--  <asp:Label ID="lbltitle" runat="server" Text="View Bugs" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
+                    <h4 class="header2">View Bugs</h4>
                 </div>
                 <br />
                 <!-- END PAGE HEADER-->
@@ -146,41 +147,48 @@
 
                   
                     <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Project Name </label>
+                                <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                    
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" 
                                          OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" AutoPostBack="true">
                                     </asp:DropDownList>
-
+</div>
+                                    <label>Project Name </label>
 
                                 </div>
                             </div>
 
                     <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Developer Name </label>
+                             <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                 
                                     <asp:DropDownList ID="ddlDeveloper" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static"  >
                                     </asp:DropDownList>
-
+</div>
+                                    <label>Developer Name </label>
 
                                 </div>
                             </div>
 
                     <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Task Type </label>
+                               <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                  
                                     <asp:DropDownList ID="ddlTaskType" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" >
                                     </asp:DropDownList>
-
+                                                    </div>
+                                     <label>Task Type </label>
 
                                 </div>
                             </div>
 
                         <div class="col m2">
-                             <div class="form-group">
-                                                    <label>Status </label>
+                             <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                
                         <asp:TextBox ID="txtStatus" class="form-control " placeholder="Select Status" runat="server" autocomplete="off"></asp:TextBox>
                                                                             <asp:PopupControlExtender ID="PopupControlExtender1" runat="server"
                                                                                 Enabled="True" ExtenderControlID="" TargetControlID="txtStatus" PopupControlID="Panel8"
@@ -199,6 +207,8 @@
  
 
                                                                      </asp:Panel>
+                                                    </div>
+                                     <label>Status </label>
                                  </div>
                             </div>
 
@@ -216,8 +226,9 @@
                                         </div>--%>
 
                        <div class="col m2">
-                                            <div class="form-group">
-                                                    <label>Priority </label>
+                                          <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                 
                                                 <asp:DropDownList ID="ddlPriority" runat="server" placeholder=""
                                                     ClientIDMode="Static" >
                                                      <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
@@ -225,18 +236,21 @@
                                                     <asp:ListItem Text="Medium Priority" Value="Medium Priority"></asp:ListItem>
                                                     <asp:ListItem Text="Low Priority" Value="Low Priority"></asp:ListItem>
                                                 </asp:DropDownList>
-                                                
+                                                </div>
+                                                 <label>Priority </label>
                                             </div>
                                         </div>
                       
                    
                
                     <div class=" col m2">
-                                <div class="form-group">
-                                    <label>Work Date</label>
+                              <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                   
                                     <asp:TextBox ID="txtWorkDate" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" TextMode="Date" ></asp:TextBox>
-                                 
+                                 </div>
+                                   <label>Work Date</label>
 
                                 </div>
                             </div>
@@ -257,12 +271,9 @@
                     </div>
 
  
-                    <div class="col m4">
-                        <div class="form-group form-md-line-input ">
-                          
-                        </div>
+                
                     </div>
-                </div>
+                
 
                 <div class="clearfix"></div>
          

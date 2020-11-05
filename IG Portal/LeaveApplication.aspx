@@ -24,7 +24,8 @@
             <div class="form-body">
 
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Apply For Leave" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Apply For Leave</h4>
+                 <%--   <asp:Label ID="lbltitle" runat="server" Text="Apply For Leave" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 
@@ -42,11 +43,10 @@
                                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                                     <div class="row">
                                         <div class="col m2">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Leave Type </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                           <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                 
+                                                  
                                                 <asp:DropDownList ID="ddlLeaveType" runat="server" placeholder=""
                                                     ClientIDMode="Static" TabIndex="1" >
                                                 </asp:DropDownList>
@@ -54,16 +54,17 @@
                                                     <asp:RequiredFieldValidator ID="requiredLeaveType" runat="server" ControlToValidate="ddlLeaveType" ValidationGroup="at" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Select Leave Type" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
+                                                    </div>
+                                                  <label>Leave Type </label>
                                             </div>
                                         </div>
 
 
                                         <div class="col m3">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>Reason</label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                           <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                 
+                                                   
                                                 <asp:TextBox ID="txtReason" runat="server" placeholder=""
                                                     ClientIDMode="Static" TextMode="MultiLine" TabIndex="2">
                                                 </asp:TextBox>
@@ -72,38 +73,42 @@
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Reason" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                                 </span>
+                                                    </div>
+                                                  <label>Reason</label>
 
                                             </div>
                                         </div>
 
                                         <div class="col m2">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        From  Date
-                                                    </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                          <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                   
                                                 <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="3"  OnTextChanged="txtFromDate_TextChanged"  AutoPostBack="true"   ></asp:TextBox>
                                                <%-- <asp:CompareValidator ID="rgvStartDate" runat="server" ErrorMessage="Only Previous 3 days are allowed" Operator="GreaterThanEqual"
                  ValidationGroup="at" ControlToValidate="txtFromDate"  ForeColor="Red" SetFocusOnError="true" Type="Date"></asp:CompareValidator>--%>
                                                 <asp:RequiredFieldValidator ID="requiredSDate" runat="server" ControlToValidate="txtFromDate" ErrorMessage="Please Enter From Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
+                                               <label>
+                                                        From  Date
+                                                    </label>
+                                              </div>
                                         </div>
 
                                         <div class="col m2">
-                                            <div class="form-group">
-                                                <span class="title">
-                                                    <label>
-                                                        To Date
-                                                    </label>
-                                                    <span class="required">*</span>
-                                                </span>
+                                           <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                                 
+                                                   
                                                 <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" TextMode="Date" TabIndex="4"></asp:TextBox>
                                               <%--  <asp:CompareValidator ID="rgvEndDate" runat="server" ErrorMessage="End Date should be after Start Date" Operator="GreaterThanEqual"
                  ValidationGroup="at" ControlToValidate="txtToDate" ForeColor="Red" SetFocusOnError="true" Type="Date"></asp:CompareValidator>--%>
                                                 <asp:RequiredFieldValidator ID="requiredEDate" runat="server" ControlToValidate="txtToDate" ErrorMessage="Please Enter To Date  " ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
                                             </div>
+                                                  <label>
+                                                        To Date
+                                                    </label>
+                                               </div>
+
                                         </div>
 
                                         <div class="col m2">

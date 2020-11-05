@@ -13,7 +13,8 @@
 
                 <br />
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="MOM Details " Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">MOM Details</h4>
+                   <%-- <asp:Label ID="lbltitle" runat="server" Text="MOM Details " Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
 

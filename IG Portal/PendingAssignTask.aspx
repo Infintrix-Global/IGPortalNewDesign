@@ -9,7 +9,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Pending Task" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">Pending Task</h4>
+                  <%--  <asp:Label ID="lbltitle" runat="server" Text="Pending Task" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />
                 <asp:Label ID="lblMessage" runat="server"></asp:Label>
@@ -19,47 +20,55 @@
                  <asp:Label runat="server" Text="" ID="lblmsg"></asp:Label>
                  <div class="row">
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Employee Name</label>
+                       <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                           
                             <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static"></asp:DropdownList>
-
+</div>
+                            <label>Employee Name</label>
 
                         </div>
                     </div>
 
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Project</label>
+                       <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                           
                             <asp:DropdownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static"></asp:DropdownList>
-
+</div>
+                            <label>Project</label>
 
                         </div>
                     </div>
 
                       <div class=" col m3">
-                        <div class="form-group">
-                            <label>Assign Status</label>
+                        <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                            
                             <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static">
                                 <asp:ListItem Text="Not Assigned" Value="1"></asp:ListItem>
                                  <asp:ListItem Text="Assigned" Value="2"></asp:ListItem>
                                  <asp:ListItem Text="Both" Value="3"></asp:ListItem>
                             </asp:DropDownList>
-
+</div>
+                            <label>Assign Status</label>
 
                         </div>
                     </div>
 
                      <div class=" col m3">
-                        <div class="form-group">
-                            <label>Work Status</label>
+                       <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                           
                             <asp:DropDownList ID="ddlTaskStatus" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static">
                                
                             </asp:DropDownList>
-
+</div>
+                            <label>Work Status</label>
 
                         </div>
                     </div>

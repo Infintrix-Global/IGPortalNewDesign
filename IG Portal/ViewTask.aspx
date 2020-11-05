@@ -10,7 +10,8 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="View TimeSheet" Font-Bold="true" Font-Size="Large"></asp:Label>
+                    <h4 class="header2">View TimeSheet</h4>
+                  <%--  <asp:Label ID="lbltitle" runat="server" Text="View TimeSheet" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
                 </div>
                   <div class="row" align="right">
                     <asp:LinkButton ID="lnkAddTS" runat="server" Text="Click Here to Add TimeSheet"  OnClick="lnkAddTS_Click" Font-Size="Medium"></asp:LinkButton>
@@ -22,12 +23,14 @@
                 <div class="row">
 
                     <div class=" col m3">
-                        <div class="form-group">
-                            <label>Employee Name</label>
+                        <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                           
                             <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder=""
                                 OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">
                             </asp:DropDownList>
-
+</div>
+                             <label>Employee Name</label>
                         </div>
                     </div>
                 </div>
@@ -36,80 +39,95 @@
               
                         <div class="row">
                             <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Project Name </label>
+                                 <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                  
                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
                                          OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
                                     </asp:DropDownList>
-
+</div>
+                                       <label>Project Name </label>
 
                                 </div>
                             </div>
 
                              <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Task Category </label>
+                                  <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                   
                                     <asp:DropDownList ID="ddlTaskCategory" runat="server" class="form-control" placeholder=""
                                         OnSelectedIndexChanged="ddlTaskCategory_SelectedIndexChanged" AutoPostBack="true">
                                     </asp:DropDownList>
-
+</div>
+                                       <label>Task Category </label>
 
                                 </div>
                             </div>
 
                             <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Task Type </label>
+                                 <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                   
                                     <asp:DropDownList ID="ddlTaskType" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static">
                                     </asp:DropDownList>
-
-
+</div>
+                                      <label>Task Type </label>
                                 </div>
                             </div>
 
                             <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Task Title </label>
+                                 <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                   
                                     <asp:DropDownList ID="ddlTaskTitle" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static">
                                     </asp:DropDownList>
-
-
+</div>
+                                      <label>Task Title </label>
                                 </div>
                             </div>
 
                             <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Status</label>
+                                <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                    
                                     <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static">
                                     </asp:DropDownList>
-
-
+</div>
+                                    <label>Status</label>
                                 </div>
                             </div>
 
 
                             <div class=" col m2">
-                                <div class="form-group">
-                                    <label>From Date</label>
+                                <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                  
                                     <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
                                         ClientIDMode="Static" TextMode="Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
+                                                      <span class="help-block">
                                     <asp:RequiredFieldValidator ID="requiredFromDate" runat="server" ControlToValidate="txtFromDate" ValidationGroup="vt"
                                         SetFocusOnError="true" ErrorMessage="Enter From Date" ForeColor="Red" Enabled="false"></asp:RequiredFieldValidator>
-
+                                                          </span>
+</div>
+                                      <label>From Date</label>
                                 </div>
                             </div>
 
                             <div class=" col m2">
-                                <div class="form-group">
-                                    <label>To Date</label>
+                               <div class="input-field">
+                                                <div class="select-wrapper initialized">
+                                 
                                     <asp:TextBox ID="txtToDate" runat="server" class="form-control" placeholder="" AutoPostBack="true"
                                         ClientIDMode="Static" TextMode="Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
+                                                      <span class="help-block">
                                     <asp:RequiredFieldValidator ID="requiredToDate" runat="server" ControlToValidate="txtToDate" ValidationGroup="vt"
                                         SetFocusOnError="true" ErrorMessage="Enter To Date" ForeColor="Red" Enabled="false"></asp:RequiredFieldValidator>
-
+                                                          </span>
+</div>
+                                      <label>To Date</label>
                                 </div>
                             </div>
 

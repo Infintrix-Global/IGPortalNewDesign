@@ -7,20 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IG_Portal {
-    
-    
-    public partial class ViewBugDetails {
-        
-        /// <summary>
-        /// lbltitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbltitle;
-        
+namespace IG_Portal
+{
+
+
+    public partial class ViewBugDetails
+    {
+
         /// <summary>
         /// lblProjectName control.
         /// </summary>
@@ -29,7 +22,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblProjectName;
-        
+
         /// <summary>
         /// lblTaskTitle control.
         /// </summary>
@@ -38,7 +31,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTaskTitle;
-        
+
         /// <summary>
         /// lblPageName control.
         /// </summary>
@@ -47,7 +40,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPageName;
-        
+
         /// <summary>
         /// lblSuggestedBy control.
         /// </summary>
@@ -56,7 +49,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuggestedBy;
-        
+
         /// <summary>
         /// lblPriority control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPriority;
-        
+
         /// <summary>
         /// lblBugDetails control.
         /// </summary>
@@ -74,7 +67,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBugDetails;
-        
+
         /// <summary>
         /// lblDate control.
         /// </summary>
@@ -83,7 +76,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDate;
-        
+
         /// <summary>
         /// lblStatus control.
         /// </summary>
@@ -92,7 +85,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatus;
-        
+
         /// <summary>
         /// lblCrossCheckedBy control.
         /// </summary>
@@ -101,7 +94,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCrossCheckedBy;
-        
+
         /// <summary>
         /// lblDeveloper control.
         /// </summary>
@@ -110,7 +103,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDeveloper;
-        
+
         /// <summary>
         /// lblComment control.
         /// </summary>
@@ -119,7 +112,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblComment;
-        
+
         /// <summary>
         /// divScreenshot control.
         /// </summary>
@@ -128,7 +121,7 @@ namespace IG_Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divScreenshot;
-        
+
         /// <summary>
         /// GridBug control.
         /// </summary>
