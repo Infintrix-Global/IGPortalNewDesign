@@ -1,0 +1,531 @@
+/*
+** Custom Theme CSS
+*/
+
+/*
+**
+1. Theme Fonts
+2. Utilites
+3. Theme Overrides
+4. Header
+**
+*/
+
+/* 1. Theme Fonts */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../../font/poppins/Poppins-Regular.woff2') format('woff2'),
+        url('../../font/poppins/Poppins-Regular.woff') format('woff'),
+        url('../../font/poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../../font/poppins/Poppins-SemiBold.woff2') format('woff2'),
+        url('../../font/poppins/Poppins-SemiBold.woff') format('woff'),
+        url('../../font/poppins/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../../font/poppins/Poppins-Medium.woff2') format('woff2'),
+        url('../../font/poppins/Poppins-Medium.woff') format('woff'),
+        url('../../font/poppins/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 2. Utilites */
+.theme__new .row .col { margin: unset; }
+
+/* 3. Theme Overrides */
+
+.theme__new {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.theme__new body {
+    background: #f3f5fa;
+    color: #979dab;
+}
+
+.theme__new a,
+.theme__new span { display: inline-block; }
+
+.theme__new a { color: #399fae; }
+
+/* Colors */
+.primary-txt, .blue-txt { color: #399fae; }
+.secondary-txt, .darkgrey-txt { color: #505050; }
+.grey-txt { color: #979dab; }
+
+.primary-bg, .blue-bg { background: #399fae; }
+.secondary-bg, .darkgrey-bg { background: #505050; }
+.grey-bg { background: #979dab; }
+
+/* Typography */
+.theme__new h1, 
+.theme__new h2, 
+.theme__new h3, 
+.theme__new h4, 
+.theme__new h5, 
+.theme__new h6,
+.theme__new strong {
+    font-weight: 600;
+    color: #505050;
+}
+
+.theme__new .z-depth-1, .theme__new nav, .theme__new .card-panel, .theme__new .card, .theme__new .toast, .theme__new .btn, .theme__new .btn-large, .theme__new .btn-floating, .theme__new .dropdown-content, .theme__new .collapsible, .theme__new .side-nav { box-shadow: none; }
+
+/*Buttons*/
+
+.theme__new .btn {
+    padding: 10px 15px;
+    height: unset;
+    line-height: 22px;
+    font-size: 16px;
+    min-width: 100px;
+    color: #fff;
+}
+
+.theme__new .btn, .theme__new .btn-large { border-radius: 6px; }
+
+.theme__new .btn, .theme__new .btn-large {
+    background-color: #399fae;
+    text-transform: none;
+}
+
+/*Badges*/
+
+.theme__new .badge, .theme__new .new.badge {
+    padding: 1px 5px;
+    right: auto;
+    font-size: 13px;
+    line-height: 23px;
+    border-radius: 6px;
+    background: #979dab;
+    color: #fff;
+}
+
+/*Perfect Scrollbar*/
+.pscontainer { overflow: hidden; position: relative; }
+
+.theme__new .badge.relative { position: relative; }
+
+.theme__new .badge.new { background: #399fae; }
+.theme__new .badge.new:after { content: unset; }
+
+.ps-scrollbar-x-rail, .ps-scrollbar-y-rail { z-index: 10; }
+
+/*Form*/
+.theme__new input[type=text], .theme__new input[type=password], .theme__new input[type=email], .theme__new input[type=url], .theme__new input[type=time], .theme__new input[type=date], .theme__new input[type=datetime-local], .theme__new input[type=tel], .theme__new input[type=number], .theme__new input[type=search], .theme__new textarea.materialize-textarea { height: 2.6rem; }
+
+.theme__new input[type=text]:focus:not([readonly]), .theme__new input[type=password]:focus:not([readonly]), .theme__new input[type=email]:focus:not([readonly]), .theme__new input[type=url]:focus:not([readonly]), .theme__new input[type=time]:focus:not([readonly]), .theme__new input[type=date]:focus:not([readonly]), .theme__new input[type=datetime-local]:focus:not([readonly]), .theme__new input[type=tel]:focus:not([readonly]), .theme__new input[type=number]:focus:not([readonly]), .theme__new input[type=search]:focus:not([readonly]), .theme__new textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #399fae;
+    box-shadow: 0 1px 0 0 #399fae;
+}
+
+/* 4. Header */
+.theme__new header .navbar-fixed { height: auto; }
+
+.theme__new header.navbar-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f3f5fa;
+}
+
+.theme__new nav {
+    height: auto;
+    background: transparent;
+    color: #979dab;
+    box-shadow: none;
+    border-bottom: 1px solid #d8ddea;
+}
+
+.theme__new .navbar-fixed nav { top:0; left: 0; right: 0; }
+
+.theme__new .navbar-stikcy nav {
+    position: sticky;
+    top: 0;
+    left: auto;
+    right: auto;
+}
+
+.theme__new header .brand-logo { padding: 0; margin: 0; position: static; transform: none; }
+
+.theme__new header .brand-logo img { vertical-align: middle; width: 188px; height: auto; }
+
+.theme__new nav ul li { float: none; padding: 0 15px; }
+
+.theme__new nav ul li:first-child { padding-left: 0; }
+
+.theme__new nav ul li:last-child { padding-right: 0; }
+
+.theme__new nav ul li:hover, nav ul li.active { background: transparent; }
+
+.theme__new nav ul a {
+    color: #979dab;
+    line-height: 1;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.theme__new nav i, .theme__new nav [class^="mdi-"], .theme__new nav [class*="mdi-"], .theme__new nav i.material-icons {
+    font-size: 30px;
+    line-height: 36px;
+    vertical-align: middle;
+}
+
+/*No Sidebar Menu*/
+.no__sidebar header .nav-wrapper, .theme__new .container {
+    max-width: calc(100% - 80px) !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no__sidebar header .brand-logo { padding-left: 0; }
+
+/*Layout*/
+.theme__new .row { margin-bottom: 15px; }
+
+.theme__new .row .row:first-child:last-child { margin-bottom: 0; }
+
+.theme__new .wrapper { margin-top: 40px; }
+
+.theme__new .container { padding: 0 0.75rem; }
+
+.theme__new .card {     
+    background: #edeff4;
+    background: #f3f3f8;
+    margin: 0;
+    padding: 15px;
+    border-radius: 6px;
+    min-height: calc(100% - 20px); /* For equal heights, excluding row bottom margins */
+    min-height: 100%; /* For equal heights, excluding row bottom margins */
+    box-shadow: 0 0px 5px 0 rgb(255 255 255 / 16%), 0px 3px 8px 0 rgb(0 0 0 / 11%);
+}
+
+.theme__new .card-white { background: #ffffff; }
+
+.theme__new .card-content {
+    margin: 15px 0 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.theme__new .card-separate {
+    padding: 0;
+}
+
+.theme__new .card-separate .card-header {
+    padding: 15px;
+    margin: 0;
+    background: #ffffff;
+    box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+}
+
+.theme__new .card-separate .card-content {
+    margin: 0;
+    padding: 15px 0;
+}
+
+.theme__new .card-separate .card-content-wrapper  {
+    margin: 0 0 0;
+    padding: 0 15px 0;
+    overflow: auto;
+    max-height: 512px;
+}
+
+.theme__new .card-separate .card-content-scroll {
+    overflow: auto;
+    max-height: 512px;
+}
+
+.theme__new .card-title h2 {
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0;
+}
+
+.theme__new .collapsible {
+    margin: 0;
+    border: 0;
+}
+
+.theme__new .collapsible li + li { margin-top: 15px; }
+
+.theme__new .collapsible-border li {
+    border: 1px solid #d8ddea;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.theme__new .collapsible-header {
+    display: block;
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 6px;
+    color: #505050;
+    overflow: hidden;
+    min-height: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.theme__new li:last-child .collapsible-header { border-bottom: 0; }
+
+.theme__new .collapsible-header:after { color: #979dab; }
+
+.theme__new .collapsible-body {
+    display: block;
+    overflow: hidden;
+    border-top: 1px solid #d8ddea;
+    border-bottom: 0;
+}
+
+.theme__new .collapsible-body p {
+    padding: 0;
+}
+
+.theme__new .collection-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px 15px;
+}
+
+.theme__new .collection-item img {
+    max-width: 60px;
+    height: auto;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+}
+
+.theme__new .collection-item h4 {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.theme__new img + .collection-detail, 
+.theme__new .collection-media + .collection-detail {
+    padding-left: 15px;
+}
+
+.theme__new .collection-detail {
+    font-size: 13px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+}
+
+.theme__new .collection-subtext {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+/*Collection Cards*/
+.theme__new .collection-cards { border: 0; margin: 0; }
+
+.theme__new .collection-cards .collection-item {
+    border-radius: 6px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.theme__new .collection-cards .collection-item:last-child { margin-bottom: 0; }
+
+.theme__new .collection-media {
+    min-width: 60px;
+    width: 60px;
+    height: 60px;
+    color: #ffffff;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+}
+
+.theme__new .activator { cursor: pointer; }
+
+.theme__new .collection-attendees {
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+/*Card Reveal*/
+.theme__new .card .card-reveal {
+    padding-top: 0;
+}
+
+.theme__new .card .card-reveal .card-title {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Specific Cards */
+.theme__new #employees_card.card-separate { min-height: unset; }
+.event__details img { max-width: 100%; }
+
+/*Login Modal Form*/
+.theme__new #login__modal {
+    width: 400px;
+}
+
+.theme__new .row .input-field { margin-top: 12px; }
+
+.theme__new .input-field .prefix { color: #505050; }
+
+.theme__new .input__message {
+    font-size: 12px;
+    position: absolute;
+    top: calc(100% - 10px);
+    left: 60px;
+    visibility: hidden;
+}
+
+.theme__new .input__message-error {
+    color: red;
+}
+
+.theme__new .captcha__field img {
+    border-radius: 6px;
+}
+
+.theme__new .login__footer { font-size: 14px; }
+
+.theme__new .modal { transform: none !important; will-change: unset; max-height: 80%; }
+
+.theme__new .modal-content { position: relative; }
+
+.modal__close {
+    position: fixed;
+    top: 8px;
+    right: 12px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.mail__link { word-break: break-all; }
+
+/*Quick Links*/
+
+.quick__links li a img { vertical-align: middle; }
+
+.quick__links li a {
+    width: 80px;
+    height: 80px;
+    font-size: 38px;
+    line-height: 80px;
+    background: #ffff;
+    border-radius: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+
+/*Holiday Month*/
+.theme__new .card-separate#holiday_card .card-content-scroll { max-height: 300px; }
+
+/*Gallery*/
+.gallary-item a { display: block; }
+
+/*Responsive Styles*/
+
+/*Grid Customization*/
+@media (min-width: 992px) {
+}
+
+/*Portal Responsive*/
+@media screen and (max-width: 1279px) {
+    .theme__new .collection-item { flex-wrap: wrap; }
+    .theme__new img + .collection-detail, .theme__new .collection-media + .collection-detail { padding-left: 0; padding-top: 15px; width: 100%;}
+}
+/*1279 ends*/
+
+@media screen and (max-width: 1199px) {
+    .theme__new .col > .card { margin-bottom: 25px; }
+    .theme__new .card { min-height: calc(100% - 20px); }
+    .theme__new .col:last-child > .card { margin-bottom: 0; }
+    .quick__links li a { width: 60px; height: 60px; font-size: 30px; line-height: 60px; }
+    .quick__links li a img { width: 34px; }
+}
+/*1199 ends*/
+
+@media screen and (max-width: 991px) {
+    .theme__new img + .collection-detail, .theme__new .collection-media + .collection-detail { width: auto; padding-left: 15px; padding-top: 0; max-width: calc(100% - 60px); }
+    .theme__new .col:last-child > #quicklinks_card, .theme__new .col:last-child > #holiday_card { margin-bottom: 20px; }
+    #anniversary_card, #ourgallery_card { margin-bottom: 0; }
+}
+/*991 ends*/
+
+@media screen and (max-width: 767px) {
+    .no__sidebar header .nav-wrapper, .theme__new .container { max-width: calc(100% - 20px) !important; }
+    .theme__new .card-separate .card-content-wrapper { padding: 0 20px 0; }
+    .theme__new .card-separate .card-content { padding: 20px 0; }
+    .theme__new .card, .theme__new .collapsible-border li, .theme__new .collapsible-header, .theme__new .collection-cards .collection-item, .theme__new .badge, .theme__new .new.badge, .theme__new .btn, .theme__new .btn-large { border-radius: 4px; }
+    .theme__new .btn { min-width: 0; }
+}
+/*767 ends*/
+
+
+@media screen and (max-width: 599px) {
+    /*Spacings*/
+    .theme__new .modal .modal-content { padding: 15px; }
+    .theme__new .card-separate .card-content { padding: 15px 0; }
+    .theme__new .card-separate .card-content-wrapper { padding: 0 15px 0; }
+
+    /*Font Sizes*/
+    .theme__new .modal h5 { font-size: 20px; line-height: 28px; }
+    
+    /*Modal*/
+    .theme__new .modal { max-width: calc(100% - 30px); top: 0 !important; margin-top: 40px; height: auto; max-height: calc(100% - 80px); width: 100%; }
+    .theme__new #login__modal.modal { width: 320px; }
+    .profile-image-login { width: 80px; height: 80px!important; }
+}
+/*599 ends*/
+
+@media screen and (max-width: 459px) {
+    .theme__new img + .collection-detail,
+    .theme__new .collection-media + .collection-detail { padding-left: 0; padding-top: 15px; width: 100%; max-width: unset; }
+    .theme__new .btn { min-width: 0; padding: 8px 12px; }
+    .theme__new header .brand-logo img { width: 160px; }
+    .theme__new nav ul li { padding: 7px; }
+    .theme__new nav ul li:first-child { padding-left: 0; }
+    .theme__new nav ul li:last-child { padding-right: 0; }
+    .theme__new #login__modal.modal { width: 300px; }
+}
+/*459 ends*/

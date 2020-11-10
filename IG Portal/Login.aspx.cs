@@ -18,11 +18,11 @@ namespace IG_Portal
             if (!IsPostBack)
             {
                 //Session.Clear();
-                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
-                {
-                    txtUserName.Text = Request.Cookies["UserName"].Value;
-                    txtPassword.Attributes["value"] = Request.Cookies["Password"].Value;
-                }
+                //if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                //{
+                //    txtUserName.Text = Request.Cookies["UserName"].Value;
+                //    txtPassword.Attributes["value"] = Request.Cookies["Password"].Value;
+                //}
             }
         }
 

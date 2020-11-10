@@ -4,31 +4,19 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="card-body">
         <div class="portlet-body">
-             <div class="page-bar" >
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="AdminDashBoard.aspx">Home</a>
-                        <i class="fa fa-angle-right"></i>
-
-
-                        <a href="ViewBlog.aspx">View Blog</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                </ul>
-
-            </div>
+            
                 <div class="row">
                     <div class=" col m12">
                         <div class="portlet light ">
                             <asp:Label runat="server" Text="" ID="count"></asp:Label>
                             <div class="portlet-body">
                                 <div class="table-scrollable table-scrollable-borderless">
-                                    <asp:GridView ID="GridNews" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                                      <asp:GridView ID="GridNews" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                                         class="striped" OnPageIndexChanging="GridNews_PageIndexChanging"
                                         GridLines="None" OnRowDataBound="GridNews_RowDataBound" OnSorting="GridNews_Sorting"
                                          OnRowCommand="GridNews_RowCommand"
                                         ShowHeaderWhenEmpty="True" Width="100%">
+                                 
                                         <Columns>
 
                                             <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">

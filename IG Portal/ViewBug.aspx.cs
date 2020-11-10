@@ -82,7 +82,7 @@ namespace IG_Portal
             }
             else
             {
-                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 6);
+                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 15);
                 if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
                 {
                     //if (Session["Role"].ToString() == "2")

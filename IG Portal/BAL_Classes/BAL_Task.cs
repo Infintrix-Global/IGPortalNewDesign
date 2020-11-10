@@ -860,6 +860,23 @@ namespace IG_Portal.BAL_Classes
             return ds.Tables[0];
         }
 
+        public DataSet GetEventDetailsByID(string EventID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EventID", EventID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEventDetailsByID");
+
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds;
+        }
+
         public int RemoveNews(int NewsID)
         {
             int _isUpdated = -1;
@@ -876,6 +893,24 @@ namespace IG_Portal.BAL_Classes
             }
             return _isUpdated;
         }
+
+        public int RemoveEvent(int EventID)
+        {
+            int _isUpdated = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EventID", EventID);
+
+                _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_RemoveEvent");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isUpdated;
+        }
+
 
         public DataTable GetRoleByLoginID(string mob)
         {

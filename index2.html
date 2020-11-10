@@ -1,0 +1,501 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaymyEMI | Loan Service</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <base href="https://paymyemi.net/">
+
+    <!-- Cross platform favicon setup & app themeing -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ff9734">
+
+    <!-- SEO tags -->
+    <meta name="description" content="PaymyEMI - Short term loans for paying your EMI's">
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PaymyEMI | Loan Service" />
+    <meta property="og:description" content="PaymyEMI - Short term loans for paying your EMI's" />
+    <meta property="og:url" content="/" />
+    <meta property="og:site_name" content="PaymyEMI" />
+    <meta property="og:image" content="paymyemi.jpg" />
+    <meta property="og:image:secure_url" content="paymyemi.jpg" />
+    <meta property="og:image:width" content="1104" />
+    <meta property="og:image:height" content="736" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="PaymyEMI - Short term loans for paying your EMI's" />
+    <meta name="twitter:title" content="PaymyEMI | Loan Service" />
+    <meta name="twitter:site" content="@paymyemi" />
+    <meta name="twitter:image" content="paymyemi.jpg" />
+    <meta name="twitter:creator" content="@paymyemi" />
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+    <body>
+        <!-- Header -->
+        <header class="site__header site__transition">
+            <div class="container-fluid container_lg" data-aos="fade" data-aos-duration="1200" data-aos-delay="400">
+                <nav class="site__nav d-flex align-items-center justify-content-between">
+                    <h1 class="nav__brand">
+                        <a href="#home" class="slideToTarget" title="PaymyEMI">
+                            <img alt="PaymyEMI - Loan Services" src="images/paymyemi-logo.png" width="190" height="55" />
+                        </a>
+                    </h1>
+
+                    <ul class="site__nav-list inline__list site__transition worksans_medium" id="siteNavigation">
+                        <li><a href="#home" title="Home" class="active slideToTarget">Home</a></li>
+                        <li><a href="#about" title="About" class="slideToTarget" data-offtop=".site__header">About</a></li>
+                        <li><a href="#steps" title="Steps" class="slideToTarget" data-offtop=".site__header">Steps</a></li>
+                        <li><a href="#whyus" title="Why Us?" class="slideToTarget" data-offtop=".site__header">Why Us?</a></li>
+                        <li><a href="#contact" title="Contact" class="slideToTarget" data-offtop=".site__header">Contact</a></li>
+                        <li><a href="#getapp" title="Get App" class="slideToTarget site__nav-cta" data-offtop=".site__header">Get App</a></li>
+                    </ul>
+
+                    <div class="site__toggle d-md-none">
+                        <button class="site__nav-toggle" type="button" data-target="#siteNavigation" aria-controls="siteNavigation" aria-label="Toggle navigation" >
+                            <span class="toggle__item"></span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- Header ENDS -->
+
+        <!-- Hero -->
+        <section id="home" class="home__hero d-flex align-items-center" data-aos="fade" data-aos-duration="1000" data-aos-delay="0">
+            <div class="container-fluid container_lg">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 data-aos="fade-up" data-aos-duration="800" data-aos-delay="400" data-aos-easing="ease-out-quart"><span class="yellow__txt">“Entrust us with your finances for we have </span>hassle-free EMI Loans <span class="yellow__txt">just one tap away from you”</span></h2>
+                        <p data-aos="fade-up" data-aos-duration="900" data-aos-delay="700">Take out 5 minutes to get registered and relax on the day of EMI payment. Download the App now!</p>
+
+                        <div class="hero_cta">
+                            <ul class="inline__list" data-aos="fade-up" data-aos-duration="800" data-aos-delay="900" data-aos-easing="ease-out-quart">
+                                <li>
+                                    <a href="https://play.google.com/store/apps/details?id=com.ig.paymyemi&hl=en" title="Download PaymyEMI">
+                                        <img alt="Download PaymyEMI" src="images/button-android-store.png" width="188" height="57" />
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#ios" title="Download PaymyEMI">
+                                        <img alt="Download PaymyEMI" src="images/button-ios-store.png" width="188" height="58" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero__devices">
+                            <span class="hero__sphere" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="700" data-aos-easing="ease-in-out-back"></span>
+                            <img data-aos="fade-up" data-aos-duration="700" data-aos-delay="500" data-aos-easing="ease-in-out-back" src="images/hero-devices.png" width="596" height="672" alt="PaymyEMI App" />
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="hero__elements">
+                    <span class="floating__elements floating__blue" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1000" data-aos-easing="ease-out-back"></span>
+                    <span class="floating__elements floating__orange floating__orange-left" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="800" data-aos-easing="ease-out-back"></span>
+                    <span class="floating__elements floating__orange floating__orange-center" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1200" data-aos-easing="ease-out-back"></span>
+                </div>
+            </div>
+            <span class="floating__elements floating__orange floating__orange-right" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="800" data-aos-easing="ease-out-back"></span>
+        </section>
+        <!-- Hero Ends -->
+
+        <!-- About -->
+        <section id="about" class="about_app section">
+            <div class="container-fluid container-lg">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="head__art" data-aos="fade" data-aos-duration="1000" data-aos-delay="0" data-aos-easing="ease-in-out-back">About     <span class="logo__svg">
+                            <img src="images/paymyemi.svg" width="179" height="37" alt="PaymyEMI" />
+                        </span></h2>
+                        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-easing="ease-in-out-back">PaymyEMI is an application catering to the solution for the problems related to EMI payment. Getting a loan and paying EMIs are tedious and tiring jobs with the unprecedented financial conditions and the tensions of credit score hike up people’s worries. To combat those worries, PaymyEMI brings forth a few simple steps that can make EMI payments a hassle-free and ephemeral task.<br/><br/>
+Getting started with just downloading the application, one can get insights about how the advanced space works. The user will then have to register just once with the requested details, apply for loans, within 2 hours users account will be credited with the requested money.<br/><br/>
+A smooth and well-ordered experience offers EMI Loan tenure from 7/15/21 days to select with an value added option to extend for that month. User can borrow loans of their EMI anytime after registering upto Rs. 1,00,000. For enormous customer gratification with affordable charges the PaymyEMI also allows users to take EMI for specific month if user had registered for multiple EMIs and need just one EMI for the time.</p>
+						
+                    <div class="about__cta mt-0 mt-lg-4 pb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700" data-aos-easing="ease-in-out-back">
+                        <a class="bttn site__transition mb-4 mt-3 mt-sm-3" href="about-us.html" title="About Us">More About Us</a>
+                    </div>
+
+                    </div>
+                </div>
+
+                <div class="PaymyEMIBenifits text-center">
+                   <!-- <div class="row">
+                        <div class="col col-md-4 PaymyEMIBenifits_col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-easing="ease-in-out-back">
+                            <span><img src="images/icon-piggy-bank.png" width="67" height="65" /></span>
+                            <h3 class="h4">Minimum Documents</h3>
+                        </div>
+                        <div class="col col-md-4 PaymyEMIBenifits_col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-easing="ease-in-out-back">
+                            <span><img src="images/icon-pie-chart.png" width="66" height="59" /></span>
+                            <h3 class="h4">Low Interest</h3>
+                        </div>
+                        <div class="col col-md-4 PaymyEMIBenifits_col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-easing="ease-in-out-back">
+                            <span><img src="images/icon-easy-process.png" width="60" height="66" /></span>
+                            <h3 class="h4">Fast & Easy Process</h3>
+                        </div>
+                    </div>-->
+                </div>
+
+                <div class="paymyemi_video">
+                    <div class="floating__elements floating__orange floating__orange-left" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="1000" data-aos-easing="ease-in-out-back" data-aos-offset="250"></div>
+                    <div class="floating__elements floating__orange floating__orange-right" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="600" data-aos-easing="ease-in-out-back"></div>
+                    <span class="floating__elements floating__blue" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1000" data-aos-easing="ease-out-back"></span>
+
+                    <div class="video_art" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="500" data-aos-easing="ease-in-out-back" data-aos-offset="250"></div>
+                    <div class="video__wrapper embed-responsive embed-responsive-16by9" data-aos="fade-up" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-in-out-back">                       
+                        <video id="paymyemivideo" preload="none" class="embed-responsive-item" width="1280" height="720">
+                            <source data-src="video/paymyemi-intro.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video_poster"></div>
+                        <div class="video_controls"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Ends -->
+
+        <!-- Steps -->
+        <section id="steps" class="app_steps section lightyellow__bg">
+            <div class="container-fluid container-lg">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="head__art" data-aos="fade" data-aos-duration="1000" data-aos-delay="0" data-aos-easing="ease-in-out-back">Fast & Easy <span class="yellow__txt">App Process</span></h2>
+                        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" data-aos-easing="ease-in-out-back">See how you will get the loan step by step easily</p>
+                    </div>
+                </div>
+
+                <div class="app_steps-wrapper">
+                    <span class="steps_linker steps_starter" data-aos="zoom-in" data-aos-duration="150" data-aos-delay="0" data-aos-easing="ease-in-out-back"></span>
+                    <div class="steps_svg" data-aos="fade" data-aos-duration="600" data-aos-delay="200" data-aos-easing="ease-in-out-back">
+                        <svg viewBox="0 0 996 977" width="996" height="977"><rect id="svgEditorBackground" x="0" y="0" width="996" height="977" style="fill:none;stroke:none;"/>
+                            <defs>
+                                <linearGradient id="grd1" gradientUnits="userSpaceOnUse" x1="684.069" y1="97.974" x2="697.025" y2="85.018">
+                                    <stop offset="0" stop-color="#ff9734"/>
+                                    <stop offset="1" stop-color="#ff7c00"/>
+                                </linearGradient>
+                                <linearGradient id="grd2" gradientUnits="userSpaceOnUse" x1="295.006" y1="298.981" x2="307.962" y2="286.025">
+                                    <stop offset="0" stop-color="#ff9734"/>
+                                    <stop offset="1" stop-color="#ff7c00"/>
+                                </linearGradient>
+                                <linearGradient id="grd3" gradientUnits="userSpaceOnUse" x1="684.069" y1="499.974" x2="697.025" y2="487.018">
+                                    <stop offset="0" stop-color="#ff9734"/>
+                                    <stop offset="1" stop-color="#ff7c00"/>
+                                </linearGradient>
+                                <linearGradient id="grd4" gradientUnits="userSpaceOnUse" x1="295.006" y1="698.981" x2="307.962" y2="686.025">
+                                    <stop offset="0" stop-color="#ff9734"/>
+                                    <stop offset="1" stop-color="#ff7c00"/>
+                                </linearGradient>
+                            </defs>
+                            <style>
+                                tspan { white-space:pre }
+                                .shp0 { fill: none;stroke: #e6caa7;stroke-width: 1.5;stroke-dasharray: 6,3 } 
+                                .shp1 { fill: url(#grd1) } 
+                                .shp2 { fill: url(#grd2) } 
+                                .shp3 { fill: url(#grd3) } 
+                                .shp4 { fill: url(#grd4) } 
+                            </style>
+                            <g id="1 dots">
+                                <path id="Rectangle 8" class="shp0" d="M498.4,292c198.3,0,396.7,0,396.7,0c55.2,0,100-44.8,100-100c0-55.2-44.8-100-100-100c0,0-117.8,0-316,0"/>
+                                <path id="Rectangle 9" class="shp0" d="M579,93h-55c-14.4,0-26-11.6-26-26c0-14.4,0-67,0-67"/>
+                            </g>
+                            <path id="2 dots" class="shp0" d="M496.7,292.5c-198.1,0-396.3,0-396.3,0c-55.2,0-99.9,44.7-99.9,99.8c0,55.1,44.7,99.8,99.9,99.8c0,0,198.6-0.2,396.6-0.2"/>
+                            <path id="3 dots" class="shp0" d="M497.4,492.5c198.1,0,398.3,0,398.3,0c55.2,0,99.9,44.8,99.9,100c0,55.2-44.7,100-99.9,100c0,0-202.6-0.2-400.6-0.2"/>
+                            <path id="4 dots" class="shp0" d="M492.7,692.5c-198.1,0-392.3,0-392.3,0c-55.2,0-99.9,44.7-99.9,99.8c0,55.1,44.7,99.8,99.9,99.8c0,0,117.6-0.2,315.6-0.2"/>
+                            <path id="5 dot " class="shp0" d="M418,892h55c14.4,0,26,11.6,26,26c0,14.4,0,67,0,67"/>
+                            <g id="arrow">
+                                <path id="Shape 4 copy" class="shp1" d="M696.4,92.6l-10.1,6.2c-0.9,0.7-2.3,0-2.3-1.1v-12.3c0-1.1,1.3-1.7,2.3-1.1l10.1,6.2c0.8,0.5,0.8,1.6,0,2.2Z"/>
+                                <path id="Shape 4 copy 2" class="shp2" d="M295.6,291.4l10.1-6.2c0.9-0.6,2.3,0,2.3,1.1v12.3c0,1.1-1.3,1.7-2.3,1.1l-10.1-6.2c-0.8-0.5-0.8-1.6,0-2.2Z"/>
+                                <path id="Shape 4 copy 3" class="shp3" d="M696.4,492.6l-10.1,6.2c-0.9,0.6-2.3,0-2.3-1.1v-12.3c0-1.1,1.3-1.7,2.3-1.1l10.1,6.2c0.8,0.5,0.8,1.6,0,2.2Z"/>
+                                <path id="Shape 4 copy 3" class="shp4" d="M295.6,691.4l10.1-6.2c0.9-0.6,2.3,0,2.3,1.1v12.3c0,1.1-1.3,1.7-2.3,1.1l-10.1-6.2c-0.8-0.5-0.8-1.6,0-2.2Z"/>
+                            </g>
+                        </svg>                        
+                    </div>
+                    <span class="steps_linker steps_stopper" data-aos-offset="-250" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="700" data-aos-easing="ease-in-out-back"></span>
+
+                    <div class="step_row" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" data-aos-easing="ease-in-out-back">
+                        <div class="step_row-inner d-flex align-items-center text-md-right justify-content-md-end">
+                            <div class="step_count worksans_light order-md-1">
+                                01
+                            </div>
+                            <div class="step_item">
+                                <h3>Download App from Play store</h3>
+                                <p>Download App and Register&nbsp;yourself</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step_row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400" data-aos-easing="ease-in-out-back">
+                        <div class="step_row-inner d-flex align-items-center">
+                            <div class="step_count worksans_light">
+                                02
+                            </div>
+                            <div class="step_item">
+                                <h3>Fill Up Form and get your Profile Approved</h3>
+                                <p>Fill Up your basic details</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step_row" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" data-aos-easing="ease-in-out-back">
+                        <div class="step_row-inner d-flex align-items-center text-md-right justify-content-md-end">
+                            <div class="step_count worksans_light order-md-1">
+                                03
+                            </div>
+                            <div class="step_item">
+                                <h3>Add your Ongoing Loan and EMI details</h3>
+                                <p>Add all Loan and EMI details and get verified</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step_row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600" data-aos-easing="ease-in-out-back">
+                        <div class="step_row-inner d-flex align-items-center">
+                            <div class="step_count worksans_light">
+                                04
+                            </div>
+                            <div class="step_item">
+                                <h3>Apply Loan against EMI when require and Receive money instantly </h3>
+                                <p>Get in your account within 2 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </section>
+        <!-- Steps Ends -->
+
+        <!-- Why Us -->
+        <section id="whyus" class="why_us section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="images/why-us.png" width="560" height="617" alt="Why Choose Us?"  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0" data-aos-easing="ease-in-out-back"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="why_us-inner">
+                            <h2 class="head__art align_left" data-aos="fade" data-aos-duration="1000" data-aos-delay="0" data-aos-easing="ease-in-out-back">Why <span class="yellow__txt">Choose Us?</span></h2>
+
+                            <ul class="clear__list">
+                                <li data-aos="fade-left" data-aos-duration="1000" data-aos-delay="0" data-aos-easing="ease-in-out-back">
+                                    <span>
+                                        <img src="images/affordable-interest-rates.svg" width="37" height="37" alt="Affordable Charges" />
+                                    </span>
+                                    <h3>Affordable Charges</h3>
+                                </li>
+                                <li data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100" data-aos-easing="ease-in-out-back">
+                                    <span>
+                                        <img src="images/safe-trustworthy.svg" width="37" height="37" alt="Safe and Trustworthy" />
+                                    </span>
+                                    <h3>Safe and Trustworthy</h3>
+                                </li>
+                                <li data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-easing="ease-in-out-back">
+                                    <span>
+                                        <img src="images/super-fast-processing.svg" width="37" height="37" alt="Instant Disbursals" />
+                                    </span>
+                                    <h3>Instant Disbursals</h3>
+                                </li>
+                                <li data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300" data-aos-easing="ease-in-out-back">
+                                    <span>
+                                        <img src="images/entirely-paperless.svg" width="37" height="37" alt="Minimum Documentation" />
+                                    </span>
+                                    <h3>Minimum Documentation</h3>
+                                </li>
+                                <li data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400" data-aos-easing="ease-in-out-back">
+                                    <span>
+                                        <img src="images/fast-query-resolution.svg" width="37" height="37" alt="Fast Query Resolution" />
+                                    </span>
+                                    <h3>Fast Query Resolution</h3>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why Us Ends -->
+
+        <!-- Our Blog -->
+        <section id="bloglisting" class="blog_listing">
+            <div class="container">
+                <h2 class="head__art text-center" data-aos="fade" data-aos-duration="1000" data-aos-delay="0" data-aos-easing="ease-in-out-back">Our <span class="yellow__txt">Blog</span></h2>
+                <div class="bloglisting_wrapper" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-easing="ease-in-out-back">
+
+                   
+                   
+                    
+                </div>
+
+                <div class="bloglisting_controls"></div>
+                <div id="mypanel"></div>
+            </div>
+        </section>        
+
+        <!-- Get App -->
+        <img class="getAppBg" alt="Get App Background" src="images/get-app.svg" width="1920" height="150" />
+        <section id="getapp" class="getapp section lightyellow__bg">
+            <div class="container text-center">
+                <h2 data-aos="fade" data-aos-duration="800" data-aos-delay="0" data-aos-easing="ease-out-quart">Download the app and start using <span class="yellow__txt">  PaymyEMI</span></h2>
+                <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="600" data-aos-easing="ease-out-quart"> Get instant loan within hours</p>
+
+                <div class="getapp_cta">
+                    <ul class="inline__list justify-content-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="800" data-aos-easing="ease-out-quart">
+                        <li>
+                            <a href="https://play.google.com/store/apps/details?id=com.ig.paymyemi&hl=en" title="Download PaymyEMI">
+                                <img alt="Download PaymyEMI" src="images/button-android-store.png" width="188" height="57" />
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#ios" title="Download PaymyEMI">
+                                <img alt="Download PaymyEMI" src="images/button-ios-store.png" width="188" height="58" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Get App Ends -->
+
+        <!-- Footer -->
+        <footer id="contact" class="section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out-back">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-4 foo_paymyemi mb-5 mb-lg-0 text-center text-lg-left">
+                        <a href="#home" class="slideToTarget" title="PaymyEMI">
+                            <img src="images/paymyemi-logo.png" alt="PaymyEMI" width="190" height="55" />
+                        </a>
+
+                        <p>&copy; <span id="printYear"></span> PaymyEMI. All rights reserved.</p>
+
+                        <ul class="inline__list justify-content-center justify-content-lg-start">
+                            <li>
+                                <a href="https://www.facebook.com/paymyemi.net" title="Facebook" target="_blank">
+                                    <i class="fa fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://instagram.com/paymyemi?igshid=18ztv1pwavqqt" title="Instagram">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="YouTube">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="LinkedIn">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-lg-4 foo_quicklinks">
+                        <div class="foo_quicklinks-wrapper">
+                            <h2 class="foo_title">Quick Links</h2>
+                            <ul class="clear__list">
+                                <li><a href="#home" title="Home" class="active slideToTarget">Home</a></li>
+                                <li><a href="#about" title="About" class="slideToTarget" data-offtop=".site__header">About</a></li>
+                                <li><a href="#steps" title="Steps" class="slideToTarget" data-offtop=".site__header">Steps</a></li>
+                                <li><a href="#whyus" title="Why Us?" class="slideToTarget" data-offtop=".site__header">Why Us?</a></li>
+                                <li><a href="#getapp" title="Get App" class="slideToTarget" data-offtop=".site__header">Get App</a></li>
+                                <li><a data-toggle="modal" data-target="#chargesModal" href="#" title="Charges">Charges</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-8 foo_contact">
+                        <div class="footer_widget">
+                            <i class="fa fa-home"></i>
+                            <div class="widget_details">
+                                <h3>Location</h3>
+								
+                                <p>Dr Yagnik Rd, Rajkot, Gujarat 360001</p>
+                            </div>
+                        </div>
+                        <div class="footer_widget">
+                            <i class="fa fa-phone"></i>
+                            <div class="widget_details">
+                                <h3>Phone</h3>
+                                <p>
+                                    <a href="tel:+918320498633" title="+91 83204 98633">+91 83204 98633</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="footer_widget">
+                            <i class="fa fa-envelope"></i>
+                            <div class="widget_details">
+                                <h3>Email</h3>
+                                <p>
+                                    <a href="mailto:&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#112;&#97;&#121;&#109;&#121;&#101;&#109;&#105;&#46;&#110;&#101;&#116;" title="&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#112;&#97;&#121;&#109;&#121;&#101;&#109;&#105;&#46;&#110;&#101;&#116;">&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#112;&#97;&#121;&#109;&#121;&#101;&#109;&#105;&#46;&#110;&#101;&#116;</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center mt-5">
+                        <ul class="inline__list justify-content-center footer__policy">
+                            <li>
+                                <a href="privacy-policy.html" title="Privacy Policy">Privacy Policy</a>
+                            </li>
+                            <li class="policy__separator mx-2">|</li>
+                            <li>
+                                <a href="terms-and-conditions.html" title="Terms & Conditions">Terms & Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Ends -->
+
+        <!-- Charges Modal -->
+        <div class="modal fade" id="chargesModal" tabindex="-1" aria-labelledby="chargesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="chargesModalLabel">PaymyEMI Schedule of Charges</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/paymyemi-schedule-of-charges.jpg" width="2121" height="2706" alt="PaymyEMI Schedule of Charges">
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>

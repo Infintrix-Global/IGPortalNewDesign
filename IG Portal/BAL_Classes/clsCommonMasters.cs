@@ -995,6 +995,38 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetEmployeeListByDepartment(string DepartmentID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@DepartmentID", DepartmentID);
+                
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeListByDepartment");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetEmployeeListByEvent(string EventID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EventID", EventID);
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeListByEvent");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public int AddEmployeeDepartment(int employeeID,string DepartmentID)
         {
             int _isInserted = -1;
@@ -1611,6 +1643,21 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetEventMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetEventMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetTaskTitleMaster(string projectID)
         {
             try
@@ -1766,6 +1813,71 @@ namespace IG_Portal
             }
             return _isInserted;
         }
+
+        public int AddEvent(string LoginID,  string date,string location, string title, string Description)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Location", location);
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", Convert.ToDateTime(date).ToString("dd/MMM/yyyy"));
+                objGeneral.AddParameterWithValueToSQLCommand("@Title", title);
+                objGeneral.AddParameterWithValueToSQLCommand("@Description", Description);
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddEvent");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int UpdateEvent(string LoginID, string date, string location, string title, string Description,string EventID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Location", location);
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", Convert.ToDateTime(date).ToString("dd/MMM/yyyy"));
+                objGeneral.AddParameterWithValueToSQLCommand("@Title", title);
+                objGeneral.AddParameterWithValueToSQLCommand("@Description", Description);
+                objGeneral.AddParameterWithValueToSQLCommand("@EventID", EventID);
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_UpdateEvent");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int AddEmployeeEvent(int EventID, string AttendeeID)
+
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EventID", EventID);
+                    objGeneral.AddParameterWithValueToSQLCommand("@AttendeeID", AttendeeID);
+                  
+                    _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddEmployeeEvent");
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+
+
+        }
+
 
         public int UpdateNews(string LoginID, string type, string date, string title, string Description,string NewsID)
         {
@@ -2071,6 +2183,25 @@ namespace IG_Portal
             }
             return ds.Tables[0];
         }
+
+        public DataSet GetIndexPageDetails(string mode)
+        {
+
+            try
+            {
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", mode);
+                
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetIndexPageDetails");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return ds;
+        }
+
 
         public DataTable GetQADashBoardDetails(string LoginID, string mode, string ProjectID,string FromDate,string ToDate)
         {

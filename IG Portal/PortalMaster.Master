@@ -262,6 +262,9 @@
                                                  <li><a href="<%= ResolveUrl("~/AddNews.aspx") %>">Add News</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ViewNews.aspx") %>">View News</a> </li>
 
+                                                 <li><a href="<%= ResolveUrl("~/EventMaster.aspx") %>">Add Event</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewEvent.aspx") %>">View Event</a> </li>
+
                                          
                               
 
@@ -413,6 +416,20 @@
                                             <ul>
                                                  <li><a href="<%= ResolveUrl("~/AddNews.aspx") %>">Add</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ViewNews.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                             <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Event </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                 <li><a href="<%= ResolveUrl("~/EventMaster.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewEvent.aspx") %>">View</a> </li>
 
                                             </ul>
                                         </div>
@@ -675,6 +692,21 @@
                                             <ul>
                                                  <li><a href="<%= ResolveUrl("~/AddNews.aspx") %>">Add</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ViewNews.aspx") %>">View</a> </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            
+                             <li class="no-padding">
+                                <ul class="collapsible collapsible-accordion">
+                                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-assessment"></i>Event </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                 <li><a href="<%= ResolveUrl("~/EventMaster.aspx") %>">Add</a> </li>
+                                                <li><a href="<%= ResolveUrl("~/ViewEvent.aspx") %>">View</a> </li>
 
                                             </ul>
                                         </div>

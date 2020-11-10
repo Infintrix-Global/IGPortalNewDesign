@@ -103,5 +103,7 @@ namespace IG_Portal
                 GridNews.DataBind();
             }
         }
+
+      
     }
 }
