@@ -82,9 +82,26 @@ namespace IG_Portal
 
         protected void dlEventEmp_ItemDataBound(object sender, DataListItemEventArgs e)
         {
-            DataSet dtDepEmp = objCommon.GetIndexPageDetails((dlEvent.FindControl("lblID") as Label).Text);
-            (dlEvent.FindControl("dlDepartEmp") as DataList).DataSource = dtDepEmp.Tables[4];
-            (dlEvent.FindControl("dlDepartEmp") as DataList).DataBind();
+            try
+            {
+                if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+                {
+                    Label label = e.Item.FindControl("lblImage") as Label;
+                    if (label.Text != "")
+                    {
+                        (e.Item.FindControl("imgProfile") as Image).ImageUrl = @"~\EmployeeProfile\" + label.Text;
+                    }
+                    else
+                    {
+                        (e.Item.FindControl("imgProfile") as Image).ImageUrl = @"~\EmployeeProfile\no-photo.jpg";
+                        //(e.Item.FindControl("ImageProfile") as Image).ImageUrl = @"~\EmployeeProfile\no-photo.jpg";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
 
@@ -300,22 +317,23 @@ namespace IG_Portal
             }
         }
 
-        protected void lblAttendeeCount_Command(object sender, CommandEventArgs e)
+        
+
+        protected void dlNews_ItemCommand(object source, DataListCommandEventArgs e)
         {
             try
             {
-                if (e.CommandName == "View")
+                if (e.CommandName == "ReadMore")
                 {
-                    DataTable dtDepEmp = objCommon.GetEmployeeListByEvent(e.CommandArgument.ToString());
-                    dlEventEmp.DataSource = dtDepEmp;
-                    dlEventEmp.DataBind();
-                    eventattendee.Visible = true;
+                    
+                    ModalPopupExtender1.Show();
+                  
                 }
             }
             catch (Exception ex)
             {
 
+                }
             }
-        }
     }
 }

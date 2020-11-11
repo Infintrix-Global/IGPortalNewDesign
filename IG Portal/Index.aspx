@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="IG_Portal.Index" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html lang="en" class="theme__new no__sidebar">
@@ -39,9 +39,25 @@
     <link href="js/plugins/magnific-popup/magnific-popup.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
 
+     <style>
+       
+        .modalBackground {
+            background-color: Black;
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+        }
+
+        .modalPopup {
+            background-color: #FFFFFF;
+            width: 400px;
+            border: 3px solid #0DA9D0;
+        }
+    </style>
+
 </head>
 
 <body>
+    
     <div id="loader-wrapper">
         <div id="loader"></div>
         <div class="loader-section section-left"></div>
@@ -85,6 +101,7 @@
 
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <form  runat="server">
+         <asp:ToolkitScriptManager ID="ScriptManager1" runat="server"></asp:ToolkitScriptManager>
     <!-- START MAIN -->
     <div id="main">
         <!-- START WRAPPER -->
@@ -359,7 +376,7 @@
                                                                                 <asp:Label ID="lblEventLocation" runat="server" Text='<%# Eval("Location")  %>'></asp:Label></span>
 
                                                                            <span class="badge relative mt-1 "><i class="mdi-social-people"></i>
-                                                                                <asp:LinkButton ID="lblAttendeeCount" runat="server" Text='<%# Eval("EmployeeCount")  %>' OnCommand="lblAttendeeCount_Command" CommandName="View" CommandArgument='<%# Eval("ID")   %>'></asp:LinkButton></span>
+                                                                                <asp:LinkButton ID="lblAttendeeCount" runat="server" Text='<%# Eval("EmployeeCount")  %>'  CommandName="View" CommandArgument='<%# Eval("ID") %>'></asp:LinkButton></span>
 
                                                                         </div>
                                                                     </div>
@@ -385,7 +402,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="eventattendee" runat="server" visible="false">
+                                 
                                     <!-- Event Attendees Common Card Reveal -->
                                     <div class="card-reveal">
                                         <span class="card-title grey-text text-darken-4">Event Attendees <i class="mdi-navigation-close right"></i></span>
@@ -400,7 +417,8 @@
                                                     <div class="row-no-gutters">
 
                                                         <div class="collection-item">
-                                                            <img src="images/avatar-2.jpg" width="128" height="128" alt="avatar" class="circle">
+                                                            <asp:Label ID="lblImage" runat="server" Text='<%# Eval("Photo")  %>' Visible="false"></asp:Label>
+                                                        <asp:Image runat="server" ID="imgProfile" Width="128" Height="128" alt="avatar" class="circle" ImageUrl="~\EmployeeProfile\no-photo.jpg" />
 
                                                             <div class="collection-detail">
                                                                 <h4>
@@ -424,10 +442,13 @@
                                         </div>
                                     </div>
 
-                                        </div>
+                                       
                                 </div>
                             </div>
                             <!-- Event ENDS -->
+
+
+                            
 
                             <!-- New Announcements STARTS -->
                             <div class="col s12 l6">
@@ -442,7 +463,7 @@
                                         <div class="card-content-wrapper card-content-scroll pscontainer">
                                             <div class="collection collection-cards">
 
-                                                <asp:DataList ID="dlNews" class="striped" runat="server" CellPadding="4" ForeColor="#333333">
+                                                <asp:DataList ID="dlNews" class="striped" runat="server" CellPadding="4" ForeColor="#333333" OnItemCommand="dlNews_ItemCommand">
 
                                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                     <ItemStyle BackColor="#EFF3FB" />
@@ -462,7 +483,7 @@
                                                                         <p class="w-100">
                                                                             <asp:Label ID="lblNewsDes" runat="server" Text='<%# Eval("Description")  %>'></asp:Label></p>
                                                                         <div class="collection-cards--footer mt-1">
-                                                                            <a class="modal-trigger d-flex mt-2" href="#event_03">Read More <i class="mdi-hardware-keyboard-arrow-right ml-1"></i></a>
+                                                                            <a class="modal-trigger d-flex mt-2" ><asp:LinkButton ID="lnkRmore" runat="server" CommandName="ReadMore" Text="Read More" CommandArgument='<%# Eval("ID")  %>'></asp:LinkButton> <i class="mdi-hardware-keyboard-arrow-right ml-1"></i></a>
                                                                         </div>
                                                                         <%--   <div class="collection-cards--footer mt-1">
                                                                 <span class="badge relative mt-1"><i class="mdi-communication-location-on"></i> Mumbai, India</span>
@@ -501,6 +522,43 @@
                     </div>
 
                 </div>
+
+            <asp:Button ID="btnShow" runat="server" Text="" Visible="true" Style="display: none" />
+
+    <!-- ModalPopupExtender -->
+    <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" PopupControlID="Panel1" TargetControlID="btnShow"
+        CancelControlID="Vpbtncancel" BackgroundCssClass="modalBackground" />
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:Panel ID="Panel1" runat="server" Style="display: none">
+                <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
+                 
+                    <div class="row-no-gutters">
+ <div class="modal-content">
+            <span class="modal__close modal-action modal-close mdi-navigation-close"></span>
+
+            <h5 class="mt-0 mb-3">Lorem ipsum dolor sit amet, consecte tur adipiscing elit, consecte tur adipiscing elit</h5>
+
+            <div class="event__details">
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa</p>
+
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa Sed ut perspiciatis unde Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa</p>
+
+                <img class="responsive-img" src="images/our-gallery/1.jpg" width="480" height="360" alt="Image" />
+            </div>
+        </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </asp:Panel>
+                <div class="row" align="center">
+                  
+                    <asp:Button ID="btnClose" runat="server" Text="Close" Visible="false" />
+                </div>
+            </asp:Panel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
                 <!-- Third Row -->
                 <div class="row d-flex flex-wrap">
