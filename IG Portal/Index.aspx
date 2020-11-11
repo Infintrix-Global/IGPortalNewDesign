@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="IG_Portal.Index" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="IG_Portal.Index" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
@@ -42,16 +42,24 @@
      <style>
        
         .modalBackground {
-            background-color: Black;
-            filter: alpha(opacity=40);
-            opacity: 0.4;
+           
         }
 
-        .modalPopup {
-            background-color: #FFFFFF;
-            width: 400px;
-            border: 3px solid #0DA9D0;
+        .modalPopUp {
+			position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    width: 55%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+             z-index: 1003; display: block; opacity: 1; transform: scaleX(1); top: 10%;
         }
+		 .modalPopUp .modal-content {
+    padding: 24px;
     </style>
 
 </head>
@@ -248,6 +256,8 @@
                 </div>
 
                 <!-- Second Row -->
+                <asp:UpdatePanel ID="up2" runat="server">
+                    <ContentTemplate>
                 <div class="row d-flex flex-wrap">
 
                     <!--Our Employees STARTS-->
@@ -531,26 +541,24 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Panel ID="Panel1" runat="server" Style="display: none">
-                <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
+                <asp:Panel ID="Panel2" runat="server"  CssClass="modalPopUp">
                  
-                    <div class="row-no-gutters">
+                    
  <div class="modal-content">
-            <span class="modal__close modal-action modal-close mdi-navigation-close"></span>
+            <span class="modal__close modal-action modal-close mdi-navigation-close" id="Vpbtncancel" runat="server"></span>
 
-            <h5 class="mt-0 mb-3">Lorem ipsum dolor sit amet, consecte tur adipiscing elit, consecte tur adipiscing elit</h5>
+            <h5 class="mt-0 mb-3"><asp:Label ID="lblTitle" runat="server"></asp:Label></h5>
 
             <div class="event__details">
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa</p>
+                <p><asp:Label ID="lbldes" runat="server"></asp:Label></p>
 
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa Sed ut perspiciatis unde Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa</p>
-
-                <img class="responsive-img" src="images/our-gallery/1.jpg" width="480" height="360" alt="Image" />
+              
             </div>
         </div>
                             </div>
                            
                         </div>
-                    </div>
+                    
                 </asp:Panel>
                 <div class="row" align="center">
                   
@@ -560,6 +568,9 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
+   </ContentTemplate>
+    </asp:UpdatePanel>
+                        
                 <!-- Third Row -->
                 <div class="row d-flex flex-wrap">
                     <div class="col s12 l8 order-1 order-lg-0">
@@ -947,7 +958,7 @@
                 }
             }
         });
-  </script>
+    </script>
 </body>
 
 </html>

@@ -325,7 +325,12 @@ namespace IG_Portal
             {
                 if (e.CommandName == "ReadMore")
                 {
-                    
+                    int id = Convert.ToInt32(e.CommandArgument);
+
+                    DataTable AllData = new DataTable();
+                    AllData = objTask.GetNewsDetailsByID(id.ToString());
+                    lblTitle.Text = AllData.Rows[0]["Title"].ToString();
+                    lbldes.Text = AllData.Rows[0]["Description"].ToString();
                     ModalPopupExtender1.Show();
                   
                 }
