@@ -979,6 +979,21 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetHolidayMaster(string year)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@year", year);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetHolidayMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetDepartmentMaster()
         {
             try
@@ -1581,6 +1596,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetYearFromHolidayMaster(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 22);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
 
         public DataTable GetSuggestedByMaster(int companyID)
         {
@@ -1757,6 +1788,36 @@ namespace IG_Portal
             {
             }
             return ds.Tables[0];
+
+
+        }
+
+        public DataTable SearchProject(string ProjectName)
+        {
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", ProjectName);
+              
+                ds = objGeneral.GetDatasetByCommand_SP("SP_SearchProject");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable SearchTask(string TaskName,string departmentID)
+        {
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskName", TaskName);
+                objGeneral.AddParameterWithValueToSQLCommand("@DepartmentID", departmentID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_SearchTaskMaster");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
         }
 
         public int AddProject(string companyID,string pName)
@@ -1769,6 +1830,97 @@ namespace IG_Portal
                 objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", pName);
 
                 _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddProject");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int RemoveProject(string ProjectID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
+               
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_RemoveProject");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int UpdateProject(string ProjectID,string ProjectName)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", ProjectID);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", ProjectName);
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_EditProject");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int UpdateTask(string TaskID, string TaskName)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskID", TaskID);
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskName", TaskName);
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_EditTask");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int RemoveTask(string TaskID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@TaskID", TaskID);
+
+
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_RemoveTaskMaster");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+        public int AddHoliday(string holidayName,string description, string date,string LoginID)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@HolidayName", holidayName);
+                objGeneral.AddParameterWithValueToSQLCommand("@Description", description);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Date", Convert.ToDateTime(date).ToString("dd/MMM/yyyy"));
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddHoliday");
             }
             catch (Exception ex)
             {

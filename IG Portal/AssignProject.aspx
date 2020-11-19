@@ -101,6 +101,26 @@
 
                         </div>
 
+                        <div class="row" align="center" runat="server" id="divSearch" visible="false">
+                             <div class=" col m3">
+                          <div class="input-field "> 											
+											<div class="select-wrapper initialized">
+                           
+                            <asp:TextBox ID="txtProjectName" runat="server" class="form-control" placeholder=""
+                                ClientIDMode="Static" ValidationGroup="e"></asp:TextBox>
+                                                </div>
+                               <label>Project Name</label>
+                        </div>
+                    </div>
+
+                            <div class="col m2">
+                                <div class="form-group form-md-line-input ">
+                                    <asp:Button ID="btnSearch" runat="server"  Text="Search" class="btn green" ClientIDMode="Static" OnClick="btnSearch_Click" />
+
+                                </div>
+                            </div>
+                        </div>
+
                            <div class="row">
                     <div class=" col m12">
                         <div class="portlet light ">

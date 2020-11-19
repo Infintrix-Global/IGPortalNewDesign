@@ -149,6 +149,8 @@
                                                 <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" ClientIDMode="Static"  TextMode="Date" TabIndex="6"  ></asp:TextBox>
                                                <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="requiredDate" runat="server" ControlToValidate="txtDate" ErrorMessage="Please Enter Date "  ForeColor="Red" SetFocusOnError="true" ValidationGroup="at"></asp:RequiredFieldValidator>
+                                                  <%-- <asp:RangeValidator ID="rgvDate" runat="server" ErrorMessage="Future Date Not Allowed"
+                 ValidationGroup="at" ControlToValidate="txtDate" ForeColor="Red" SetFocusOnError="true" Type="Date"></asp:RangeValidator>--%>
                                                    </span>
                                                    </div>
                                                      <label>

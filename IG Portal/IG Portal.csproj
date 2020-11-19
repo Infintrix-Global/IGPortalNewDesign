@@ -91,6 +91,7 @@
     <Content Include="AddMOM.aspx" />
     <Content Include="AddNews.aspx" />
     <Content Include="AddPage.aspx" />
+    <Content Include="AddPhotos.aspx" />
     <Content Include="AddProjectDetails.aspx" />
     <Content Include="AddTaskMaster.aspx" />
     <Content Include="AddTimeSheet.aspx" />
@@ -99,6 +100,7 @@
     <Content Include="css\custom\bootstrap-utilities.css" />
     <Content Include="css\custom\Icustom.css" />
     <Content Include="EventMaster.aspx" />
+    <Content Include="HolidayMaster.aspx" />
     <Content Include="IGPortalSaleService.svc" />
     <Content Include="BugHistory.aspx" />
     <Content Include="CImage.aspx" />
@@ -143,7 +145,26 @@
     <Content Include="images\our-gallery\8.jpg" />
     <Content Include="images\our-gallery\9.jpg" />
     <Content Include="Index.aspx" />
+    <Content Include="js\angular-materialize.js" />
+    <Content Include="js\angular.min.js" />
     <Content Include="js\BsMultiSelect.js" />
+    <Content Include="js\imagesloaded.pkgd.min.js" />
+    <Content Include="js\jquery-1.11.2.min.js" />
+    <Content Include="js\masonry.pkgd.min.js" />
+    <Content Include="js\plugins\animate-css\animate.css" />
+    <Content Include="js\plugins\chartist-js\chartist-script.js" />
+    <Content Include="js\plugins\chartist-js\chartist.min.css" />
+    <Content Include="js\plugins\chartist-js\chartist.min.js" />
+    <Content Include="js\plugins\chartjs\chart-script.js" />
+    <Content Include="js\plugins\chartjs\chart.min.js" />
+    <Content Include="js\plugins\chartjs\chartjs-sample-chart.js" />
+    <Content Include="js\plugins\imagesloaded.pkgd.min.js" />
+    <Content Include="js\plugins\jquery-1.11.2.min.js" />
+    <Content Include="js\plugins\magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="js\plugins\magnific-popup\magnific-popup.css" />
+    <Content Include="js\plugins\masonry.pkgd.min.js" />
+    <Content Include="js\plugins\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="js\plugins\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="LeadDetails.aspx" />
     <Content Include="LeaveApprovalHR.aspx" />
     <Content Include="ManagerDashBoardWM.aspx" />
@@ -166,16 +187,6 @@
     <Content Include="js\custom-script.js" />
     <Content Include="js\materialize.min.js" />
     <Content Include="js\plugins.min.js" />
-    <Content Include="js\plugins\animate-css\animate.css" />
-    <Content Include="js\plugins\chartist-js\chartist-script.js" />
-    <Content Include="js\plugins\chartist-js\chartist.min.css" />
-    <Content Include="js\plugins\chartist-js\chartist.min.js" />
-    <Content Include="js\plugins\chartjs\chart-script.js" />
-    <Content Include="js\plugins\chartjs\chart.min.js" />
-    <Content Include="js\plugins\chartjs\chartjs-sample-chart.js" />
-    <Content Include="js\plugins\jquery-1.11.2.min.js" />
-    <Content Include="js\plugins\perfect-scrollbar\perfect-scrollbar.css" />
-    <Content Include="js\plugins\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="LeaveApplication.aspx" />
     <Content Include="LeaveApplicationForManager.aspx" />
     <Content Include="LeaveApproval.aspx" />
@@ -812,6 +823,13 @@
     <Compile Include="AddPage.aspx.designer.cs">
       <DependentUpon>AddPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddPhotos.aspx.cs">
+      <DependentUpon>AddPhotos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddPhotos.aspx.designer.cs">
+      <DependentUpon>AddPhotos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddProjectDetails.aspx.cs">
       <DependentUpon>AddProjectDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -856,6 +874,13 @@
     </Compile>
     <Compile Include="EventMaster.aspx.designer.cs">
       <DependentUpon>EventMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HolidayMaster.aspx.cs">
+      <DependentUpon>HolidayMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HolidayMaster.aspx.designer.cs">
+      <DependentUpon>HolidayMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="IGPortalSaleService.svc.cs">
       <DependentUpon>IGPortalSaleService.svc</DependentUpon>

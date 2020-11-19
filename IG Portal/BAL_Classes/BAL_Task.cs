@@ -168,6 +168,28 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
+        public int AddEventGallery(string EventID, string imgname)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral1 = new General();
+                objGeneral1.AddParameterWithValueToSQLCommand("@EventID", EventID);
+                objGeneral1.AddParameterWithValueToSQLCommand("@Imgname", imgname);
+
+
+                _isInserted = objGeneral1.GetExecuteNonQueryByCommand_SP("SP_AddEventGallery");
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return _isInserted;
+        }
+
         public int Add_TimeSheet(TimeSheetDetails objTimeSheetDetails)
         {
             int _isInserted = -1;

@@ -306,13 +306,13 @@
 
                                                                 <asp:TemplateField HeaderText="Manager Comment" HeaderStyle-CssClass="autostyle2" SortExpression="LeaveStatus">
                                                                     <ItemTemplate>
-                                                                        <asp:Label ID="Label8" runat="server" Text='<%# Eval("MangerComment")  %>'></asp:Label>
+                                                                        <asp:Label ID="Label9" runat="server" Text='<%# Eval("ManagerComment")  %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
                                                                 <asp:TemplateField HeaderText="HR Comment" HeaderStyle-CssClass="autostyle2" SortExpression="LeaveStatus">
                                                                     <ItemTemplate>
-                                                                        <asp:Label ID="Label8" runat="server" Text='<%# Eval("HRComment")  %>'></asp:Label>
+                                                                        <asp:Label ID="Label10" runat="server" Text='<%# Eval("HRComment")  %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 

@@ -30,24 +30,7 @@ namespace IG_Portal
             /*Birthday */
             dlBirthday.DataSource = dtDashBoard.Tables[0];
             dlBirthday.DataBind();
-            //try
-            //{
-            //    for (int i = 0; i < dtDashBoard.Tables[0].Rows.Count; i++)
-            //    {
-            //        if (dtDashBoard.Tables[0].Rows[i]["Photo"].ToString() != "")
-            //        {
-            //            (dlBirthday.FindControl("ImageProfile") as Image).ImageUrl = @"~\EmployeeProfile\" + dtDashBoard.Tables[0].Rows[i]["Photo"].ToString();
-            //        }
-            //        else
-            //        {
-            //            (dlBirthday.FindControl("ImageProfile") as Image).ImageUrl = @"~\EmployeeProfile\no-photo.jpg";
-            //        }
-            //    }
-            //}
-            //catch(Exception ex)
-            //{
-
-            //}
+          
 
             /*News */
             dlNews.DataSource = dtDashBoard.Tables[1];
@@ -56,12 +39,10 @@ namespace IG_Portal
             /* Event */
             dlEvent.DataSource = dtDashBoard.Tables[2];
             dlEvent.DataBind();
-            for (int i = 0; i < dtDashBoard.Tables[2].Rows.Count; i++)
-            {
-                //DataTable dtDepEmp = objCommon.GetEmployeeListByEvent(dtDashBoard.Tables[2].Rows[i]["ID"].ToString());
-                //(dlEvent.FindControl("dlDepartEmp") as DataList).DataSource = dtDepEmp;
-                //(dlEvent.FindControl("dlDepartEmp") as DataList).DataBind();
-            }
+
+            /*Work Aniversery  */
+            dlWorkAniversery.DataSource = dtDashBoard.Tables[3];
+            dlWorkAniversery.DataBind();
 
             /* Department */
             DataTable dtDepartment = objCommon.GetDepartmentMaster();
@@ -74,8 +55,10 @@ namespace IG_Portal
             //    (dlDepartment.FindControl("dlDepartEmp") as DataList).DataBind();
             //}
 
-
-
+        
+            /*Holiday */
+            dlHoliday.DataSource = dtDashBoard.Tables[4];
+            dlHoliday.DataBind();
 
         }
 
@@ -331,6 +314,7 @@ namespace IG_Portal
                     AllData = objTask.GetNewsDetailsByID(id.ToString());
                     lblTitle.Text = AllData.Rows[0]["Title"].ToString();
                     lbldes.Text = AllData.Rows[0]["Description"].ToString();
+                 
                     ModalPopupExtender1.Show();
                   
                 }
@@ -340,5 +324,54 @@ namespace IG_Portal
 
                 }
             }
+
+        protected void dlNews_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            try
+            {
+
+                if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+                {
+                    Label label = e.Item.FindControl("lblNewsDes") as Label;
+                    if (label.Text != "")
+                    {
+                        System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<[^>]*>");
+                        label.Text = rx.Replace(label.Text, "");
+
+                        (e.Item.FindControl("lblSDes") as Label).Text = label.Text.Substring(0, 50);
+                    }
+                    
+
+                         }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected void dlWorkAniversery_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            try
+            {
+                if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+                {
+                    Label label = e.Item.FindControl("lblImage") as Label;
+                    if (label.Text != "")
+                    {
+                        (e.Item.FindControl("imgProfile") as Image).ImageUrl = @"~\EmployeeProfile\" + label.Text;
+                    }
+                    else
+                    {
+                        (e.Item.FindControl("imgProfile") as Image).ImageUrl = @"~\EmployeeProfile\no-photo.jpg";
+                        //(e.Item.FindControl("ImageProfile") as Image).ImageUrl = @"~\EmployeeProfile\no-photo.jpg";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

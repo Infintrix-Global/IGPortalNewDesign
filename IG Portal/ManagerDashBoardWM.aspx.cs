@@ -223,13 +223,19 @@ namespace IG_Portal
                     else if (label.Text == "2")
 
                     {
-                        (e.Item.FindControl("lblStatusName") as Label).BackColor = System.Drawing.Color.Green;
+                        (e.Item.FindControl("lblStatusName") as Label).BackColor = System.Drawing.Color.Orange;
                     }
 
                     else if (label.Text == "4")
 
                     {
                         (e.Item.FindControl("lblStatusName") as Label).BackColor = System.Drawing.Color.Yellow;
+                    }
+
+                    else if (label.Text == "8")
+
+                    {
+                        (e.Item.FindControl("lblStatusName") as Label).BackColor = System.Drawing.Color.Green;
                     }
 
 

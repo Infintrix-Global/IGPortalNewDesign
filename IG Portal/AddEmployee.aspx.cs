@@ -12,6 +12,7 @@ namespace IG_Portal
     public partial class EmployeeMaster : System.Web.UI.Page
     {
         clsCommonMasters objCommon = new clsCommonMasters();
+        BAL_Task objTask = new BAL_Task();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -21,6 +22,14 @@ namespace IG_Portal
                 GetEmployeeList();
                 BindDepartment();
                 BindRole();
+                //rgvDOB.MaximumValue = DateTime.Now.ToString("yyyy-MM-dd");
+                //rgvDOB.MinimumValue = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+                //txtDOB.Attributes["min"] = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+                txtDOB.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
+                //rgvJoinDate.MaximumValue = DateTime.Now.ToString("yyyy-MM-dd");
+                //rgvJoinDate.MinimumValue = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+                //txtJoinDate.Attributes["min"] = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+                txtJoinDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             }
         }
 
@@ -265,5 +274,57 @@ namespace IG_Portal
             GridEmployee.PageIndex = e.NewPageIndex;
             GetEmployeeList();
         }
+
+        //protected void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    DataTable dtSearch1;
+        //    string sqr = "Select * from Login where IsActive=1";
+        //    if(txtEmpCode.Text !="")
+        //    {
+        //        sqr += "and EmployeeCode like '%' +'" + txtEmpCode.Text + "'+ '%'";
+        //    }
+        //    if (txtName.Text != "")
+        //    {
+        //        sqr += "and EmployeeName like '%' + '" + txtName.Text + "'+ '%'";
+        //    }
+        //    if (txtMobile.Text != "")
+        //    {
+        //        sqr += "and EmployeeID like '%' +'" + txtMobile.Text + "'+ '%'";
+        //    }
+        //    if (txtEmail.Text != "")
+        //    {
+        //        sqr += "and Email like '%' +'" + txtEmail.Text + "'+ '%'";
+        //    }
+
+        //    dtSearch1 = objTask.SearchBug(sqr);
+        //    GridFillSearch();
+
+        //    void GridFillSearch()
+        //    {
+        //        if (dtSearch1 != null)
+        //        {
+        //            //DataTable dtSearch = dtSearch1.CopyToDataTable();
+        //            GridEmployee.DataSource = dtSearch1;
+        //            GridEmployee.DataBind();
+
+        //            count.Text = "Number of Employee= " + (dtSearch1.Rows.Count).ToString();
+        //        }
+        //        else
+        //        {
+        //            DataTable dt = new DataTable();
+        //            GridEmployee.DataSource = dt;
+        //            GridEmployee.DataBind();
+
+        //            count.Text = "Number of Employee= 0";
+        //        }
+        //        ViewState["dirState"] = dtSearch1;
+        //        ViewState["sortdr"] = "Asc";
+
+
+        //    }
+
+
+
+        //}
     }
 }

@@ -264,7 +264,7 @@
 
                                                  <li><a href="<%= ResolveUrl("~/EventMaster.aspx") %>">Add Event</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ViewEvent.aspx") %>">View Event</a> </li>
-
+                                                <li><a href="<%= ResolveUrl("~/HolidayMaster.aspx") %>">Holiday</a> </li>
                                          
                               
 
@@ -713,7 +713,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <li class="bold"><a href="<%= ResolveUrl("~/HolidayMaster.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Holidays</a> </li>
                                <li class="bold"><a href="<%= ResolveUrl("~/ViewAssignedTaskEmployee.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Task</a> </li>
                             <li class="no-padding">
                                 <ul class="collapsible collapsible-accordion">

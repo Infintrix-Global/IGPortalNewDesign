@@ -25,10 +25,12 @@ namespace IG_Portal
                 if (Request.QueryString["NewsID"] != null)
                 {
                     Session["NewsID"] = objCommon.Decrypt(Request.QueryString["NewsID"]);
+                    btAdd.Text = "Update";
                 }
                 else
                 {
                     Session["NewsID"] = null;
+                    btAdd.Text = "Add";
                 }
                 NewsID = Session["NewsID"] as string;
                 if (!string.IsNullOrEmpty(NewsID))
@@ -36,6 +38,8 @@ namespace IG_Portal
                     //txtDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                     AutoFillNews();
                 }
+                txtDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd"); ;
+
             }
         }
 

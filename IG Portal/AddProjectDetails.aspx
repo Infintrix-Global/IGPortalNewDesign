@@ -28,7 +28,7 @@
                                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                                     <div class="row">
                                         <div class="col m3">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                    
                                                 <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
@@ -44,7 +44,7 @@
                                         </div>
 
                                         <div class="col m3">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                    
                                                   
@@ -59,7 +59,7 @@
                                         </div>
 
                                           <div class="col m3">
-                                             <div class="input-field col m4"> 											
+                                             <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                     
                                                    
@@ -76,7 +76,7 @@
                                         </div>
 
                                         <div class="col m3">
-                                              <div class="input-field col m4"> 											
+                                              <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                   
                                                    
@@ -94,7 +94,7 @@
                                         </div>
 
                                         <div class="col m3">
-                                           <div class="input-field col m4"> 											
+                                           <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                  
                                                 <asp:TextBox ID="txtWebsiteLInk" runat="server" placeholder=""
@@ -113,7 +113,7 @@
                                          <div class="clearfix"></div>
 
                                         <div class="col m4">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                   
                                                 <asp:TextBox ID="txtAPLiveLink" runat="server" placeholder=""
@@ -125,7 +125,7 @@
                                         </div>
 
                                         <div class="col m4">
-                                             <div class="input-field col m4"> 											
+                                             <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                 <asp:TextBox ID="txtLiveUserName" runat="server" CssClass="form-control"  TabIndex="5" ></asp:TextBox>
                                              </div>
@@ -137,7 +137,7 @@
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                  
                                                     
@@ -157,7 +157,7 @@
                                          <div class="clearfix"></div>
 
                                         <div class="col m4">
-                                          <div class="input-field col m4"> 											
+                                          <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                    
                                                 <asp:TextBox ID="txtAPUATLink" runat="server" placeholder=""
@@ -169,7 +169,7 @@
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                   
                                                 <asp:TextBox ID="txtUATUserName" runat="server" CssClass="form-control"  TabIndex="8" ></asp:TextBox>
@@ -181,7 +181,7 @@
                                         </div>
 
                                         <div class="col m4">
-                                           <div class="input-field col m4"> 											
+                                           <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                    
                                                 <asp:TextBox ID="txtUATPassword" runat="server" class="form-control" TabIndex="9"  ></asp:TextBox>
@@ -199,7 +199,7 @@
                                          <div class="clearfix"></div>
 
                                         <div class="col m4">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                
                                                 <asp:TextBox ID="txtAPKLink" runat="server" placeholder=""
@@ -211,7 +211,7 @@
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                  
                                                 <asp:TextBox ID="txtAPKUsename" runat="server" CssClass="form-control"  TabIndex="11" ></asp:TextBox>
@@ -223,7 +223,7 @@
                                         </div>
 
                                         <div class="col m4">
-                                            <div class="input-field col m4"> 											
+                                            <div class="input-field "> 											
 											<div class="select-wrapper initialized">
                                                    
                                                 <asp:TextBox ID="txtAPKPassword" runat="server" class="form-control" TabIndex="12"  ></asp:TextBox>

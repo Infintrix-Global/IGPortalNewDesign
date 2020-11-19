@@ -35,24 +35,20 @@
 
                               <div class="col m2">
                                   <div class="form-group form-md-line-input ">
-
-
-
                                       <asp:Button ID="btAdd" runat="server" Text="Add" class="btn" ClientIDMode="Static" OnClick="btAdd_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true';" ValidationGroup="e" />
-
-
                                   </div>
                               </div>
                               <div class="col m2">
                                   <div class="form-group form-md-line-input ">
-
-
                                       <asp:Button ID="btclear" runat="server" Text="Clear" class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
-
-
                                   </div>
                               </div>
+                              <div class="col m2">
+                                <div class="form-group form-md-line-input ">
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" class="btn green" ClientIDMode="Static" OnClick="btnSearch_Click" />
 
+                                </div>
+                            </div>
                           </div>
 
                           <div class="row">
@@ -63,14 +59,15 @@
                                           <div class="table-scrollable table-scrollable-borderless">
                                               <asp:GridView ID="GridDepartment" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                                                   class="striped" OnPageIndexChanging="GridDepartment_PageIndexChanging"
-                                                  GridLines="None" 
+                                                  GridLines="None" OnRowCancelingEdit="GridDepartment_RowCancelingEdit" OnRowCommand="GridDepartment_RowCommand"
+                                                   OnRowEditing="GridDepartment_RowEditing" OnRowUpdating="GridDepartment_RowUpdating"
                                                   ShowHeaderWhenEmpty="True" Width="100%">
                                                   <Columns>
 
                                                       <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
                                                           <ItemTemplate>
                                                               <asp:Label ID="Label4" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
-
+                                                              <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
                                                           </ItemTemplate>
                                                       </asp:TemplateField>
 
@@ -78,8 +75,28 @@
                                                           <ItemTemplate>
                                                               <asp:Label ID="Label7" runat="server" Text='<%# Eval("DepartmentName")  %>'></asp:Label>
                                                           </ItemTemplate>
+                                                           <EditItemTemplate>
+                                                    <asp:TextBox ID="txtTaskName" runat="server" Text='<%# Eval("DepartmentName")  %>'></asp:TextBox>
+                                                </EditItemTemplate>
                                                       </asp:TemplateField>
 
+                                                        <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <%--<asp:Button ID="btn_Edit" runat="server" Text="Edit" CommandName="Edit" /> --%>
+                                                            <asp:ImageButton ID="imgEdit" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Edit" ImageUrl="~/images/edit.png" AlternateText="edit" ToolTip="edit" ></asp:ImageButton>
+
+                                                        </ItemTemplate>
+                                                        <EditItemTemplate>
+                                                            <asp:Button ID="btn_Update" runat="server" Text="Update" CommandName="Update" />
+                                                            <asp:Button ID="btn_Cancel" runat="server" Text="Cancel" CommandName="Cancel" />
+                                                        </EditItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
+                                                        <ItemTemplate>
+
+                                                            <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Remove" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" OnClientClick="return confirm('Are you sure you want to remove this department?');"></asp:ImageButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
 
                                                   </Columns>
 

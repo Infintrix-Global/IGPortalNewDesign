@@ -28,6 +28,6 @@
 		</siteMapNode>
 		<siteMapNode url="~/ProjectTaskReport.aspx" title="Project Task Report"  description="" />
 		<siteMapNode url="~/AddMOM.aspx" title="MOM"  description="" />
-	
+	<siteMapNode url="~/HolidayMaster.aspx" title="Holidays"  description="" />
 	</siteMapNode>
 </siteMap>

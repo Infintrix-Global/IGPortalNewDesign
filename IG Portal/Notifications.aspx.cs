@@ -45,6 +45,16 @@ namespace IG_Portal
             GridNotificationMOM.DataSource = dtNotifications.Tables[0];
             GridNotificationMOM.DataBind();
             count1.Text = "Number of Notifications =" + dtNotifications.Tables[0].Rows.Count;
+            if(dtNotifications.Tables[0].Rows.Count == 0)
+            {
+                btnConfirm.Visible = false;
+                btnReject.Visible = false;
+            }
+            else
+            {
+                btnConfirm.Visible = true;
+                btnReject.Visible = true;
+            }
             ViewState["dirState1"] = dtNotifications.Tables[0];
             ViewState["sortdr1"] = "Asc";
         }
@@ -60,6 +70,16 @@ namespace IG_Portal
             dtNotifications = objTask.GetNotifications(Session["LoginID"].ToString());
             GirdNotificationAssign.DataSource = dtNotifications.Tables[1];
             GirdNotificationAssign.DataBind();
+            if (dtNotifications.Tables[1].Rows.Count == 0)
+            {
+                btnAssign.Visible = false;
+                ddlDeveloper.Visible = false;
+            }
+            else
+            {
+                btnAssign.Visible = true;
+                ddlDeveloper.Visible = true;
+            }
             count2.Text = "Number of Notifications =" + dtNotifications.Tables[1].Rows.Count;
             ViewState["dirState2"] = dtNotifications.Tables[1];
             ViewState["sortdr2"] = "Asc";
@@ -81,6 +101,16 @@ namespace IG_Portal
             GridNotificationSolvedBug.DataSource = dtNotifications.Tables[3];
             GridNotificationSolvedBug.DataBind();
             count4.Text = "Number of Notifications =" + dtNotifications.Tables[3].Rows.Count;
+            if (dtNotifications.Tables[3].Rows.Count == 0)
+            {
+                btnClose.Visible = false;
+               
+            }
+            else
+            {
+                btnClose.Visible = true;
+               
+            }
             ViewState["dirState4"] = dtNotifications.Tables[3];
             ViewState["sortdr4"] = "Asc";
         }
@@ -91,6 +121,16 @@ namespace IG_Portal
             GridNotificationSolvedTask.DataSource = dtNotifications.Tables[4];
             GridNotificationSolvedTask.DataBind();
             count5.Text = "Number of Notifications =" + dtNotifications.Tables[4].Rows.Count;
+            if (dtNotifications.Tables[4].Rows.Count == 0)
+            {
+                btnCloseTask.Visible = false;
+
+            }
+            else
+            {
+                btnCloseTask.Visible = true;
+
+            }
             ViewState["dirState5"] = dtNotifications.Tables[4];
             ViewState["sortdr5"] = "Asc";
         }

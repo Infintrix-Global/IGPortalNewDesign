@@ -58,8 +58,9 @@
     border-radius: 2px;
              z-index: 1003; display: block; opacity: 1; transform: scaleX(1); top: 10%;
         }
-		 .modalPopUp .modal-content {
-    padding: 24px;
+         .modalPopUp .modal-content {
+             padding: 24px;
+         }
     </style>
 
 </head>
@@ -108,7 +109,7 @@
     <!-- END HEADER -->
 
     <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <form  runat="server">
+    <form  runat="server" defaultbutton="Button1">
          <asp:ToolkitScriptManager ID="ScriptManager1" runat="server"></asp:ToolkitScriptManager>
     <!-- START MAIN -->
     <div id="main">
@@ -185,36 +186,45 @@
                             <div class="card-content">
                                 <div class="card-content-wrapper card-content-scroll pscontainer">
                                     <div class="collection collection-cards">
+        <asp:DataList ID="dlWorkAniversery" class="striped" runat="server" CellPadding="4" ForeColor="#333333" OnItemDataBound="dlWorkAniversery_ItemDataBound">
 
-                                        <div class="collection-item">
-                                            <img src="images/avatar-1.jpg" width="140" height="140" alt="avatar" class="circle">
+                                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <ItemStyle BackColor="#EFF3FB" />
+                                            <ItemTemplate>
+                                                <div class="row-no-gutters">
 
-                                            <div class="collection-detail">
-                                                <h4>John Smith</h4>
+                                                    <div class="collection-item">
+                                                         <asp:Label ID="lblImage" runat="server" Text='<%# Eval("Photo")  %>' Visible="false"></asp:Label>
+                                                        <asp:Image runat="server" ID="imgProfile" Width="140" Height="140" alt="avatar" class="circle" ImageUrl="~\EmployeeProfile\no-photo.jpg" />
+                                                        <div class="collection-detail">
+                                                            <h4>
+                                                                <asp:Label ID="lblName" runat="server" Text='<%# Eval("EmployeeName")  %>'></asp:Label></h4>
 
-                                                <div class="collection-subtext d-flex flex-wrap">
-                                                    <div class="collection-cards--footer">
-                                                        <span class="badge relative">5 Nov, 2020 | Wednesday
-                                                        </span>
+                                                            <div class="collection-subtext d-flex flex-wrap">
+                                                                <div class="collection-cards--footer">
+                                                                    <span class="badge new relative">
+                                                                        <asp:Label ID="lblBday" runat="server" Text='<%# Eval("day") +"  "+  Eval("month")  %>'></asp:Label>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+
                                                 </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="collection-item">
-                                            <img src="images/avatar-3.jpg" width="128" height="128" alt="avatar" class="circle">
 
-                                            <div class="collection-detail">
-                                                <h4>Emily Rickards</h4>
+                                            </ItemTemplate>
 
-                                                <div class="collection-subtext d-flex flex-wrap">
-                                                    <div class="collection-cards--footer">
-                                                        <span class="relative">10 Nov, 2020 | Tuesday
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            <AlternatingItemStyle BackColor="White" />
+
+
+                                            <FooterTemplate>
+                                                <asp:Label Visible='<%#bool.Parse((dlBirthday.Items.Count==0).ToString())%>' runat="server"
+                                                    ID="lblNoRecord" Text="No Work Aniversery This Week!"></asp:Label>
+                                            </FooterTemplate>
+                                            <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:DataList>
+
 
                                     </div>
                                 </div>
@@ -385,8 +395,8 @@
                                                                             <span class="badge relative mt-1"><i class="mdi-communication-location-on"></i>
                                                                                 <asp:Label ID="lblEventLocation" runat="server" Text='<%# Eval("Location")  %>'></asp:Label></span>
 
-                                                                           <span class="badge relative mt-1 "><i class="mdi-social-people"></i>
-                                                                                <asp:LinkButton ID="lblAttendeeCount" runat="server" Text='<%# Eval("EmployeeCount")  %>'  CommandName="View" CommandArgument='<%# Eval("ID") %>'></asp:LinkButton></span>
+                                                                           <span class="badge relative mt-1 new activator"><i class="mdi-social-people"></i>
+                                                                                <asp:LinkButton ID="lblAttendeeCount" runat="server" Text='<%# Eval("EmployeeCount")  %>' ForeColor="White" CommandName="View" CommandArgument='<%# Eval("ID") %>'></asp:LinkButton></span>
 
                                                                         </div>
                                                                     </div>
@@ -463,6 +473,8 @@
                             <!-- New Announcements STARTS -->
                             <div class="col s12 l6">
                                 <div id="eventslist_card" class="card card-separate">
+                                    <%-- <asp:UpdatePanel ID="up2" runat="server">
+                    <ContentTemplate>--%>
                                     <div class="card-header">
                                         <div class="card-title d-flex justify-content-between">
                                             <h2>News/Announcements</h2>
@@ -473,7 +485,7 @@
                                         <div class="card-content-wrapper card-content-scroll pscontainer">
                                             <div class="collection collection-cards">
 
-                                                <asp:DataList ID="dlNews" class="striped" runat="server" CellPadding="4" ForeColor="#333333" OnItemCommand="dlNews_ItemCommand">
+                                                <asp:DataList ID="dlNews" class="striped" runat="server" CellPadding="4" ForeColor="#333333" OnItemCommand="dlNews_ItemCommand" OnItemDataBound="dlNews_ItemDataBound">
 
                                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                     <ItemStyle BackColor="#EFF3FB" />
@@ -491,7 +503,8 @@
 
                                                                     <div class="collection-subtext d-flex flex-wrap">
                                                                         <p class="w-100">
-                                                                            <asp:Label ID="lblNewsDes" runat="server" Text='<%# Eval("Description")  %>'></asp:Label></p>
+                                                                            <asp:Label ID="lblNewsDes" runat="server" Text='<%# Eval("Description")  %>' Visible="false"></asp:Label>
+                                                                         <asp:Label ID="lblSDes" runat="server" ></asp:Label></p>
                                                                         <div class="collection-cards--footer mt-1">
                                                                             <a class="modal-trigger d-flex mt-2" ><asp:LinkButton ID="lnkRmore" runat="server" CommandName="ReadMore" Text="Read More" CommandArgument='<%# Eval("ID")  %>'></asp:LinkButton> <i class="mdi-hardware-keyboard-arrow-right ml-1"></i></a>
                                                                         </div>
@@ -525,6 +538,8 @@
                                         </div>
                                     </div>
 
+                    <%--     </ContentTemplate>
+    </asp:UpdatePanel>--%>
                                 </div>
                             </div>
                             <!-- New Announcements ENDS -->
@@ -620,10 +635,37 @@
                             <div class="card-content">
                                 <div class="card-content-wrapper card-content-scroll pscontainer">
                                     <ul class="collection collection-cards">
-                                        <li class="collection-item"><strong>Diwali</strong> - 9th Nov, 2020</li>
-                                        <li class="collection-item"><strong>New Year</strong>- 10th Nov, 2020</li>
-                                        <li class="collection-item"><strong>Diwali</strong> - 9th Nov, 2020</li>
-                                        <li class="collection-item"><strong>New Year</strong>- 10th Nov, 2020</li>
+                                        
+                                                <asp:DataList ID="dlHoliday" class="striped" runat="server" CellPadding="4" ForeColor="#333333" OnItemCommand="dlNews_ItemCommand" OnItemDataBound="dlNews_ItemDataBound">
+
+                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <ItemStyle BackColor="#EFF3FB" />
+                                                    <ItemTemplate>
+                                                        <div class="row-no-gutters">
+
+                                                            <div class="collection-item">
+                                                               <strong>
+                                                                    <asp:Label ID="lblHolidayName" runat="server" Text='<%# Eval("HolidayName")   %>'></asp:Label>
+                                                                </strong>-<asp:Label ID="lblHolidayDate" runat="server" Text='<%# Eval("HolidayDate","{0:dd/MMM/yy}")   %>'></asp:Label>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </ItemTemplate>
+
+                                                
+
+
+                                                    <FooterTemplate>
+                                                        <asp:Label Visible='<%#bool.Parse((dlNews.Items.Count==0).ToString())%>' runat="server"
+                                                            ID="lblNoRecord" Text="No Record Found!"></asp:Label>
+                                                    </FooterTemplate>
+                                                    <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                </asp:DataList>
+                                       <%-- <li class="collection-item"><strong>Diwali</strong> - 13th Nov, 2020</li>
+                                        <li class="collection-item"><strong>Diwali</strong>- 14th Nov, 2020</li>
+                                        <li class="collection-item"><strong>Diwali</strong> - 15th Nov, 2020</li>
+                                        <li class="collection-item"><strong>New Year</strong>- 16th Nov, 2020</li>--%>
                                     </ul>
                                 </div>
                             </div>

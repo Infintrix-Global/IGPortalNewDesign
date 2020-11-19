@@ -41,6 +41,6 @@
 	 <siteMapNode url="~/PrioritizeTask.aspx" title="Prioritize Task"  description="" />
 		<siteMapNode url="~/LeadDetails.aspx" title="Add Lead"  description="" />
 		<siteMapNode url="~/ViewLeads.aspx" title="View Lead"  description="" />
-
+		<siteMapNode url="~/HolidayMaster.aspx" title="Holidays"  description="" />
 	</siteMapNode>
 </siteMap>

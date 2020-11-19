@@ -82,6 +82,57 @@ namespace IG_Portal
                 Session["ProjectID"] = pid;
                 Response.Redirect("~/AddProjectDetails.aspx");
             }
+            if(e.CommandName=="RemoveProject")
+            {
+                int _isDeleted = -1;
+                _isDeleted = objCommon.RemoveProject(e.CommandArgument.ToString());
+                GetProjectList();
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt = objCommon.SearchProject(txtProjectName.Text);
+            GridProject.DataSource = dt;
+            GridProject.DataBind();
+            if(dt.Rows.Count  >0)
+            {
+                count.Text = "Number of Project =" + dt.Rows.Count;
+            }
+            else
+            {
+                count.Text = "Number of Project =0"; 
+            }
+        }
+
+        protected void GridProject_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            //Setting the EditIndex property to -1 to cancel the Edit mode in Gridview  
+            GridProject.EditIndex = -1;
+            GetProjectList();
+        }
+
+        protected void GridProject_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+            //NewEditIndex property used to determine the index of the row being edited.  
+            GridProject.EditIndex = e.NewEditIndex;
+            GetProjectList();
+        }
+
+        protected void GridProject_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            //Finding the controls from Gridview for the row which is going to update  
+            Label id = GridProject.Rows[e.RowIndex].FindControl("lblID") as Label;
+            TextBox pname = GridProject.Rows[e.RowIndex].FindControl("txtPName") as TextBox;
+            int _isUpdated = -1;
+            _isUpdated = objCommon.UpdateProject(id.Text,pname.Text);
+
+            //Setting the EditIndex property to -1 to cancel the Edit mode in Gridview  
+            GridProject.EditIndex = -1;
+            //Call ShowData method for displaying updated data  
+            GetProjectList();
         }
     }
 }

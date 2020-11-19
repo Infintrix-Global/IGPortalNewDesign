@@ -35,6 +35,7 @@ namespace IG_Portal
                 BindSuggestedByMaster();
                 BindAssignToMaster();
                 txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+              
                 if (Request.QueryString["BugID"] != null)
                 {
                     Session["BugID"] = objcommon.Decrypt(Request.QueryString["BugID"]);
@@ -84,7 +85,10 @@ namespace IG_Portal
                     }
                     
                 }
-
+                //rgvDate.MaximumValue = DateTime.Now.ToString("yyyy-MM-dd");
+                //rgvDate.MinimumValue = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+               // txtDate.Attributes["min"] = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+               txtDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             }
         }
 

@@ -13,6 +13,8 @@ namespace IG_Portal
     {
         clsCommonMasters objCommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
+      
+        General objGeneral = new General();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -69,7 +71,16 @@ namespace IG_Portal
 
         protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(ddlEmployee.SelectedIndex!=0)
+            {
+                divSearch.Visible = true;
+            }
+            else
+            {
+                divSearch.Visible = false;
+            }
             BindProjectMaster();
+         
             BindGridProject();
         }
 
@@ -92,6 +103,32 @@ namespace IG_Portal
                 objTask.UnAssignProject(pmid);
                 BindGridProject();
 
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            string sqr = "	Select PEM.*,PM.ProjectName from ProjectEmployeeMap PEM inner join ProjectMaster PM  on PM.ID=PEM.ProjectID where PEM.IsActive=1";
+            if (txtProjectName.Text != "")
+            {
+                sqr += "and PM.ProjectName like '%' +'" + txtProjectName.Text + "'+ '%'";
+            }
+            if (ddlEmployee.SelectedIndex != 0)
+            {
+                sqr += "and pEM.LoginID= " + ddlEmployee.SelectedValue;
+            }
+            sqr += " order by ProjectName asc";
+            dt = objGeneral.GetDatasetByCommand(sqr);
+            GridProject.DataSource = dt;
+            GridProject.DataBind();
+            if (dt.Rows.Count > 0)
+            {
+                count.Text = "Number of Project =" + dt.Rows.Count;
+            }
+            else
+            {
+                count.Text = "Number of Project =0";
             }
         }
     }

@@ -28,7 +28,7 @@
 
                                              <asp:TemplateField HeaderText="Date" HeaderStyle-CssClass="autostyle2" SortExpression="Date">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("Date")  %>'></asp:Label>
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("Date","{0:dd/MMM/yy}")  %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

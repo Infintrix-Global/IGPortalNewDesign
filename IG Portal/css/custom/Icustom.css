@@ -307,13 +307,14 @@
     padding: 10px 15px;
 }
 
-.theme__new .collection-item img {
-    max-width: 60px;
-    height: auto;
-    -webkit-align-self: flex-start;
-    -ms-flex-item-align: start;
-    align-self: flex-start;
-}
+    .theme__new .collection-item img {
+        max-width: 60px;
+        max-height: 60px;
+        height: auto;
+        -webkit-align-self: flex-start;
+        -ms-flex-item-align: start;
+        align-self: flex-start;
+    }
 
 .theme__new .collection-item h4 {
     font-size: 14px;
@@ -404,6 +405,7 @@
 /*Login Modal Form*/
 .theme__new #login__modal {
     width: 400px;
+    max-height:100%
 }
 
 .theme__new .row .input-field { margin-top: 12px; }
