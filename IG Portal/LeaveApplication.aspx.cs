@@ -24,8 +24,9 @@ namespace IG_Portal
                 // rgvStartDate.ValueToCompare = DateTime.Today.ToString("yyyy-MM-dd");
                 // rgvEndDate.ValueToCompare = DateTme.Today.ToString("yyyy-MM-dd");
                 int x = DateTime.Today.Day;
-                  
-                txtFromDate.Attributes["min"] =  Convert.ToDateTime(DateTime.Today.AddDays(-x+1)).ToString("yyyy-MM-dd");// DateTime.Today.ToString("yyyy-MM-dd");
+
+                // txtFromDate.Attributes["min"] =  Convert.ToDateTime(DateTime.Today.AddDays(-x+1)).ToString("yyyy-MM-dd");
+                txtFromDate.Attributes["min"] = Convert.ToDateTime(DateTime.Today.AddMonths(-1)).ToString("yyyy-MM-dd");
                 BindLeaveMaster();
                 BindGridLeave("1");
             }

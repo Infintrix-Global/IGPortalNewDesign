@@ -122,6 +122,18 @@ namespace IG_Portal
                 }
                 
             }
+            if(dt.Tables[2].Rows.Count>0)
+            {
+                List<ListItem> files = new List<ListItem>();
+                for (int i = 0; i < dt.Tables[2].Rows.Count; i++)
+                {
+                    string fileName = dt.Tables[2].Rows[i]["FileName"].ToString();
+                    files.Add(new ListItem(fileName, "~/EventGallery/" + fileName));
+                }
+                DataListGallery.DataSource = files;
+                DataListGallery.DataBind();
+                photo.Visible = true;
+            }
         }
     }
 }

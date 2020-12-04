@@ -11,6 +11,7 @@ namespace IG_Portal
 {
     public partial class Notifications : System.Web.UI.Page
     {
+        General objGeneral = new General();
         DataSet dtNotifications = new DataSet();
         clsCommonMasters objCommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
@@ -25,6 +26,7 @@ namespace IG_Portal
                BindNotificationBug();
                BindNotificationSolvedBug();
                 BindNotificationSolvedTask();
+                BindProjectMaster();
             }
         }
 
@@ -38,7 +40,14 @@ namespace IG_Portal
         //    ViewState["sortdr"] = "Asc";
         //}
 
-       
+        public void BindProjectMaster()
+        {
+            ddlProjectName.DataSource = objCommon.GetProjectMasterByEmployee(Convert.ToInt32(Session["LoginID"].ToString()));
+            ddlProjectName.DataTextField = "ProjectName";
+            ddlProjectName.DataValueField = "ID";
+            ddlProjectName.DataBind();
+            ddlProjectName.Items.Insert(0, new ListItem("--- Select Project ---", "0"));
+        }
         public void BindNotificationMOM()
         {
             dtNotifications = objTask.GetNotifications(Session["LoginID"].ToString());
@@ -989,6 +998,34 @@ namespace IG_Portal
             catch (Exception ex)
             {
 
+            }
+        }
+
+        protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            if (ddlProjectName.SelectedIndex != 0)
+            {
+                string sqr = "Select N.* from Notification N inner join Bug B on N.BugID=B.ID " +
+                "where LoginID=" + Session["LoginID"].ToString() +" and N.ISActive=1 and Type=4 and B.ProjectID= " + ddlProjectName.SelectedValue + "  order by NotificationDateTime desc";
+            
+
+            dt = objGeneral.GetDatasetByCommand(sqr);
+            GridNotificationSolvedBug.DataSource = dt;
+            GridNotificationSolvedBug.DataBind();
+            count4.Text = "Number of Notifications =" + dt.Rows.Count;
+            if (dt.Rows.Count == 0)
+            {
+                btnClose.Visible = false;
+
+            }
+            else
+            {
+                btnClose.Visible = true;
+
+            }
+            ViewState["dirState4"] = dt;
+            ViewState["sortdr4"] = "Asc";
             }
         }
     }

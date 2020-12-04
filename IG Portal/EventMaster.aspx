@@ -152,6 +152,33 @@
                                              
                          </div>
                         </div>
+
+                    <div runat="server" id="photo" visible="false">
+                    <div class="clearfix"></div>
+                      <div class=" col m3">
+                        <div class="form-group">
+                            <span class="title">
+                            <label>Photos</label>
+                                </span>
+                            </div>
+                        </div>
+
+
+                    <div class="col m6">
+                              <asp:DataList ID="DataListGallery" runat="server" RepeatColumns="3" RepeatDirection="Horizontal" Width="100%"
+                                        CellPadding="2" CellSpacing="0">
+                                        <HeaderTemplate>
+                                          
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                             <asp:Label ID="lblFilePath" runat="server" Text='<%# Eval("Text") %>' Visible="false"></asp:Label>
+                                            <asp:Image ID="Image1" ImageUrl='<%# Eval("Value") %>'  runat="server" Height="100"
+                                                Width="100" />
+
+                                        </ItemTemplate>
+                                    </asp:DataList>
+                    </div>
+                        </div>
                      </div>
 
                      <br />

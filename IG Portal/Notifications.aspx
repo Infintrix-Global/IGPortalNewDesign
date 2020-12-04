@@ -507,11 +507,15 @@
                     <asp:TabPanel ID="NotificationSolvedBug" runat="server" HeaderText="Bug(Close/Reopen)" TabIndex="3">
 
                         <ContentTemplate>
-
+                          
                             <asp:Label ID="lblmsg4" runat="server"></asp:Label>
                             <div class="row">
+                                  <div class="col m4">
                                 <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" OnClientClick="return GetCloseConfirmation();" Text="Close" class="btn"  />
-
+                                      </div>
+                                  <div class="col m4">
+                                    <asp:DropDownList ID="ddlProjectName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged"></asp:DropDownList>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -631,7 +635,7 @@
                             </div>
 
 
-
+                           
                         </ContentTemplate>
                     </asp:TabPanel>
 

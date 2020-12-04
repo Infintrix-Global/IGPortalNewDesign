@@ -42,5 +42,6 @@
 		<siteMapNode url="~/LeadDetails.aspx" title="Add Lead"  description="" />
 		<siteMapNode url="~/ViewLeads.aspx" title="View Lead"  description="" />
 		<siteMapNode url="~/HolidayMaster.aspx" title="Holidays"  description="" />
+		<siteMapNode url="~/ProjectDelivery.aspx" title="Project Delivery"  description="" />
 	</siteMapNode>
 </siteMap>

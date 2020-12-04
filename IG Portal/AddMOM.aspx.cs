@@ -270,7 +270,7 @@ namespace IG_Portal
         {
 
             string filename = "", newfile = "";
-            string[] validFileTypes = { "jpeg", "png", "jpg", "bmp", "gif", "pdf", "docx", "doc" ,"txt"};
+            string[] validFileTypes = { "jpeg", "png", "jpg", "bmp", "gif", "pdf", "docx", "doc" ,"txt" ,"ppt", "pptx"};
 
             if (!FileUpReciept.HasFile)
             {

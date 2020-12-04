@@ -127,23 +127,27 @@ namespace IG_Portal
             }
             else
             {
-                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 6);
+                DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 15);
                 if (dtCheckRights.Rows[0]["IsPrintAllowed"] is true)
                 {
-                    if (Session["Role"].ToString() == "2")
-                    {
-                        BindDeveoperMasterByProject(ddlProjectName.SelectedValue);
-                       // ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
-                        ddlDeveloper.Enabled = true;
-                        // BindEmployeeTask(ddlEmployeeName.SelectedValue);
-                    }
-                    else if (Session["Role"].ToString() == "4")
-                    {
-                        BindDeveoperMasterByProject(ddlProjectName.SelectedValue);
-                       // ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
-                        ddlDeveloper.Enabled = true;
-                        //  BindEmployeeTask(ddlEmployeeName.SelectedValue);
-                    }
+                    //if (Session["Role"].ToString() == "2")
+                    //{
+                    //    BindDeveoperMasterByProject(ddlProjectName.SelectedValue);
+                    //   // ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    //    ddlDeveloper.Enabled = true;
+                    //    // BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    //}
+                    //else if (Session["Role"].ToString() == "4")
+                    //{
+                    //    BindDeveoperMasterByProject(ddlProjectName.SelectedValue);
+                    //   // ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    //    ddlDeveloper.Enabled = true;
+                    //    //  BindEmployeeTask(ddlEmployeeName.SelectedValue);
+                    //}
+                    BindDeveloperMaster();
+                    ddlDeveloper.SelectedValue = Session["LoginID"].ToString();
+                    ddlDeveloper.Enabled = true;
+                    BindBugs();
                 }
                 else if (dtCheckRights.Rows[0]["IsPrintAllowed"] is false)
                 {
