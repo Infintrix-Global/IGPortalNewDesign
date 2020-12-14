@@ -148,9 +148,7 @@ namespace IG_Portal
                     TaskName = ddlTaskType.SelectedValue,
                     Comment = txtComment.Text,
                     TaskDetails = txtTaskDescription.Text,
-                   
                     EstimatedWorkDate = (Convert.ToDateTime(txtDate.Text)).ToString("dd MMM yyyy"),
-                   
                      EstimatedWorkTime=txtTime.Text,
                    
                 };

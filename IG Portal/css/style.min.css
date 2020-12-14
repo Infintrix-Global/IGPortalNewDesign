@@ -762,6 +762,34 @@ ul.side-nav .collapsible-header {
     padding: 0 !important
 }
 
+#slide-out9 li a i {
+    line-height: inherit;
+    width: 2rem;
+    font-size: 1.6rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem
+}
+
+#slide-out9 ul.side-nav li {
+    padding: 0 !important
+}
+
+#slide-out10 li a i {
+    line-height: inherit;
+    width: 2rem;
+    font-size: 1.6rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem
+}
+
+#slide-out10 ul.side-nav li {
+    padding: 0 !important
+}
+
 .caption {
     font-size: 1.25rem;
     font-weight: 300;

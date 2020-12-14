@@ -118,6 +118,22 @@ namespace IG_Portal
                         SiteMapPath1.SiteMapProvider = "SiteMapQA";
                         SiteMapPath1.DataBind();
                     }
+
+                    else if (Session["Role"].ToString() == "13" && Session["CompanyID"].ToString() == "2")
+                    {
+                        InfraClient.Visible = true;
+                        lblInfraClient.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapQA";
+                        //SiteMapPath1.DataBind();
+                    }
+
+                    else if (Session["Role"].ToString() == "14" && Session["CompanyID"].ToString() == "2")
+                    {
+                        InfraSupport.Visible = true;
+                        lblInfraSupport.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapQA";
+                        //SiteMapPath1.DataBind();
+                    }
                 }
 
             }

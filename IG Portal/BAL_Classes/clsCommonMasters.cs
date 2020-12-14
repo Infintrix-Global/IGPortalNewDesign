@@ -1111,6 +1111,23 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+
+        public DataTable GetAssetMasterbyCustomer(int loginID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", loginID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAssetMasterByCustomer");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetUnAssignedProjectByEmployee(int EmployeeID)
         {
             try
@@ -1359,6 +1376,22 @@ namespace IG_Portal
 
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@mode", 19);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetInfraClientMaster(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 23);
                 objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
                 ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
             }
@@ -2669,6 +2702,25 @@ public class SupportDetails
    
 }
 
+
+public class InfraSupportDetails
+{
+
+    public string AssetID { get; set; }
+   
+    public string Details { get; set; }
+    
+    public string LoginID { get; set; }
+    public string FileName { get; set; }
+
+    public string Status { get; set; }
+    public string Comment { get; set; }
+
+    public string Priority { get; set; }
+
+}
+
+
 public class Lead_Details
 {
     public DateTime EnquiryDate { get; set; }
@@ -2697,6 +2749,17 @@ public class Lead_Details
 
     public int Mode { get; set; }
 
+}
+
+public class Asset_Details
+{
+    public string CustomerID { get; set; }
+    public string AssetNo { get; set; }
+
+    public string AssetName { get; set; }
+    public string AssetSerialNum { get; set; }
+    public string SupportSDate { get; set; }
+    public string SupportEDate { get; set; }
 }
 
 

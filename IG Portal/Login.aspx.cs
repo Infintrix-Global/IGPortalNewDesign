@@ -125,6 +125,19 @@ namespace IG_Portal
                         Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
                         Response.Redirect("~/QADashBoard.aspx");
                     }
+                     if (_dtLogin.Rows[0]["RoleID"].ToString() == "13" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/InfraClientDashBoard.aspx");
+
+                    }
+
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "14" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/InfraSupportDashBoard.aspx");
+
+                    }
                 }
                 else
                 {

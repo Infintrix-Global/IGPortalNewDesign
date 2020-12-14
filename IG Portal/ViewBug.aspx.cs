@@ -27,6 +27,7 @@ namespace IG_Portal
                 //BindDeveloperMaster();
                 BindSearch();
                 btSearch_Click(sender, e);
+                txtWorkDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             }
             lblMessage.Text = "";
         }

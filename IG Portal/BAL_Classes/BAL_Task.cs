@@ -248,6 +248,48 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
+
+        public int AddAsset(Asset_Details objAssetDetails)
+        {
+            int _isInserted = -1;
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@CustomerID", objAssetDetails.CustomerID);
+                objGeneral.AddParameterWithValueToSQLCommand("@AssetName", objAssetDetails.AssetName);
+                objGeneral.AddParameterWithValueToSQLCommand("@AssetNo", objAssetDetails.AssetNo);
+                objGeneral.AddParameterWithValueToSQLCommand("@AssetSerialNum", objAssetDetails.AssetSerialNum);
+                objGeneral.AddParameterWithValueToSQLCommand("@SupportSDate", objAssetDetails.SupportSDate);
+                objGeneral.AddParameterWithValueToSQLCommand("@SupportEDate", objAssetDetails.SupportEDate);
+               
+
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddAsset");
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
+
+        public DataTable GetAssetDetailsbyID(string assetID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("AssetID", assetID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetAssetDetailsByID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable CheckAppliedLeave(string LoginID, string fromDate, string ToDate)
         {
             try { 
@@ -762,6 +804,28 @@ namespace IG_Portal.BAL_Classes
             }
             return _isInserted;
         }
+
+        public int AddInfraSupport(InfraSupportDetails objSupport)
+        {
+            int _isInserted = -1;
+            try
+            {
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", objSupport.LoginID);
+                objGeneral.AddParameterWithValueToSQLCommand("@Details", objSupport.Details);
+                objGeneral.AddParameterWithValueToSQLCommand("@Priority", objSupport.Priority);
+                objGeneral.AddParameterWithValueToSQLCommand("@AssetID", objSupport.AssetID);
+            
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddInfraSupport");
+
+            }
+
+            catch (Exception ex)
+            {
+                //General.ErrorMessage(ex.StackTrace + ex.Message);
+            }
+            return _isInserted;
+        }
+
 
         public int Add_Leave(Leave objLeaveApplication)
         {
@@ -1290,6 +1354,23 @@ namespace IG_Portal.BAL_Classes
 
         }
 
+        public DataTable GetInfraSupportTickets()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetInfraSupportTickets");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
         public DataTable GetSupportTicketsByClient(string ClientID)
         {
             try
@@ -1299,6 +1380,40 @@ namespace IG_Portal.BAL_Classes
 
                 objGeneral.AddParameterWithValueToSQLCommand("@ClientID", ClientID);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetSupportTicketsByClients");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
+        public DataTable GetInfraSupportTicketsByEngineer(string EngineerID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@EngineerID", EngineerID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetInfraSupportTicketsByEngineer");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+
+        }
+
+        public DataTable GetSupportTicketsByInfraClient(string ClientID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@ClientID", ClientID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetInfraSupportTicketsByClients");
             }
             catch (Exception ex)
             {
@@ -1327,6 +1442,28 @@ namespace IG_Portal.BAL_Classes
             }
             return _isInserted;
         }
+
+        public int AddInfraSupportComment(string comment, string status, string supportid, string LoginID)
+        {
+            int _isInserted = -1;
+            try
+            {
+
+                objGeneral.ClearParameters();
+                objGeneral.AddParameterWithValueToSQLCommand("@Comment", comment);
+                objGeneral.AddParameterWithValueToSQLCommand("@Status", status);
+                objGeneral.AddParameterWithValueToSQLCommand("@SupportID", supportid);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddInfraSupportComment");
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
+
 
         public DataSet GetBugForEmployee(string devID)
         {
@@ -1653,6 +1790,24 @@ namespace IG_Portal.BAL_Classes
                 objGeneral.AddParameterWithValueToSQLCommand("@NotificationID", id);
                 objGeneral.AddParameterWithValueToSQLCommand("@DeveloperID", developerID);
                 _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AssignBugNotification");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isUpdated;
+        }
+
+        public int AssignInfraTicket(int id, string EngineerID,string LoginID)
+        {
+            int _isUpdated = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@InfraTicketID", id);
+                objGeneral.AddParameterWithValueToSQLCommand("@EngineerID", EngineerID);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                _isUpdated = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AssignInfraTicket");
             }
             catch (Exception ex)
             {

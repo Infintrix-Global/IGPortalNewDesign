@@ -136,7 +136,7 @@
             <!-- BEGIN FORM-->
             <div class="form-body">
                 <div class="row" align="center">
-                    <h4 class="header2">Minutes Of Meeting</h4>
+                    <h4 class="header1">Minutes Of Meeting</h4>
                   <%--  <asp:Label ID="lbltitle" runat="server" Text="Minutes Of Meeting" Font-Size="Large"></asp:Label>--%>
                 </div>
                 <br />

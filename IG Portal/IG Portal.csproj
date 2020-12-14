@@ -85,6 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddAsset.aspx" />
     <Content Include="AddBug.aspx" />
     <Content Include="AddClientDetails.aspx" />
     <Content Include="AddDepartment.aspx" />
@@ -145,6 +146,9 @@
     <Content Include="images\our-gallery\8.jpg" />
     <Content Include="images\our-gallery\9.jpg" />
     <Content Include="Index.aspx" />
+    <Content Include="InfraClientDashBoard.aspx" />
+    <Content Include="InfraSupport.aspx" />
+    <Content Include="InfraSupportDashBoard.aspx" />
     <Content Include="js\angular-materialize.js" />
     <Content Include="js\angular.min.js" />
     <Content Include="js\BsMultiSelect.js" />
@@ -768,6 +772,8 @@
     <Content Include="ViewBugDetails.aspx" />
     <Content Include="ViewEmployeeDocuments.aspx" />
     <Content Include="ViewEvent.aspx" />
+    <Content Include="ViewInfraSupportTicket.aspx" />
+    <Content Include="ViewInfraTicket.aspx" />
     <Content Include="ViewLEads.aspx" />
     <Content Include="ViewMOMDetails.aspx" />
     <Content Include="ViewNews.aspx" />
@@ -781,6 +787,13 @@
     <Content Include="IncompleteTimeSheet.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAsset.aspx.cs">
+      <DependentUpon>AddAsset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddAsset.aspx.designer.cs">
+      <DependentUpon>AddAsset.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddBug.aspx.cs">
       <DependentUpon>AddBug.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -940,6 +953,27 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InfraClientDashBoard.aspx.cs">
+      <DependentUpon>InfraClientDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InfraClientDashBoard.aspx.designer.cs">
+      <DependentUpon>InfraClientDashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InfraSupport.aspx.cs">
+      <DependentUpon>InfraSupport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InfraSupport.aspx.designer.cs">
+      <DependentUpon>InfraSupport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InfraSupportDashBoard.aspx.cs">
+      <DependentUpon>InfraSupportDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InfraSupportDashBoard.aspx.designer.cs">
+      <DependentUpon>InfraSupportDashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="LeadDetails.aspx.cs">
       <DependentUpon>LeadDetails.aspx</DependentUpon>
@@ -1204,6 +1238,20 @@
     </Compile>
     <Compile Include="ViewEvent.aspx.designer.cs">
       <DependentUpon>ViewEvent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewInfraSupportTicket.aspx.cs">
+      <DependentUpon>ViewInfraSupportTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewInfraSupportTicket.aspx.designer.cs">
+      <DependentUpon>ViewInfraSupportTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewInfraTicket.aspx.cs">
+      <DependentUpon>ViewInfraTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewInfraTicket.aspx.designer.cs">
+      <DependentUpon>ViewInfraTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewLEads.aspx.cs">
       <DependentUpon>ViewLEads.aspx</DependentUpon>

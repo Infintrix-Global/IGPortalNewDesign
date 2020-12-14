@@ -35,7 +35,7 @@
   <link href="~/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="~/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-     
+ 
 </head>
 <body class="cyan" id="loginBody">
   
@@ -91,9 +91,12 @@
               <asp:TextBox ID="txtPassword" TextMode ="Password" placeholder="Password" runat="server"  class="form-control"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassword"
                                                             SetFocusOnError="true" ErrorMessage="Please Enter Password" ForeColor="Red"></asp:RequiredFieldValidator>
+              
            <%-- <label for="password">Password</label>--%>
           </div>
         </div>
+
+          
           <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>

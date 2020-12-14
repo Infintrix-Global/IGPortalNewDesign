@@ -20,11 +20,11 @@ namespace IG_Portal
         protected void Page_UnLoad(object sender, EventArgs e)
         {
             Session["TaskIDAddBug"] = null;
-            Session["BugID"] =null;
+            Session["BugID"] = null;
             Session["BugIDReopen"] = null;
         }
 
-            protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -35,7 +35,7 @@ namespace IG_Portal
                 BindSuggestedByMaster();
                 BindAssignToMaster();
                 txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-              
+
                 if (Request.QueryString["BugID"] != null)
                 {
                     Session["BugID"] = objcommon.Decrypt(Request.QueryString["BugID"]);
@@ -64,14 +64,14 @@ namespace IG_Portal
                 ReopenBugID = Session["BugIDReopen"] as string;
                 AddBugID = Session["TaskIDAddBug"] as string;
                 {
-                    if ((string.IsNullOrEmpty(bugID)) && (string.IsNullOrEmpty(ReopenBugID))&& (string.IsNullOrEmpty(AddBugID)))
+                    if ((string.IsNullOrEmpty(bugID)) && (string.IsNullOrEmpty(ReopenBugID)) && (string.IsNullOrEmpty(AddBugID)))
                     {
                         txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                         BindInitialStatusMaster();
                         Clear();
                         ddlStatus.SelectedValue = "1";
                     }
-                    else if(!(string.IsNullOrEmpty(AddBugID)))
+                    else if (!(string.IsNullOrEmpty(AddBugID)))
                     {
                         BindInitialStatusMaster();
                         txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -83,12 +83,12 @@ namespace IG_Portal
                         txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                         AutoFillBug();
                     }
-                    
+
                 }
                 //rgvDate.MaximumValue = DateTime.Now.ToString("yyyy-MM-dd");
                 //rgvDate.MinimumValue = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
-               // txtDate.Attributes["min"] = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
-               txtDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
+                // txtDate.Attributes["min"] = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+                txtDate.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             }
         }
 
@@ -138,6 +138,14 @@ namespace IG_Portal
 
             ddlTaskTitle.DataBind();
             ddlTaskTitle.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
+            ddlIDMatch.DataSource = objcommon.GetTaskTitleMasterForAddBug(projectID);
+            ddlIDMatch.DataTextField = "ID";
+            ddlIDMatch.DataValueField = "AssignedTaskID";
+
+            ddlIDMatch.DataBind();
+            ddlIDMatch.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
         }
 
         public void BindPageMaster(string projectID)
@@ -157,9 +165,9 @@ namespace IG_Portal
             ddlStatus.DataValueField = "ID";
 
             ddlStatus.DataBind();
-            
+
             ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
-           
+
         }
 
 
@@ -170,7 +178,7 @@ namespace IG_Portal
             ddlStatus.DataValueField = "ID";
             ddlStatus.DataBind();
             ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
-          
+
         }
 
         protected void ddlProjectName_SelectedIndexChanged(object sender, EventArgs e)
@@ -194,12 +202,13 @@ namespace IG_Portal
             else
             {
                 txtTaskTitle.Visible = false;
+                ddlIDMatch.SelectedValue = ddlTaskTitle.SelectedValue;
                 ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
                 ddlTaskDetails.DataTextField = "TaskDetails";
                 ddlTaskDetails.DataValueField = "ID";
 
                 ddlTaskDetails.DataBind();
-                ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
+                ddlTaskDetails.SelectedValue = ddlIDMatch.SelectedItem.Text;
                 txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             }
             txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -357,8 +366,8 @@ namespace IG_Portal
 
                 else if (string.IsNullOrEmpty(ReopenBugID) && string.IsNullOrEmpty(AddBugID))
                 {
-                    
-                        objBugDetails.BugID = Convert.ToInt32(bugID);
+
+                    objBugDetails.BugID = Convert.ToInt32(bugID);
                     if (ddlAssignTo.SelectedIndex == 0)
                     {
                         _isInserted = objTask.UpdateBug(objBugDetails);
@@ -401,7 +410,7 @@ namespace IG_Portal
                             objcommon.SendMailAssignBug(_isInserted.ToString());
                             Clear();
                             Response.Redirect("~/ViewBug.aspx");
-                           
+
 
                         }
                     }
@@ -451,7 +460,7 @@ namespace IG_Portal
                             objcommon.SendMailAssignBug(_isInserted.ToString());
                             Clear();
                             Response.Redirect("~/Notifications.aspx");
-                          
+
 
                         }
                     }
@@ -469,20 +478,20 @@ namespace IG_Portal
 
         public void Clear()
         {
-          //  ddlProjectName.SelectedIndex = 0;
-          //  ddlPageTitle.SelectedIndex = 0;
-          //  ddlTaskType.SelectedIndex = 0;
-            txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd");;
+            //  ddlProjectName.SelectedIndex = 0;
+            //  ddlPageTitle.SelectedIndex = 0;
+            //  ddlTaskType.SelectedIndex = 0;
+            txtDate.Text = Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd"); ;
             txtTaskTitle.Text = "";
             txtTaskTitle.Visible = false;
-           // ddlSuggetedBy.SelectedIndex = 0;
-            
-            ddlStatus.SelectedValue="0";
+            // ddlSuggetedBy.SelectedIndex = 0;
+
+            ddlStatus.SelectedValue = "0";
             txtBugDescription.Text = "";
             requiredtxttitle.Enabled = true;
             ddlTaskTitle.SelectedIndex = 0;
             txtComment.Text = "";
-           
+
         }
 
         public void AutoFillBug()
@@ -510,7 +519,7 @@ namespace IG_Portal
             txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             /* end bind Task Detail */
             BindPageMaster(ddlProjectName.SelectedValue);
-            ddlPageTitle.SelectedValue= dtBug.Rows[0]["PageID"].ToString();
+            ddlPageTitle.SelectedValue = dtBug.Rows[0]["PageID"].ToString();
             txtBugDescription.Text = dtBug.Rows[0]["BugDetails"].ToString();
             txtDate.Text = Convert.ToDateTime(dtBug.Rows[0]["WorkDate"].ToString()).ToString("yyyy-MM-dd");
             radPriority.Text = dtBug.Rows[0]["Priority"].ToString();
@@ -522,7 +531,7 @@ namespace IG_Portal
             {
                 ddlStatus.SelectedValue = "7";
             }
-           if(dtBug.Rows[0]["Developer"].ToString() !="")
+            if (dtBug.Rows[0]["Developer"].ToString() != "")
             {
                 ddlAssignTo.SelectedValue = dtBug.Rows[0]["Developer"].ToString();
             }
@@ -533,7 +542,7 @@ namespace IG_Portal
         public void AutoFillAddBugDetails()
         {
             DataTable dtTask = new DataTable();
-           
+
 
             if (!string.IsNullOrEmpty(AddBugID))
             {
@@ -542,7 +551,7 @@ namespace IG_Portal
             ddlProjectName.SelectedValue = dtTask.Rows[0]["ProjectName"].ToString();
             BindPageMaster(ddlProjectName.SelectedValue);
             BindTaskTitleMaster(ddlProjectName.SelectedValue);
-           
+
             ddlTaskTitle.SelectedValue = dtTask.Rows[0]["TaskTitle"].ToString();
             ddlTaskTitle_SelectedIndexChanged();
             ddlAssignTo.SelectedValue = dtTask.Rows[0]["AssignTo"].ToString();
