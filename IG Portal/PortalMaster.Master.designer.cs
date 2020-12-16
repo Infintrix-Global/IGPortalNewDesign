@@ -267,6 +267,24 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.Label lblInfraSupport;
 
         /// <summary>
+        /// Engineer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Engineer;
+
+        /// <summary>
+        /// lblEngineer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEngineer;
+
+        /// <summary>
         /// SiteMapDataSource1 control.
         /// </summary>
         /// <remarks>

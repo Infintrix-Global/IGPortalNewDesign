@@ -134,6 +134,14 @@ namespace IG_Portal
                         //SiteMapPath1.SiteMapProvider = "SiteMapQA";
                         //SiteMapPath1.DataBind();
                     }
+
+                    else if (Session["Role"].ToString() == "15" && Session["CompanyID"].ToString() == "2")
+                    {
+                        Engineer.Visible = true;
+                        lblEngineer.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapQA";
+                        //SiteMapPath1.DataBind();
+                    }
                 }
 
             }

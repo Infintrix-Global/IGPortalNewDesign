@@ -14,6 +14,13 @@
             height: 300px;
             border: 3px solid #0DA9D0;
         }
+
+          .modalPopup1 {
+            background-color: #FFFFFF;
+            width: 400px;
+            height: 500px;
+            border: 3px solid #0DA9D0;
+        }
     </style>
     <script>
          function GetCommentConfirmation() {
@@ -26,6 +33,41 @@
                 }
         }
     </script>
+
+     <script type="text/javascript">
+         function DateTimeValidation(sender, args) {
+             var start = document.getElementById("<%=txtSTime.ClientID %>").value;
+                    var end = document.getElementById("<%=txtETime.ClientID %>").value;
+                    var date1 = new Date();
+                    var startTime = new Date(date1.getMonth() + "/" + date1.getDate() + "/" + date1.getYear() + " " + start);
+
+                    var endTime = new Date(date1.getMonth() + "/" + date1.getDate() + "/" + date1.getYear() + " " + end);
+
+
+                    if (startTime >= endTime) {
+                        args.IsValid = false;
+                    }
+
+                }
+
+                function DateTime12Validation(sender, args) {
+                    var start = document.getElementById("<%=txtSTime.ClientID %>").value;
+                     var end = document.getElementById("<%=txtETime.ClientID %>").value;
+             var date1 = new Date();
+             var startTime = new Date(date1.getMonth() + "/" + date1.getDate() + "/" + date1.getYear() + " " + start);
+
+             var endTime = new Date(date1.getMonth() + "/" + date1.getDate() + "/" + date1.getYear() + " " + end);
+
+
+             var diff = (endTime.getTime() - startTime.getTime()) / 1000;
+             diff /= (60 * 60);
+
+             if (diff > 12) {
+                 args.IsValid = false;
+             }
+
+         }
+     </script>
     </asp:Content>
     
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -74,11 +116,7 @@
                                 </div>
                             </div>
 
-                
-
-                   
-
-                         <div class="col m3">
+      <div class="col m3">
                                            <div class="input-field">
                                                 <div class="select-wrapper initialized">
                                                     
@@ -90,11 +128,11 @@
                                             </div>
                                         </div>
 
-                     
+                       </div> 
                     </ContentTemplate>
                 </asp:UpdatePanel>
                     
-                    </div>            
+                             
                 <br />
                 <div class="row" align="center">
 
@@ -205,12 +243,7 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                <asp:TemplateField HeaderText="File " HeaderStyle-CssClass="autostyle2" >
-                                                    <ItemTemplate>
-                                                        <asp:LinkButton ID="lnkFile" runat="server" Text='<%# Eval("FileUrl")  %>' CommandArgument='<%# Eval("FileUrl")  %>' ForeColor="LightBlue" CommandName="Download" CssClass="font-timesheet"></asp:LinkButton>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-
+                                             
                                                 
                                                 <asp:TemplateField HeaderText="Engineer " HeaderStyle-CssClass="autostyle2" SortExpression="EngineerName">
                                                     <ItemTemplate>
@@ -233,9 +266,17 @@
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                             
-                                                          
+                                                          <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkWorkLog" runat="server" Text="Add Work Log"    CommandArgument='<%#Eval("ID")  %>' CommandName="WorkLog"></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField> 
                                                
-                                             
+                                              <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkVWorkLog" runat="server" Text="View Work Log"    CommandArgument='<%#Eval("ID")  %>' CommandName="ViewWorkLog"></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField> 
 
                                             </Columns>
 
@@ -318,6 +359,91 @@
                 </div>
 
             </asp:Panel>
+
+
+                      <asp:Button ID="btnShow" runat="server" Text="" Visible="true" Style="display: none" />
+                  <!-- ModalPopupExtender -->
+    <asp:ModalPopupExtender ID="ModalPopupExtender2" runat="server" PopupControlID="pnlpp" TargetControlID="btnShow"
+        CancelControlID="Vpbtncancel" BackgroundCssClass="modalBackground" />
+    
+              <asp:Panel ID="pnlpp" runat="server" Style="display: none" >
+                                                              
+                    <asp:Panel ID="Panel3" runat="server" CssClass="modalPopup1">
+                                                                <table >
+                                                                    <tr>
+                                                                        <td>
+                                                                             <asp:Label ID="lblSupportID" runat="server"  Visible="false"> </asp:Label>
+                                                                            <asp:Label ID="lblDetails" runat="server" Text="Details"></asp:Label>
+                                                                        </td>
+                                                                         <td>
+                                                                            <asp:TextBox ID="txtDetails" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                                                             <asp:RequiredFieldValidator runat="server"
+                                    ID="RequiredFieldValidator4"
+                                    ControlToValidate="txtDetails" Text="Required"  ValidationGroup="w"
+                                    ErrorMessage="Enter Details"></asp:RequiredFieldValidator>
+                                                                        </td>
+                                                                        </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSTime" runat="server" Text="Start Time"></asp:Label>
+                                                                        </td>
+                                                                         <td>
+                                                                            <asp:TextBox ID="txtSTime" runat="server" TextMode="Time"  ></asp:TextBox>
+                                                                             <asp:RequiredFieldValidator runat="server"
+                                    ID="RequiredFieldValidator5"
+                                    ControlToValidate="txtSTime" Text="Required"  ValidationGroup="w"
+                                    ErrorMessage="Enter Start Time"></asp:RequiredFieldValidator>
+                                                                        </td>
+                                                                        </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <asp:Label ID="lblETime" runat="server" Text="End Time"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ID="txtETime" runat="server" TextMode="Time"  ></asp:TextBox>
+                                                                             <asp:RequiredFieldValidator runat="server"
+                                    ID="RequiredFieldValidator6"
+                                    ControlToValidate="txtETime" Text="Required"  ValidationGroup="w"
+                                    ErrorMessage="Enter End Time"></asp:RequiredFieldValidator>
+                                                                               <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="End Time should be greater than Start Time"
+                                                    ForeColor="Red" ControlToValidate="txtETime" Display="Dynamic" ClientValidationFunction="DateTimeValidation" ValidationGroup="at"></asp:CustomValidator>
+                                                 <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Difference between End Time and Start Time shoud be less than 12 hours"
+                                                    ForeColor="Red" ControlToValidate="txtETime" Display="Dynamic" ClientValidationFunction="DateTime12Validation" ValidationGroup="at"></asp:CustomValidator>
+                                                                        </td>
+                                                                        </tr>
+                                                                    <tr>
+                                                                        <td>
+                               
+                                <asp:Label ID="lblwsStatus" runat="server" Text="Status"></asp:Label>
+                            </td>
+                                                                                                                     
+                             <td>
+                               
+                               <asp:DropDownList ID="ddlwsStatus"  runat="server"></asp:DropDownList>
+                             
+                                <asp:RequiredFieldValidator runat="server"
+                                    ID="RequiredFieldValidator3" InitialValue="0"
+                                    ControlToValidate="ddlppStatus" Text="Required"  ValidationGroup="w"
+                                    ErrorMessage="Select a Status"></asp:RequiredFieldValidator>
+                            </td>
+                                                                    </tr>
+                                                                    <tr align="center">
+                                                                       <td></td>
+                                                                        <td>
+                                                                            <asp:Button ID="btnWLsubmit" runat="server" Text="Submit" OnClick="btnWLsubmit_Click" />
+                                                                        </td>
+
+                                                                    </tr>
+                                                                </table>
+                        </asp:Panel>
+                    <div class="row" align="center">
+                    
+                   <asp:Button ID="Vpbtncancel" CausesValidation="false" runat="server" Text="Cancel " Visible="true" BackColor="#c5484d" ForeColor="white" Height="29px" />
+                   
+                </div>
+
+                                                            </asp:Panel>
+          
             </div>
             </div>
 </asp:Content>

@@ -100,6 +100,7 @@
     <Content Include="AssignTask.aspx" />
     <Content Include="css\custom\bootstrap-utilities.css" />
     <Content Include="css\custom\Icustom.css" />
+    <Content Include="EngineerDashBoard.aspx" />
     <Content Include="EventMaster.aspx" />
     <Content Include="HolidayMaster.aspx" />
     <Content Include="IGPortalSaleService.svc" />
@@ -149,6 +150,7 @@
     <Content Include="InfraClientDashBoard.aspx" />
     <Content Include="InfraSupport.aspx" />
     <Content Include="InfraSupportDashBoard.aspx" />
+    <Content Include="ViewInfraSupportHistory.aspx" />
     <Content Include="js\angular-materialize.js" />
     <Content Include="js\angular.min.js" />
     <Content Include="js\BsMultiSelect.js" />
@@ -774,6 +776,7 @@
     <Content Include="ViewEvent.aspx" />
     <Content Include="ViewInfraSupportTicket.aspx" />
     <Content Include="ViewInfraTicket.aspx" />
+    <Content Include="ViewInfraWorkLog.aspx" />
     <Content Include="ViewLEads.aspx" />
     <Content Include="ViewMOMDetails.aspx" />
     <Content Include="ViewNews.aspx" />
@@ -881,6 +884,13 @@
     <Compile Include="BAL_Classes\MenuMasterBAL.cs" />
     <Compile Include="BAL_Classes\RandomImage.cs" />
     <Compile Include="CommonControl.cs" />
+    <Compile Include="EngineerDashBoard.aspx.cs">
+      <DependentUpon>EngineerDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EngineerDashBoard.aspx.designer.cs">
+      <DependentUpon>EngineerDashBoard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EventMaster.aspx.cs">
       <DependentUpon>EventMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -974,6 +984,13 @@
     </Compile>
     <Compile Include="InfraSupportDashBoard.aspx.designer.cs">
       <DependentUpon>InfraSupportDashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewInfraSupportHistory.aspx.cs">
+      <DependentUpon>ViewInfraSupportHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewInfraSupportHistory.aspx.designer.cs">
+      <DependentUpon>ViewInfraSupportHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="LeadDetails.aspx.cs">
       <DependentUpon>LeadDetails.aspx</DependentUpon>
@@ -1252,6 +1269,13 @@
     </Compile>
     <Compile Include="ViewInfraTicket.aspx.designer.cs">
       <DependentUpon>ViewInfraTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewInfraWorkLog.aspx.cs">
+      <DependentUpon>ViewInfraWorkLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewInfraWorkLog.aspx.designer.cs">
+      <DependentUpon>ViewInfraWorkLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewLEads.aspx.cs">
       <DependentUpon>ViewLEads.aspx</DependentUpon>

@@ -1464,7 +1464,28 @@ namespace IG_Portal.BAL_Classes
             return _isInserted;
         }
 
+        public int AddInfraWorkLog(string details,string Starttime,string endtime,string status,  string supportid, string LoginID)
+        {
+            int _isInserted = -1;
+            try
+            {
 
+                objGeneral.ClearParameters();
+                objGeneral.AddParameterWithValueToSQLCommand("@Details", details);
+                objGeneral.AddParameterWithValueToSQLCommand("@StartTime", Starttime);
+                objGeneral.AddParameterWithValueToSQLCommand("@EndTime", endtime);
+                objGeneral.AddParameterWithValueToSQLCommand("@Status", status);
+                objGeneral.AddParameterWithValueToSQLCommand("@SupportID", supportid);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddInfraWorkLog");
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+        }
         public DataSet GetBugForEmployee(string devID)
         {
             try
@@ -1874,6 +1895,38 @@ namespace IG_Portal.BAL_Classes
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@SupportID", supportID);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetSupportHistory");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetInfraSupportHistory(string supportID)
+        {
+
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@SupportID", supportID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetInfraSupportHistory");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetInfraWorkLog(string supportID)
+        {
+
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@SupportID", supportID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetInfraWorkLog");
             }
             catch (Exception ex)
             {

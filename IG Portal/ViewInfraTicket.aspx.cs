@@ -55,16 +55,20 @@ namespace IG_Portal
             ddlppStatus.DataSource = objCommon.GetSupportStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
             ddlppStatus.DataTextField = "StatusName";
             ddlppStatus.DataValueField = "ID";
-
             ddlppStatus.DataBind();
             ddlppStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
 
             ddlStatus.DataSource = objCommon.GetSupportStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
             ddlStatus.DataTextField = "StatusName";
             ddlStatus.DataValueField = "ID";
-
             ddlStatus.DataBind();
             ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+
+            ddlwsStatus.DataSource = objCommon.GetSupportStatusMaster(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ddlwsStatus.DataTextField = "StatusName";
+            ddlwsStatus.DataValueField = "ID";
+            ddlwsStatus.DataBind();
+            ddlwsStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         protected void ddlClient_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,6 +140,14 @@ namespace IG_Portal
             lblppSupportID.Text = "";
         }
 
+        public void ClearWorkLog()
+        {
+            txtDetails.Text = "";
+            txtSTime.Text = "";
+            txtETime.Text = "";
+            lblSupportID.Text = "";
+        }
+
         protected void GridSupport_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -148,6 +160,16 @@ namespace IG_Portal
                     string SupportID = (row.FindControl("lblID") as Label).Text;
                     lblppSupportID.Text = SupportID;
                     ModalPopupExtender1.Show();
+
+                }
+
+                if (e.CommandName == "WorkLog")
+                {
+                    //int rowIndex = Convert.ToInt32(e.CommandArgument);
+                  //  GridViewRow row = GridSupport.Rows[rowIndex % 10];
+                  //  string SupportID = (row.FindControl("lblID") as Label).Text;
+                    lblSupportID.Text = e.CommandArgument.ToString();
+                    ModalPopupExtender2.Show();
 
                 }
 
@@ -166,6 +188,13 @@ namespace IG_Portal
                     int bid = Convert.ToInt32(e.CommandArgument);
                     Session["SupportHistoryID"] = bid.ToString();
                     Response.Redirect("~/ViewInfraSupportHistory.aspx");
+                }
+
+                if (e.CommandName == "ViewWorkLog")
+                {
+                    int bid = Convert.ToInt32(e.CommandArgument);
+                    Session["SupportHistoryID"] = bid.ToString();
+                    Response.Redirect("~/ViewInfraWorkLog.aspx");
                 }
             }
             catch (Exception ex)
@@ -189,8 +218,8 @@ namespace IG_Portal
             try
             {
                 string query = "Select S.*,AM.AssetName,AM.AssetNummber,L.EmployeeName as ClientName,SSM.StatusName,L2.EmployeeName as EngineerName from InfraSupport S inner join CustomerAssetMap AM on AM.ID = S.AssetID inner join " +
-                    "Login L on L.ID = S.ClientID inner join SupportStatusMAster SSM on SSM.ID = S.Status" +
-                    "inner join Login L2 on S.EngineerID=L2.ID  where S.IsActive = 1 and S.EngineerID = "+Session["LoginID"].ToString();
+                    " Login L on L.ID = S.ClientID inner join SupportStatusMAster SSM on SSM.ID = S.Status" +
+                    " inner join Login L2 on S.EngineerID=L2.ID  where S.IsActive = 1 and S.EngineerID = "+Session["LoginID"].ToString();
 
 
 
@@ -244,6 +273,25 @@ namespace IG_Portal
             }
         }
 
-       
+        protected void btnWLsubmit_Click(object sender, EventArgs e)
+        {
+            int _isInserted = -1;
+            _isInserted = objTask.AddInfraWorkLog(txtDetails.Text, (Convert.ToDateTime(txtSTime.Text)).ToString("hh:mm tt"), (Convert.ToDateTime(txtETime.Text)).ToString("hh:mm tt") ,ddlwsStatus.SelectedValue, lblSupportID.Text, Session["LoginID"].ToString());
+            if (_isInserted == -1)
+            {
+                lblMessage.Text = "Failed to Add Work Log";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+
+                lblMessage.Text = "Work Log Added ";
+
+                lblMessage.ForeColor = System.Drawing.Color.Green;
+                BindSupport();
+                ClearWorkLog();
+
+            }
+        }
     }
 }

@@ -230,11 +230,11 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                <asp:TemplateField HeaderText="File " HeaderStyle-CssClass="autostyle2" >
+                                          <%--      <asp:TemplateField HeaderText="File " HeaderStyle-CssClass="autostyle2" >
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkFile" runat="server" Text='<%# Eval("FileUrl")  %>' CommandArgument='<%# Eval("FileUrl")  %>' ForeColor="LightBlue" CommandName="Download" CssClass="font-timesheet"></asp:LinkButton>
                                                     </ItemTemplate>
-                                                </asp:TemplateField>
+                                                </asp:TemplateField>--%>
 
                                                 
                                                 <asp:TemplateField HeaderText="Engineer " HeaderStyle-CssClass="autostyle2" SortExpression="EngineerName">

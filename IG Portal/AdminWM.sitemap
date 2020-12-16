@@ -5,6 +5,7 @@
 		<siteMapNode url="~/AssignProject.aspx" title="Assign Project"  description="" />
 		  <siteMapNode url="~/AddProject.aspx" title="Add Project"   description="" />
 		<siteMapNode url="~/AddPage.aspx" title="Add Page"  description="" />
+			<siteMapNode url="~/AddAsset.aspx" title="Add Asset"  description="" />
 		<siteMapNode url="~/AddDepartment.aspx" title="Add Department"  description="" />
 		<siteMapNode url="~/AddNews.aspx" title="Add News/Annoucements"  description="" />
 		<siteMapNode url="~/ViewNews.aspx" title="View News/Announcements"  description="" />

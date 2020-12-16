@@ -258,7 +258,7 @@
                                                 <li><a href="<%= ResolveUrl("~/AddPage.aspx") %>">Page</a> </li>
                                                  <li><a href="<%= ResolveUrl("~/AddDepartment.aspx") %>">Department</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/AddClientDetails.aspx") %>">Client</a> </li>
-                                                  
+                                                     <li><a href="<%= ResolveUrl("~/AddAsset.aspx") %>">Asset</a> </li>
                                                  <li><a href="<%= ResolveUrl("~/AddNews.aspx") %>">Add News</a> </li>
                                                 <li><a href="<%= ResolveUrl("~/ViewNews.aspx") %>">View News</a> </li>
 
@@ -877,6 +877,40 @@
                             <li class="bold"><a href="<%= ResolveUrl("~/InfraSupportDashBoard.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>DashBoard</a> </li>
                               
                                <li class="bold"><a href="<%= ResolveUrl("~/ViewInfraSupportTicket.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Support</a> </li>
+                            
+                           
+                        </ul>
+                        <a href="#" data-activates="slide-out9" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light indigo"><i class="mdi-navigation-menu"></i></a>
+                    </div>
+
+                      <div id="Engineer" runat="server" visible="false">
+                        <ul id="slide-out11" class="side-nav leftside-navigation">
+
+                            <li class="user-details cyan darken-2">
+                                <div class="row">
+                                    <div class="col col s4 m4 l4">
+                                        <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                                    </div>
+                                    <div class="col col s8 m8 l8">
+                                    <%--    <ul id="profile-dropdown" class="dropdown-content">
+                                            <li><a href="EmployeeProfile.aspx"><i class="mdi-action-face-unlock"></i>Profile</a> </li>
+                                            <li><a href=""><i class="mdi-action-settings"></i>Setting</a> </li>
+                                            <li class="divider"></li>
+                                            <li><a href="Login.aspx"><i class="mdi-hardware-keyboard-tab"></i>Logout</a> </li>
+                                        </ul>--%>
+
+
+                                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="" data-activates="profile-dropdown">
+                                            <asp:Label ID="lblEngineer" runat="server"></asp:Label>
+                                            <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                                        <p class="user-roal"></p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="bold"><a href="<%= ResolveUrl("~/EngineerDashBoard.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>DashBoard</a> </li>
+                              
+                               <li class="bold"><a href="<%= ResolveUrl("~/ViewInfraTicket.aspx") %>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Assigned Ticket</a> </li>
                             
                            
                         </ul>

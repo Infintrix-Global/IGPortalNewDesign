@@ -235,12 +235,12 @@ namespace IG_Portal
             try
             {
                 string query = "Select S.*,AM.AssetName,AM.AssetNummber,L.EmployeeName as ClientName,SSM.StatusName,L2.EmployeeName as EngineerName from InfraSupport S inner join CustomerAssetMap AM on AM.ID = S.AssetID inner join " +
-                    "Login L on L.ID = S.ClientID inner join SupportStatusMAster SSM on SSM.ID = S.Status" +
-                    "inner join Login L2 on S.EngineerID=L2.ID  where S.IsActive = 1 and S.EngineerID is not null ";
+                    " Login L on L.ID = S.ClientID inner join SupportStatusMAster SSM on SSM.ID = S.Status" +
+                    " inner join Login L2 on S.EngineerID=L2.ID  where S.IsActive = 1 and S.EngineerID is not null ";
 
                 string query1 = "Select S.*,AM.AssetName,AM.AssetNummber,L.EmployeeName as ClientName,SSM.StatusName,'' as EngineerName from InfraSupport S inner join CustomerAssetMap AM on AM.ID = S.AssetID inner join " +
-                    "Login L on L.ID = S.ClientID inner join SupportStatusMAster SSM on SSM.ID = S.Status" +
-                    "inner join Login L2 on S.EngineerID=L2.ID  where S.IsActive = 1 and S.EngineerID is  null ";
+                    " Login L on L.ID = S.ClientID inner join SupportStatusMAster SSM on SSM.ID = S.Status" +
+                    " inner join Login L2 on S.EngineerID=L2.ID  where S.IsActive = 1 and S.EngineerID is  null ";
 
                 string queryfinal;
 
@@ -259,7 +259,7 @@ namespace IG_Portal
                     query += " and S.Status ='" + ddlStatus.SelectedValue + "'";
                     query1 += " and S.Status ='" + ddlStatus.SelectedValue + "'";
                 }
-                queryfinal = query + " union" + query1 + " order by CreatedOn desc";
+                queryfinal = query + " union " + query1 + " order by CreatedOn desc";
                 dtSearch1 = objTask.SearchTask(query);
                 GridFillSearch();
 
@@ -368,19 +368,41 @@ namespace IG_Portal
 
         protected void GridSupport_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                if (Session["Role"].ToString() == "13")
+                if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    ((CheckBox)e.Row.FindControl("chkSelect")).Visible = false;
-                   // ((CheckBox)GridSupport.FindControl("CheckBoxall")).Visible = false;
+                    if (Session["Role"].ToString() == "13")
+                    {
+                        ((CheckBox)e.Row.FindControl("chkSelect")).Visible = false;
+
+                        // ((CheckBox)GridSupport.FindControl("CheckBoxall")).Visible = false;
+                    }
+                    else if (Session["Role"].ToString() == "14")
+                    {
+                        ((CheckBox)e.Row.FindControl("chkSelect")).Visible = true;
+
+                        //  ((CheckBox)GridSupport.FindControl("CheckBoxall")).Visible = true;
+                    }
                 }
-                else if (Session["Role"].ToString() == "14")
+                else
                 {
-                    ((CheckBox)e.Row.FindControl("chkSelect")).Visible = true;
-                 //  ((CheckBox)GridSupport.FindControl("CheckBoxall")).Visible = true;
+                    if (Session["Role"].ToString() == "13")
+                    {
+                         GridSupport.HeaderRow.FindControl("CheckBoxall").Visible = false;
+                       // ((CheckBox)e.Row.Cells[0].FindControl("CheckBoxall")).Visible = false;
+                    }
+                    else if (Session["Role"].ToString() == "14")
+                    {
+                        GridSupport.HeaderRow.FindControl("CheckBoxall").Visible = true;
+                       // ((CheckBox)e.Row.Cells[0].FindControl("CheckBoxall")).Visible = true;
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+        }
         }
     }
-}

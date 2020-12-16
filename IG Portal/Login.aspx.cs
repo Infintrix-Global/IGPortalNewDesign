@@ -138,6 +138,13 @@ namespace IG_Portal
                         Response.Redirect("~/InfraSupportDashBoard.aspx");
 
                     }
+
+                    if (_dtLogin.Rows[0]["RoleID"].ToString() == "15" && _dtLogin.Rows[0]["CompanyID"].ToString() == "2")
+                    {
+                        Session["EmployeeID"] = int.Parse(_dtLogin.Rows[0]["ID"].ToString());
+                        Response.Redirect("~/EngineerDashBoard.aspx");
+
+                    }
                 }
                 else
                 {

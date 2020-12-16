@@ -1336,6 +1336,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetEngineerMaster(int companyID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 24);
+                objGeneral.AddParameterWithValueToSQLCommand("@CompanyID", companyID);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetAllEmployeeList()
         {
             try
