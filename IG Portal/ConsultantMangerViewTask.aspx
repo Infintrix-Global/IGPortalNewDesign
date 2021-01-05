@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ViewAssignedTaskEmployee.aspx.cs" Inherits="IG_Portal.ViewAssignedTaskEmployee" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ConsultantMangerViewTask.aspx.cs" Inherits="IG_Portal.ConsultantMangerViewTask" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
+      <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
      <div class="card-body">
         <div class="portlet-body">
 
@@ -63,6 +62,19 @@
                     </div>
 
                 </div>
+                        <br />
+                         <div id="divAssign" runat="server">
+                   <asp:Label ID="lblmsg2" runat="server"></asp:Label>
+                            <div class="row">
+                                <div class="col m3">
+                                    <asp:Button ID="btnAssign" runat="server" OnClick="btnAssign_Click" Text="Assign" class="btn" />
+
+                                </div>
+                                <div class="col m4">
+                                    <asp:DropDownList ID="ddlDeveloper" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+                </div>
       <div class="row">
                                 <div class=" col m12">
                                     <div class="portlet light ">
@@ -76,12 +88,16 @@
                                                     ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridAssignTask_RowCommand" DataKeyNames="ID">
                                                     <Columns>
 
-                                                      <%--  <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2">
+                                                          <asp:TemplateField HeaderText="Select" HeaderStyle-CssClass="autostyle2" ItemStyle-Width="5%"  >
+                                                            <HeaderTemplate>  
+                                                    <asp:CheckBox ID="CheckBoxall" AutoPostBack="true" onCheckedChanged="chckchanged" runat="server" /> </HeaderTemplate>  
                                                             <ItemTemplate>
-                                                              
+                                                               <%-- <input type="checkbox" id="chkSelect" runat="server" />
+                                                                <label for="chkSelect"></label>--%>
                                                                 <asp:CheckBox runat="server" ID="chkSelect"></asp:CheckBox>
                                                             </ItemTemplate>
-                                                        </asp:TemplateField>--%>
+                                                        </asp:TemplateField>
+                                                     
 
                                                         <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>

@@ -159,6 +159,24 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.Label lblConsultant;
 
         /// <summary>
+        /// consultantmanager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl consultantmanager;
+
+        /// <summary>
+        /// lblConsultantManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConsultantManager;
+
+        /// <summary>
         /// Client control.
         /// </summary>
         /// <remarks>

@@ -98,6 +98,7 @@
     <Content Include="AddTimeSheet.aspx" />
     <Content Include="AssignProject.aspx" />
     <Content Include="AssignTask.aspx" />
+    <Content Include="ConsultantMangerViewTask.aspx" />
     <Content Include="css\custom\bootstrap-utilities.css" />
     <Content Include="css\custom\Icustom.css" />
     <Content Include="EngineerDashBoard.aspx" />
@@ -146,7 +147,7 @@
     <Content Include="images\our-gallery\7.jpg" />
     <Content Include="images\our-gallery\8.jpg" />
     <Content Include="images\our-gallery\9.jpg" />
-    <Content Include="Index.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="InfraClientDashBoard.aspx" />
     <Content Include="InfraSupport.aspx" />
     <Content Include="InfraSupportDashBoard.aspx" />
@@ -196,7 +197,6 @@
     <Content Include="LeaveApplication.aspx" />
     <Content Include="LeaveApplicationForManager.aspx" />
     <Content Include="LeaveApproval.aspx" />
-    <Content Include="Login.aspx" />
     <Content Include="AddProject.aspx" />
     <Content Include="AdminDashBoardWM.aspx" />
     <Content Include="MonthlyHoursByEmployeeReport.aspx" />
@@ -884,6 +884,13 @@
     <Compile Include="BAL_Classes\MenuMasterBAL.cs" />
     <Compile Include="BAL_Classes\RandomImage.cs" />
     <Compile Include="CommonControl.cs" />
+    <Compile Include="ConsultantMangerViewTask.aspx.cs">
+      <DependentUpon>ConsultantMangerViewTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultantMangerViewTask.aspx.designer.cs">
+      <DependentUpon>ConsultantMangerViewTask.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EngineerDashBoard.aspx.cs">
       <DependentUpon>EngineerDashBoard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -957,12 +964,12 @@
       <DependentUpon>EmployeeWiseReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="IIGPortalSaleService.cs" />
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="InfraClientDashBoard.aspx.cs">
       <DependentUpon>InfraClientDashBoard.aspx</DependentUpon>
@@ -1079,13 +1086,6 @@
     </Compile>
     <Compile Include="LeaveApproval.aspx.designer.cs">
       <DependentUpon>LeaveApproval.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MonthlyHoursByEmployeeReport.aspx.cs">
       <DependentUpon>MonthlyHoursByEmployeeReport.aspx</DependentUpon>
@@ -1359,6 +1359,7 @@
     <Content Include="HR.sitemap" />
     <Content Include="images\favicon\Thumbs.db" />
     <Content Include="images\our-gallery\Thumbs.db" />
+    <Content Include="ConsultantManager.sitemap" />
     <None Include="packages.config" />
     <Content Include="PortalMaster.Master" />
     <Content Include="ManagerWM.sitemap">

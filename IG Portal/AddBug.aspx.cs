@@ -139,12 +139,12 @@ namespace IG_Portal
             ddlTaskTitle.DataBind();
             ddlTaskTitle.Items.Insert(0, new ListItem("--- Select ---", "0"));
 
-            ddlIDMatch.DataSource = objcommon.GetTaskTitleMasterForAddBug(projectID);
-            ddlIDMatch.DataTextField = "ID";
-            ddlIDMatch.DataValueField = "AssignedTaskID";
+            //ddlIDMatch.DataSource = objcommon.GetTaskTitleMasterForAddBug(projectID);
+            //ddlIDMatch.DataTextField = "ID";
+            //ddlIDMatch.DataValueField = "AssignedTaskID";
 
-            ddlIDMatch.DataBind();
-            ddlIDMatch.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            //ddlIDMatch.DataBind();
+            //ddlIDMatch.Items.Insert(0, new ListItem("--- Select ---", "0"));
 
         }
 
@@ -202,14 +202,14 @@ namespace IG_Portal
             else
             {
                 txtTaskTitle.Visible = false;
-                ddlIDMatch.SelectedValue = ddlTaskTitle.SelectedValue;
-                ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
-                ddlTaskDetails.DataTextField = "TaskDetails";
-                ddlTaskDetails.DataValueField = "ID";
+                //ddlIDMatch.SelectedValue = ddlTaskTitle.SelectedValue;
+                //ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
+                //ddlTaskDetails.DataTextField = "TaskDetails";
+                //ddlTaskDetails.DataValueField = "ID";
 
-                ddlTaskDetails.DataBind();
-                ddlTaskDetails.SelectedValue = ddlIDMatch.SelectedItem.Text;
-                txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
+                //ddlTaskDetails.DataBind();
+                //ddlTaskDetails.SelectedValue = ddlIDMatch.SelectedItem.Text;
+                //txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             }
             txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
@@ -225,13 +225,13 @@ namespace IG_Portal
             else
             {
                 txtTaskTitle.Visible = false;
-                ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
-                ddlTaskDetails.DataTextField = "TaskDetails";
-                ddlTaskDetails.DataValueField = "ID";
+                //ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
+                //ddlTaskDetails.DataTextField = "TaskDetails";
+                //ddlTaskDetails.DataValueField = "ID";
 
-                ddlTaskDetails.DataBind();
-                ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
-                txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
+                //ddlTaskDetails.DataBind();
+                //ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
+                //txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
             }
             txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
@@ -509,15 +509,15 @@ namespace IG_Portal
             BindTaskTitleMaster(ddlProjectName.SelectedValue);
             ddlTaskType.SelectedValue = dtBug.Rows[0]["TaskTypeID"].ToString();
             ddlTaskTitle.SelectedValue = dtBug.Rows[0]["TaskTitleID"].ToString();
-            /* Bind Task Details */
-            ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
-            ddlTaskDetails.DataTextField = "TaskDetails";
-            ddlTaskDetails.DataValueField = "ID";
+            ///* Bind Task Details */
+            //ddlTaskDetails.DataSource = objcommon.GetTaskTitleMasterForAddBug(ddlProjectName.SelectedValue);
+            //ddlTaskDetails.DataTextField = "TaskDetails";
+            //ddlTaskDetails.DataValueField = "ID";
 
-            ddlTaskDetails.DataBind();
-            ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
-            txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
-            /* end bind Task Detail */
+            //ddlTaskDetails.DataBind();
+            //ddlTaskDetails.SelectedValue = ddlTaskTitle.SelectedValue;
+            //txtTaskDetails.Text = ddlTaskDetails.SelectedItem.Text;
+            ///* end bind Task Detail */
             BindPageMaster(ddlProjectName.SelectedValue);
             ddlPageTitle.SelectedValue = dtBug.Rows[0]["PageID"].ToString();
             txtBugDescription.Text = dtBug.Rows[0]["BugDetails"].ToString();

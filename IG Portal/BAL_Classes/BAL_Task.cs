@@ -1836,6 +1836,8 @@ namespace IG_Portal.BAL_Classes
             return _isUpdated;
         }
 
+      
+
         public int RemoveBug(int Bugid,string loginID)
         {
             int _isDeleted = -1;
