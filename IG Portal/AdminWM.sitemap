@@ -17,6 +17,7 @@
 		<siteMapNode url="~/EmployeeProfile.aspx" title="View Profile"  description="" >
 			<siteMapNode url="~/EditProfile.aspx" title="Edit Profile"  description=""/>
 		</siteMapNode>
+		<siteMapNode url="~/ReleaseManagement.aspx" title="Release"  description="" />
 		<siteMapNode url="~/ViewAssignedTaskEmployee.aspx" title="Assigned Task"  description="" />
 	  <siteMapNode url="~/ViewTask.aspx" title="View TimeSheet"  description="" />
 	  <siteMapNode url="~/LeaveApplication.aspx" title="Apply For Leave"  description="" />

@@ -1262,6 +1262,22 @@ namespace IG_Portal.BAL_Classes
             return ds;
         }
 
+        public DataSet GetReleaseManagement(string LoginID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetReleaseManagement");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds;
+        }
+
         public DataSet GetEditMOMDetails(int MOMID)
         {
             try
@@ -1532,6 +1548,34 @@ namespace IG_Portal.BAL_Classes
 
         }
 
+        public int AddReleaseTask(DataTable dt, int RMid)
+
+        {
+            int _isInserted = -1;
+            try
+            {
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    // SqlCommand com = new SqlCommand("INSERT INTO Material(Visitorid,MaterialType,MaterialNo,VisitingCategory) VALUES(@vid,@mtype,@mno,@vcid));
+                    objGeneral.ClearParameters();
+                    objGeneral.AddParameterWithValueToSQLCommand("@RMid", RMid);
+
+                    objGeneral.AddParameterWithValueToSQLCommand("@Task", dt.Rows[i]["Task"].ToString());
+                   
+                    _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddRMTask");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _isInserted;
+
+
+        }
+
         public int ClearOldPoints( int MOMid)
 
         {
@@ -1731,6 +1775,20 @@ namespace IG_Portal.BAL_Classes
                 General objGeneral = new General();
                 objGeneral.AddParameterWithValueToSQLCommand("@MOMID", MOMID);
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetMeetingPointByMOMID");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetRMTask(int RMID)
+        {
+            try
+            {
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@RMID", RMID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetTaskByRMID");
             }
             catch (Exception ex)
             {

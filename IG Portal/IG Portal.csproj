@@ -54,6 +54,10 @@
     <Reference Include="CKEditor.NET, Version=3.6.4.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
       <HintPath>..\packages\CkeditorForASP.NET.3.6.4.0\lib\CKEditor.NET.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.4.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -151,6 +155,7 @@
     <Content Include="InfraClientDashBoard.aspx" />
     <Content Include="InfraSupport.aspx" />
     <Content Include="InfraSupportDashBoard.aspx" />
+    <Content Include="ReleaseManagement.aspx" />
     <Content Include="ViewInfraSupportHistory.aspx" />
     <Content Include="js\angular-materialize.js" />
     <Content Include="js\angular.min.js" />
@@ -991,6 +996,13 @@
     </Compile>
     <Compile Include="InfraSupportDashBoard.aspx.designer.cs">
       <DependentUpon>InfraSupportDashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReleaseManagement.aspx.cs">
+      <DependentUpon>ReleaseManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReleaseManagement.aspx.designer.cs">
+      <DependentUpon>ReleaseManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewInfraSupportHistory.aspx.cs">
       <DependentUpon>ViewInfraSupportHistory.aspx</DependentUpon>

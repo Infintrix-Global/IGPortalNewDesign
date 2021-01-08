@@ -147,7 +147,7 @@ namespace IG_Portal
                     {
                         consultantmanager.Visible = true;
                         lblConsultantManager.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapQA";
+                        SiteMapPath1.SiteMapProvider = "SiteMapConsultantManager";
                         SiteMapPath1.DataBind();
                     }
                 }

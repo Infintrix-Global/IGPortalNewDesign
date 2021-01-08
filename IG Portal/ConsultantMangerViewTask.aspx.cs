@@ -18,7 +18,7 @@ namespace IG_Portal
             if (!IsPostBack)
             {
                 BindProjectMaster();
-
+                BindConsultant();
                 BindGridAssignTask();
                 BindSearch();
                 btSearch_Click(sender, e);
@@ -272,5 +272,29 @@ namespace IG_Portal
             }
         }
 
+        protected void chckchanged(object sender, EventArgs e)
+        {
+
+            CheckBox chckheader = (CheckBox)GridAssignTask.HeaderRow.FindControl("CheckBoxall");
+            foreach (GridViewRow row in GridAssignTask.Rows)
+
+            {
+
+                CheckBox chckrw = (CheckBox)row.FindControl("chkSelect");
+
+                if (chckheader.Checked == true)
+
+                {
+                    chckrw.Checked = true;
+                }
+                else
+
+                {
+                    chckrw.Checked = false;
+                }
+
+            }
+
+        }
     }
 }

@@ -3,6 +3,7 @@
   <siteMapNode url="~/EmployeeDashBoardWM.aspx" title="Home"  description="">
     <siteMapNode url="~/AddTimeSheet.aspx" title="Add TimeSheet"  description="" />
 	  <siteMapNode url="~/Notifications.aspx" title="Notifications"  description="" />
+	  <siteMapNode url="~/ReleaseManagement.aspx" title="Release"  description="" />
     <siteMapNode url="~/ViewTask.aspx" title="View TimeSheet"  description="" />
 	  <siteMapNode url="~/ViewBug.aspx" title="View Bug"  description="" />
 	  <siteMapNode url="~/ViewAssignedTaskEmployee.aspx" title="Assigned Task"  description="" />

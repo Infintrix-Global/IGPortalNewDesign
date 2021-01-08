@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PortalMaster.Master" AutoEventWireup="true" CodeBehind="ConsultantMangerViewTask.aspx.cs" Inherits="IG_Portal.ConsultantMangerViewTask" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+       <style>
+        [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+            position: absolute;
+            left: 50px;
+            visibility: visible
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>

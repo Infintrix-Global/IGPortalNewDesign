@@ -654,12 +654,7 @@ namespace IG_Portal
                 dtEmpDetails = objTask.GetEmployeeByID(Convert.ToInt32(meetingInitiator));
                 mailMessage.To.Add(new MailAddress(dtEmpDetails.Rows[0]["Email"].ToString()));
 
-                //string htmlTableStart = "<table style=\"border-collapse:collapse; text-align:center;\" >";
-                //string htmlTableEnd = "</table>";
-                //string htmlTrStart = "<tr style=\"color:#555555;\">";
-                //string htmlTrEnd = "</tr>";
-                //string htmlTdStart = "<td style=\" border-color:#5c87b2; border-style:solid; border-width:thin; padding: 5px;\">";
-                //string htmlTdEnd = "</td>";
+               
 
 
                 //Password of your gmail address
@@ -700,6 +695,72 @@ namespace IG_Portal
                 // Passing values to smtp object
                 mailMessage.From = new MailAddress(fromAddress);
              //   mailMessage.To.Add(new MailAddress(toAddress));
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                smtp.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                General.ErrorMessage(ex.Message + ex.StackTrace);
+            }
+        }
+
+
+        public void SendMailRelease(DataTable dtTask,  string projectName,string ProjectID, string type, string date, string description)
+        {
+
+            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
+           
+            try
+            {
+                // Gmail Address from where you send the mail
+                var fromAddress = "igportalmail@gmail.com";//"infintrix.world@gmail.com";
+                                                           // any address where the email will be sending
+                DataTable dtAttendee = GetEmployeeMasterByProject(ProjectID);
+                for (int i = 0; i < dtAttendee.Rows.Count; i++)
+                {
+                    mailMessage.To.Add(new MailAddress(dtAttendee.Rows[i]["Email"].ToString()));
+                }
+              
+
+
+
+                //Password of your gmail address
+                const string fromPassword = "admin@1234";
+                // Passing the values and make a email formate to display
+                string subject = "Release of " + projectName + " on " + Convert.ToDateTime(date).ToString("dd/MMM/yy");
+                string body = "Details of the Release :- ";
+                body += "Date: " + Convert.ToDateTime(date).ToString("dd/MMM/yy") + "\n\n";
+                body += "Description: " + description + "\n\n";
+                body += "Task Completed:-" + "\n\n";
+
+
+                for (int i = 0; i <= dtTask.Rows.Count - 1; i++)
+                {
+
+                    body += dtTask.Rows[i]["Task"].ToString() + " : "; //adding task point  
+                    
+
+
+                }
+
+
+                body += "Thank you" + "\n";
+                body += "Warm Regards" + "\n";
+                // smtp settings
+                var smtp = new System.Net.Mail.SmtpClient();
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                    smtp.Timeout = 50000;
+                }
+                // Passing values to smtp object
+                mailMessage.From = new MailAddress(fromAddress);
+                //   mailMessage.To.Add(new MailAddress(toAddress));
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
                 smtp.Send(mailMessage);
@@ -1805,6 +1866,22 @@ namespace IG_Portal
             return ds.Tables[0];
         }
 
+        public DataTable GetTaskTitleMasterForRelease(string projectID, string LoginID)
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectID", projectID);
+                objGeneral.AddParameterWithValueToSQLCommand("@LoginID", LoginID);
+                ds = objGeneral.GetDatasetByCommand_SP("SP_GetTaskForReleaseManagement");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
         public DataTable GetPageTitleMaster(string projectID)
         {
             try
@@ -2312,6 +2389,29 @@ namespace IG_Portal
             return _isInserted;
         }
 
+        public int AddRelease(ReleaseDetails objRM)
+        {
+            int _isInserted = -1;
+            try
+            {
+                General objGeneral = new General();
+        
+                objGeneral.AddParameterWithValueToSQLCommand("@Link", objRM.Link);
+                objGeneral.AddParameterWithValueToSQLCommand("@ProjectName", objRM.ProjectName);
+                objGeneral.AddParameterWithValueToSQLCommand("@Description", objRM.Description);
+                objGeneral.AddParameterWithValueToSQLCommand("@Date",objRM.Date);
+                objGeneral.AddParameterWithValueToSQLCommand("@Type", objRM.Type);
+               
+                _isInserted = objGeneral.GetExecuteScalarByCommand_SP("SP_AddRelease");
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return _isInserted;
+        }
+
+
         public int GetPendingBugCount(string LoginID, string mode)
         {
             int _isInserted = -1;
@@ -2776,6 +2876,17 @@ public class Asset_Details
     public string AssetSerialNum { get; set; }
     public string SupportSDate { get; set; }
     public string SupportEDate { get; set; }
+}
+
+public class ReleaseDetails
+{
+    public int ID { get; set; }
+    public string ProjectName { get; set; }
+    public string Link { get; set; }
+    public string Description { get; set; }
+    public string Type { get; set; }
+    public string Date { get; set; }
+   
 }
 
 

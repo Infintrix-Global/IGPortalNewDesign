@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using IG_Portal.BAL_Classes;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 
 namespace IG_Portal
 {
@@ -37,7 +40,7 @@ namespace IG_Portal
                 ddlEmployeeName.DataTextField = "EmployeeName";
                 ddlEmployeeName.DataValueField = "ID";
                 ddlEmployeeName.DataBind();
-                ddlEmployeeName.Items.Insert(0, new ListItem("--- Select ---", "0"));
+                ddlEmployeeName.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- Select ---", "0"));
             
         }
 
@@ -51,7 +54,7 @@ namespace IG_Portal
                 ddlProjectName.DataValueField = "ID";
 
                 ddlProjectName.DataBind();
-                ddlProjectName.Items.Insert(0, new ListItem("--- Select ---", "0"));
+                ddlProjectName.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- Select ---", "0"));
             
         }
 
@@ -62,7 +65,7 @@ namespace IG_Portal
             ddlStatus.DataValueField = "ID";
 
             ddlStatus.DataBind();
-            ddlStatus.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            ddlStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- Select ---", "0"));
         }
 
         public void BindTaskMaster()
@@ -72,7 +75,7 @@ namespace IG_Portal
             ddlTaskType.DataValueField = "ID";
 
             ddlTaskType.DataBind();
-            ddlTaskType.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            ddlTaskType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- Select ---", "0"));
         }
 
         public void BindTaskMasterByLoginID()
@@ -82,7 +85,7 @@ namespace IG_Portal
             ddlTaskType.DataValueField = "ID";
 
             ddlTaskType.DataBind();
-            ddlTaskType.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            ddlTaskType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- Select ---", "0"));
         }
 
         public void BindGridTask()
@@ -168,7 +171,7 @@ namespace IG_Portal
             ddlTaskTitle.DataValueField = "ID";
 
             ddlTaskTitle.DataBind();
-            ddlTaskTitle.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            ddlTaskTitle.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- Select ---", "0"));
         }
 
         protected void btclear_Click(object sender, EventArgs e)
@@ -350,6 +353,7 @@ namespace IG_Portal
                 {
                     FileName = "TimeSheet-" + DateTime.Now + ".xls";
                 }
+
                 using (StringWriter sw = new StringWriter())
                 {
                     HtmlTextWriter hw = new HtmlTextWriter(sw);
@@ -367,8 +371,8 @@ namespace IG_Portal
                     GridTask.HeaderStyle.Font.Bold = true;
                     GridTask.RenderControl(hw);
                     Response.Write(sw.ToString());
-
-                    Response.End();
+                    HttpContext.Current.ApplicationInstance.CompleteRequest();
+                   // Response.End();
 
 
                 }
