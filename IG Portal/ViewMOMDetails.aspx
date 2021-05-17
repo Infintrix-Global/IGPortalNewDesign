@@ -2,26 +2,67 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>View MOM Details</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="#"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="#">MOM Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
 
-       <div class="card-body">
-        <div class="portlet-body">
-         <!-- BEGIN FORM-->
-            <div class="form-body">
-                  <div class="row" >
-                    <asp:Button ID="btnBack" runat="server" Text="Back"  OnClick="btnBack_Click"></asp:Button>
-                </div>
-
-                <br />
-                <div class="row" align="center">
-                    <h4 class="header2">MOM Details</h4>
-                   <%-- <asp:Label ID="lbltitle" runat="server" Text="MOM Details " Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
-
-                
-                 <div class="row"  align="center">
-                            <div class="col m12 s12 l12">
-                                <table >
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+     <div class="section-body">
+                          <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4</h4>
+                                        <asp:Button ID="btnBack" runat="server" Text="Back to previous page"  OnClick="btnBack_Click" class="btn btn-outline-primary" Width="150px"></asp:Button>
+                            </div>
+                                        
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                                   
+                                 <table class="table table-bordered">
                                     <colgroup span="12"></colgroup>
                                     
                                       <tr>
@@ -94,15 +135,17 @@
                                 </table>
                             </div>
                         </div>
+                                        </div>
+                                    </div>
+                              </div>
 
-                <div class="row" runat="server" id="divScreenshot" >
-                     <div class=" col m12">
-                        <div class="portlet light ">
-                            
-                            <div class="portlet-body">
-                                <div class="table-scrollable">
-                                    <asp:GridView ID="GridMOMPoints" runat="server"  AutoGenerateColumns="False"
-                                        class="striped"  
+                 <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                                           <asp:GridView ID="GridMOMPoints" runat="server"  AutoGenerateColumns="False"
+                                        class="table table-bordered"  
                                         GridLines="None" AllowPaging="false" 
                                         
                                         ShowHeaderWhenEmpty="True" Width="100%" DataKeyName="ID">
@@ -133,6 +176,10 @@
 
 
                                 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                     </div>
                             </div>
 
                         </div>

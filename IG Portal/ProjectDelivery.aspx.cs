@@ -128,13 +128,13 @@ namespace IG_Portal
                 ProjectDeliveryDetails objProjectDetails = new ProjectDeliveryDetails()
                 {
                     ProjectID = ddlProjectName.SelectedValue,
-                    
-                    
+
+
                     AMC = txtAMC.Text,
                     FreeSupport = txtFreeSupport.Text,
                     Cost = txtCost.Text,
                     WorkingDays = txtWorkingDays.Text,
-                  
+
                 };
                 if (ddlTechnology.SelectedItem.Text == "Other")
                 {
@@ -153,12 +153,12 @@ namespace IG_Portal
                     if (chkProjectType.Items[i].Selected)
                     {
                         name += chkProjectType.Items[i].Text + ",";
-                      
+
                     }
                 }
                 name.Remove(name.Length - 1, 1);
                 objProjectDetails.ProjectType = name;
-            _isInserted = objTask.AddProjectDeliveryDetails(objProjectDetails);
+                _isInserted = objTask.AddProjectDeliveryDetails(objProjectDetails);
                 if (_isInserted == -1)
                 {
                     lblMessage.Text = "Failed to Add Project Details";
@@ -251,29 +251,30 @@ namespace IG_Portal
 
         protected void GridScope_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            try { 
-            if (e.CommandName == "Download")
+            try
             {
-                string rname = (e.CommandArgument).ToString();
-                Response.Clear();
-                Response.ContentType = "application/octet-stream";
-                Response.AppendHeader("Content-Disposition", "filename=" + rname);
-                Response.TransmitFile(Server.MapPath("~/Scope/") + rname);
-                Response.End();
-            }
+                if (e.CommandName == "Download")
+                {
+                    string rname = (e.CommandArgument).ToString();
+                    Response.Clear();
+                    Response.ContentType = "application/octet-stream";
+                    Response.AppendHeader("Content-Disposition", "filename=" + rname);
+                    Response.TransmitFile(Server.MapPath("~/Scope/") + rname);
+                    Response.End();
+                }
                 if (e.CommandName == "Remove")
 
                 {
                     int eid = Convert.ToInt32(e.CommandArgument);
-                   
+
                     objcommon.RemoveScope(eid);
                     ddlProjectIndexChanged();
                 }
             }
             catch (Exception ex)
             {
-                
+
             }
-}
+        }
     }
 }

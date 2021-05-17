@@ -465,7 +465,7 @@ namespace IG_Portal
                 DataTable dtCheckRights = objCommon.GetRoleRights(Session["Role"].ToString(), 2);
                 if (dtCheckRights.Rows[0]["IsEditAllowed"] is true)
                 {
-                    (e.Row.FindControl("imgEdit") as ImageButton).Visible=true;
+                    (e.Row.FindControl("imgEdit") as LinkButton).Visible=true;
                 }
                 else
                 {
@@ -549,7 +549,7 @@ namespace IG_Portal
                     divProject.Visible = true;
                     BindEmployeeMaster();
                     ddlProjectName.SelectedValue= dtEdit.Tables[0].Rows[0]["ProjectName"].ToString();
-                    ddlProjectName.Enabled = false;
+                    //ddlProjectName.Enabled = false;
                 }
                 if (ddlMeetingType.SelectedValue == "2")
                 {
@@ -558,7 +558,7 @@ namespace IG_Portal
                     BindEmployeeMaster();
                     ddlProjectName.SelectedValue = dtEdit.Tables[0].Rows[0]["ProjectName"].ToString();
                     txtClientName.Text = dtEdit.Tables[0].Rows[0]["ClientName"].ToString();
-                    ddlProjectName.Enabled = false;
+                   // ddlProjectName.Enabled = false;
                     txtClientName.Enabled = false;
                 }
                 if (ddlMeetingType.SelectedValue == "3")
@@ -581,7 +581,7 @@ namespace IG_Portal
                     divProject.Visible = true;
                     divClient.Visible = false;
                     ddlProjectName.SelectedValue = dtEdit.Tables[0].Rows[0]["ProjectName"].ToString();
-                    ddlProjectName.Enabled = false;
+                   // ddlProjectName.Enabled = false;
                     BindEmployeeMasterByProject();
                     // BindEmployeeMasterBoardMeeting();
                 }
@@ -639,13 +639,13 @@ namespace IG_Portal
                 }
                 
             }
-            txtDateTime.Enabled = false;
-            txtFromTime.Enabled = false;
-            txtToTime.Enabled = false;
-            ddlMeetingInitiator.Enabled = false;
-            ddlMeetingPlace.Enabled = false;
-            txtAgenda.Enabled = false;
-            chkAttendees.Enabled = false;
+          // txtDateTime.Enabled = false;
+           // txtFromTime.Enabled = false;
+           // txtToTime.Enabled = false;
+          //  ddlMeetingInitiator.Enabled = false;
+          //  ddlMeetingPlace.Enabled = false;
+          //  txtAgenda.Enabled = false;
+           // chkAttendees.Enabled = false;
 
         }
     }

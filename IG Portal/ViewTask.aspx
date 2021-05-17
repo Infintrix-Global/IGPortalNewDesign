@@ -4,190 +4,158 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="card-body">
-        <div class="portlet-body">
-          
-            <!-- BEGIN FORM-->
-            <div class="form-body">
-                <div class="row" align="center">
-                    <h4 class="header2">View TimeSheet</h4>
-                  <%--  <asp:Label ID="lbltitle" runat="server" Text="View TimeSheet" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                  <div class="row" align="right">
-                    <asp:LinkButton ID="lnkAddTS" runat="server" Text="Click Here to Add TimeSheet"  OnClick="lnkAddTS_Click" Font-Size="Medium"></asp:LinkButton>
-                </div>
-                <br />
-                <!-- END PAGE HEADER-->
-                  <asp:UpdatePanel ID="upTask" runat="server">
-                    <ContentTemplate>
-                <div class="row">
-
-                    <div class=" col m3">
-                        <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                           
-                            <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder=""
-                                OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">
-                            </asp:DropDownList>
+    <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>View Timesheet</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="Admindashboard.html"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="ViewTask.aspx">View Timesheet Details</a></div>
 </div>
-                             <label>Employee Name</label>
-                        </div>
-                    </div>
-                </div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
 
-                <div class="clearfix"></div>
-              
-                        <div class="row">
-                            <div class=" col m2 ">
-                                 <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                  
-                                    <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+   <asp:UpdatePanel ID="upTask" runat="server">
+                    <ContentTemplate>
+                            <div class="section-body">
+                          <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4><u><asp:LinkButton ID="lnkAddTS" runat="server" Text="Click Here to Add TimeSheet"  OnClick="lnkAddTS_Click" style="margin-left:750px"></asp:LinkButton></u></h4>
+                                              </div>
+                                            <div class="card-body">
+                                        <div class="form-group row">
+                                            <div class=" col-sm-4 form-group">
+                                                <label class="col-sm-4 col-form-label">Employee Name</label>
+                                            <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder=""
+                                            OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                        </div>
+                                    <div class=" col-sm-4 form-group">
+                                    <label class="col-sm-4 col-form-label">Project Name</label>
+                                     <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
                                          OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
                                     </asp:DropDownList>
-</div>
-                                       <label>Project Name </label>
-
-                                </div>
-                            </div>
-
-                             <div class=" col m2 ">
-                                  <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                   
-                                    <asp:DropDownList ID="ddlTaskCategory" runat="server" class="form-control" placeholder=""
+                                        </div>
+                                        <div class=" col-sm-4 form-group">
+                                    <label class="col-sm-4 col-form-label">Task Category </label>
+                                   <asp:DropDownList ID="ddlTaskCategory" runat="server" class="form-control" placeholder=""
                                         OnSelectedIndexChanged="ddlTaskCategory_SelectedIndexChanged" AutoPostBack="true">
                                     </asp:DropDownList>
-</div>
-                                       <label>Task Category </label>
-
-                                </div>
-                            </div>
-
-                            <div class=" col m2 ">
-                                 <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                   
+                                    </div>
+                                   <div class=" col-sm-4 form-group" style="margin-top:-10px;">
+                                    <label class="col-sm-4 col-form-label">Task Type</label>
                                     <asp:DropDownList ID="ddlTaskType" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static">
                                     </asp:DropDownList>
-</div>
-                                      <label>Task Type </label>
-                                </div>
-                            </div>
-
-                            <div class=" col m2 ">
-                                 <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                   
+                                    </div>
+                                    <div class=" col-sm-4 form-group" style="margin-top:-10px;">
+                                    <label class="col-sm-4 col-form-label">Task Title</label>
                                     <asp:DropDownList ID="ddlTaskTitle" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static">
                                     </asp:DropDownList>
-</div>
-                                      <label>Task Title </label>
-                                </div>
-                            </div>
-
-                            <div class=" col m2 ">
-                                <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                    
+                                    </div>
+                                    <div class=" col-sm-4 form-group" style="margin-top:-10px;">
+                                    <label class="col-sm-4 col-form-label">Status</label>
                                     <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static">
                                     </asp:DropDownList>
-</div>
-                                    <label>Status</label>
-                                </div>
-                            </div>
-
-
-                            <div class=" col m2">
-                                <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                  
-                                    <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
+                                    </div>
+                                    <div class=" col-sm-6 form-group" style="margin-top:-10px;">
+                                    <label class="col-sm-6 col-form-label">From Date</label>
+                                 <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder=""  AutoPostBack="true"
                                         ClientIDMode="Static" TextMode="Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
                                                       <span class="help-block">
                                     <asp:RequiredFieldValidator ID="requiredFromDate" runat="server" ControlToValidate="txtFromDate" ValidationGroup="vt"
                                         SetFocusOnError="true" ErrorMessage="Enter From Date" ForeColor="Red" Enabled="false"></asp:RequiredFieldValidator>
                                                           </span>
-</div>
-                                      <label>From Date</label>
-                                </div>
-                            </div>
-
-                            <div class=" col m2">
-                               <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                 
+                                    </div>
+                                <div class=" col-sm-6 form-group" style="margin-top:-10px;">
+                                    <label class="col-sm-6 col-form-label">To Date</label>
                                     <asp:TextBox ID="txtToDate" runat="server" class="form-control" placeholder="" AutoPostBack="true"
                                         ClientIDMode="Static" TextMode="Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
                                                       <span class="help-block">
                                     <asp:RequiredFieldValidator ID="requiredToDate" runat="server" ControlToValidate="txtToDate" ValidationGroup="vt"
                                         SetFocusOnError="true" ErrorMessage="Enter To Date" ForeColor="Red" Enabled="false"></asp:RequiredFieldValidator>
                                                           </span>
-</div>
-                                      <label>To Date</label>
-                                </div>
                             </div>
-
-                   
-                        </div>
-
-                    </ContentTemplate>
+                            </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                              </div>
+                                </div>
+                            </ContentTemplate>
                 </asp:UpdatePanel>
 
-                <div class="row" align="center">
-
-                             
-                    <div class="col m12" align="center">
-                        <div class="form-group form-md-line-input ">
-                               <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" AutoPostBack="true"  />
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue"  />
+               <div class="form-group row" style="margin-top:-80px">
+                            <div class="col-sm-4"></div>
+                            <div class=" col-sm-6">
+                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn btn-outline-primary" ClientIDMode="Static" OnClick="btSearch_Click" ValidationGroup="vt" CausesValidation="true" AutoPostBack="true" style="width:150px" />
+                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn btn-outline-info" style="width:150px;margin-left:20px"/>
                         </div>
                     </div>
-                    <div class="col m2">
-                        <div class="form-group form-md-line-input ">
-                         
-                        </div>
-                    </div>
-                </div>
-
-           
-                <div class="clearfix"></div>
-
-                <br />
-                <!-- BEGIN SAMPLE FORM PORTLET-->
-                <div class="portlet light ">
-
-                    <div class="row">
-                        <div class="col m12">
-                            <div class="portlet light ">
-
-                                <div class="row">
-                                    <div class=" col m5">
-                                        <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                                    </div>
-                                    <div class=" col m5">
-                                        <asp:Label runat="server" Text="" ID="tottime"></asp:Label>
-                                    </div>
-                                      <div class="clearfix"></div>
-                                    <div class="col m12" align="right">
-                                        <button class="btn green" runat="server" onserverclick="btnExport_Click" visible="false" id="btExport"><i class="fa fa-download"></i>Export</button>
+                    
+                        <div class="section-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                <h4>Task Details
+                                <i class="fas fa-arrow-down"></i></h4>
+                                </div>
+                                <div class="card-body">
+                                 <div style="overflow-x:auto;width:100%">
+                            
+                                    <h5><asp:Label runat="server" Text="" ID="count"></asp:Label>&nbsp;&nbsp;
+                                        <asp:Label runat="server" Text="" ID="tottime"></asp:Label></h5>
+                                      <div class="col m12" align="right">
+                                        <button class="btn btn-outline-primary" runat="server" onserverclick="btnExport_Click" visible="false" id="btExport"><i class="fa fa-download"></i>&nbsp;Export</button>
                                         <%--<asp:Button ID="btnExport" Text="Export To Excel" runat="server" OnClick="btnExport_Click" /></div>--%>
                                     </div>
-
-                                    </div>
                                     <br />
-                                    <div class="clearfix"></div>
-                                   <asp:Panel ID="panel1" runat="server" Height="100%" Width="100%" ScrollBars="Both">
-                                   <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>--%>
-                                            <div class="portlet-body">
-                                                
-                                                <div class="table-scrollable table-scrollable-borderless">
-                                                    <asp:GridView ID="GridTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                                        class="striped" OnSorting="GridTask_Sorting" AllowSorting="true" 
+                                                   <asp:GridView ID="GridTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                                                        class="table table-bordered" OnSorting="GridTask_Sorting" AllowSorting="true" 
                                                         GridLines="None" OnRowCommand="GridTask_RowCommand" OnRowDataBound="GridTask_RowDataBound"
                                                         ShowHeaderWhenEmpty="True" Width="100%" OnPageIndexChanging="GridTask_PageIndexChanging" PageSize="10">
                                                         <Columns>
@@ -276,7 +244,7 @@
                                                             </asp:TemplateField>
                                                              <asp:TemplateField>
                                                                 <ItemTemplate>
-                                                                    <asp:ImageButton ID="lnkEdit" Text="Edit" runat="server" CommandName="Edit" Visible="false" CommandArgument='<%# Eval("ID")  %>' ImageUrl="~/images/edit.png" AlternateText="edit" ToolTip="edit"  />
+                                                                    <asp:LinkButton ID="lnkEdit" Text="Edit" runat="server" CommandName="Edit" Visible="false" CommandArgument='<%# Eval("ID")  %>' AlternateText="edit" ToolTip="edit" class="btn btn-primary"><i class="fas fa-edit"></i></asp:LinkButton>
                                                                 </ItemTemplate>
                                                                 <%--<EditItemTemplate>
                                                                     <asp:LinkButton Text="Update" runat="server" OnClick="OnUpdate" ForeColor="SlateBlue" />
@@ -285,7 +253,7 @@
                                                             </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                 <ItemTemplate>
-                                                                    <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Remove" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to remove this timesheet entry?');" ></asp:ImageButton>
+                                                                    <asp:LinkButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="Remove"  AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to remove this timesheet entry?');" class="btn" style="background-color: green;color:white"><i class="fas fa-trash-alt" style="color:white"></i></asp:LinkButton>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 

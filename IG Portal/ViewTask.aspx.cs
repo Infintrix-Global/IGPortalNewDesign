@@ -166,7 +166,7 @@ namespace IG_Portal
             {
                 if (dtTaskDetails.Rows.Count > 0)
                 {
-                    tottime.Text = "Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
+                    tottime.Text = dtTaskDetails.Rows[0]["TotalTime"].ToString();
                 }
                 else
                 {
@@ -203,7 +203,7 @@ namespace IG_Portal
             {
                 if (dtTaskDetails.Rows.Count > 0)
                 {
-                    tottime.Text = "Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
+                    tottime.Text = "|"+" "+"Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
                 }
                 else
                 {
@@ -410,7 +410,7 @@ namespace IG_Portal
                         //DataTable dtSearch = dtSearch1.CopyToDataTable();
                         GridTask.DataSource = dtSearch1;
                         GridTask.DataBind();
-                        tottime.Text = "Total Time Spent=" + dtTime.Rows[0]["TotalTimehours"].ToString();
+                        tottime.Text = "|"+" "+"Total Time Spent=" + dtTime.Rows[0]["TotalTimehours"].ToString();
                         count.Text = "Number of Tasks= " + (dtSearch1.Rows.Count).ToString();
                     }
                     else
@@ -598,13 +598,13 @@ namespace IG_Portal
                 {
                     if (((Label)e.Row.FindControl("lblLoginID")).Text == Session["LoginID"].ToString() && ((Convert.ToDateTime(((Label)e.Row.FindControl("lblWorkDate")).Text) <= DateTime.Now) && (Convert.ToDateTime(((Label)e.Row.FindControl("lblWorkDate")).Text) >= DateTime.Now.AddDays(-4))))
                     {
-                        ((ImageButton)e.Row.FindControl("imgDelete")).Visible = true;
-                        ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = true;
+                        ((LinkButton)e.Row.FindControl("imgDelete")).Visible = true;
+                        ((LinkButton)e.Row.FindControl("lnkEdit")).Visible = true;
                     }
                     else
                     {   
-                        ((ImageButton)e.Row.FindControl("imgDelete")).Visible = false;  /* false */
-                        ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = false;
+                        ((LinkButton)e.Row.FindControl("imgDelete")).Visible = false;  /* false */
+                        ((LinkButton)e.Row.FindControl("lnkEdit")).Visible = false;
                     }
                 }
             }

@@ -403,13 +403,13 @@ namespace IG_Portal
 
                 if (((Label)e.Row.FindControl("lblCrossCheckedBy")).Text == Session["LoginID"].ToString() )
                 {
-                    ((ImageButton)e.Row.FindControl("imgDelete")).Visible = true;
-                    ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = true;
+                    ((LinkButton)e.Row.FindControl("imgDelete")).Visible = true;
+                    ((LinkButton)e.Row.FindControl("lnkEdit")).Visible = true;
                 }
                 else
                 {
-                    ((ImageButton)e.Row.FindControl("imgDelete")).Visible = false;
-                    ((ImageButton)e.Row.FindControl("lnkEdit")).Visible = false;
+                    ((LinkButton)e.Row.FindControl("imgDelete")).Visible = false;
+                    ((LinkButton)e.Row.FindControl("lnkEdit")).Visible = false;
                 }
 
                 if( (((Label)e.Row.FindControl("lblDeveloperID")).Text == Session["LoginID"].ToString())  )

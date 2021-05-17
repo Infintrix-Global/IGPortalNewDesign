@@ -45,7 +45,7 @@
 
         .block1 {
             height: 100px;
-            width: 250px;
+            width: 470px;
             border: 1px solid aliceblue;
             overflow-y: scroll;
         }
@@ -130,254 +130,219 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
-    <div class="card-body">
-        <div class="portlet-body">
+    <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Add Mom Details</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="Admindashboard.html"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="AddMOM.aspx">Add MOM Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
 
-            <!-- BEGIN FORM-->
-            <div class="form-body">
-                <div class="row" align="center">
-                    <h4 class="header1">Minutes Of Meeting</h4>
-                  <%--  <asp:Label ID="lbltitle" runat="server" Text="Minutes Of Meeting" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
-                <br />
-
-                <div class="row" align="center">
-                    <asp:Button ID="btnAddNew" runat="server" Text="Add MOM" OnClick="btnAddNew_Click"></asp:Button>
-                </div>
-                <br />
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+   <div class="section-body">
+                          <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>MOM Details
+                                                <i class="fas fa-arrow-down"></i></h4>
+                                            <h4> <asp:Button ID="btnAddNew" runat="server" Text="Add MOM Details" OnClick="btnAddNew_Click" class="btn btn-outline-info" style="margin-left:700px;width:150px;background-color:blue;color:white"></asp:Button></h4>
+                                        </div>
+                                            
                 <div id="meetingType" runat="server" visible="false">
-                    <div class="row" align="center">
-                        <div class="col m4">
-                            <div class="input-field">
-                                <div class="select-wrapper initialized">
-
-                                    <asp:DropDownList ID="ddlMeetingType" runat="server" TabIndex="1" OnSelectedIndexChanged="ddlMeetingType_SelectedIndexChanged"
-                                        AutoPostBack="true">
+                    <div class="card-body">
+                                            <div class="form-group row">
+                                            <div class=" col-sm-6 form-group">
+                                                <label class="col-sm-6 col-form-label">Meeting Type</label>
+                                            <asp:DropDownList ID="ddlMeetingType" runat="server" TabIndex="1" OnSelectedIndexChanged="ddlMeetingType_SelectedIndexChanged"
+                                        AutoPostBack="true" class="form-control">
                                     </asp:DropDownList>
-                                </div>
-                                <label>Meeting Type</label>
-
-                            </div>
-                        </div>
+                                    </div>
+                                    </div>
                     </div>
-                </div>
-
+                    </div>
+               
                 <div id="addMOM" runat="server" visible="false">
-                    <asp:Label ID="lblMtype" runat="server" Font-Size="Medium"></asp:Label>
+                    <div class="card-body">
+                                            <div class="form-group row">
+                                            <div class=" col-sm-12 form-group">
+                                            <h4 style="text-align:center"><asp:Label ID="lblMtype" runat="server" class="col-sm-12 col-form-label"></asp:Label></h4>
+                                                
                     <br />
                     <asp:Label ID="lblmsg" runat="server"></asp:Label>
-                    <div class="row">
-                        <div class="col m3">
-                            <div class="input-field">
-                                <div class="select-wrapper initialized">
-                                    <asp:TextBox ID="txtDateTime" runat="server" class="form-control" placeholder="Enter Date " TabIndex="1" TextMode="Date"></asp:TextBox>
+                       </div>
+                                 <div class=" col-sm-6 form-group" style="margin-top:-30px">
+                                   <label class="col-sm-6 col-form-label">Meeting Date</label>
+                                  <asp:TextBox ID="txtDateTime" runat="server" class="form-control" placeholder="Enter Date " TabIndex="1" TextMode="Date"></asp:TextBox>
                                     <span class="help-block">
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtDateTime" ErrorMessage="Please Enter Date Time" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                     </span>
-                                </div>
-                                <label>Meeting Date</label>
-                            </div>
-                        </div>
-
-                        <div class="col m3">
-                            <div class="input-field">
-                                <div class="select-wrapper initialized">
-
-                                    <asp:TextBox ID="txtFromTime" runat="server" class="form-control" placeholder="Enter Date " TabIndex="2" TextMode="Time"></asp:TextBox>
+                                    </div>
+                                 <div class=" col-sm-6 form-group" style="margin-top:-30px">
+                                   <label class="col-sm-6 col-form-label">From Time</label>
+                                  <asp:TextBox ID="txtFromTime" runat="server" class="form-control" placeholder="Enter Date " TabIndex="2" TextMode="Time"></asp:TextBox>
                                     <span class="help-block">
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFromTime" ErrorMessage="Please Enter From Time" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                     </span>
                                 </div>
-                                <label>From Time</label>
-                            </div>
-                        </div>
-
-                        <div class="col m3">
-                            <div class="input-field">
-                                <div class="select-wrapper initialized">
-
-                                    <asp:TextBox ID="txtToTime" runat="server" class="form-control" placeholder="Enter Date " TabIndex="3" TextMode="Time"></asp:TextBox>
+                               <div class=" col-sm-6 form-group" style="margin-top:-30px">
+                                   <label class="col-sm-6 col-form-label">To Time</label>
+                                <asp:TextBox ID="txtToTime" runat="server" class="form-control" placeholder="Enter Date " TabIndex="3" TextMode="Time"></asp:TextBox>
                                     <span class="help-block">
                                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please enter end time after the start time"
                                             ForeColor="Red" ControlToValidate="txtToTime" Display="Dynamic" ClientValidationFunction="DateTimeValidation" ValidationGroup="at"></asp:CustomValidator>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtToTime" ErrorMessage="Please Enter To Time" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                     </span>
                                 </div>
-                                <label>To Time</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <div class="row">
-                                <div class="col m3">
-                                    <div class="input-field">
-                                        <div class="select-wrapper initialized">
-
-
-                                            <asp:DropDownList ID="ddlMeetingInitiator" runat="server" placeholder=""
-                                                ClientIDMode="Static" TabIndex="4">
+                                                </div>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <div class="form-group row">
+                                 <div class=" col-sm-6 form-group" style="margin-top:-40px">
+                                   <label class="col-sm-12 col-form-label">Meeting Initiator</label>
+                                <asp:DropDownList ID="ddlMeetingInitiator" runat="server" placeholder=""
+                                                ClientIDMode="Static" TabIndex="4" class="form-control">
                                             </asp:DropDownList>
                                             <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="ddlMeetingInitiator" ValidationGroup="e" InitialValue="0"
                                                     SetFocusOnError="true" ErrorMessage="Please Enter Meeting Initiator" ForeColor="Red"></asp:RequiredFieldValidator>
                                             </span>
-                                        </div>
-                                        <label>Meeting Initiator</label>
-                                    </div>
+                                       
                                 </div>
-
-
-                                <div class="col m3">
-                                    <div class="input-field">
-                                        <div class="select-wrapper initialized">
-
-                                            <asp:DropDownList ID="ddlMeetingPlace" runat="server" placeholder=""
-                                                TabIndex="5" AutoPostBack="true" OnSelectedIndexChanged="ddlMeetingPlace_SelectedIndexChanged">
+                                    <div class=" col-sm-6 form-group" style="margin-top:-40px">
+                                   <label class="col-sm-12 col-form-label">Meeting Place</label>
+                                    <asp:DropDownList ID="ddlMeetingPlace" runat="server" placeholder=""
+                                                TabIndex="5" AutoPostBack="true" OnSelectedIndexChanged="ddlMeetingPlace_SelectedIndexChanged" class="form-control">
                                             </asp:DropDownList>
                                             <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlMeetingPlace" ValidationGroup="e" InitialValue="0"
                                                     SetFocusOnError="true" ErrorMessage="Please Enter Meeting Place" ForeColor="Red"></asp:RequiredFieldValidator>
                                             </span>
                                         </div>
-                                        <label>Meeting Place</label>
-
-                                    </div>
-
-                                    <div class="input-field">
-                                        <div class="select-wrapper initialized">
-                                            `<asp:TextBox ID="txtMeetingPlace" class="form-control" TabIndex="6" Visible="false" runat="server"></asp:TextBox>
+                                       
+                                    <div class=" col-sm-6 form-group" style="margin-top:-40px">
+                                      `<asp:TextBox ID="txtMeetingPlace" class="form-control" TabIndex="6" Visible="false" runat="server"></asp:TextBox>
                                             <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtMeetingPlace"
                                                     SetFocusOnError="true" ErrorMessage="Please Enter Meeting Place " ForeColor="Red"></asp:RequiredFieldValidator>
                                             </span>
-                                        </div>
-
-                                    </div>
+                                       </div>
 
                                 </div>
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col m3" id="divClient" runat="server">
-                                    <div class="input-field">
-                                        <div class="select-wrapper initialized">
-
-
-                                            <asp:TextBox ID="txtClientName" runat="server" class="form-control" placeholder="" TabIndex="7"></asp:TextBox>
+                                <div class="form-group row">
+                                <div class=" col-sm-6 form-group" style="margin-top:-70px" id="divClient" runat="server">
+                                     <label class="col-sm-12 col-form-label">Client Name</label>
+                                   <asp:TextBox ID="txtClientName" runat="server" class="form-control" placeholder="" TabIndex="7"></asp:TextBox>
                                             <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtClientName" ErrorMessage="Please Enter Client Name" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                             </span>
                                         </div>
-                                        <label>Client Name</label>
-                                    </div>
-
-                                </div>
-
-                                <div class="col m3" id="divProject" runat="server">
-                                    <div class="input-field">
-                                        <div class="select-wrapper initialized">
-
-
-                                            <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
-                                                TabIndex="8" AutoPostBack="true" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
+                                    <div id="divProject" runat="server" class=" col-sm-6 form-group" style="margin-top:-70px">
+                                     <label class="col-sm-6 col-form-label">Project Name</label>
+                                  
+                                          <asp:DropDownList ID="ddlProjectName" runat="server" placeholder=""
+                                                TabIndex="8" AutoPostBack="true" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" class="form-control">
                                             </asp:DropDownList>
                                             <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="requiredProjectName" runat="server" ControlToValidate="ddlProjectName" ValidationGroup="e" InitialValue="0"
                                                     SetFocusOnError="true" ErrorMessage="Please Enter Project Name" ForeColor="Red"></asp:RequiredFieldValidator>
                                             </span>
-                                        </div>
-                                        <label>Project Name </label>
-                                    </div>
-                                </div>
-
-                                <div class="col m3">
-                                    <div class="input-field">
-                                        <div class="select-wrapper initialized">
-
-
-                                            <div class="block1">
-                                                <asp:ListBox ID="lstAttendees" runat="server" Visible="false" SelectionMode="Multiple" AppendDataBoundItems="true"></asp:ListBox>
+                                           </div>
+                                 <div class=" col-sm-6 form-group" style="margin-top:-50px">
+                                   <label class="col-sm-6 col-form-label">Attendees</label>
+                                  
+                                    <div class="block1">
+                                                <asp:ListBox ID="lstAttendees" runat="server" Visible="false" SelectionMode="Multiple" AppendDataBoundItems="true" CssClass="form-control"></asp:ListBox>
 
                                                 <asp:CheckBoxList ID="chkAttendees" RepeatLayout="OrderedList" runat="server" TabIndex="9" />
                                             </div>
-                                        </div>
-                                        <label>Attendees</label>
-                                    </div>
+                                        
                                 </div>
-
-                                <div class="col m3">
-                                    <div class="input-field">
-                                        <div class="select-wrapper initialized">
-
-
-                                            <asp:TextBox ID="txtAgenda" class="form-control" placeholder="" TabIndex="10" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    <div class=" col-sm-12 form-group">
+                                   <label class="col-sm-12 col-form-label">Agenda</label>
+                                  
+                                         <asp:TextBox ID="txtAgenda" class="form-control" placeholder="" TabIndex="10" runat="server" TextMode="MultiLine"></asp:TextBox>
                                             <span class="help-block">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtAgenda" ValidationGroup="e"
                                                     SetFocusOnError="true" ErrorMessage="Please Enter Agenda" ForeColor="Red"></asp:RequiredFieldValidator>
                                             </span>
-                                        </div>
-                                        <label>Agenda</label>
-
-
-                                    </div>
-                                </div>
-                            </div>
+                                     </div>
                             <br />
-                            <asp:Panel ID="PanelPoints" runat="server" BorderStyle="Solid" BorderColor="Black" CssClass="pnlpoint">
+                                    </div>
+                            <asp:Panel ID="PanelPoints" runat="server">
                                 <br />
-                                <div class="row">
-
-                                    <div class="col m4">
-                                        <div class="input-field">
-                                            <div class="select-wrapper initialized">
-
-
-                                                <asp:TextBox ID="txtMeetingPoint" class="form-control" placeholder="" TabIndex="11" runat="server"></asp:TextBox>
+                               <div class="form-group row" style="margin-top:-60px">
+                                <div class=" col-sm-6 form-group">
+                                   <label class="col-sm-6 col-form-label">Meeting Points </label>
+                                  
+                                            <asp:TextBox ID="txtMeetingPoint" class="form-control" placeholder="" TabIndex="11" runat="server"></asp:TextBox>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtMeetingPoint" ValidationGroup="md"
                                                         SetFocusOnError="true" ErrorMessage="Please Enter Meeting Point" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
-                                            </div>
-                                            <label>Meeting Points </label>
+                                            
                                         </div>
-                                    </div>
-
-                                    <div class="col m4">
-                                        <div class="input-field">
-                                            <div class="select-wrapper initialized">
-
-                                                <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
-                                                    ClientIDMode="Static" TabIndex="12">
+                                   <div class=" col-sm-4 form-group">
+                                   <label class="col-sm-4 col-form-label">Status</label>
+                                    <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
+                                                    ClientIDMode="Static" TabIndex="12" class="form-control">
                                                 </asp:DropDownList>
                                                 <span class="help-block">
                                                     <asp:RequiredFieldValidator ID="requiredStatus" runat="server" ControlToValidate="ddlStatus" ValidationGroup="md" InitialValue="0"
                                                         SetFocusOnError="true" ErrorMessage="Please Select Status" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </span>
-                                            </div>
-                                            <label>Status </label>
-                                        </div>
+                                            
                                     </div>
-
-                                    <div class="col m2">
-                                        <span class="auto-style1">
-                                            <label></label>
-                                        </span>
-                                        <asp:Button ID="btnMeetingPoint" OnClick="btnMeetingPoint_Click" class="btnmat" runat="server" Text="Add" TabIndex="13" ValidationGroup="md" />
+                                 <div class=" col-sm-2 form-group" style="margin-top:40px">
+                                   <asp:Button ID="btnMeetingPoint" OnClick="btnMeetingPoint_Click" class="btn btn-outline-primary" runat="server" Text="Add" TabIndex="13" ValidationGroup="md" />
                                     </div>
-                                    <div class="clearfix"></div>
-
-                                    <div class="clearfix"></div>
                                     <asp:Panel ID="pnlPoints" runat="server" CssClass="pnlpoint">
-                                        <asp:GridView runat="server" ID="GridMeetingPoint" AutoGenerateColumns="false" class="Grid1" AllowPaging="true"
-                                            GridLines="None" CaptionAlign="NotSet" Width="801px" ForeColor="Black"
+                                        <asp:GridView runat="server" ID="GridMeetingPoint" AutoGenerateColumns="false" class="table table-bordered" AllowPaging="true"
+                                            GridLines="None" CaptionAlign="NotSet" Width="901px" ForeColor="Black"
                                             OnRowDeleting="GridMeetingPoint_RowDeleting" OnRowDataBound="GridMeetingPoint_RowDataBound">
                                             <Columns>
 
-                                                <asp:CommandField ShowDeleteButton="True" ItemStyle-Width="5%" />
+                                                <asp:CommandField ShowDeleteButton="True" ItemStyle-Width="5%"/>
 
                                                 <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%">
                                                     <ItemTemplate>
@@ -406,13 +371,9 @@
                                 </div>
                             </asp:Panel>
                             <br />
-
-
-                            <div class="row">
-
-
-                                <div class="col m3">
-                                    <asp:FileUpload ID="FileUpReciept" runat="server" TabIndex="14" />
+                            <div class="form-group row" style="margin-top:-60px">
+                                <div class=" col-sm-6 form-group">
+                               <asp:FileUpload ID="FileUpReciept" runat="server" TabIndex="14" class="form-control"/>
                                 </div>
 
                                 <div class="col m2">
@@ -425,45 +386,39 @@
                                     <asp:Label ID="lblReciept" runat="server" Visible="true"></asp:Label>
                                 </div>
                             </div>
-
-                            <div class="row" align="center">
-                                <div class="col m6">
-                                    <div class="form-group form-md-line-input ">
-
-                                        <asp:Button ID="btAdd" runat="server" Text="Add" TabIndex="15" class="btn " ClientIDMode="Static" OnClick="btAdd_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true';" ValidationGroup="e" />
-
-                                    </div>
-                                </div>
-                                <div class="col m6">
-                                    <div class="form-group form-md-line-input ">
-
-                                        <asp:Button ID="btclear" runat="server" Text="Clear" TabIndex="16" class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
+                               <div class="form-group row" style="margin-top:-20px">
+                                    <div class="col-sm-4"></div>
+                                <div class=" col-sm-6 form-group">
+                                        <asp:Button ID="btAdd" runat="server" Text="Add" TabIndex="15" class="btn btn-outline-primary" ClientIDMode="Static" OnClick="btAdd_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true';" ValidationGroup="e" style="width:150px"/>
+                                        <asp:Button ID="btclear" runat="server" Text="Clear" TabIndex="16" class="btn btn-outline-info" ClientIDMode="Static" OnClick="btclear_Click" style="width:150px"/>
 
                                     </div>
                                 </div>
 
                             </div>
+                                
 
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-
+</div>
+                       
 
                 <br />
                 <div id="viewMOM" runat="server">
                     <div class="row">
-                        <div class=" col m12">
-                            <div class="portlet light ">
-                                <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                                <div class="portlet-body">
-                                    <div class="table-scrollable">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                                    <h5><asp:Label runat="server" Text="" ID="count"></asp:Label></h5>
                                         <asp:GridView ID="GridMOM" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                            class="striped" AllowSorting="true" OnPageIndexChanging="GridMOM_PageIndexChanging"
+                                            class="table table-bordered" AllowSorting="true" OnPageIndexChanging="GridMOM_PageIndexChanging"
                                             GridLines="None" OnSorting="GridMOM_Sorting" PageSize="10" OnRowCommand="GridMOM_RowCommand"
                                             ShowHeaderWhenEmpty="True" Width="100%" OnRowDataBound="GridMOM_RowDataBound" DataKeyNames="ID">
                                             <Columns>
 
-                                                <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
+                                                <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="20%" HeaderStyle-CssClass="autostyle2">
                                                     <ItemTemplate>
                                                         <asp:Label ID="Label4" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
                                                         <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
@@ -524,10 +479,11 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                <asp:TemplateField HeaderText="Attendees" HeaderStyle-CssClass="autostyle2">
+                                                <asp:TemplateField HeaderText="Attendees">
                                                     <ItemTemplate>
                                                         <asp:Label ID="Label9" runat="server" Text='<%# Eval("AttendeeList")  %>'></asp:Label>
                                                     </ItemTemplate>
+                                                    
                                                 </asp:TemplateField>
 
 
@@ -541,8 +497,9 @@
                                                 <asp:TemplateField HeaderText="Meeting Points " HeaderStyle-CssClass="autostyle2">
                                                     <ItemTemplate>
                                                         <img alt="" style="cursor: pointer" src="images/plus.png" />
-                                                        <asp:Panel ID="Panel1" runat="server" Style="display: none">
-                                                            <asp:GridView ID="gvmp" runat="server" AutoGenerateColumns="false" CssClass="ChildGrid">
+                                                        
+                                                         <asp:Panel ID="Panel1" runat="server" Style="display: none">
+                                                            <asp:GridView ID="gvmp" runat="server" AutoGenerateColumns="false">
                                                                 <Columns>
                                                                     <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%">
                                                                         <ItemTemplate>
@@ -560,6 +517,7 @@
                                                                             <asp:Label ID="Label8" runat="server" Text='<%#  Eval("Status")  %>'></asp:Label>
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
+
                                                                 </Columns>
                                                             </asp:GridView>
                                                         </asp:Panel>
@@ -569,15 +527,12 @@
 
                                                 <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="imgEdit" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="EditMOM" ImageUrl="~/images/edit.png" AlternateText="edit" ToolTip="edit" Visible="false"></asp:ImageButton>
+                                                        <asp:LinkButton ID="imgEdit" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="EditMOM" AlternateText="edit" ToolTip="edit" Visible="false" class="btn btn-primary"><i class="fas fa-edit"></i></asp:LinkButton>
                                                         <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="RemoveMOM" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete" Visible="false" OnClientClick="return confirm('Are you sure you want to delete this MOM?');"></asp:ImageButton>
 
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-
-
-
-                                            </Columns>
+                                                 </Columns>
 
                                             <PagerStyle CssClass="paging" HorizontalAlign="Right" />
                                             <PagerSettings Mode="NumericFirstLast" />
@@ -592,14 +547,14 @@
                                 </div>
 
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
     </div>
+                                </div>
+                        </div>
+                        </div>
+                        </div>
+                              </div>
+      
+                    </div>
+               
 
 </asp:Content>

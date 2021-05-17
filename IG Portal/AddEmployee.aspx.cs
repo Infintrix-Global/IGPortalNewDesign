@@ -217,33 +217,33 @@ namespace IG_Portal
                     DataTable dtCheckIsPrint = objCommon.GetRoleRights(Session["Role"].ToString(), 1);
                     if (dtCheckIsPrint.Rows[0]["IsEditAllowed"] is true)
                     {
-                        ((ImageButton)e.Row.FindControl("imgEdit")).Visible = true;
+                        ((LinkButton)e.Row.FindControl("imgEdit")).Visible = true;
                     }
                     else if (dtCheckIsPrint.Rows[0]["IsEditAllowed"] is false)
                     {
-                        ((ImageButton)e.Row.FindControl("imgEdit")).Visible = false;
+                        ((LinkButton)e.Row.FindControl("imgEdit")).Visible = false;
                     }
                     if (Session["LoginID"].ToString() == ((Label)e.Row.FindControl("lblID")).Text)
                     {
-                        ((ImageButton)e.Row.FindControl("imgEdit")).Visible = true;
+                        ((LinkButton)e.Row.FindControl("imgEdit")).Visible = true;
 
                     }
                     if (dtCheckIsPrint.Rows[0]["IsDeleteAllowed"] is true)
                     {
-                        ((ImageButton)e.Row.FindControl("imgDelete")).Visible = true;
+                        ((LinkButton)e.Row.FindControl("imgDelete")).Visible = true;
                     }
                     else if (dtCheckIsPrint.Rows[0]["IsDeleteAllowed"] is false)
                     {
-                        ((ImageButton)e.Row.FindControl("imgDelete")).Visible = false;
+                        ((LinkButton)e.Row.FindControl("imgDelete")).Visible = false;
                     }
 
                     if (dtCheckIsPrint.Rows[0]["IsViewAllowed"] is true)
                     {
-                        ((ImageButton)e.Row.FindControl("imgView")).Visible = true;
+                        ((LinkButton)e.Row.FindControl("imgView")).Visible = true;
                     }
                     else if (dtCheckIsPrint.Rows[0]["IsViewAllowed"] is false)
                     {
-                        ((ImageButton)e.Row.FindControl("imgView")).Visible = false;
+                        ((LinkButton)e.Row.FindControl("imgView")).Visible = false;
                     }
 
 

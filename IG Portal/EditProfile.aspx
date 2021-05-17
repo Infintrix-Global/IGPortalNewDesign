@@ -8,15 +8,14 @@
             border: 1px solid aliceblue;
             overflow-y: scroll;
            
-            margin-top: -30px;
+            margin-top: 30px;
         }
          .block2 {
             height: 100px;
             width: 250px;
             border: 1px solid aliceblue;
             overflow-y: scroll;
-           margin-left:480px;
-            margin-top: -30px;
+            margin-top: 30px;
         }
     </style>
     <script type="text/javascript">
@@ -51,32 +50,67 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="sc1" runat="server"></asp:ScriptManager>
-    <div class="card-body">
-        <div class="portlet-body">
-          
-            <!-- BEGIN FORM-->
-            <div class="form-body">
-                <div class="row" align="center">
-                    <h4 class="header2">Employee Details</h4>
-                 <%--   <asp:Label ID="lbltitle" runat="server" Text="Employee Details" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
-                <asp:Label ID="lblmsg" runat="server"></asp:Label>
-                <div class="row" align="center">
-                    <div class="col m12 s12 l12">
+    <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Edit Profile</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="#"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="#">Edit Profile Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
 
-
-                        <%--<div class="col m3">
-                            <label>Profile Image </label>
-                        </div>
-
-                        <div class="col m3">
-                        </div>
-                        <div class="col m3">
-                        </div>--%>
-
-
-                        <table>
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      <asp:Label ID="lblmsg" runat="server"></asp:Label>
+   
+                              
+    
+                <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                  <div class="card-header">
+                                    <h4>Edit Profile</h4></div>
+                            <div class="table-responsive">
+                            <div class="card-body">
+                                 
+                            <table class="table table-bordered">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
                                     <tr id="photoupload1" runat="server">
@@ -120,14 +154,14 @@
                             <tr>
                                 <td>Mobile No :</td>
                                 <td>
-                                    <asp:TextBox ID="txtMobileNo" runat="server" Text="" Font-Bold="true"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtMobileNo" runat="server" Text="" Font-Bold="true" class="form-control"></asp:TextBox></td>
                                 <asp:RequiredFieldValidator ID="RequiredMobile" runat="server" ControlToValidate="txtMobileNo" ErrorMessage="Please Enter Mobile Number" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidatorMobile" runat="server" ControlToValidate="txtMobileNo" Display="Dynamic" ErrorMessage="Please enter valid Mobile Number" ForeColor="Red" SetFocusOnError="True" ValidationExpression="[0-9]{10}" ValidationGroup="e"></asp:RegularExpressionValidator>
                             </tr>
                             <tr>
                                 <td>Email ID :</td>
                                 <td>
-                                    <asp:TextBox ID="txtEmail" runat="server" Text="" Font-Bold="true"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtEmail" runat="server" Text="" Font-Bold="true" class="form-control"></asp:TextBox></td>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmail" ValidationGroup="e"
                                     SetFocusOnError="true" ErrorMessage="Please Enter Email" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ValidationGroup="e"
@@ -138,13 +172,13 @@
                             <tr>
                                 <td>Address:</td>
                                 <td>
-                                    <asp:TextBox ID="txtAddress" runat="server" Text="" Font-Bold="true"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtAddress" runat="server" Text="" Font-Bold="true" class="form-control"></asp:TextBox></td>
                             </tr>
 
                             <tr>
                                 <td>Date Of Joining:</td>
                                 <td>
-                                    <asp:TextBox ID="txtJoinDate" runat="server" Text="" Font-Bold="true" TextMode="date"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtJoinDate" runat="server" Text="" Font-Bold="true" TextMode="date" class="form-control"></asp:TextBox></td>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtJoinDate" ValidationGroup="e"
                                     SetFocusOnError="true" ErrorMessage="Please Select Date of Joing" ForeColor="Red"></asp:RequiredFieldValidator>
                             </tr>
@@ -162,14 +196,14 @@
                             <tr>
                                 <td>Manager:</td>
                                 <td>
-                                    <asp:DropDownList ID="ddlManager" runat="server"></asp:DropDownList></td>
+                                    <asp:DropDownList ID="ddlManager" runat="server" class="form-control"></asp:DropDownList></td>
                                 <asp:RequiredFieldValidator ID="requiredManager" runat="server" ControlToValidate="ddlManager" InitialValue="0" ErrorMessage="Please Select Role" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                             </tr>
 
                             <tr>
                                 <td>LinkedIn Profile:</td>
                                 <td>
-                                    <asp:TextBox ID="txtLinkedIn" runat="server" Text="" Font-Bold="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtLinkedIn" runat="server" Text="" Font-Bold="true" class="form-control"></asp:TextBox>
                              <%--       <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtLinkedIn" ForeColor="red" ErrorMessage="Invalid!" ValidationExpression="/(http(s)?:\\)?([\w-]+\.)+[\w-]+[.com|.in|.org]+(\[\?%&=]*)?/" ValidationGroup="e"></asp:RegularExpressionValidator>--%>
                                 </td>
 
@@ -178,57 +212,55 @@
                             <tr>
                                 <td>Date Of Birth:</td>
                                 <td>
-                                    <asp:TextBox ID="txtDOB" runat="server" Text="" Font-Bold="true" TextMode="date"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtDOB" runat="server" Text="" Font-Bold="true" TextMode="date" class="form-control"></asp:TextBox></td>
                             </tr>
 
                             <tr id="passsword" runat="server">
                                 <td>Password:</td>
                                 <td>
-                                    <asp:TextBox ID="txtPassword" runat="server" Text="" Font-Bold="true"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtPassword" runat="server" Text="" Font-Bold="true" class="form-control"></asp:TextBox></td>
                             </tr>
                             <asp:UpdatePanel ID="up2" runat="server">
                                 <ContentTemplate>
                                     <tr>
                                         <td>Status:</td>
                                         <td>
-                                            <asp:DropDownList ID="ddlStatus" runat="server" ClientIDMode="Static" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlStatus" runat="server" ClientIDMode="Static" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged" AutoPostBack="true" class="form-control"></asp:DropDownList>
                                         </td>
                                     </tr>
 
                                     <tr id="LastDay" runat="server" visible="false">
                                         <td>Last Working Day:</td>
                                         <td>
-                                            <asp:TextBox ID="txtLastDay" TextMode="Date" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtLastDay" TextMode="Date" runat="server" class="form-control"></asp:TextBox>
                                         </td>
                                     </tr>
                                 </ContentTemplate>
-                            </asp:UpdatePanel>
+                            </asp:UpdatePanel>  
                             <tr id="department" runat="server">
                                 <td>Department:</td>
-                              
+                                <td>
+                                    <div class="block2" id="chkDept" runat="server">
+                                    <asp:CheckBoxList ID="chkDepartment" runat="server" />
+                                    </div>
+                                    <asp:CustomValidator ID="CustomValidator2" ErrorMessage="Please select at least one department."
+    ForeColor="Red" ClientValidationFunction="ValidateCheckBoxListDept" runat="server" ValidationGroup="e" />
+                              </td>
                             </tr>
-
+                              <tr>
+                                  <td colspan="2">
+                                      <center>
+                                   <asp:Button runat="server" ID="btnUpdate" class="btn btn-info" ClientIDMode="Static" OnClick="btnUpdate_Click" Text="Update" ValidationGroup="e" />
+                                 </center>
+                                          </td>
+                              </tr>  
                         </table>
 
-                        <div class="row">
-                            <div <div class="block2" id="chkDept" runat="server">
-                                    <asp:CheckBoxList ID="chkDepartment" runat="server" />
-                                </div>
-                                  <asp:CustomValidator ID="CustomValidator2" ErrorMessage="Please select at least one department."
-    ForeColor="Red" ClientValidationFunction="ValidateCheckBoxListDept" runat="server" ValidationGroup="e" />
-                            </div>
                         </div>
                     </div>
                 </div>
-                <br />
-
-                <div class="row" align="center">
-                    <div class="col m12 s12 l12">
-                        <asp:Button runat="server" ID="btnUpdate" class="btn" ClientIDMode="Static" OnClick="btnUpdate_Click" Text="Update" ValidationGroup="e" />
-                    </div>
-                </div>
-                <br />
-            </div>
-        </div>
     </div>
+               
+            </div>
+        
 </asp:Content>

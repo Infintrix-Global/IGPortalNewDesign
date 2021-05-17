@@ -13,15 +13,15 @@ namespace IG_Portal
     {
         clsCommonMasters objCommon = new clsCommonMasters();
         BAL_Task objTask = new BAL_Task();
-      
+
         General objGeneral = new General();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
 
             {
                 BindEmployeeMaster();
-                
+
             }
         }
 
@@ -32,17 +32,17 @@ namespace IG_Portal
             ddlEmployee.DataValueField = "ID";
             ddlEmployee.DataBind();
             ddlEmployee.Items.Insert(0, new ListItem("--- Select ---", "0"));
-            
+
         }
 
         public void BindProjectMaster()
         {
-            
-                chkProject.DataSource = objCommon.GetUnAssignedProjectByEmployee(Convert.ToInt32(ddlEmployee.SelectedValue));
-                chkProject.DataTextField = "ProjectName";
-                chkProject.DataValueField = "ID";
-                chkProject.DataBind();
-           
+
+            chkProject.DataSource = objCommon.GetUnAssignedProjectByEmployee(Convert.ToInt32(ddlEmployee.SelectedValue));
+            chkProject.DataTextField = "ProjectName";
+            chkProject.DataValueField = "ID";
+            chkProject.DataBind();
+
         }
 
         protected void btnsubmit_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace IG_Portal
             foreach (ListItem item in chkProject.Items)
             {
                 if (item.Selected)
-                    _isInserted = objTask.AssignProject(Convert.ToInt32(ddlEmployee.SelectedValue),item.Value);
+                    _isInserted = objTask.AssignProject(Convert.ToInt32(ddlEmployee.SelectedValue), item.Value);
 
                 if (_isInserted == -1)
                 {
@@ -63,7 +63,7 @@ namespace IG_Portal
 
                     lblMessage.Text = "Project Assigned";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
-                   
+
                 }
             }
             BindGridProject();
@@ -71,7 +71,7 @@ namespace IG_Portal
 
         protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlEmployee.SelectedIndex!=0)
+            if (ddlEmployee.SelectedIndex != 0)
             {
                 divSearch.Visible = true;
             }
@@ -80,13 +80,13 @@ namespace IG_Portal
                 divSearch.Visible = false;
             }
             BindProjectMaster();
-         
+
             BindGridProject();
         }
 
         public void BindGridProject()
         {
-            if(ddlEmployee.SelectedIndex!=0)
+            if (ddlEmployee.SelectedIndex != 0)
             {
                 DataTable dtTaskDetails;
                 dtTaskDetails = objCommon.GetAssignedProjectByEmployee(Convert.ToInt32(ddlEmployee.SelectedValue));

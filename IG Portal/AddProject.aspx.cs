@@ -41,8 +41,9 @@ namespace IG_Portal
             else
             {
 
-                lblmsg.Text = "Project Added ";
-                lblmsg.ForeColor = System.Drawing.Color.Green;
+                ClientScript.RegisterStartupScript(this.GetType(), "my msaage", "alertme()", true);
+               // lblmsg.Text = "Project Added ";
+               // lblmsg.ForeColor = System.Drawing.Color.Green;
                 Clear();
                 GetProjectList();
             }

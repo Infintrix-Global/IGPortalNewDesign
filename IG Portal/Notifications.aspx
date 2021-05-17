@@ -80,14 +80,49 @@
             background-color: Black;
             filter: alpha(opacity=40);
             opacity: 0.4;
+            width: 100%; /* Full width */
+            height: 100%;
+            overflow:auto
         }
 
         .modalPopup {
-            background-color: #FFFFFF;
-            width: 400px;
-            height: 300px;
-            border: 3px solid #0DA9D0;
+            background-color: #fefefe;
+            width: 600px;
+            overflow: auto;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            margin-left:200px;
+            border: 1px solid #888;
+  
+  
         }
+        /* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #e8f4f8;
+  color: black;
+  }
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #e8f4f8;
+  color: white;
+}
     </style>
 
     <style type="text/css">
@@ -157,9 +192,7 @@
             border-bottom: 0px solid #ccc !important;
         }
 
-        .row {
-            margin-left: 125px;
-        }
+        
 
         .portlet-title {
             margin-left: 125px;
@@ -196,40 +229,95 @@
             visibility: visible
         }
     </style>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
+    <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Notification Details</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="#"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="#">Notifications</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
 
-    <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
-    <div class="card-body">
-        <div class="portlet-body">
-
-            <!-- BEGIN FORM-->
-            <div class="form-body">
-                <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="Notifications" Font-Bold="true" Font-Size="Large"></asp:Label>
-                </div>
-                <br />
-
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+    <!-- BEGIN FORM-->
+    <div class="row">
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                    <h4>My Notifications</h4>
+                    </div>
+                  <div class="padding-20">
                 <asp:TabContainer ID="tabcontainer1" runat="server" ActiveTabIndex="0">
 
-                    <asp:TabPanel ID="NotificationMOM" runat="server" HeaderText="MOM" TabIndex="0">
-
+                    <asp:TabPanel ID="NotificationMOM" runat="server" HeaderText="MOM" TabIndex="0" class="nav-link active">
                         <ContentTemplate>
                             <asp:UpdatePanel ID="upNotificationMOM" runat="server">
                                 <ContentTemplate>
                                     <asp:Label ID="lblmsg1" runat="server"></asp:Label>
+                                        <div class="row" style="margin-left:5px">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Actions to be performed
+                                            </div>
+                                            <div class="card-body">
+                                        <asp:Button ID="btnConfirm" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnConfirm_Click" Text="Confirm" class="btn btn-icon icon-left btn-outline-info"/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <asp:Button ID="btnReject" runat="server" OnClientClick="return GetRejectConfirmation();"  OnClick="btnReject_Click" Text="Reject" class="btn btn-icon icon-left btn-outline-primary" />
+                                       </div>
+                                                </div>
+                                        </div>
                                     <div class="row">
-                                        <asp:Button ID="btnConfirm" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnConfirm_Click" Text="Confirm" class="btn"  />
-                                        <asp:Button ID="btnReject" runat="server" OnClientClick="return GetRejectConfirmation();"  OnClick="btnReject_Click" Text="Reject" class="btn" />
-                                    </div>
-                                    <div class="row">
-                                        <div class=" col m12">
-                                            <div class="portlet light ">
-                                                <asp:Label runat="server" Text="" ID="count1"></asp:Label>
-                                                <div class="portlet-body">
-                                                    <div class="table-scrollable">
-                                                        <asp:GridView ID="GridNotificationMOM" runat="server" AutoGenerateColumns="False"
-                                                            class="striped" OnPageIndexChanging="GridNotificationMOM_PageIndexChanging"
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                        
+                                       <h6 style="color: steelblue"><asp:Label runat="server" Text="" ID="count1"></asp:Label></h6>
+                                                       <asp:GridView ID="GridNotificationMOM" runat="server" AutoGenerateColumns="False"
+                                                            class="table table-bordered" OnPageIndexChanging="GridNotificationMOM_PageIndexChanging"
                                                             GridLines="None" AllowPaging="true" OnSorting="GridNotificationMOM_Sorting"
                                                             PageSize="10"
                                                             ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridNotificationMOM_RowCommand" DataKeyNames="ID">
@@ -270,7 +358,7 @@
 
                                                                    <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="btnDetails_Command" CommandArgument='<%# Eval("MOMID")  %>' CommandName="Details"></asp:LinkButton>
+                                                                <asp:LinkButton ID="btnDetails" runat="server" OnCommand="btnDetails_Command" CommandArgument='<%# Eval("MOMID")  %>' CommandName="Details" class="btn btn-icon icon-left btn-outline-info"><i class="far fa-edit"></i>Details</asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -302,7 +390,7 @@
 
 
 
-                    <asp:TabPanel ID="NotificationAssign" runat="server" HeaderText="Bug Assignment" TabIndex="1">
+                    <asp:TabPanel ID="NotificationAssign" runat="server" HeaderText="Bug Assignment" TabIndex="1" class="nav-link" data-toggle="tab">
 
                         <ContentTemplate>
 
@@ -316,14 +404,15 @@
                                     <asp:DropDownList ID="ddlDeveloper" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class=" col m12">
-                                    <div class="portlet light ">
-                                        <asp:Label runat="server" Text="" ID="count2"></asp:Label>
-                                        <div class="portlet-body">
-                                            <div class="table-scrollable">
-                                                <asp:GridView ID="GirdNotificationAssign" runat="server" AutoGenerateColumns="False"
-                                                    class="striped" OnPageIndexChanging="GirdNotificationAssign_PageIndexChanging"
+                             <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                        
+                                       <h6 style="color: steelblue"><asp:Label runat="server" Text="" ID="count2"></asp:Label></h6>
+                                               <asp:GridView ID="GirdNotificationAssign" runat="server" AutoGenerateColumns="False"
+                                                    class="table table-bordered" OnPageIndexChanging="GirdNotificationAssign_PageIndexChanging"
                                                     GridLines="None" AllowPaging="true" OnSorting="GirdNotificationAssign_Sorting"
                                                     PageSize="10"
                                                     ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GirdNotificationAssign_RowCommand" DataKeyNames="ID">
@@ -392,7 +481,7 @@
 
                                                         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details"></asp:LinkButton>
+                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details" class="btn btn-icon icon-left btn-outline-info"><i class="far fa-edit"></i>Details</asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -426,20 +515,21 @@
                     </asp:TabPanel>
 
 
-                    <asp:TabPanel ID="NotificationBug" runat="server" HeaderText="Assigned Bug List" TabIndex="2">
+                    <asp:TabPanel ID="NotificationBug" runat="server" HeaderText="Assigned Bug List" TabIndex="2" data-toggle="tab" class="nav-link">
 
                         <ContentTemplate>
 
                             <asp:Label ID="lblmsg3" runat="server"></asp:Label>
-
                             <div class="row">
-                                <div class=" col m12">
-                                    <div class="portlet light ">
-                                        <asp:Label runat="server" Text="" ID="count3"></asp:Label>
-                                        <div class="portlet-body">
-                                            <div class="table-scrollable">
-                                                <asp:GridView ID="GirdNotificationBug" runat="server" AutoGenerateColumns="False"
-                                                    class="striped" OnPageIndexChanging="GirdNotificationBug_PageIndexChanging"
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                        
+                                       <h6 style="color: steelblue">
+                               <asp:Label runat="server" Text="" ID="count3"></asp:Label></h6>
+                                              <asp:GridView ID="GirdNotificationBug" runat="server" AutoGenerateColumns="False"
+                                                    class="table table-bordered" OnPageIndexChanging="GirdNotificationBug_PageIndexChanging"
                                                     GridLines="None" AllowPaging="true" OnSorting="GirdNotificationBug_Sorting"
                                                     PageSize="10" OnRowCommand="GirdNotificationBug_RowCommand"
                                                     ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="ID">
@@ -475,7 +565,7 @@
 
                                                         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details"></asp:LinkButton>
+                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details" class="btn btn-icon icon-left btn-outline-info"><i class="far fa-edit"></i>Details</asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -504,28 +594,33 @@
                     </asp:TabPanel>
 
 
-                    <asp:TabPanel ID="NotificationSolvedBug" runat="server" HeaderText="Bug(Close/Reopen)" TabIndex="3">
+                    <asp:TabPanel ID="NotificationSolvedBug" runat="server" HeaderText="Bug(Close/Reopen)" TabIndex="3"  class="nav-link">
 
                         <ContentTemplate>
                           
                             <asp:Label ID="lblmsg4" runat="server"></asp:Label>
-                            <div class="row">
-                                  <div class="col m4">
-                                <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" OnClientClick="return GetCloseConfirmation();" Text="Close" class="btn"  />
+                            <div class="row" style="margin-left:5px">
+                                  <div class="card">
+                                      <div class="card-body">
+                                 <asp:DropDownList ID="ddlProjectName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+                                 </div>
                                       </div>
-                                  <div class="col m4">
-                                    <asp:DropDownList ID="ddlProjectName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged"></asp:DropDownList>
+                                <div class="card">
+                                    <div class="card-body">
+                                      <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" OnClientClick="return GetCloseConfirmation();" Text="Close" class="btn btn-outline-info"/>
+                                      </div>
+                                      </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class=" col m12">
-                                    <div class="portlet light ">
-                                        <asp:Label runat="server" Text="" ID="count4"></asp:Label>
-                                        <div class="portlet-body">
-                                            <div class="table-scrollable">
-                                                <asp:GridView ID="GridNotificationSolvedBug" runat="server" AutoGenerateColumns="False"
-                                                    class="striped" OnPageIndexChanging="GridNotificationSolvedBug_PageIndexChanging"
+                           <div class="row" style="margin-top:10px">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                        
+                                       <h6 style="color: steelblue">
+                                          <asp:Label runat="server" Text="" ID="count4"></asp:Label></h6>
+                                          <asp:GridView ID="GridNotificationSolvedBug" runat="server" AutoGenerateColumns="False"
+                                                    class="table table-bordered" OnPageIndexChanging="GridNotificationSolvedBug_PageIndexChanging"
                                                     GridLines="None" AllowPaging="true" OnSorting="GridNotificationSolvedBug_Sorting"
                                                     PageSize="10" OnRowCommand="GridNotificationSolvedBug_RowCommand"
                                                     ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="ID">
@@ -600,7 +695,7 @@
 
                                                         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details"></asp:LinkButton>
+                                                                <asp:LinkButton ID="btnDetails" runat="server" Text="Details" OnCommand="lnkDetails_Command" CommandArgument='<%# Eval("BugID")  %>' CommandName="Details" class="btn btn-icon icon-left btn-outline-info">Details</asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -612,7 +707,7 @@
 
                                                         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("BugID") %>' OnClientClick="return GetReopenConfirmation();" CommandName="Reopen"></asp:Button>
+                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("BugID") %>' OnClientClick="return GetReopenConfirmation();" CommandName="Reopen" class="btn btn-icon icon-left btn-outline-primary"></asp:Button>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -633,7 +728,7 @@
                                 </div>
 
                             </div>
-
+                            </div>
 
                            
                         </ContentTemplate>
@@ -643,7 +738,7 @@
                
 
 
-                  <asp:TabPanel ID="NotificationSolvedTask" runat="server" HeaderText="Task(Close/Reopen)" TabIndex="4">
+                  <asp:TabPanel ID="NotificationSolvedTask" runat="server" HeaderText="Task(Close/Reopen)" TabIndex="4" class="nav-link" data-toggle="tab">
 
                         <ContentTemplate>
 
@@ -652,15 +747,17 @@
                                 <asp:Button ID="btnCloseTask" runat="server" OnClick="btnCloseTask_Click" OnClientClick="return GetCloseTaskConfirmation();" Text="Close" class="btn"  />
 
                             </div>
-
-                            <div class="row">
-                                <div class=" col m12">
-                                    <div class="portlet light ">
-                                        <asp:Label runat="server" Text="" ID="count5"></asp:Label>
-                                        <div class="portlet-body">
-                                            <div class="table-scrollable">
-                                                <asp:GridView ID="GridNotificationSolvedTask" runat="server" AutoGenerateColumns="False"
-                                                    class="striped" OnPageIndexChanging="GridNotificationSolvedTask_PageIndexChanging"
+                    <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div style="overflow-x:auto;width:100%">
+                        
+                                       <h6 style="color: steelblue">
+                                       
+                            <asp:Label runat="server" Text="" ID="count5"></asp:Label></h6>
+                                              <asp:GridView ID="GridNotificationSolvedTask" runat="server" AutoGenerateColumns="False"
+                                                    class="table table-bordered" OnPageIndexChanging="GridNotificationSolvedTask_PageIndexChanging"
                                                     GridLines="None" AllowPaging="true" OnSorting="GridNotificationSolvedTask_Sorting"
                                                     PageSize="10" OnRowCommand="GridNotificationSolvedTask_RowCommand"
                                                     ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="ID">
@@ -713,13 +810,13 @@
 
                                                         <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDetailsTask" runat="server" Text="Details" OnCommand="btnDetailsTask_Command" CommandArgument='<%# Eval("AssignedTaskID")  %>' CommandName="Details"></asp:LinkButton>
+                                                                <asp:LinkButton ID="btnDetailsTask" runat="server" Text="Details" OnCommand="btnDetailsTask_Command" CommandArgument='<%# Eval("AssignedTaskID")  %>' CommandName="Details" class="btn btn-icon icon-left btn-outline-info"></asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
                                                        <asp:TemplateField HeaderText=" " HeaderStyle-CssClass="autostyle2">
                                                             <ItemTemplate>
-                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("AssignedTaskID") %>' OnClientClick="return GetReopenTaskConfirmation();" CommandName="Reopen"></asp:Button>
+                                                                <asp:Button ID="btnReopen" runat="server" Text="Reopen" CommandArgument='<%# Eval("AssignedTaskID") %>' OnClientClick="return GetReopenTaskConfirmation();" CommandName="Reopen" class="btn btn-icon icon-left btn-outline-primary"></asp:Button>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
@@ -760,31 +857,19 @@
 
             <asp:Panel ID="pnlpp" runat="server" Style="display: none">
 
-                <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup" ScrollBars="Both">
-                    <table>
-                        <tr>
-                            <td>
-                                <asp:Label ID="lblDetails" runat="server" Text="Details"></asp:Label>
-                            </td>
-
-                        </tr>
-                        <tr>
-
-                            <td>
-                                <asp:Label ID="lbltxtDetails" runat="server"> </asp:Label>
-
-                            </td>
-                        </tr>
-
-
-                    </table>
+                <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
+                    <div class="modal-header">
+                       <h2><asp:Label ID="lblDetails" runat="server" Text="Details"></asp:Label></h2>
+                       </div>
+                    <div class="modal-body">
+                               <h5><asp:Label ID="lbltxtDetails" runat="server"> </asp:Label></h5>
+                    </div>
+                    <div class="modal-footer">
+                       <asp:Button ID="Vpbtncancel" CausesValidation="false" runat="server" Text="Cancel " Visible="true" class="btn btn-primary"/>
+                   
+                        </div>
                 </asp:Panel>
-                <div class="row" align="center">
-
-                    <asp:Button ID="Vpbtncancel" CausesValidation="false" runat="server" Text="Cancel " Visible="true" BackColor="#c5484d" ForeColor="white" Height="29px" />
-
-                </div>
-
+                    
             </asp:Panel>
 
         </div>

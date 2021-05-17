@@ -14,53 +14,98 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
-     <div class="card-body">
-        <div class="portlet-body">
-
-            <!-- BEGIN FORM-->
-            <div class="form-body">
-
-                 <div class="row" align="center">
-                     <h4 class="header2">Prioritize Task</h4>
-                   <%-- <asp:Label ID="lbltitle" runat="server" Text="Prioritize Task" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
-
-
-
-                 <asp:Label runat="server" Text="" ID="lblmsg"></asp:Label>
-                 <div class="row">
-                    <div class=" col m3">
-                       <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                         
-                            <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
-                                ClientIDMode="Static" OnSelectedIndexChanged="ddlempName_SelectedIndexChanged"></asp:DropdownList>
+     <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Prioritize Task</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="Admindashboard.html"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="PrioritizeTask.aspx">Prioritize Task Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
 </div>
 
-                              <label>Employee Name</label>
-                        </div>
-                    </div>
-
-               
-
-                </div>
-
-                <br />
-
-                 <div class="row">
-                                        <asp:Button ID="btnUpdate" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnUpdate_Click" Text="Update" class="btn" />
-                                   
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+    
+    <asp:Label runat="server" Text="" ID="lblmsg"></asp:Label>
+                 <div class="section-body">
+                          <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Prioritize Task Details
+                                                <i class="fas fa-arrow-down"></i></h4>
+                                        </div>
+                                            <div class="card-body">
+                                            <div class="form-group row">
+                                            <div class=" col-sm-6 form-group">
+                                                <label class="col-sm-6 col-form-label">Employee Name</label>
+                                  
+                            <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
+                                ClientIDMode="Static" OnSelectedIndexChanged="ddlempName_SelectedIndexChanged"></asp:DropdownList>
+                                </div>
+                                                 <div class=" col-sm-6 form-group">
+                                         <asp:Button ID="btnUpdate" runat="server" OnClientClick="return GetConfirmation();" OnClick="btnUpdate_Click" Text="Update" class="btn btn-outline-primary" style="width:150px;margin-top:40px"/>
                                     </div>
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                              </div>
+                     </div>
 
-      <div class="row">
-                                <div class=" col m12">
-                                    <div class="portlet light ">
-                                        <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                                        <div class="portlet-body">
-                                            <div class="table-scrollable">
-                                                <asp:GridView ID="GridAssignTask" runat="server" AutoGenerateColumns="False"
-                                                    class="striped"
+      <div class="section-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                <h4>Task Details
+                                <i class="fas fa-arrow-down"></i></h4>
+                                </div>
+                                <div class="card-body">
+     
+                                <div class="form-group row">
+                                <div class="table-responsive">
+                                              <h5> <asp:Label runat="server" Text="" ID="count"></asp:Label></h5>
+                                              <asp:GridView ID="GridAssignTask" runat="server" AutoGenerateColumns="False"
+                                                    class="table table-striped table-hover"
                                                     GridLines="None"  OnSorting="GridAssignTask_Sorting"
                                                     
                                                     ShowHeaderWhenEmpty="True" Width="100%"  DataKeyNames="ID">
@@ -115,7 +160,7 @@
 
                                                          <asp:TemplateField HeaderText="Priority" HeaderStyle-CssClass="autostyle2" SortExpression="Priority">
                                                             <ItemTemplate>
-                                                                <asp:Textbox ID="txtPriority" runat="server" Text='<%# Eval("Priority")  %>' TextMode="Number"></asp:Textbox>
+                                                                <asp:Textbox ID="txtPriority" runat="server" Text='<%# Eval("Priority")  %>' TextMode="Number" class="form-control"></asp:Textbox>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 

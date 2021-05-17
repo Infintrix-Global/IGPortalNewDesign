@@ -65,10 +65,57 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="card-body">
-        <div class="portlet-body">
+    <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Leave Approval</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="#"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="#.aspx">Leave Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
 
-           <%-- <div class="page-bar">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+
+    <%-- <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
                         <i class="icon-home"></i>
@@ -85,39 +132,25 @@
             <!-- BEGIN FORM-->
 
 
-            <div class="form-body">
-
-                <div class="row" align="center">
-                    <h4 class="header2">Leave Approval Application</h4>
-                   <%-- <asp:Label ID="lbltitle" runat="server" Text="Leave Approval Application" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
-
+            
                 <asp:UpdatePanel ID="upEmployee" runat="server">
                     <ContentTemplate>
 
                         <asp:Label ID="lblmsg" runat="server"></asp:Label>
-
-                        <div class="portlet light ">
-
-                            <div class="row">
-                                <div class="col m12">
-                                    <div class="portlet light ">
-                                        <div class="row">
-                                            <div class="col m12">
-                                                  <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                                        </div>
-                                            
-                                      </div>
-
-                                        <br />
-                                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                <h4>Leave Approval Details
+                                <i class="fas fa-arrow-down"></i></h4>
+                                </div>
+                                <div class="card-body">
+                                <h5><asp:Label runat="server" Text="" ID="count"></asp:Label></h5>
                                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                             <ContentTemplate>
-                                                <div class="portlet-body">
-                                                    <div class="table-scrollable">
-                                                        <asp:GridView ID="GridLeave" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                                            class="striped" OnSorting="GridLeave_Sorting" AllowSorting="true" DataKeyNames="ID"
+                                                <div style="overflow-x:auto;width:100%">
+                                                <asp:GridView ID="GridLeave" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                                                            class="table table-bordered" OnSorting="GridLeave_Sorting" AllowSorting="true" DataKeyNames="ID"
                                                             GridLines="None" OnRowCommand="GridLeave_RowCommand" OnRowDataBound="GridLeave_RowDataBound"
                                                             ShowHeaderWhenEmpty="True" Width="100%" OnPageIndexChanging="GridLeave_PageIndexChanging" PageSize="10">
                                                             <Columns>
@@ -176,7 +209,7 @@
                                                             <ItemTemplate>
                                                                 <img alt="" style="cursor: pointer" src="images/plus.png" />
                                                                 <asp:Panel ID="Panel1" runat="server" Style="display: none">
-                                                                    <asp:GridView ID="gvmp" runat="server" AutoGenerateColumns="false" CssClass="ChildGrid" OnRowDataBound="gvmp_RowDataBound">
+                                                                    <asp:GridView ID="gvmp" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered" OnRowDataBound="gvmp_RowDataBound">
                                                                         <Columns>
                                                                             <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" >
                                                             <ItemTemplate>
@@ -219,7 +252,7 @@
 
                                                                   <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="btnSubmit" Text="Submit" runat="server"  CssClass="btn" OnClientClick="return GetConfirmation();" CommandName="Submit"  CommandArgument='<%#Container.DataItemIndex %>' />
+                                                                        <asp:Button ID="btnSubmit" Text="Submit" runat="server"  CssClass="btn btn-outline-info" OnClientClick="return GetConfirmation();" CommandName="Submit"  CommandArgument='<%#Container.DataItemIndex %>' />
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 

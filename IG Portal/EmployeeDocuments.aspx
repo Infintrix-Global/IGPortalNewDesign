@@ -3,28 +3,67 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
-     <div class="card-body">
-        <div class="portlet-body">
-             <div class="form-body">
-                <div class="row" align="center">
-                    <h4 class="header2">Employee Document</h4>
-                  <%--  <asp:Label ID="lbltitle" runat="server" Text="Employee Document" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
-               
-                   <asp:UpdatePanel ID="upPDocs" runat="server">
+     <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Document Details</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="#"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="#.aspx">Employee Document Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
+
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+           <asp:UpdatePanel ID="upPDocs" runat="server">
                     <ContentTemplate>
                          <asp:Label ID="lblmsg" runat="server"></asp:Label>
                
-
-                <div class="row">
-                    <div class=" col m12">
-                        <div class="portlet light ">
-                            <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                            <div class="portlet-body">
-                                <div class="table-scrollable">
+                            <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                  <div class="card-body">
+                                <h5>
+                            <asp:Label runat="server" Text="" ID="count"></asp:Label></h5>
+                             <div style="overflow-x:auto;width:100%">
                                     <asp:GridView ID="GridDocumentStatus" runat="server"  AutoGenerateColumns="False"
-                                        class="striped"  OnPageIndexChanging="GridDocumentStatus_PageIndexChanging"
+                                        class="table table-bordered"  OnPageIndexChanging="GridDocumentStatus_PageIndexChanging"
                                         GridLines="None" AllowPaging="true"
                                         ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridDocumentStatus_RowCommand">
                                         <Columns>

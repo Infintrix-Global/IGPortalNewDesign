@@ -41,114 +41,114 @@ namespace IG_Portal
                     DataTable dtRole = objTask.GetRoleByLoginID(Session["LoginID"].ToString());
                     if (dtRole.Rows.Count > 1)
                     {
-                        ddlRole.Visible = true;
-                        BindRole(dtRole);
+                      //    ddlRole.Visible = true;
+                       // BindRole(dtRole);
                     }
                     DataTable AllData = objTask.GetEmployeeByID(Convert.ToInt32(Session["LoginID"].ToString()));
-                   
-                    empName.Text = "Welcome " + AllData.Rows[0]["EmployeeName"].ToString();
+
+                    //empName.Text = "Welcome "; // + AllData.Rows[0]["EmployeeName"].ToString();
                    
                
                     if (Session["Role"].ToString() == "2" && Session["CompanyID"].ToString() == "2")
                     {
-                        admin.Visible = true;
-                        lblAdminName.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapAdminWM";
-                        SiteMapPath1.DataBind();
+                       // admin.Visible = true;
+                        //lblAdminName.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapAdminWM";
+                        //SiteMapPath1.DataBind();
                     }
                     else if (Session["Role"].ToString() == "1" && Session["CompanyID"].ToString() == "2")
                     {
-                        emp.Visible = true;
-                        lblEmpName.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapEmployeeWM";
-                        SiteMapPath1.DataBind();
+                       // emp.Visible = true;
+                       // lblEmpName.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapEmployeeWM";
+                        //SiteMapPath1.DataBind();
                     }
                     else if (Session["Role"].ToString() == "4" && Session["CompanyID"].ToString() == "2")
                     {
-                        manager.Visible = true;
-                        lblManagerName.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapManagerWM";
-                        SiteMapPath1.DataBind();
+                       // manager.Visible = true;
+                       // lblManagerName.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapManagerWM";
+                       // SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "7" && Session["CompanyID"].ToString() == "2")
                     {
-                        consultant.Visible = true;
-                        lblConsultant.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapConsultantWM";
-                        SiteMapPath1.DataBind();
+                    //    consultant.Visible = true;
+                     //   lblConsultant.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapConsultantWM";
+                        //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "8" && Session["CompanyID"].ToString() == "2")
                     {
-                        Client.Visible = true;
-                        lblClient.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapClientWM";
-                        SiteMapPath1.DataBind();
+                       // Client.Visible = true;
+                       // lblClient.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapClientWM";
+                        //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "9" && Session["CompanyID"].ToString() == "2")
                     {
-                        Support.Visible = true;
-                        lblSupport.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                         SiteMapPath1.SiteMapProvider = "SiteMapSupport";
-                         SiteMapPath1.DataBind();
+                        //Support.Visible = true;
+                        //lblSupport.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                         //SiteMapPath1.SiteMapProvider = "SiteMapSupport";
+                         //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "10" && Session["CompanyID"].ToString() == "2")
                     {
-                        HR.Visible = true;
-                        lblHRName.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapHR";
-                        SiteMapPath1.DataBind();
+                        //HR.Visible = true;
+                        //lblHRName.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapHR";
+                        //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "11" && Session["CompanyID"].ToString() == "2")
                     {
-                        Sales.Visible = true;
-                        lblSales.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapSales";
-                        SiteMapPath1.DataBind();
+                        //Sales.Visible = true;
+                        //lblSales.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapSales";
+                        //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "12" && Session["CompanyID"].ToString() == "2")
                     {
-                        qa.Visible = true;
-                        lblQA.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapQA";
-                        SiteMapPath1.DataBind();
+                        //qa.Visible = true;
+                        //lblQA.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapQA";
+                        //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "13" && Session["CompanyID"].ToString() == "2")
                     {
-                        InfraClient.Visible = true;
-                        lblInfraClient.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                     //   InfraClient.Visible = true;
+                       // lblInfraClient.Text = AllData.Rows[0]["EmployeeName"].ToString();
                         //SiteMapPath1.SiteMapProvider = "SiteMapQA";
                         //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "14" && Session["CompanyID"].ToString() == "2")
                     {
-                        InfraSupport.Visible = true;
-                        lblInfraSupport.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                       // InfraSupport.Visible = true;
+                       // lblInfraSupport.Text = AllData.Rows[0]["EmployeeName"].ToString();
                         //SiteMapPath1.SiteMapProvider = "SiteMapQA";
                         //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "15" && Session["CompanyID"].ToString() == "2")
                     {
-                        Engineer.Visible = true;
-                        lblEngineer.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                     //   Engineer.Visible = true;
+                       // lblEngineer.Text = AllData.Rows[0]["EmployeeName"].ToString();
                         //SiteMapPath1.SiteMapProvider = "SiteMapQA";
                         //SiteMapPath1.DataBind();
                     }
 
                     else if (Session["Role"].ToString() == "16" && Session["CompanyID"].ToString() == "2")
                     {
-                        consultantmanager.Visible = true;
-                        lblConsultantManager.Text = AllData.Rows[0]["EmployeeName"].ToString();
-                        SiteMapPath1.SiteMapProvider = "SiteMapConsultantManager";
-                        SiteMapPath1.DataBind();
+                       // consultantmanager.Visible = true;
+                       // lblConsultantManager.Text = AllData.Rows[0]["EmployeeName"].ToString();
+                        //SiteMapPath1.SiteMapProvider = "SiteMapConsultantManager";
+                       // SiteMapPath1.DataBind();
                     }
                 }
 
@@ -171,18 +171,18 @@ namespace IG_Portal
         {
            
            
-            Session["Role"] = ddlRole.SelectedValue;
+            //Session["Role"] = ddlRole.SelectedValue;
            
             CheckRole();
         }
 
         public void BindRole(DataTable dt)
         {
-            ddlRole.DataSource = dt;
-            ddlRole.DataTextField = "RoleName";
-            ddlRole.DataValueField = "ID";
-            ddlRole.DataBind();
-            ddlRole.SelectedValue = Session["Role"].ToString();
+           // ddlRole.DataSource = dt;
+           // ddlRole.DataTextField = "RoleName";
+           // ddlRole.DataValueField = "ID";
+           // ddlRole.DataBind();
+           // ddlRole.SelectedValue = Session["Role"].ToString();
         }
 
         public void CheckRole()

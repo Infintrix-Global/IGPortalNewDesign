@@ -903,7 +903,7 @@ namespace IG_Portal.BAL_Classes
             {
 
                 General objGeneral = new General();
-                objGeneral.AddParameterWithValueToSQLCommand("@ID", eid);
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", eid);
 
                 ds = objGeneral.GetDatasetByCommand_SP("SP_GetEmployeeByID");
             }

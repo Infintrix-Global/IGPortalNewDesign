@@ -38,7 +38,14 @@
     <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="js/plugins/magnific-popup/magnific-popup.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
-
+    <link rel="stylesheet" href="assets/css/app.min.css">
+<link rel="stylesheet" href="assets/bundles/jqvmap/dist/jqvmap.min.css">
+<link rel="stylesheet" href="assets/bundles/weather-icon/css/weather-icons.min.css">
+<link rel="stylesheet" href="assets/bundles/weather-icon/css/weather-icons-wind.min.css">
+<link rel="stylesheet" href="assets/bundles/bootstrap-social/bootstrap-social.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/components.css">
      <style>
        
         .modalBackground {
@@ -61,17 +68,22 @@
          .modalPopUp .modal-content {
              padding: 24px;
          }
+         .images
+        {
+            margin-left:50px;
+        }
+         body {
+          overflow-x:hidden;
+         }
     </style>
 
 </head>
 
-<body>
+<body style="background-color: #e8f4f8">
     
     <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
+        <div class="loader"></div>
+        </div>
     <!-- End Page Loading -->
 
     <!-- //////////////////////////////////////////////////////////////////////////// -->
@@ -79,28 +91,23 @@
     <!-- START HEADER -->
     <header id="header" class="page-topbar navbar-sticky">
         <!-- start header nav-->
-        <nav>
-            <div class="nav-wrapper d-flex align-items-center">
+        <nav style="background-color:white">
+            <div class="nav-wrapper d-flex align-items-center" style="background-color:white">
                 <ul>
                     <li>
                         <h1 class="logo-wrapper">
                             <a href="index.html" class="brand-logo darken-1">
-                                <img src="images/infintrixgloabal-logo.png" alt="InfintrixGlobal">
+                                <img src="assets/img/IG_logo.jpg" class="images" style="margin-top:9px">
                             </a>
-                            <span class="logo-text">InfintrixGlobal</span>
-                        </h1>
+                            </h1>
                     </li>
                 </ul>
 
                 <ul class="hide-on-med-and-down d-flex align-items-center ml-auto">
                     <li>
-                        <a class="btn waves-effect waves-light modal-trigger" href="#login__modal">Login</a>
+                        <a class="btn badge-info btn-icon icon-left modal-trigger" href="#login__modal" style="color:black;background-color: #e8f4f8;">Login</a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen">
-                            <span class="mdi-action-settings-overscan"></span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -112,10 +119,81 @@
     <form  runat="server" defaultbutton="Button1">
          <asp:ToolkitScriptManager ID="ScriptManager1" runat="server"></asp:ToolkitScriptManager>
     <!-- START MAIN -->
+       
     <div id="main">
         <!-- START WRAPPER -->
         <div class="wrapper">
             <div class="container">
+                <div class="row">
+<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+<div class="card card-statistic-1" style="background-color:#F0FFFF">
+    <div class="card-icon-square card-icon-bg-green">
+        <i class="fas fa-chart-line"></i>
+    </div>
+    <div class="card-wrap">
+            <div class="padding-20">
+                    <div class="text-right">
+                            <h3 class="font-light mb-0">
+                                <i class="ti-arrow-up text-success"></i>10+
+                            </h3>
+                            <span class="text-muted">Years in Business</span>
+                    </div>
+            </div>
+    </div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+<div class="card card-statistic-1" style="background-color:#FFEFD5">
+    <div class="card-icon-square card-icon-bg-orange">
+            <i class="fas fa-hiking"></i>
+    </div>
+    <div class="card-wrap">
+            <div class="padding-20">
+                    <div class="text-right">
+                            <h3 class="font-light mb-0">
+                                    <i class="ti-arrow-up text-success"></i>100+
+                            </h3>
+                            <span class="text-muted">Happy Clients</span>
+                    </div>
+            </div>
+    </div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+<div class="card card-statistic-1" style="background-color:#F0F8FF">
+    <div class="card-icon-square card-icon-bg-cyan">
+            <i class="fas fa-chart-line"></i>
+    </div>
+    <div class="card-wrap">
+            <div class="padding-20">
+                    <div class="text-right">
+                            <h3 class="font-light mb-0">
+                                    <i class="ti-arrow-up text-success"></i> 3+
+                            </h3>
+                            <span class="text-muted">Countries and Growing</span>
+                    </div>
+            </div>
+    </div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+<div class="card card-statistic-1" style="background-color:#E6E6FA">
+    <div class="card-icon-square card-icon-bg-purple">
+            <i class="fas fa-hiking"></i>
+    </div>
+    <div class="card-wrap">
+            <div class="padding-20">
+                    <div class="text-right">
+                            <h3 class="font-light mb-0">
+                                    <i class="ti-arrow-up text-success"></i> 95%
+                            </h3>
+                            <span class="text-muted">Customer Retention</span>
+                    </div>
+            </div>
+    </div>
+</div>
+</div>
+</div>
 
                 <!-- First Row -->
                 <div class="row d-flex flex-wrap">
@@ -146,7 +224,7 @@
 
                                                             <div class="collection-subtext d-flex flex-wrap">
                                                                 <div class="collection-cards--footer">
-                                                                    <span class="badge new relative">
+                                                                    <span class="badge badge-secondary">
                                                                         <asp:Label ID="lblBday" runat="server" Text='<%# Eval("day") +"  "+  Eval("month")  %>'></asp:Label>
                                                                     </span>
                                                                 </div>
@@ -271,7 +349,7 @@
                 <div class="row d-flex flex-wrap">
 
                     <!--Our Employees STARTS-->
-                    <div class="col s12 col-md-12 l4">
+                    <div class="col s12 col-md-12 col-lg-4">
                         <div id="employees_card" class="card card-separate">
                             <div class="card-header">
                                 <div class="card-title d-flex justify-content-between">
@@ -587,8 +665,8 @@
     </asp:UpdatePanel>
                         
                 <!-- Third Row -->
-                <div class="row d-flex flex-wrap">
-                    <div class="col s12 l8 order-1 order-lg-0">
+                <div class="row d-flex flex-wrap" style="margin-left:35px">
+                    <div class="col s12 col-lg-4 order-1 order-lg-0">
                         <div id="ourgallery_card" class="card card-separate">
                             <div class="card-header">
                                 <div class="card-title d-flex justify-content-between">
@@ -623,8 +701,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col s12 l4">
+                    
+                    <div class="col-lg-4">
                         <div id="holiday_card" class="card card-separate">
                             <div class="card-header">
                                 <div class="card-title d-flex justify-content-between">
@@ -745,8 +823,8 @@
                 <!-- Input Fields STARTS -->
                 <div class="row">
                     <div class="col s12 center">
-                        <img src="images/infintrixgloabal-portal.png" width="368" height="368" alt="InfintrixGlobal" class="circle responsive-img valign profile-image-login">
-                        <p class="center secondary-txt login-form-text">InfintrixGlobal Portal</p>
+                        <img src="assets/img/preloader.gif" width="50" height="50" alt="InfintrixGlobal">
+                        <img src="assets/img/IG_logo1.jpg" class="center">
                     </div>
                 </div>
                  <asp:Label ID="lblmsg" runat="server" Font-Bold="True" 

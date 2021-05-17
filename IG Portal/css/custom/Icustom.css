@@ -405,10 +405,10 @@
 /*Login Modal Form*/
 .theme__new #login__modal {
     width: 400px;
-    max-height:100%
-}
+    max-height:85%;
+    }
 
-.theme__new .row .input-field { margin-top: 12px; }
+.theme__new .row .input-field { margin-top: 10px; }
 
 .theme__new .input-field .prefix { color: #505050; }
 
@@ -430,7 +430,7 @@
 
 .theme__new .login__footer { font-size: 14px; }
 
-.theme__new .modal { transform: none !important; will-change: unset; max-height: 80%; }
+.theme__new .modal { transform: none !important; will-change: unset; max-height: 80%;}
 
 .theme__new .modal-content { position: relative; }
 

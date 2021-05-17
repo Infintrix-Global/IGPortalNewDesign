@@ -3,68 +3,96 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
          <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-     <div class="card-body">
-        <div class="portlet-body">
-         
+     <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>View Leads</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="#"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="#.aspx">Lead Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
+
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      
             <!-- BEGIN FORM-->
-            <div class="form-body">
-                <div class="row" align="center">
-                    <asp:Label ID="lbltitle" runat="server" Text="View Leads" Font-Bold="true" Font-Size="Large"></asp:Label>
-                </div>
-                <br />
-                <!-- END PAGE HEADER-->
-  <asp:Label ID="lblMessage" runat="server"></asp:Label>
-                <br />
+            
+            <asp:Label ID="lblMessage" runat="server"></asp:Label>
                    <asp:UpdatePanel ID="upTask" runat="server">
                     <ContentTemplate>
                 <div class="row">
-
-                  
-                    <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Enquiry Source </label>
-                                    <asp:DropDownList ID="ddlEnquirySource" runat="server" class="form-control" placeholder="" 
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                
+                                <div class="card">
+                                  <div class="card-header">
+                                    <h4>Fill up the Details<i class="fas fa-arrow-down"></i></h4>
+                                  </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                               <div class=" col-sm-4 form-group">
+                               <label class="col-sm-4 col-form-label">Enquiry Source</label>
+                                        <asp:DropDownList ID="ddlEnquirySource" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" OnSelectedIndexChanged="ddlEnquirySource_SelectedIndexChanged" >
-                                    </asp:DropDownList>
-
-
+                                    </asp:DropDownList> 
                                 </div>
-                            </div>
-
-                    <div class=" col m2 ">
-                                <div class="form-group">
-                                    <label>Enquiry For</label>
+                            <div class=" col-sm-4 form-group">
+                               <label class="col-sm-4 col-form-label">Enquiry For</label>
                                     <asp:DropDownList ID="ddlEnquiryFor" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static"  >
                                     </asp:DropDownList>
-
-
-                                </div>
-                            </div>
-
-                     <div class="col m2">
-                                            <div class="form-group">
-                                                    <label>Status </label>
-                                                <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
-                                                    ClientIDMode="Static" >
+                        </div>
+                        <div class=" col-sm-4 form-group">
+                               <label class="col-sm-4 col-form-label">Status</label>
+                                         <asp:DropDownList ID="ddlStatus" runat="server" placeholder=""
+                                                    ClientIDMode="Static" class="form-control" style="margin-top:20px;">
                                                 </asp:DropDownList>
                                                 
                                             </div>
-                                        </div>
-                     <div class=" col m2">
-                                <div class="form-group">
-                                    <label>From Date</label>
-                                    <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder=""
+                                    <div class=" col-sm-4 form-group" style="margin-top:-20px">
+                               <label class="col-sm-4 col-form-label">From Date</label>
+                              <asp:TextBox ID="txtFromDate" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static" TextMode="Date" ></asp:TextBox>
-                                 
-
-                                </div>
-                            </div>
-
-                     <div class=" col m2">
-                                <div class="form-group">
-                                    <label>To Date</label>
-                                    <asp:TextBox ID="txtToDate" runat="server" class="form-control" placeholder=""
+                                 </div>
+                      <div class=" col-sm-4 form-group" style="margin-top:-20px;">
+                               <label class="col-sm-4 col-form-label">To Date</label>
+                               <asp:TextBox ID="txtToDate" runat="server" class="form-control" placeholder=""
                                         ClientIDMode="Static" TextMode="Date" ></asp:TextBox>
                                  
 
@@ -72,54 +100,39 @@
                             </div>
                     
                     </div>    
-                        
+                        </div>
+                                    </div>
+                    </div>
                         </ContentTemplate>
                        </asp:UpdatePanel>
-                <br />
-                <div class="row" align="center">
-
-                    <div class="col m12">
-                        <div class="form-group form-md-line-input ">
-                               <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  CausesValidation="true" />
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue" />
+                        <div class="form-group row" style="margin-top:-80px">
+                         <div class="col-sm-4"></div>
+                         <div class="col-sm-2">
+                        <asp:Button ID="btSearch" runat="server" Text="Search" class="btn btn-outline-success" ClientIDMode="Static" OnClick="btSearch_Click"  CausesValidation="true" style="width:150px"/>
+                            </div>
+                            <div class="col-sm-2">
+                             <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn btn-outline-info" style="width:150px"/>
                         </div>
-                    </div>
-
- 
-                    <div class="col m4">
-                        <div class="form-group form-md-line-input ">
-                         
                         </div>
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-         
-                
-                <div class="clearfix"></div>
-                 <div class="row" align="rignt">
-               
-                     </div>
-                  
-                    <div class="row">
-                        <div class=" col m12">
-                            <div class="portlet light ">
-                                  <div class=" col m9">
-                                        <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                                    </div>
-                                   
+   
+                        <div class="row" style="margin-top:50px">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                <h4>Lead Details
+                                <i class="fas fa-arrow-down"></i></h4>
+                                </div>
+                                <div class="card-body">
+                                <h5><asp:Label runat="server" Text="" ID="count"></asp:Label></h5>
                                     <div class="col m3">
                                        <%-- <button class="btn" runat="server" onserverclick="btnExport_Click"  id="btExport"><i class="fa fa-download"></i>Export</button>--%>
                                         
                                     </div>
-                                    <br />
-                                <div class="portlet-body">
-                                     <asp:Panel ID="panel1" runat="server" Height="100%" Width="100%" ScrollBars="Both">
                                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
-                                    <div class="table-scrollable">
-                                        <asp:GridView ID="GridLead" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                            class="striped" AllowSorting="true" OnPageIndexChanging="GridLead_PageIndexChanging"
+                                    <div style="overflow-x:auto;width:100%">
+                                            <asp:GridView ID="GridLead" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                                            class="table table-bordered" AllowSorting="true" OnPageIndexChanging="GridLead_PageIndexChanging"
                                             GridLines="None" OnSorting="GridLead_Sorting" PageSize="10"  DataKeyNames="ID"
                                             ShowHeaderWhenEmpty="True" Width="100%"   >
                                             <Columns>

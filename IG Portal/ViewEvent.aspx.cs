@@ -86,6 +86,8 @@ namespace IG_Portal
                         ((ImageButton)e.Row.FindControl("imgDelete")).ImageUrl = "~/images/Active.png";
                         ((ImageButton)e.Row.FindControl("imgDelete")).ToolTip = "Change to Inactive";
                         ((Label)e.Row.FindControl("lblStatusName")).Text = "Active";
+                        ((Label)e.Row.FindControl("lblStatusName")).ForeColor = System.Drawing.Color.Green;
+
                     }
                     else
                     {
@@ -93,6 +95,8 @@ namespace IG_Portal
                         ((Label)e.Row.FindControl("lblStatusName")).Text = "Inactive";
                         ((ImageButton)e.Row.FindControl("imgDelete")).ImageUrl = "~/images/Inactive.png";
                         ((ImageButton)e.Row.FindControl("imgDelete")).ToolTip = "Change to Active";
+                        ((Label)e.Row.FindControl("lblStatusName")).ForeColor = System.Drawing.Color.Red;
+
                     }
                 }
             }

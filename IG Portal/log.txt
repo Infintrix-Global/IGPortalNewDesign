@@ -660,3 +660,45 @@
 *****Error message=****String was not recognized as a valid DateTime.   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
    at System.Convert.ToDateTime(String value)
    at IG_Portal.clsCommonMasters.SendMailRelease(DataTable dtTask, String projectName, String ProjectID, String type, String date, String descrition) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 731 at 08-Jan-21 04:21:18 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailMOM(DataTable dtMeetingpoint, DataTable dtAttendee, String date, String frtime, String totime, String agenda, String meetingtype, String meetingplace, String meetingInitiator) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 651 at 21-Apr-21 02:12:05 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailMOM(DataTable dtMeetingpoint, DataTable dtAttendee, String date, String frtime, String totime, String agenda, String meetingtype, String meetingplace, String meetingInitiator) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 651 at 21-Apr-21 02:14:00 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailMOM(DataTable dtMeetingpoint, DataTable dtAttendee, String date, String frtime, String totime, String agenda, String meetingtype, String meetingplace, String meetingInitiator) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 651 at 21-Apr-21 02:14:24 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 03:43:19 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 03:46:18 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 03:50:03 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 03:51:23 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 03:53:21 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 04:02:50 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 04:53:33 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 04:55:07 PM
+*****Error message=****Cannot find table 0.   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at IG_Portal.BAL_Classes.BAL_Task.GetEmployeeByID(Int32 eid) in D:\GIT\IG Portal\IG Portal\BAL_Classes\BAL_Task.cs:line 913
+   at IG_Portal.clsCommonMasters.SendMailLeaveApplication(Leave objLeaveApplication, String leavetype) in D:\GIT\IG Portal\IG Portal\BAL_Classes\clsCommonMasters.cs:line 124 at 26-Apr-21 04:57:21 PM
+*****Error message=****   at IG_Portal.BAL_Classes.General.GetDatasetByCommand(String Command) in D:\GIT\IG Portal\IG Portal\BAL_Classes\General.cs:line 226
+   at IG_Portal.ViewTask.btSearch_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\ViewTask.aspx.cs:line 394A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) at 27-Apr-21 03:01:03 PM
+*****Error message=****   at IG_Portal.BAL_Classes.General.GetDatasetByCommand(String Command) in D:\GIT\IG Portal\IG Portal\BAL_Classes\General.cs:line 226
+   at IG_Portal.ViewTask.btSearch_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\ViewTask.aspx.cs:line 394A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) at 27-Apr-21 03:01:04 PM
+*****Error message=****   at IG_Portal.BAL_Classes.General.GetDatasetByCommand(String Command) in D:\GIT\IG Portal\IG Portal\BAL_Classes\General.cs:line 226
+   at IG_Portal.ViewTask.btSearch_Click(Object sender, EventArgs e) in D:\GIT\IG Portal\IG Portal\ViewTask.aspx.cs:line 394A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) at 27-Apr-21 03:01:04 PM

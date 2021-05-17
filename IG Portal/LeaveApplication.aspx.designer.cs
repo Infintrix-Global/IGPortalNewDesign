@@ -24,24 +24,6 @@ namespace IG_Portal
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// AddNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AddNew;
-
-        /// <summary>
-        /// btnAddNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNew;
-
-        /// <summary>
         /// newLeave control.
         /// </summary>
         /// <remarks>
@@ -186,6 +168,24 @@ namespace IG_Portal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl LeaveNumbers;
 
         /// <summary>
+        /// AddNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AddNew;
+
+        /// <summary>
+        /// btnAddNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddNew;
+
+        /// <summary>
         /// lbltpl control.
         /// </summary>
         /// <remarks>
@@ -202,42 +202,6 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblctpl;
-
-        /// <summary>
-        /// lblapl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblapl;
-
-        /// <summary>
-        /// lblcapl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblcapl;
-
-        /// <summary>
-        /// lblrpl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblrpl;
-
-        /// <summary>
-        /// lblcrpl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblcrpl;
 
         /// <summary>
         /// lbltsl control.
@@ -258,6 +222,24 @@ namespace IG_Portal
         protected global::System.Web.UI.WebControls.Label lblctsl;
 
         /// <summary>
+        /// lblapl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblapl;
+
+        /// <summary>
+        /// lblcapl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcapl;
+
+        /// <summary>
         /// lblasl control.
         /// </summary>
         /// <remarks>
@@ -274,6 +256,24 @@ namespace IG_Portal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblcasl;
+
+        /// <summary>
+        /// lblrpl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblrpl;
+
+        /// <summary>
+        /// lblcrpl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcrpl;
 
         /// <summary>
         /// lblrsl control.

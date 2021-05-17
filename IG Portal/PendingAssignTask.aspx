@@ -3,107 +3,129 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
-     <div class="card-body">
-        <div class="portlet-body">
-
-            <!-- BEGIN FORM-->
-            <div class="form-body">
-                <div class="row" align="center">
-                    <h4 class="header2">Pending Task</h4>
-                  <%--  <asp:Label ID="lbltitle" runat="server" Text="Pending Task" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
+    
+    
                 <asp:Label ID="lblMessage" runat="server"></asp:Label>
                  <asp:UpdatePanel ID="upTask" runat="server">
                     <ContentTemplate>
+                     <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Assign Task</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="Admindashboard.html"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="PendingAssignTask.aspx">Assign Task Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
 
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+    
                  <asp:Label runat="server" Text="" ID="lblmsg"></asp:Label>
-                 <div class="row">
-                    <div class=" col m3">
-                       <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                           
-                            <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static"></asp:DropdownList>
-</div>
-                            <label>Employee Name</label>
-
-                        </div>
-                    </div>
-
-                    <div class=" col m3">
-                       <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                           
-                            <asp:DropdownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""
-                                ClientIDMode="Static"></asp:DropdownList>
-</div>
-                            <label>Project</label>
-
-                        </div>
-                    </div>
-
-                      <div class=" col m3">
-                        <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                            
-                            <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
+                           <div class="section-body">
+                          <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                         <h4>Fill up the Details
+                                                <i class="fas fa-arrow-down"></i></h4> 
+                                        </div>
+                                            <div class="card-body">
+                                            <div class="form-group row">
+                                            <div class=" col-sm-6 form-group">
+                                                <label class="col-sm-6 col-form-label">Employee Name</label>
+                                   
+                                                <asp:DropdownList ID="ddlempName" runat="server" class="form-control" placeholder=""
+                                                    ClientIDMode="Static"></asp:DropdownList>
+                                                </div>
+                                               <div class=" col-sm-6 form-group">
+                                                <label class="col-sm-6 col-form-label">Project</label>
+                                   
+                                                <asp:DropdownList ID="ddlProjectName" runat="server" class="form-control" placeholder=""
+                                        ClientIDMode="Static"></asp:DropdownList>
+                                        </div>
+                              <div class=" col-sm-6 form-group">
+                               <label class="col-sm-6 col-form-label">Assign Status</label>
+                                         
+                              <asp:DropDownList ID="ddlStatus" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static">
                                 <asp:ListItem Text="Not Assigned" Value="1"></asp:ListItem>
                                  <asp:ListItem Text="Assigned" Value="2"></asp:ListItem>
                                  <asp:ListItem Text="Both" Value="3"></asp:ListItem>
                             </asp:DropDownList>
-</div>
-                            <label>Assign Status</label>
-
-                        </div>
-                    </div>
-
-                     <div class=" col m3">
-                       <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                           
-                            <asp:DropDownList ID="ddlTaskStatus" runat="server" class="form-control" placeholder=""
+                            </div>
+                           <div class=" col-sm-6 form-group">
+                               <label class="col-sm-6 col-form-label">Work Status</label>
+                              
+                           <asp:DropDownList ID="ddlTaskStatus" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static">
                                
                             </asp:DropDownList>
-</div>
-                            <label>Work Status</label>
-
-                        </div>
-                    </div>
-
-                     <div class="clearfix"></div>
-                     <div class="row" align="center">
-
-                    <div class="col m12">
-                        <div class="form-group form-md-line-input ">
-
-
-                                <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" />
-                                 <asp:Button ID="btclear" runat="server" Text="Clear"  class="btn blue" ClientIDMode="Static" OnClick="btclear_Click" />
-
-                        </div>
-                    </div>
-                    <div class="col m2">
-                        <div class="form-group form-md-line-input ">
-
+                            </div>
                           
-
-                        </div>
                     </div>
+                          <div class="form-group row" style="margin-top:-30px">
+                                                            <div class="col-sm-4"></div>
+                                                            <div class=" col-sm-6">
+                                 <asp:Button ID="btSearch" runat="server" Text="Search" class="btn btn-outline-primary" ClientIDMode="Static" OnClick="btSearch_Click" UseSubmitBehavior="false" style="width:150px"/>
+                                 <asp:Button ID="btclear" runat="server" Text="Clear"  class="btn btn-outline-info" ClientIDMode="Static" OnClick="btclear_Click" style="width:150px;margin-left:20px"/>
+                     </div>
+                    </div>
+                  
                      </div>
                 </div>
 
-                  <div class="row">
-                                <div class=" col m12">
-                                    <div class="portlet light ">
-                                        <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                                         <asp:Panel ID="panel1" runat="server" Height="100%" Width="100%" ScrollBars="Both">
-                                        <div class="portlet-body">
-                                                <div class="table-scrollable table-scrollable-borderless">
+                  <div class="section-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                <h4>Task Details
+                                <i class="fas fa-arrow-down"></i></h4>
+                                </div>
+                                <div class="card-body">
+                                <div style="overflow-x:auto;width:100%">
+                             
+                                    <h5><asp:Label runat="server" Text="" ID="count"></asp:Label></h5>
                                                 <asp:GridView ID="GridAssignTask" runat="server" AutoGenerateColumns="False"
-                                                    class="striped" OnPageIndexChanging="GridAssignTask_PageIndexChanging"
+                                                    class="table table-bordered" OnPageIndexChanging="GridAssignTask_PageIndexChanging"
                                                     GridLines="None" AllowPaging="true" OnSorting="GridAssignTask_Sorting"
                                                     PageSize="10"  OnRowDataBound="GridAssignTask_RowDataBound"
                                                     ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="GridAssignTask_RowCommand" DataKeyNames="ID">
@@ -227,8 +249,6 @@
                             </div>
 </ContentTemplate>
                      </asp:UpdatePanel>
-                </div>
-            </div>
-         </div>
+               
 
 </asp:Content>

@@ -4,28 +4,73 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="card-body">
-        <div class="portlet-body">
-         
-            <!-- BEGIN FORM-->
-            <div class="form-body">
-                <div class="row" align="center">
-                    <h4 class="header2">Add Tasks</h4>
-                <%--    <asp:Label ID="lbltitle" runat="server" Text="Hours Spent By Employee/Project" Font-Bold="true" Font-Size="Large"></asp:Label>--%>
-                </div>
-                <br />
-                <!-- END PAGE HEADER-->
-                   
+    <div class="section-header">
+<div class="row">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-content">
+<h1>Project Hour Report</h1>
+<div class="section-header-breadcrumb">
+<div class="breadcrumb-item active"><a href="#"><i class="fas fa-home"></i></a></div>
+<div class="breadcrumb-item"><a href="#.aspx">Project Report Details</a></div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+<div class="section-header-breadcrumb-chart float-right">
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$10,415</span>
+<p>Last Week</p>
+</div>
+</div>
+</div>
+
+<div class="breadcrumb-chart m-l-50">
+<div class="float-right">
+<div class="icon m-b-10">
+<div class="chart header-bar2">
+<canvas width="49" height="40" ></canvas>
+</div>
+</div>
+</div>
+<div class="float-right m-r-5 m-l-10 m-t-1">
+<div class="chart-info">
+<span>$22,128</span>
+<p>Last Month</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+  
+    <!-- BEGIN FORM-->
+                  
                     <asp:UpdatePanel ID="upTask" runat="server">
                     <ContentTemplate>
-
-                <div class="row">
-
-                    <div class=" col m3">
-                         <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                            
-                            <asp:DropDownList ID="ddlMonthName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
+                          <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                  <div class="card-header">
+                                    <h4>Fill up the Details
+                                        <i class="fas fa-arrow-down"></i>
+                                    </h4>
+                                  </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                               <div class=" col-sm-6 form-group">
+                               <label class="col-sm-6 col-form-label">Month Name </label>
+                                <asp:DropDownList ID="ddlMonthName" runat="server" class="form-control" placeholder="" AutoPostBack="true"
                               OnSelectedIndexChanged="ddlMonthName_SelectedIndexChanged" >
                                 <asp:ListItem Text="January" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="February" Value="2"></asp:ListItem>
@@ -39,105 +84,63 @@
                                 <asp:ListItem Text="October" Value="10"></asp:ListItem>
                                 <asp:ListItem Text="November" Value="11"></asp:ListItem>
                                 <asp:ListItem Text="December" Value="12"></asp:ListItem>
-                               
-
-                            </asp:DropDownList>
-                                                    </div>
-                             <label>Month Name</label>
-
-
-                        </div>
-                    </div>
-
-                    
-                    <div class=" col m3">
-                         <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                            
-                            <asp:DropDownList ID="ddlYear" runat="server" class="form-control" placeholder=""
+                                </asp:DropDownList>
+                             </div>
+                            <div class=" col-sm-6 form-group">
+                               <label class="col-sm-6 col-form-label">Year</label>
+                               <asp:DropDownList ID="ddlYear" runat="server" class="form-control" placeholder=""
                                 ClientIDMode="Static" AutoPostBack="false">
                                 </asp:DropDownList>
-                                                    </div>
-                             <label>Year</label>
-                            </div>
+                              </div>                     
                         </div>
-
-                        <div class=" col m3">
-                      <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                           
+                                <div class="form-group row" style="margin-top:-30px">
+                               <div class=" col-sm-6 form-group">
+                               <label class="col-sm-6 col-form-label">Employee Name</label>
                             <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control" placeholder="" ClientIDMode="Static"
                                  OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPost="true" >
                             </asp:DropDownList>
-                                                    </div>
-                           <label>Employee Name</label>
-
-                        </div>
-                    </div>
-
-                    <div class=" col m3 ">
-                                 <div class="input-field">
-                                                <div class="select-wrapper initialized">
-                                    
-                                    <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" 
+                            </div>
+                                <div class=" col-sm-6 form-group">
+                               <label class="col-sm-6 col-form-label">Project Name</label>
+                                <asp:DropDownList ID="ddlProjectName" runat="server" class="form-control" placeholder="" 
                                         ClientIDMode="Static" OnSelectedIndexChanged="ddlProjectName_SelectedIndexChanged">
                                     </asp:DropDownList>
-                                                    </div>
-                                     <label>Project Name </label>
-
-
-                                </div>
+                              </div>
                             </div>
-                    
-                    </div>            
-                <br />
-                <div class="row" align="center">
-
-                    <div class="col m12">
-                        <div class="form-group form-md-line-input ">
-                               <asp:Button ID="btSearch" runat="server" Text="Search" class="btn" ClientIDMode="Static" OnClick="btSearch_Click"  />
-                            <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn blue" />
+                                 <div class="form-group row">
+                         <div class="col-sm-4"></div>
+                         <div class="col-sm-2">
+                        <asp:Button ID="btSearch" runat="server" Text="Search" class="btn btn-outline-success" ClientIDMode="Static" OnClick="btSearch_Click" style="width:150px" />
+                           </div>
+                            <div class="col-sm-2">  
+                             <asp:Button ID="btclear" runat="server" Text="Clear" ClientIDMode="Static" OnClick="btclear_Click" class="btn btn-outline-info" style="width:150px"/>
+                        </div>
                         </div>
                     </div>
-
- 
-                    <div class="col m4">
-                        <div class="form-group form-md-line-input ">
-                         
                         </div>
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-         
-                
-                <div class="clearfix"></div>
-
-                <br />
-                <!-- BEGIN SAMPLE FORM PORTLET-->
-                <div class="portlet light ">
-
-                    <div class="row">
-                        <div class="col m12">
-                            <div class="portlet light ">
-
-                                <div class="row">
-                                    <div class=" col m5">
-                                        <asp:Label runat="server" Text="" ID="count"></asp:Label>
                                     </div>
-                                  <div class="clearfix"></div>
+                                    </div>
+                <!-- BEGIN SAMPLE FORM PORTLET-->
+                         <div class="section-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                <h4>Project Report Details
+                                <i class="fas fa-arrow-down"></i></h4>
+                                </div>
+                                <div class="card-body">
+                                     <div style="overflow-x:auto;width:100%">
+                                    <h5> <asp:Label runat="server" Text="" ID="count"></asp:Label></h5>
+                                    </div>
                                     <div class="col m12" align="right">
-                                        <button class="btn green" runat="server" onserverclick="btnExport_Click"  id="btExport"><i class="fa fa-download"></i>Export</button>
+                                        <button class="btn btn-outline-primary" runat="server" onserverclick="btnExport_Click"  id="btExport"><i class="fa fa-download"></i>&nbsp;Export</button>
                                         <%--<asp:Button ID="btnExport" Text="Export To Excel" runat="server" OnClick="btnExport_Click" /></div>--%>
                                     </div>
-                                    <br />
-                                    <div class="clearfix"></div>
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
-                                            <div class="portlet-body">
-                                                <div class="table-scrollable">
                                                     <asp:GridView ID="GridTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                                        class="striped" OnSorting="GridTask_Sorting" AllowSorting="true" 
+                                                        class="table table-bordered" OnSorting="GridTask_Sorting" AllowSorting="true" 
                                                         GridLines="None" 
                                                         ShowHeaderWhenEmpty="True" Width="100%" OnPageIndexChanging="GridTask_PageIndexChanging" PageSize="20">
                                                         <Columns>

@@ -95,7 +95,7 @@ namespace IG_Portal
             {
                 if (dtTaskDetails.Rows.Count > 0)
                 {
-                    tottime.Text = "Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
+                    tottime.Text ="|"+""+ "Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
                 }
                 else
                 {
@@ -136,7 +136,7 @@ namespace IG_Portal
             {
                 if (dtTaskDetails.Rows.Count > 0)
                 {
-                    tottime.Text = "Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
+                    tottime.Text = "|"+" "+"Total Time Spent=" + dtTaskDetails.Rows[0]["TotalTime"].ToString();
                 }
                 else
                 {
@@ -293,7 +293,7 @@ namespace IG_Portal
                         //DataTable dtSearch = dtSearch1.CopyToDataTable();
                         GridTask.DataSource = dtSearch1;
                         GridTask.DataBind();
-                        tottime.Text = "Total Time Spent=" + dtTime.Rows[0]["TotalTime"].ToString();
+                        tottime.Text = "|"+" "+"Total Time Spent=" + dtTime.Rows[0]["TotalTime"].ToString();
                         count.Text = "Number of Tasks= " + (dtSearch1.Rows.Count).ToString();
                     }
                     else
